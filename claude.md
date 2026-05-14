@@ -17,6 +17,19 @@ git clone https://github.com/solahidris/aiandcoffee.git && cd aiandcoffee && npm
 
 Think of it like a DAO but open-ended and ever-evolving. The community decides everything.
 
+## Who's Welcome
+
+Everyone. All levels:
+- Clueless about AI
+- Beginners
+- Seniors
+- Whales
+- Sharks
+
+## Social Media
+
+None. Just a WhatsApp group. No plans to expand anytime soon. We'll only think about it after we hit max capacity (1024 people) on WhatsApp first.
+
 ## Links
 
 - **WhatsApp Group**: https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi
