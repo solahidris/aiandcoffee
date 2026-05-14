@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Head from "next/head";
 import { Geist_Mono } from "next/font/google";
 
@@ -110,6 +111,12 @@ export default function Home() {
               >
                 Next Event
               </a>
+              <Link
+                className="inline-block border-2 border-zinc-400 px-8 py-4 text-sm uppercase tracking-widest text-zinc-500 hover:border-zinc-600 hover:text-zinc-700 transition-colors"
+                href="/events"
+              >
+                All Events
+              </Link>
             </div>
           </div>
 
