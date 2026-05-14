@@ -45,25 +45,35 @@ export default function Home() {
       <div
         className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-[#E8E4D9] font-sans`}
       >
-        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-16 px-8 sm:py-32 sm:px-16 sm:items-start">
+        <main className="flex w-full max-w-2xl flex-col items-center gap-10 py-16 px-8 sm:py-24 sm:px-16">
           <Image
             src="/logo/logo.png"
             alt="AI and Coffee"
-            width={300}
-            height={300}
+            width={280}
+            height={280}
             priority
           />
-          <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+
+          <div className="flex flex-col items-center gap-4 text-center">
             <p className="max-w-md text-lg leading-8 text-zinc-700">
               An open source community. No BS. No hierarchy. Ever-evolving.
             </p>
-            <p className="max-w-md text-base leading-7 text-zinc-600">
+            <p className="text-xl font-medium text-zinc-800">
               The only rule is to be nice.
             </p>
           </div>
+
+          <div className="flex flex-wrap justify-center gap-2 text-sm text-zinc-600">
+            <span className="rounded-full bg-zinc-200/70 px-3 py-1">Clueless about AI</span>
+            <span className="rounded-full bg-zinc-200/70 px-3 py-1">Beginners</span>
+            <span className="rounded-full bg-zinc-200/70 px-3 py-1">Seniors</span>
+            <span className="rounded-full bg-zinc-200/70 px-3 py-1">Whales</span>
+            <span className="rounded-full bg-zinc-200/70 px-3 py-1">Sharks</span>
+          </div>
+
           <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
             <a
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#D94830] px-6 text-white transition-colors hover:bg-[#c13d27] md:w-auto"
+              className="flex h-12 items-center justify-center gap-2 rounded-full bg-[#D94830] px-8 text-white transition-colors hover:bg-[#c13d27]"
               href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
               target="_blank"
               rel="noopener noreferrer"
@@ -71,7 +81,7 @@ export default function Home() {
               Join WhatsApp
             </a>
             <a
-              className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-zinc-400 px-6 text-zinc-700 transition-colors hover:border-zinc-600 hover:bg-zinc-200/50 md:w-auto"
+              className="flex h-12 items-center justify-center rounded-full border border-solid border-zinc-400 px-8 text-zinc-700 transition-colors hover:border-zinc-600 hover:bg-zinc-200/50"
               href="https://luma.com/9f63qyq1"
               target="_blank"
               rel="noopener noreferrer"
@@ -79,6 +89,10 @@ export default function Home() {
               Next Event
             </a>
           </div>
+
+          <p className="text-center text-sm text-zinc-500">
+            No social media. Just WhatsApp. We&apos;ll think about expanding after we hit 1024 members.
+          </p>
         </main>
       </div>
     </>
