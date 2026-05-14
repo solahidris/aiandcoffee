@@ -37,12 +37,25 @@ Think of it like a DAO but open-ended and ever-evolving. The community decides e
 
 - Light mode only
 - Clean, minimal aesthetic
-- Background color: #E8E4D9 (beige from logo)
-- Primary button color: #D94830 (red from logo)
-- Logos in `/public/logo/`:
-  - `logo.png` - Full logo with mascots and text
-  - `logo_word.png` - Text only
-  - `logo_mascot.png` - Mascots only
+
+### Color System
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Beige | `#E8E4D9` | Background |
+| Red | `#D94830` | Primary buttons, accents |
+| Red Hover | `#C13D27` | Primary button hover |
+| Dark Brown | `#171717` | Text, foreground |
+| Zinc 700 | `#3F3F46` | Body text |
+| Zinc 600 | `#52525B` | Secondary text |
+| Zinc 400 | `#A1A1AA` | Borders |
+
+### Logos
+
+Located in `/public/logo/`:
+- `logo.png` - Full logo with mascots and text
+- `logo_word.png` - Text only
+- `logo_mascot.png` - Mascots only
 
 ## Contributing
 
