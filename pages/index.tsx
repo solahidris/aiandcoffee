@@ -72,7 +72,7 @@ export default function Home() {
             <h1 className="text-6xl sm:text-8xl font-bold text-[#D94830] leading-none tracking-tighter">
               AI
               <br />
-              <span className="text-zinc-800">&</span>
+              <span className="text-zinc-800">AND</span>
               <br />
               COFFEE
             </h1>
