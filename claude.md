@@ -1,0 +1,35 @@
+# ai and coffee
+
+An open source project for the community to keep building and evolving.
+
+## Philosophy
+
+- No BS
+- No hierarchy
+- The most outrageous community with no laws
+- **The only rule is to be nice**
+
+Think of it like a DAO but open-ended and ever-evolving. The community decides everything.
+
+## Links
+
+- **WhatsApp Group**: https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi
+- **Next Event**: https://luma.com/9f63qyq1
+
+## Tech Stack
+
+- Next.js (Pages Router)
+- TypeScript
+- Tailwind CSS
+- Edge Runtime on Cloudflare Pages
+
+## Design
+
+- Light mode only
+- Clean, minimal aesthetic
+
+## Contributing
+
+This is a community project. Jump in, build something, propose changes. No gatekeepers.
+
+**Always create a new branch for contributions.** Never commit directly to main.

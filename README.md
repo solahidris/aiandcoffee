@@ -1,41 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# ai and coffee
+
+An open source community project. No BS. No hierarchy. Ever-evolving.
+
+**The only rule is to be nice.**
+
+## Links
+
+- [Join the WhatsApp Group](https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi)
+- [Next Event](https://luma.com/9f63qyq1)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/aiandcoffee.git
+cd aiandcoffee
+
+# Install dependencies
+npm install
+
+# Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see it.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+No gatekeepers. No approval process. Just build.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+**Always create a new branch for contributions.** Never commit directly to main.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### How to contribute
 
-## Learn More
+1. **Fork the repo**
+2. **Create a branch**
+   ```bash
+   git checkout -b your-feature
+   ```
+3. **Make your changes**
+4. **Commit**
+   ```bash
+   git add .
+   git commit -m "what you did"
+   ```
+5. **Push**
+   ```bash
+   git push origin your-feature
+   ```
+6. **Open a Pull Request**
 
-To learn more about Next.js, take a look at the following resources:
+That's it.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+### Ideas welcome
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Got an idea? Build it.
+- See something broken? Fix it.
+- Want to add something wild? Go for it.
 
-## Deploy on Vercel
+Drop into the [WhatsApp group](https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi) if you want to chat about it first.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
-# aiandcoffee
+- Next.js (Pages Router)
+- TypeScript
+- Tailwind CSS
+- Edge Runtime on Cloudflare Pages
+
+## License
+
+Open source. Do whatever you want.
