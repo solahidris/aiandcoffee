@@ -109,13 +109,13 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Next Event
+                Our Next Event
               </a>
               <Link
                 className="inline-block border-2 border-zinc-400 px-8 py-4 text-sm uppercase tracking-widest text-zinc-500 hover:border-zinc-600 hover:text-zinc-700 transition-colors"
                 href="/events"
               >
-                All Events
+                All MYS Events
               </Link>
             </div>
           </div>
