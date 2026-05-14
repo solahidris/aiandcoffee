@@ -1,4 +1,5 @@
-import { ThreadsAPI } from 'threads-api';
+import pkg from 'threads-api';
+const { ThreadsAPI } = pkg;
 import fs from 'fs';
 import path from 'path';
 
@@ -44,7 +45,7 @@ async function run() {
   const userId = await client.getUserIDfromUsername(USERNAME);
   console.log(`User ID: ${userId}`);
 
-  const threads = await client.getUserThreads(userId);
+  const threads = await client.getUserProfileThreads(userId);
   console.log(`Fetched ${threads.length} posts`);
 
   const eventPosts = threads
