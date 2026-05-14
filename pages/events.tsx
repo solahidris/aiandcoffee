@@ -93,18 +93,7 @@ export default function EventsPage({ events, lastUpdated }: Props) {
           <h1 className="text-5xl sm:text-7xl font-bold text-[#D94830] leading-none tracking-tighter mb-2">
             EVENTS
           </h1>
-          <p className="text-zinc-500 text-sm mt-4 mb-2">
-            Malaysia tech events — scraped daily from{" "}
-            <a
-              href="https://www.threads.net/@codewithchuba"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-700 underline underline-offset-2 hover:text-[#D94830] transition-colors"
-            >
-              @codewithchuba
-            </a>{" "}
-            on Threads.
-          </p>
+
           {lastUpdated && (
             <p className="text-xs text-zinc-400 mb-12">
               last updated {formatDate(lastUpdated)}
@@ -117,7 +106,7 @@ export default function EventsPage({ events, lastUpdated }: Props) {
                 *
               </p>
               <p className="mt-6 text-zinc-500 text-sm">
-                No events yet. The scraper runs daily — check back soon.
+                No events yet.
               </p>
             </div>
           ) : (
