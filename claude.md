@@ -29,6 +29,10 @@ Think of it like a DAO but open-ended and ever-evolving. The community decides e
 - Tailwind CSS
 - Edge Runtime on Cloudflare Pages
 
+## Rules
+
+- **All API routes must use Edge Runtime.** Add `export const runtime = 'edge';` to every file in `pages/api/`. Cloudflare Pages does not support Node.js runtime.
+
 ## Design
 
 - Light mode only
