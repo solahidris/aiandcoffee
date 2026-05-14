@@ -2,6 +2,12 @@
 
 An open source project for the community to keep building and evolving.
 
+## Quick Start
+
+```bash
+git clone https://github.com/solahidris/aiandcoffee.git && cd aiandcoffee && npm install && npm run dev
+```
+
 ## Philosophy
 
 - No BS

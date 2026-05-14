@@ -9,21 +9,21 @@ An open source community project. No BS. No hierarchy. Ever-evolving.
 - [Join the WhatsApp Group](https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi)
 - [Next Event](https://luma.com/9f63qyq1)
 
-## Getting Started
+## Quick Start (One-liner)
 
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/aiandcoffee.git
-cd aiandcoffee
-
-# Install dependencies
-npm install
-
-# Run the dev server
-npm run dev
+git clone https://github.com/solahidris/aiandcoffee.git && cd aiandcoffee && npm install && npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see it.
+
+## AI Agent Prompt
+
+Copy and paste this to your AI agent to get started:
+
+```
+Clone the ai and coffee repo from https://github.com/solahidris/aiandcoffee.git, install dependencies, and run the dev server. Then read claude.md to understand the project.
+```
 
 ## Contributing
 
