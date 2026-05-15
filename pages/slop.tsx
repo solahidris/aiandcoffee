@@ -317,6 +317,9 @@ export default function SlopCentre() {
               ))}
             </div>
 
+            {/* Tab content */}
+            <div key={mode} className="animate-stagger-in">
+
             {/* ── Roast Anything ── */}
             {mode === "roast" && (
               <>
@@ -543,6 +546,7 @@ export default function SlopCentre() {
               </>
             )}
 
+            </div>{/* end key={mode} animated wrapper */}
           </div>
         </div>
       </div>
