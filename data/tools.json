@@ -3,196 +3,130 @@
     "id": "claude",
     "name": "Claude",
     "description": "Anthropic's AI assistant. Great for writing, coding, analysis, and deep thinking.",
+    "pros": ["Best-in-class reasoning and long context", "Honest and nuanced responses", "Excellent at coding and analysis", "Large 200k token context window"],
+    "cons": ["No image generation", "GPT-4 level features behind paywall", "Slower than some competitors"],
     "url": "https://claude.ai",
-    "category": "ai"
+    "category": "ai",
+    "logo": "/tools_logo/claude_logo.png"
   },
   {
     "id": "chatgpt",
     "name": "ChatGPT",
     "description": "OpenAI's flagship chat model. Most widely used AI assistant.",
+    "pros": ["Most widely adopted", "Voice mode and image generation built in", "Huge plugin and GPT ecosystem"],
+    "cons": ["Can be overconfident", "GPT-4 behind paywall", "Data privacy concerns"],
     "url": "https://chatgpt.com",
-    "category": "ai"
+    "category": "ai",
+    "logo": "/tools_logo/chatgpt_logo.png"
   },
   {
     "id": "gemini",
     "name": "Gemini",
     "description": "Google's AI assistant. Tight integration with Google Workspace.",
+    "pros": ["Deep Google Workspace integration", "Massive context window (1M tokens)", "Strong multimodal capabilities"],
+    "cons": ["Inconsistent output quality", "Safety filters can be overly cautious", "Less polished than competitors"],
     "url": "https://gemini.google.com",
-    "category": "ai"
+    "category": "ai",
+    "logo": "/tools_logo/gemini_logo.png"
   },
   {
     "id": "perplexity",
     "name": "Perplexity",
     "description": "AI-powered search engine that cites its sources.",
+    "pros": ["Real-time web search", "Always cites sources", "Great for research and fact-checking"],
+    "cons": ["Not ideal for creative tasks", "Weaker at long-form writing", "Relies on web quality"],
     "url": "https://perplexity.ai",
-    "category": "ai"
-  },
-  {
-    "id": "meta-ai",
-    "name": "Meta AI",
-    "description": "Meta's AI assistant built into WhatsApp, Instagram, and Messenger.",
-    "url": "https://meta.ai",
-    "category": "ai"
+    "category": "ai",
+    "logo": "/tools_logo/perplexity_logo.png"
   },
   {
     "id": "cursor",
     "name": "Cursor",
     "description": "AI code editor. Tab completion, chat, and full codebase awareness.",
+    "pros": ["Best AI code editor available", "Full codebase context", "Agent mode for complex tasks", "Fast tab completion"],
+    "cons": ["Expensive for heavy users", "Privacy concerns with cloud processing", "Can hallucinate on large codebases"],
     "url": "https://cursor.com",
-    "category": "ide"
+    "category": "ide",
+    "logo": "/tools_logo/cursor_logo.png"
   },
   {
-    "id": "windsurf",
-    "name": "Windsurf",
-    "description": "AI code editor by Codeium. Flows and agents for complex tasks.",
-    "url": "https://codeium.com/windsurf",
-    "category": "ide"
+    "id": "vscode",
+    "name": "Visual Studio Code",
+    "description": "Microsoft's open source code editor. Massive extension ecosystem with AI integrations.",
+    "pros": ["Free and open source", "Largest extension ecosystem", "Works with any AI tool via extensions", "Huge community support"],
+    "cons": ["Not AI-native", "Can get heavy with many extensions", "Slower startup than lighter editors"],
+    "url": "https://code.visualstudio.com",
+    "category": "ide",
+    "logo": "/tools_logo/visualstudio_logo.png"
   },
   {
-    "id": "github-copilot",
-    "name": "GitHub Copilot",
-    "description": "AI pair programmer built into VS Code and JetBrains.",
-    "url": "https://github.com/features/copilot",
-    "category": "ide"
+    "id": "zed",
+    "name": "Zed",
+    "description": "High-performance code editor built in Rust. Fast, minimal, AI-native.",
+    "pros": ["Extremely fast (built in Rust)", "AI-native from the ground up", "Minimal and distraction-free"],
+    "cons": ["Still early — missing some extensions", "Smaller community than VS Code", "Linux support still in beta"],
+    "url": "https://zed.dev",
+    "category": "ide",
+    "logo": "/tools_logo/zed_logo.png"
   },
   {
-    "id": "v0",
-    "name": "v0",
-    "description": "Generate UI components from a prompt. Built by Vercel.",
-    "url": "https://v0.dev",
-    "category": "ide"
-  },
-  {
-    "id": "bolt",
-    "name": "bolt.new",
-    "description": "Prompt-to-fullstack app in the browser. Fast prototyping.",
-    "url": "https://bolt.new",
-    "category": "ide"
-  },
-  {
-    "id": "replit",
-    "name": "Replit",
-    "description": "Browser-based coding with AI that builds and deploys apps.",
-    "url": "https://replit.com",
-    "category": "ide"
-  },
-  {
-    "id": "midjourney",
-    "name": "Midjourney",
-    "description": "Best-in-class image generation. Discord-based, highly stylised output.",
-    "url": "https://midjourney.com",
-    "category": "image"
-  },
-  {
-    "id": "flux",
-    "name": "Flux",
-    "description": "Open source image model by Black Forest Labs. Photorealistic and fast.",
-    "url": "https://blackforestlabs.ai",
-    "category": "image"
-  },
-  {
-    "id": "adobe-firefly",
-    "name": "Adobe Firefly",
-    "description": "Adobe's AI image generator. Commercially safe, trained on licensed content.",
-    "url": "https://firefly.adobe.com",
-    "category": "image"
-  },
-  {
-    "id": "comfyui",
-    "name": "ComfyUI",
-    "description": "Node-based UI for running Stable Diffusion locally. Highly customisable.",
-    "url": "https://github.com/comfyanonymous/ComfyUI",
-    "category": "image"
-  },
-  {
-    "id": "kling",
-    "name": "Kling",
-    "description": "High quality AI video generation from text or image. Made by Kuaishou.",
-    "url": "https://klingai.com",
-    "category": "video"
-  },
-  {
-    "id": "runway",
-    "name": "Runway",
-    "description": "AI video generation and editing. Gen-3 is their flagship model.",
-    "url": "https://runwayml.com",
-    "category": "video"
-  },
-  {
-    "id": "pika",
-    "name": "Pika",
-    "description": "Text and image to video. Fast generation, good for short clips.",
-    "url": "https://pika.art",
-    "category": "video"
-  },
-  {
-    "id": "sora",
-    "name": "Sora",
-    "description": "OpenAI's video generation model. Cinematic quality output.",
-    "url": "https://sora.com",
-    "category": "video"
+    "id": "warp",
+    "name": "Warp",
+    "description": "AI-powered terminal. Autocomplete, natural language commands, and built-in AI agent.",
+    "pros": ["Best terminal UX by far", "Natural language to shell commands", "Built-in AI agent", "Team sharing features"],
+    "cons": ["macOS and Linux only — no Windows", "Requires account to use", "Some features behind paywall"],
+    "url": "https://warp.dev",
+    "category": "ide",
+    "logo": "/tools_logo/warp_logo.png"
   },
   {
     "id": "elevenlabs",
     "name": "ElevenLabs",
     "description": "Realistic AI voice generation and cloning. Industry standard.",
+    "pros": ["Most realistic AI voices", "Instant voice cloning", "Multilingual support", "Large voice library"],
+    "cons": ["Gets expensive at scale", "Ethical concerns around voice cloning", "Free tier is very limited"],
     "url": "https://elevenlabs.io",
-    "category": "voice"
-  },
-  {
-    "id": "whisper",
-    "name": "Whisper",
-    "description": "OpenAI's open source speech-to-text model. Runs locally.",
-    "url": "https://openai.com/research/whisper",
-    "category": "voice"
-  },
-  {
-    "id": "notebooklm",
-    "name": "NotebookLM",
-    "description": "Google's AI research tool. Upload docs and have a conversation with them.",
-    "url": "https://notebooklm.google.com",
-    "category": "voice"
+    "category": "voice",
+    "logo": "/tools_logo/elevenlabs_logo.png"
   },
   {
     "id": "n8n",
     "name": "n8n",
     "description": "Open source workflow automation. Self-hostable, AI-native nodes.",
+    "pros": ["Open source and self-hostable", "400+ integrations", "AI-native nodes built in", "Pay once, own your data"],
+    "cons": ["Steeper learning curve", "Self-hosting needs DevOps knowledge", "UI can feel cluttered"],
     "url": "https://n8n.io",
-    "category": "automate"
-  },
-  {
-    "id": "make",
-    "name": "Make",
-    "description": "Visual automation platform. Connect apps and build AI workflows.",
-    "url": "https://make.com",
-    "category": "automate"
+    "category": "automate",
+    "logo": "/tools_logo/n8n_logo.png"
   },
   {
     "id": "zapier",
-    "name": "Zapier AI",
+    "name": "Zapier",
     "description": "Automate tasks between apps with AI-powered zaps.",
+    "pros": ["Easiest automation tool to use", "6000+ app integrations", "No-code friendly", "Reliable and battle-tested"],
+    "cons": ["Gets expensive fast at scale", "Limited logic and branching", "Slower execution than alternatives"],
     "url": "https://zapier.com",
-    "category": "automate"
+    "category": "automate",
+    "logo": "/tools_logo/zapier_logo.png"
   },
   {
     "id": "notion-ai",
-    "name": "Notion AI",
+    "name": "Notion",
     "description": "AI writing and summarisation built into Notion workspaces.",
+    "pros": ["All-in-one workspace", "AI writing and summarisation built in", "Great for docs, wikis, and notes"],
+    "cons": ["AI features cost extra", "Can get messy at scale", "Slow on mobile"],
     "url": "https://notion.so",
-    "category": "productivity"
+    "category": "productivity",
+    "logo": "/tools_logo/notion_logo.png"
   },
   {
-    "id": "gamma",
-    "name": "Gamma",
-    "description": "AI-generated presentations and documents. Prompt to slides in seconds.",
-    "url": "https://gamma.app",
-    "category": "productivity"
-  },
-  {
-    "id": "otter",
-    "name": "Otter.ai",
-    "description": "AI meeting transcription and summarisation. Works with Zoom and Meet.",
-    "url": "https://otter.ai",
-    "category": "productivity"
+    "id": "notebooklm",
+    "name": "NotebookLM",
+    "description": "Google's AI research tool. Upload docs and have a conversation with them.",
+    "pros": ["Completely free", "Upload any doc and chat with it", "Podcast generation from sources", "Great for research"],
+    "cons": ["Requires Google account", "Limited to uploaded sources only", "No external web search"],
+    "url": "https://notebooklm.google.com",
+    "category": "productivity",
+    "logo": "/tools_logo/notebookllm_logo.png"
   }
 ]
