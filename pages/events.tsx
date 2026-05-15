@@ -407,6 +407,15 @@ function formatDate(iso: string | null) {
 export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Props) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const todayEvents = useMemo(() =>
+    events.filter((e) => {
+      if (!e.startDate || !e.endDate) return false;
+      return e.startDate <= todayStr && todayStr <= e.endDate && !e.expired;
+    }),
+    [events, todayStr]
+  );
 
   const filtered = useMemo(() => {
     let result = events;
@@ -420,8 +429,16 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
       const cat = CATEGORIES.find((c) => c.label === selectedCategory);
       if (cat) result = result.filter((e) => cat.test(e.type));
     }
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter((e) =>
+        e.name.toLowerCase().includes(q) ||
+        (e.venue ?? "").toLowerCase().includes(q) ||
+        e.type.toLowerCase().includes(q)
+      );
+    }
     return result;
-  }, [events, selectedDate, selectedCategory]);
+  }, [events, selectedDate, selectedCategory, searchQuery]);
 
   const upcoming = filtered.filter((e) => !e.expired);
   const expired = filtered.filter((e) => e.expired);
@@ -487,6 +504,44 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
 
           {/* ── Main: event cards ── */}
           <main className="flex-1 px-6 py-10 lg:px-10">
+            {/* Happening today */}
+            {todayEvents.length > 0 && !searchQuery && (
+              <section className="mb-8 border border-[#D94830] bg-[#F2EFE8]">
+                <div className="px-4 py-2 bg-[#D94830]">
+                  <p className="text-[11px] uppercase tracking-widest text-white font-bold">
+                    Happening Today — {new Date(todayStr + "T00:00:00").toLocaleDateString("en-MY", { weekday: "long", day: "numeric", month: "long" })}
+                  </p>
+                </div>
+                <div className="divide-y divide-zinc-200">
+                  {todayEvents.map((e) => (
+                    <div key={e.id} className="px-4 py-3 flex items-start justify-between gap-4">
+                      <div className="min-w-0">
+                        <p className="text-xs font-bold text-zinc-900 leading-snug">{e.name}</p>
+                        {e.venue && <p className="text-[11px] text-zinc-500 mt-0.5 truncate">📍 {e.venue}</p>}
+                      </div>
+                      {e.link && (
+                        <a href={e.link} target="_blank" rel="noopener noreferrer"
+                          className="shrink-0 text-[11px] uppercase tracking-widest text-[#D94830] hover:underline">
+                          RSVP ↗
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Search */}
+            <div className="mb-4">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="search events..."
+                className="w-full bg-transparent border-b border-zinc-400 pb-2 text-xs text-zinc-800 placeholder-zinc-400 uppercase tracking-widest outline-none focus:border-zinc-700 transition-colors"
+              />
+            </div>
+
             {/* Category filter chips */}
             <div className="flex gap-2 overflow-x-auto pb-2 mb-8 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {CATEGORIES.map(({ label }) => (
@@ -516,7 +571,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
               <div className="mt-8">
                 <p className="text-4xl font-bold text-zinc-300 leading-none tracking-tighter select-none">*</p>
                 <p className="mt-4 text-zinc-500 text-sm">
-                  {selectedDate ? "No events on this date." : `No ${selectedCategory !== "All" ? selectedCategory.toLowerCase() + " " : ""}events yet.`}
+                  {searchQuery ? `No results for "${searchQuery}".` : selectedDate ? "No events on this date." : `No ${selectedCategory !== "All" ? selectedCategory.toLowerCase() + " " : ""}events yet.`}
                 </p>
               </div>
             ) : (
@@ -526,7 +581,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
                     <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
                       Upcoming — {upcoming.length}
                     </p>
-                    <div key={`upcoming-${selectedDate}-${selectedCategory}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div key={`upcoming-${selectedDate}-${selectedCategory}-${searchQuery}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                       {upcoming.map((e, i) => (
                         <div key={e.id} style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 50}ms`, opacity: 0 }}>
                           <EventCard event={e} />
@@ -540,7 +595,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
                     <p className="text-xs uppercase tracking-widest text-zinc-400 mb-4">
                       Past — {expired.length}
                     </p>
-                    <div key={`expired-${selectedDate}-${selectedCategory}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div key={`expired-${selectedDate}-${selectedCategory}-${searchQuery}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                       {expired.map((e, i) => (
                         <div key={e.id} style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 50}ms`, opacity: 0 }}>
                           <EventCard event={e} muted />
