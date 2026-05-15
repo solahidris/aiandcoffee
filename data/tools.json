@@ -1,0 +1,274 @@
+[
+  {
+    "id": "claude",
+    "name": "Claude",
+    "description": "Anthropic's AI assistant. Great for writing, coding, analysis, and deep thinking.",
+    "url": "https://claude.ai",
+    "category": "chat",
+    "pricing": "freemium"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "description": "OpenAI's flagship chat model. Most widely used AI assistant.",
+    "url": "https://chatgpt.com",
+    "category": "chat",
+    "pricing": "freemium"
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "description": "Google's AI assistant. Tight integration with Google Workspace.",
+    "url": "https://gemini.google.com",
+    "category": "chat",
+    "pricing": "freemium"
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "description": "AI-powered search engine that cites its sources.",
+    "url": "https://perplexity.ai",
+    "category": "chat",
+    "pricing": "freemium"
+  },
+  {
+    "id": "meta-ai",
+    "name": "Meta AI",
+    "description": "Meta's AI assistant built into WhatsApp, Instagram, and Messenger.",
+    "url": "https://meta.ai",
+    "category": "chat",
+    "pricing": "free"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "description": "AI code editor. Tab completion, chat, and full codebase awareness.",
+    "url": "https://cursor.com",
+    "category": "code",
+    "pricing": "freemium"
+  },
+  {
+    "id": "windsurf",
+    "name": "Windsurf",
+    "description": "AI code editor by Codeium. Flows and agents for complex tasks.",
+    "url": "https://codeium.com/windsurf",
+    "category": "code",
+    "pricing": "freemium"
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "description": "AI pair programmer built into VS Code and JetBrains.",
+    "url": "https://github.com/features/copilot",
+    "category": "code",
+    "pricing": "paid"
+  },
+  {
+    "id": "v0",
+    "name": "v0",
+    "description": "Generate UI components from a prompt. Built by Vercel.",
+    "url": "https://v0.dev",
+    "category": "code",
+    "pricing": "freemium"
+  },
+  {
+    "id": "bolt",
+    "name": "bolt.new",
+    "description": "Prompt-to-fullstack app in the browser. Fast prototyping.",
+    "url": "https://bolt.new",
+    "category": "code",
+    "pricing": "freemium"
+  },
+  {
+    "id": "replit",
+    "name": "Replit",
+    "description": "Browser-based coding with AI that builds and deploys apps.",
+    "url": "https://replit.com",
+    "category": "code",
+    "pricing": "freemium"
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "description": "Best-in-class image generation. Discord-based, highly stylised output.",
+    "url": "https://midjourney.com",
+    "category": "image",
+    "pricing": "paid"
+  },
+  {
+    "id": "flux",
+    "name": "Flux",
+    "description": "Open source image model by Black Forest Labs. Photorealistic and fast.",
+    "url": "https://blackforestlabs.ai",
+    "category": "image",
+    "pricing": "free"
+  },
+  {
+    "id": "adobe-firefly",
+    "name": "Adobe Firefly",
+    "description": "Adobe's AI image generator. Commercially safe, trained on licensed content.",
+    "url": "https://firefly.adobe.com",
+    "category": "image",
+    "pricing": "freemium"
+  },
+  {
+    "id": "comfyui",
+    "name": "ComfyUI",
+    "description": "Node-based UI for running Stable Diffusion locally. Highly customisable.",
+    "url": "https://github.com/comfyanonymous/ComfyUI",
+    "category": "image",
+    "pricing": "free"
+  },
+  {
+    "id": "kling",
+    "name": "Kling",
+    "description": "High quality AI video generation from text or image. Made by Kuaishou.",
+    "url": "https://klingai.com",
+    "category": "video",
+    "pricing": "freemium"
+  },
+  {
+    "id": "runway",
+    "name": "Runway",
+    "description": "AI video generation and editing. Gen-3 is their flagship model.",
+    "url": "https://runwayml.com",
+    "category": "video",
+    "pricing": "freemium"
+  },
+  {
+    "id": "pika",
+    "name": "Pika",
+    "description": "Text and image to video. Fast generation, good for short clips.",
+    "url": "https://pika.art",
+    "category": "video",
+    "pricing": "freemium"
+  },
+  {
+    "id": "sora",
+    "name": "Sora",
+    "description": "OpenAI's video generation model. Cinematic quality output.",
+    "url": "https://sora.com",
+    "category": "video",
+    "pricing": "paid"
+  },
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "description": "Realistic AI voice generation and cloning. Industry standard.",
+    "url": "https://elevenlabs.io",
+    "category": "voice",
+    "pricing": "freemium"
+  },
+  {
+    "id": "whisper",
+    "name": "Whisper",
+    "description": "OpenAI's open source speech-to-text model. Runs locally.",
+    "url": "https://openai.com/research/whisper",
+    "category": "voice",
+    "pricing": "free"
+  },
+  {
+    "id": "notebooklm",
+    "name": "NotebookLM",
+    "description": "Google's AI research tool. Upload docs and have a conversation with them.",
+    "url": "https://notebooklm.google.com",
+    "category": "voice",
+    "pricing": "free"
+  },
+  {
+    "id": "anthropic-api",
+    "name": "Anthropic API",
+    "description": "API access to Claude models. Best for reasoning and long context tasks.",
+    "url": "https://anthropic.com",
+    "category": "api",
+    "pricing": "paid"
+  },
+  {
+    "id": "openai-api",
+    "name": "OpenAI API",
+    "description": "API access to GPT-4, o1, and other OpenAI models.",
+    "url": "https://platform.openai.com",
+    "category": "api",
+    "pricing": "paid"
+  },
+  {
+    "id": "groq",
+    "name": "Groq",
+    "description": "Extremely fast inference for open source models. LPU-powered.",
+    "url": "https://groq.com",
+    "category": "api",
+    "pricing": "freemium"
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "description": "Run open source models locally. Llama, Mistral, Gemma and more.",
+    "url": "https://ollama.com",
+    "category": "api",
+    "pricing": "free"
+  },
+  {
+    "id": "replicate",
+    "name": "Replicate",
+    "description": "Run any open source model via API. Pay per run.",
+    "url": "https://replicate.com",
+    "category": "api",
+    "pricing": "paid"
+  },
+  {
+    "id": "huggingface",
+    "name": "Hugging Face",
+    "description": "The GitHub of AI. Models, datasets, and spaces to demo anything.",
+    "url": "https://huggingface.co",
+    "category": "api",
+    "pricing": "freemium"
+  },
+  {
+    "id": "n8n",
+    "name": "n8n",
+    "description": "Open source workflow automation. Self-hostable, AI-native nodes.",
+    "url": "https://n8n.io",
+    "category": "automate",
+    "pricing": "freemium"
+  },
+  {
+    "id": "make",
+    "name": "Make",
+    "description": "Visual automation platform. Connect apps and build AI workflows.",
+    "url": "https://make.com",
+    "category": "automate",
+    "pricing": "freemium"
+  },
+  {
+    "id": "zapier",
+    "name": "Zapier AI",
+    "description": "Automate tasks between apps with AI-powered zaps.",
+    "url": "https://zapier.com",
+    "category": "automate",
+    "pricing": "freemium"
+  },
+  {
+    "id": "notion-ai",
+    "name": "Notion AI",
+    "description": "AI writing and summarisation built into Notion workspaces.",
+    "url": "https://notion.so",
+    "category": "productivity",
+    "pricing": "paid"
+  },
+  {
+    "id": "gamma",
+    "name": "Gamma",
+    "description": "AI-generated presentations and documents. Prompt to slides in seconds.",
+    "url": "https://gamma.app",
+    "category": "productivity",
+    "pricing": "freemium"
+  },
+  {
+    "id": "otter",
+    "name": "Otter.ai",
+    "description": "AI meeting transcription and summarisation. Works with Zoom and Meet.",
+    "url": "https://otter.ai",
+    "category": "productivity",
+    "pricing": "freemium"
+  }
+]
