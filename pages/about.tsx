@@ -31,14 +31,14 @@ export default function About() {
 
         {/* Hero — big manifesto */}
         <section className="relative px-6 sm:px-16 pt-14 pb-16 overflow-hidden">
-          <div className="absolute -top-4 right-0 sm:right-8 rotate-6 hover:rotate-0 transition-transform duration-500 pointer-events-none">
-            <Image
-              src="/logo/logo_mascot.png"
-              alt=""
-              width={420}
-              height={420}
-              className="opacity-90"
-            />
+          {/* Mobile mascot — small */}
+          <div className="sm:hidden absolute top-10 right-8 rotate-12 hover:rotate-0 transition-transform duration-500">
+            <Image src="/logo/logo_mascot.png" alt="" width={110} height={110} />
+          </div>
+
+          {/* Desktop mascot — large */}
+          <div className="hidden sm:block absolute -top-4 right-0 rotate-6 hover:rotate-0 transition-transform duration-500 pointer-events-none">
+            <Image src="/logo/logo_mascot.png" alt="" width={420} height={420} className="opacity-90" />
           </div>
 
           <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-10 animate-stagger-in">— who we are</p>
