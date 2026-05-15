@@ -14,15 +14,20 @@ export default function About() {
     <>
       <Head>
         <title>About — AI and Coffee</title>
-        <meta
-          name="description"
-          content="No BS. No hierarchy. No laws. The only rule is to be nice. An open source community for everyone interested in AI."
-        />
+        <meta name="description" content="Who we are, what we value, and why we exist. No BS. No hierarchy. No laws. The only rule is to be nice." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://aiandcoffee.com/about" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="AI and Coffee" />
+        <meta property="og:url" content="https://aiandcoffee.com/about" />
         <meta property="og:title" content="About — AI and Coffee" />
         <meta property="og:description" content="No BS. No hierarchy. No laws. The only rule is to be nice." />
-        <meta property="og:image" content="/api/og?title=About&subtitle=No BS. No hierarchy. Only rule: be nice." />
+        <meta property="og:image" content="https://aiandcoffee.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About — AI and Coffee" />
+        <meta name="twitter:description" content="No BS. No hierarchy. No laws. The only rule is to be nice." />
+        <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>

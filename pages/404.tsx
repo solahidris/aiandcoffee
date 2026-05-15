@@ -13,7 +13,9 @@ export default function NotFound() {
     <>
       <Head>
         <title>404 — AI and Coffee</title>
-        <meta name="robots" content="noindex" />
+        <meta name="description" content="Page not found. But the coffee is still hot." />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono px-6 py-12 sm:px-16`}>

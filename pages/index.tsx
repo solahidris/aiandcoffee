@@ -13,31 +13,22 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>AI and Coffee - Open Source Community</title>
-        <meta
-          name="description"
-          content="An open source community project. No BS. No hierarchy. Ever-evolving. The only rule is to be nice."
-        />
+        <title>AI and Coffee — Open Source Tech Community in Malaysia</title>
+        <meta name="description" content="No BS. No hierarchy. No laws. The only rule is to be nice. An open source tech community for everyone — from clueless to sharks." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://aiandcoffee.com" />
         <link rel="icon" href="/favicon.ico" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="AI and Coffee" />
-        <meta
-          property="og:description"
-          content="An open source community project. No BS. No hierarchy. Ever-evolving. The only rule is to be nice."
-        />
-        <meta property="og:image" content="/api/og" />
         <meta property="og:type" content="website" />
-
-        {/* Twitter */}
+        <meta property="og:site_name" content="AI and Coffee" />
+        <meta property="og:url" content="https://aiandcoffee.com" />
+        <meta property="og:title" content="AI and Coffee — Open Source Tech Community" />
+        <meta property="og:description" content="No BS. No hierarchy. No laws. The only rule is to be nice." />
+        <meta property="og:image" content="https://aiandcoffee.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI and Coffee" />
-        <meta
-          name="twitter:description"
-          content="An open source community project. No BS. No hierarchy. Ever-evolving. The only rule is to be nice."
-        />
-        <meta name="twitter:image" content="/logo/logo.png" />
+        <meta name="twitter:site" content="@aiandcoffee" />
+        <meta name="twitter:title" content="AI and Coffee — Open Source Tech Community" />
+        <meta name="twitter:description" content="No BS. No hierarchy. No laws. The only rule is to be nice." />
+        <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         {/* Background animated mascot */}

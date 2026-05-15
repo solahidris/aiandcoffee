@@ -164,9 +164,20 @@ export default function OGGenerator() {
     <>
       <Head>
         <title>OG Image Generator — AI and Coffee</title>
-        <meta name="description" content="Generate branded Open Graph preview images for events and posts." />
+        <meta name="description" content="Generate branded Open Graph preview images for events, posts, and announcements. Text mode or upload a photo." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://aiandcoffee.com/tools/og-image" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="AI and Coffee" />
+        <meta property="og:url" content="https://aiandcoffee.com/tools/og-image" />
+        <meta property="og:title" content="OG Image Generator — AI and Coffee" />
+        <meta property="og:description" content="Generate branded Open Graph preview images for events, posts, and announcements." />
+        <meta property="og:image" content="https://aiandcoffee.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="OG Image Generator — AI and Coffee" />
+        <meta name="twitter:description" content="Generate branded Open Graph preview images for events, posts, and announcements." />
+        <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
       {/* Hidden canvas for image mode compositing */}

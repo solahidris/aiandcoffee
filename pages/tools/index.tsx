@@ -57,12 +57,20 @@ export default function ToolsPage() {
     <>
       <Head>
         <title>Tools — AI and Coffee</title>
-        <meta name="description" content="AI tools the community actually uses." />
+        <meta name="description" content="AI tools the community actually uses — from chat and coding IDEs to automation and productivity." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://aiandcoffee.com/tools" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="AI and Coffee" />
+        <meta property="og:url" content="https://aiandcoffee.com/tools" />
         <meta property="og:title" content="Tools — AI and Coffee" />
         <meta property="og:description" content="AI tools the community actually uses." />
-        <meta property="og:image" content="/api/og?title=Tools&subtitle=Things we actually use" />
+        <meta property="og:image" content="https://aiandcoffee.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tools — AI and Coffee" />
+        <meta name="twitter:description" content="AI tools the community actually uses." />
+        <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>

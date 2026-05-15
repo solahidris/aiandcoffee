@@ -447,9 +447,20 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
     <>
       <Head>
         <title>Events — AI and Coffee</title>
-        <meta name="description" content="Malaysia tech events." />
+        <meta name="description" content="Malaysia tech events — AI, cybersecurity, workshops, hackathons and more. Updated daily." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://aiandcoffee.com/events" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="AI and Coffee" />
+        <meta property="og:url" content="https://aiandcoffee.com/events" />
+        <meta property="og:title" content="Events — AI and Coffee" />
+        <meta property="og:description" content="Malaysia tech events — AI, cybersecurity, workshops, hackathons and more." />
+        <meta property="og:image" content="https://aiandcoffee.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Events — AI and Coffee" />
+        <meta name="twitter:description" content="Malaysia tech events — AI, cybersecurity, workshops, hackathons and more." />
+        <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
