@@ -114,8 +114,8 @@ export default function ToolsPage() {
                   <button
                     key={tool.id}
                     onClick={() => setSelectedId(tool.id)}
-                    className="group border border-transparent bg-[#F2EFE8] hover:border-zinc-300 transition-colors duration-150 flex items-stretch h-14"
-                    style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 40}ms`, opacity: 0 }}
+                    className="animate-stagger-in group border border-transparent bg-[#F2EFE8] hover:border-zinc-300 transition-colors duration-150 flex items-stretch h-14"
+                    style={{ animationDelay: `${i * 40}ms` }}
                   >
                     <Image src={tool.logo} alt={tool.name} width={56} height={56} className="w-14 h-full shrink-0 object-contain" />
                     <p className="px-4 flex items-center text-[11px] font-bold uppercase tracking-wide text-zinc-800 group-hover:text-zinc-600 transition-colors text-left">
@@ -198,8 +198,8 @@ export default function ToolsPage() {
                   <button
                     key={tool.id}
                     onClick={() => setSelectedId(isSelected ? null : tool.id)}
-                    style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 40}ms`, opacity: 0 }}
-                    className={`group border bg-[#F2EFE8] transition-colors duration-150 flex items-stretch h-24 ${
+                    style={{ animationDelay: `${i * 40}ms` }}
+                    className={`animate-stagger-in group border bg-[#F2EFE8] transition-colors duration-150 flex items-stretch h-24 ${
                       isSelected
                         ? "border-[#D94830]"
                         : "border-transparent hover:border-zinc-300"

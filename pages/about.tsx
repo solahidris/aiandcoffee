@@ -40,17 +40,17 @@ export default function About() {
             />
           </div>
 
-          <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-10">— who we are</p>
+          <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-10 animate-stagger-in">— who we are</p>
 
           <div className="font-bold tracking-tighter leading-none text-5xl sm:text-7xl text-zinc-800 space-y-2">
-            <p>no bs.</p>
-            <p>no hierarchy.</p>
-            <p>no laws.</p>
+            <p className="animate-hero-in">no bs.</p>
+            <p className="animate-hero-in" style={{ animationDelay: "100ms" }}>no hierarchy.</p>
+            <p className="animate-hero-in" style={{ animationDelay: "200ms" }}>no laws.</p>
           </div>
         </section>
 
         {/* "Only rule" full-width banner */}
-        <div className="border-y border-zinc-400/40 px-6 sm:px-16 py-10">
+        <div className="border-y border-zinc-400/40 px-6 sm:px-16 py-10 animate-stagger-in" style={{ animationDelay: "400ms" }}>
           <p className="text-3xl sm:text-5xl font-bold text-[#D94830] tracking-tighter leading-none mb-5">
             only rule: be nice
           </p>
@@ -65,7 +65,7 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-zinc-400/40">
 
           {/* Who's welcome — spans 2 cols */}
-          <div className="sm:col-span-2 border-b sm:border-b-0 sm:border-r border-zinc-400/40 px-6 sm:px-16 py-12">
+          <div className="sm:col-span-2 border-b sm:border-b-0 sm:border-r border-zinc-400/40 px-6 sm:px-16 py-12 animate-stagger-in" style={{ animationDelay: "550ms" }}>
             <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-8">who&apos;s welcome</p>
             <div className="flex flex-wrap gap-4 font-bold uppercase tracking-widest text-zinc-700 text-sm mb-8">
               {["clueless", "beginners", "seniors", "whales", "sharks"].map((label) => (
@@ -79,7 +79,7 @@ export default function About() {
           </div>
 
           {/* Right column — stacked */}
-          <div className="flex flex-col divide-y divide-zinc-400/40">
+          <div className="flex flex-col divide-y divide-zinc-400/40 animate-stagger-in" style={{ animationDelay: "650ms" }}>
             <div className="px-6 py-10">
               <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">no social media</p>
               <p className="text-xs text-zinc-600 leading-relaxed">
@@ -108,7 +108,7 @@ export default function About() {
           </div>
 
           {/* Monetization — full width bottom row */}
-          <div className="sm:col-span-3 border-t border-zinc-400/40 px-6 sm:px-16 py-12">
+          <div className="sm:col-span-3 border-t border-zinc-400/40 px-6 sm:px-16 py-12 animate-stagger-in" style={{ animationDelay: "750ms" }}>
             <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">how do we make money?</p>
             <p className="text-sm font-bold text-zinc-800 tracking-tight mb-3">
               we don&apos;t. not yet anyway.
