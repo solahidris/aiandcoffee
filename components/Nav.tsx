@@ -45,7 +45,7 @@ export default function Nav({ active }: { active: Page }) {
 
   return (
     <>
-      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-between sm:border-b border-zinc-400/40">
+      <nav className={`relative z-10 px-6 py-6 sm:px-16 flex items-center sm:border-b border-zinc-400/40 ${active === "home" ? "justify-end sm:justify-between" : "justify-between"}`}>
         <div className={active === "home" ? "hidden sm:block" : "block"}>{logo}</div>
 
         {/* Desktop links + join */}
