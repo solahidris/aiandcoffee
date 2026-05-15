@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import { useState, useMemo } from "react";
 import Nav from "../components/Nav";
@@ -31,18 +30,10 @@ const CATEGORIES = [
   { label: "Productivity", value: "productivity"},
 ];
 
-function LogoPlaceholder({ name }: { name: string }) {
-  return (
-    <div className="w-12 h-12 shrink-0 bg-zinc-200 flex items-center justify-center">
-      <span className="text-xs font-bold text-zinc-400 uppercase">
-        {name.charAt(0)}
-      </span>
-    </div>
-  );
-}
 
 export default function ToolsPage() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const filtered = useMemo(() =>
     activeCategory === "all"
@@ -100,34 +91,45 @@ export default function ToolsPage() {
             {filtered.length} tool{filtered.length !== 1 ? "s" : ""}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-            {filtered.map((tool) => (
-              <a
-                key={tool.id}
-                href={tool.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group border border-zinc-300 bg-[#F2EFE8] hover:border-[#D94830] transition-colors duration-200 flex flex-col"
-              >
-                <div className="p-5 flex gap-4 flex-1">
-                  {/* Logo placeholder */}
-                  <div className="w-12 h-12 shrink-0 bg-zinc-200 group-hover:bg-zinc-300 transition-colors" />
-
-                  <div className="flex flex-col justify-center min-w-0">
-                    <p className="text-sm font-bold text-zinc-800 group-hover:text-[#D94830] transition-colors truncate">
+          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
+            {filtered.map((tool) => {
+              const isExpanded = expandedId === tool.id;
+              return (
+                <div key={tool.id} className="flex flex-col">
+                  <button
+                    onClick={() => setExpandedId(isExpanded ? null : tool.id)}
+                    className={`group border bg-[#F2EFE8] transition-colors duration-200 flex flex-col items-center gap-3 p-5 text-center ${
+                      isExpanded
+                        ? "border-[#D94830]"
+                        : "border-zinc-300 hover:border-zinc-500"
+                    }`}
+                  >
+                    {/* Logo placeholder */}
+                    <div className={`w-12 h-12 transition-colors ${isExpanded ? "bg-zinc-300" : "bg-zinc-200 group-hover:bg-zinc-300"}`} />
+                    <p className={`text-xs font-bold uppercase tracking-wide transition-colors ${isExpanded ? "text-[#D94830]" : "text-zinc-800 group-hover:text-zinc-600"}`}>
                       {tool.name}
                     </p>
-                    <p className="text-xs text-zinc-500 leading-relaxed mt-1">
-                      {tool.description}
-                    </p>
-                  </div>
-                </div>
+                  </button>
 
-                <div className="border-t border-zinc-300 group-hover:border-[#D94830] px-5 py-3 text-[11px] uppercase tracking-widest text-zinc-400 group-hover:text-[#D94830] transition-colors duration-200">
-                  Visit ↗
+                  {/* Expanded detail */}
+                  {isExpanded && (
+                    <div className="border border-t-0 border-[#D94830] bg-[#F2EFE8] px-4 py-4">
+                      <p className="text-xs text-zinc-500 leading-relaxed mb-4">
+                        {tool.description}
+                      </p>
+                      <a
+                        href={tool.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] uppercase tracking-widest text-[#D94830] hover:underline"
+                      >
+                        Visit ↗
+                      </a>
+                    </div>
+                  )}
                 </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-16 pt-8 border-t border-zinc-400/40">
