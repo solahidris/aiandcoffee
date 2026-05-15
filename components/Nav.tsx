@@ -69,26 +69,16 @@ export default function Nav({ active }: { active: Page }) {
           </a>
         </div>
 
-        {/* Mobile: join + hamburger */}
-        <div className="flex sm:hidden items-center gap-3">
-          <a
-            href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-2 border-[#D94830] bg-[#D94830] px-3 py-1.5 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
-          >
-            Join
-          </a>
-          <button
-            onClick={() => setOpen(true)}
-            className="flex flex-col gap-1.5 p-1"
-            aria-label="Open menu"
-          >
-            <span className="w-5 h-px bg-zinc-700 block" />
-            <span className="w-5 h-px bg-zinc-700 block" />
-            <span className="w-5 h-px bg-zinc-700 block" />
-          </button>
-        </div>
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setOpen(true)}
+          className="sm:hidden flex flex-col gap-1.5 p-1"
+          aria-label="Open menu"
+        >
+          <span className="w-5 h-px bg-zinc-700 block" />
+          <span className="w-5 h-px bg-zinc-700 block" />
+          <span className="w-5 h-px bg-zinc-700 block" />
+        </button>
       </nav>
 
       {/* Backdrop */}
@@ -146,9 +136,16 @@ export default function Nav({ active }: { active: Page }) {
         </div>
 
         {/* Sheet footer */}
-        <div className="mt-auto px-6 py-8 border-t border-zinc-400/40">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-400">AI and Coffee</p>
-          <p className="text-xs text-zinc-500 mt-1">only rule: be nice</p>
+        <div className="mt-auto px-6 py-8 border-t border-zinc-400/40 space-y-4">
+          <a
+            href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full border-2 border-[#D94830] bg-[#D94830] px-4 py-3 text-xs uppercase tracking-widest text-white text-center hover:bg-transparent hover:text-[#D94830] transition-colors"
+          >
+            Join WhatsApp
+          </a>
+          <p className="text-xs text-zinc-500">only rule: be nice</p>
         </div>
       </div>
     </>
