@@ -4,4 +4,4 @@ compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "SLOP_KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "c6f5cfa59f2a4549a726ab6d22ef0707"
