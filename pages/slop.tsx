@@ -145,6 +145,14 @@ export default function SlopCentre() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("roast");
   const [tone, setTone] = useState<Tone>("english");
+  const [slopCount, setSlopCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('/api/slop-count')
+      .then(r => r.json())
+      .then((d: { count: number }) => setSlopCount(d.count))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -192,6 +200,7 @@ export default function SlopCentre() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setRoastResult(data.roast);
+      setSlopCount(c => c !== null ? c + 1 : 1);
     } catch (e) { setRoastError(e instanceof Error ? e.message : "Failed. Try again."); }
     finally { setRoastLoading(false); }
   }
@@ -215,6 +224,7 @@ export default function SlopCentre() {
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setThreadsResult(data.roast);
       setThreadsBio(data.bio || null);
+      setSlopCount(c => c !== null ? c + 1 : 1);
     } catch (e) { setThreadsError(e instanceof Error ? e.message : "Failed to fetch profile. Try again."); }
     finally { setThreadsLoading(false); }
   }
@@ -236,6 +246,7 @@ export default function SlopCentre() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setPitchResult(data.pitch);
+      setSlopCount(c => c !== null ? c + 1 : 1);
     } catch (e) { setPitchError(e instanceof Error ? e.message : "Failed. Try again."); }
     finally { setPitchLoading(false); }
   }
@@ -256,6 +267,7 @@ export default function SlopCentre() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setStandupResult(data.update);
+      setSlopCount(c => c !== null ? c + 1 : 1);
     } catch (e) { setStandupError(e instanceof Error ? e.message : "Failed. Try again."); }
     finally { setStandupLoading(false); }
   }
@@ -278,6 +290,7 @@ export default function SlopCentre() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setExplainResult(data.explanation);
+      setSlopCount(c => c !== null ? c + 1 : 1);
     } catch (e) { setExplainError(e instanceof Error ? e.message : "Failed. Try again."); }
     finally { setExplainLoading(false); }
   }
@@ -337,6 +350,11 @@ export default function SlopCentre() {
           <p className="mt-3 text-xs text-zinc-500 uppercase tracking-widest animate-stagger-in" style={{ animationDelay: "400ms" }}>
             malaysia&apos;s worst ai-powered slop · leave your ego at the door
           </p>
+          {slopCount !== null && (
+            <p className="mt-2 text-xs text-zinc-400 uppercase tracking-widest animate-stagger-in" style={{ animationDelay: "500ms" }}>
+              {slopCount.toLocaleString()} slops served
+            </p>
+          )}
         </div>
 
         <div className="relative z-10 px-6 sm:px-16 pb-24">

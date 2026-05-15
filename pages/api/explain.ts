@@ -1,5 +1,7 @@
 export const runtime = 'edge';
 
+import { incrementSlopCount } from '../../lib/slop-counter';
+
 export type Persona = 'mamak-uncle' | 'makcik-bawang' | 'mlm-boss' | 'pak-guard' | 'grab-driver' | 'crypto-bro';
 
 const PROMPTS: Record<Persona, string> = {
@@ -78,6 +80,7 @@ export default async function handler(req: Request) {
 
   const data = await res.json() as { result?: { response?: string } };
   const explanation = data.result?.response?.trim() || 'The AI pun tak faham.';
+  await incrementSlopCount();
 
   return new Response(JSON.stringify({ explanation }), {
     headers: { 'Content-Type': 'application/json' },

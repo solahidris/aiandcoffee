@@ -1,5 +1,7 @@
 export const runtime = 'edge';
 
+import { incrementSlopCount } from '../../lib/slop-counter';
+
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
@@ -65,6 +67,7 @@ export default async function handler(req: Request) {
 
   const data = await res.json() as { result?: { response?: string } };
   const pitch = data.result?.response?.trim() || 'The AI could not bs this one. Impressive.';
+  await incrementSlopCount();
 
   return new Response(JSON.stringify({ pitch }), {
     headers: { 'Content-Type': 'application/json' },

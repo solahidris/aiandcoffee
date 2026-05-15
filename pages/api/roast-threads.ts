@@ -1,6 +1,7 @@
 export const runtime = 'edge';
 
 import { getRoastPrompt } from '../../lib/roast-tones';
+import { incrementSlopCount } from '../../lib/slop-counter';
 
 function extractMeta(html: string, property: string): string | null {
   const patterns = [
@@ -110,6 +111,7 @@ export default async function handler(req: Request) {
 
   const data = await res.json() as { result?: { response?: string } };
   const roast = data.result?.response?.trim() || 'The AI is speechless. That might be worse.';
+  await incrementSlopCount();
 
   return new Response(JSON.stringify({ roast, bio, name: ogTitle }), {
     headers: { 'Content-Type': 'application/json' },

@@ -1,5 +1,7 @@
 export const runtime = 'edge';
 
+import { incrementSlopCount } from '../../lib/slop-counter';
+
 export const MOODS = ['did nothing', 'burned out', 'actually productive', 'pretending to work', 'in meetings all day'] as const;
 export type Mood = typeof MOODS[number];
 
@@ -74,6 +76,7 @@ export default async function handler(req: Request) {
 
   const data = await res.json() as { result?: { response?: string } };
   const update = data.result?.response?.trim() || 'The AI is also in a meeting.';
+  await incrementSlopCount();
 
   return new Response(JSON.stringify({ update }), {
     headers: { 'Content-Type': 'application/json' },

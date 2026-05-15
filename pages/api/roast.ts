@@ -1,6 +1,7 @@
 export const runtime = 'edge';
 
 import { getRoastPrompt } from '../../lib/roast-tones';
+import { incrementSlopCount } from '../../lib/slop-counter';
 
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
@@ -69,6 +70,7 @@ export default async function handler(req: Request) {
 
   const data = await res.json() as { result?: { response?: string } };
   const roast = data.result?.response?.trim() || 'The AI is speechless. That might be worse.';
+  await incrementSlopCount();
 
   return new Response(JSON.stringify({ roast }), {
     headers: { 'Content-Type': 'application/json' },
