@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Geist_Mono } from "next/font/google";
 import { useState, useMemo } from "react";
-import Nav from "../components/Nav";
-import toolsData from "../data/tools.json";
+import Nav from "../../components/Nav";
+import toolsData from "../../data/tools.json";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",

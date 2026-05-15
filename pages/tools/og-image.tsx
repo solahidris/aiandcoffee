@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Geist_Mono } from "next/font/google";
 import { useState, useEffect, useRef, useCallback } from "react";
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
