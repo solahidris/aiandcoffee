@@ -1,7 +1,5 @@
 import { GetServerSideProps } from "next";
 
-export const runtime = "edge";
-
 const DOMAIN = "https://aiandcoffee.com";
 
 const PAGES = [
@@ -9,6 +7,7 @@ const PAGES = [
   { url: "/events",            priority: "0.9", changefreq: "daily"   },
   { url: "/tools",             priority: "0.8", changefreq: "weekly"  },
   { url: "/tools/og-image",    priority: "0.7", changefreq: "monthly" },
+  { url: "/slop",              priority: "0.8", changefreq: "weekly"  },
   { url: "/about",             priority: "0.7", changefreq: "monthly" },
 ];
 

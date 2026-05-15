@@ -2,19 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-type Page = "home" | "events" | "tools" | "about";
+type Page = "home" | "events" | "tools" | "slop" | "about";
 
 const LINKS: { label: string; href: string; page: Page }[] = [
-  { label: "Events", href: "/events", page: "events" },
-  { label: "Tools",  href: "/tools",  page: "tools"  },
-  { label: "About",  href: "/about",  page: "about"  },
+  { label: "Events",       href: "/events",        page: "events" },
+  { label: "Tools",        href: "/tools",         page: "tools"  },
+  { label: "Slop",   href: "/slop",   page: "slop"  },
+  { label: "About",  href: "/about",  page: "about" },
 ];
 
 const SHEET_LINKS: { label: string; href: string; page: Page }[] = [
-  { label: "Home",   href: "/",        page: "home"   },
-  { label: "Events", href: "/events",  page: "events" },
-  { label: "Tools",  href: "/tools",   page: "tools"  },
-  { label: "About",  href: "/about",   page: "about"  },
+  { label: "Home",    href: "/",        page: "home"   },
+  { label: "Events",  href: "/events",  page: "events" },
+  { label: "Tools",   href: "/tools",   page: "tools"  },
+  { label: "Slop",    href: "/slop",    page: "slop"   },
+  { label: "About",        href: "/about",         page: "about"  },
 ];
 
 export default function Nav({ active }: { active: Page }) {
