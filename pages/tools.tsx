@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import { useState, useMemo } from "react";
 import Nav from "../components/Nav";
@@ -9,36 +10,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-type Pricing = "free" | "freemium" | "paid";
-
 interface Tool {
   id: string;
   name: string;
   description: string;
   url: string;
   category: string;
-  pricing: Pricing;
 }
 
 const tools = toolsData as Tool[];
 
 const CATEGORIES = [
   { label: "All",          value: "all"         },
-  { label: "Chat",         value: "chat"        },
-  { label: "Code",         value: "code"        },
+  { label: "AI",           value: "ai"          },
+  { label: "IDE",          value: "ide"         },
   { label: "Image",        value: "image"       },
   { label: "Video",        value: "video"       },
   { label: "Voice",        value: "voice"       },
-  { label: "APIs",         value: "api"         },
   { label: "Automate",     value: "automate"    },
   { label: "Productivity", value: "productivity"},
 ];
 
-const PRICING_STYLES: Record<Pricing, string> = {
-  free:      "text-zinc-500 border-zinc-300",
-  freemium:  "text-zinc-500 border-zinc-300",
-  paid:      "text-zinc-500 border-zinc-300",
-};
+function LogoPlaceholder({ name }: { name: string }) {
+  return (
+    <div className="w-12 h-12 shrink-0 bg-zinc-200 flex items-center justify-center">
+      <span className="text-xs font-bold text-zinc-400 uppercase">
+        {name.charAt(0)}
+      </span>
+    </div>
+  );
+}
 
 export default function ToolsPage() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -54,7 +55,7 @@ export default function ToolsPage() {
     <>
       <Head>
         <title>Tools — AI and Coffee</title>
-        <meta name="description" content="AI tools the community actually uses — chat, code, image, video, voice, APIs, automation, and productivity." />
+        <meta name="description" content="AI tools the community actually uses." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Tools — AI and Coffee" />
@@ -65,7 +66,7 @@ export default function ToolsPage() {
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         <Nav active="tools" />
 
-        <div className="px-6 sm:px-16 pt-12 pb-6">
+        <div className="px-6 sm:px-16 pt-12 pb-6 border-b border-zinc-400/40">
           <h1 className="text-5xl sm:text-7xl font-bold text-[#D94830] leading-none tracking-tighter">
             TOOLS
           </h1>
@@ -98,6 +99,7 @@ export default function ToolsPage() {
           <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-6">
             {filtered.length} tool{filtered.length !== 1 ? "s" : ""}
           </p>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {filtered.map((tool) => (
               <a
@@ -105,21 +107,22 @@ export default function ToolsPage() {
                 href={tool.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border border-zinc-300 bg-[#F2EFE8] hover:border-[#D94830] flex flex-col transition-colors duration-200"
+                className="group border border-zinc-300 bg-[#F2EFE8] hover:border-[#D94830] transition-colors duration-200 flex flex-col"
               >
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="flex items-start justify-between gap-2 mb-3">
-                    <p className="text-xs font-bold uppercase tracking-widest text-zinc-800 group-hover:text-[#D94830] transition-colors">
+                <div className="p-5 flex gap-4 flex-1">
+                  {/* Logo placeholder */}
+                  <div className="w-12 h-12 shrink-0 bg-zinc-200 group-hover:bg-zinc-300 transition-colors" />
+
+                  <div className="flex flex-col justify-center min-w-0">
+                    <p className="text-sm font-bold text-zinc-800 group-hover:text-[#D94830] transition-colors truncate">
                       {tool.name}
                     </p>
-                    <span className={`shrink-0 text-[9px] uppercase tracking-widest border px-1.5 py-0.5 ${PRICING_STYLES[tool.pricing]}`}>
-                      {tool.pricing}
-                    </span>
+                    <p className="text-xs text-zinc-500 leading-relaxed mt-1">
+                      {tool.description}
+                    </p>
                   </div>
-                  <p className="text-xs text-zinc-500 leading-relaxed flex-1">
-                    {tool.description}
-                  </p>
                 </div>
+
                 <div className="border-t border-zinc-300 group-hover:border-[#D94830] px-5 py-3 text-[11px] uppercase tracking-widest text-zinc-400 group-hover:text-[#D94830] transition-colors duration-200">
                   Visit ↗
                 </div>
