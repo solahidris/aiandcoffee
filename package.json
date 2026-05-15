@@ -16,7 +16,6 @@
     "threads-api": "^1.6.3"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "file:./stubs/cloudflare-next-on-pages",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

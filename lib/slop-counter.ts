@@ -1,24 +1,24 @@
-import { getRequestContext } from '@cloudflare/next-on-pages';
-
+const NAMESPACE_ID = 'c6f5cfa59f2a4549a726ab6d22ef0707';
 const KV_KEY = 'slop:total';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getKV(): any | null {
-  try {
-    const { env } = getRequestContext();
-    return (env as Record<string, unknown>).SLOP_KV ?? null;
-  } catch {
-    return null;
-  }
+function kvUrl(key: string) {
+  const accountId = process.env.CF_ACCOUNT_ID;
+  return `https://api.cloudflare.com/client/v4/accounts/${accountId}/storage/kv/namespaces/${NAMESPACE_ID}/values/${key}`;
+}
+
+function headers() {
+  return { Authorization: `Bearer ${process.env.CF_AI_TOKEN}` };
 }
 
 export async function incrementSlopCount(): Promise<void> {
   try {
-    const kv = getKV();
-    if (!kv) return;
-    const current = await kv.get(KV_KEY);
-    const next = parseInt(current ?? '0', 10) + 1;
-    await kv.put(KV_KEY, String(next));
+    const res = await fetch(kvUrl(KV_KEY), { headers: headers() });
+    const current = res.ok ? parseInt(await res.text(), 10) || 0 : 0;
+    await fetch(kvUrl(KV_KEY), {
+      method: 'PUT',
+      headers: { ...headers(), 'Content-Type': 'text/plain' },
+      body: String(current + 1),
+    });
   } catch {
     // fail silently — counter is non-critical
   }
@@ -26,10 +26,9 @@ export async function incrementSlopCount(): Promise<void> {
 
 export async function getSlopCount(): Promise<number> {
   try {
-    const kv = getKV();
-    if (!kv) return 0;
-    const value = await kv.get(KV_KEY);
-    return parseInt(value ?? '0', 10);
+    const res = await fetch(kvUrl(KV_KEY), { headers: headers() });
+    if (!res.ok) return 0;
+    return parseInt(await res.text(), 10) || 0;
   } catch {
     return 0;
   }
