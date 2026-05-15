@@ -1,0 +1,69 @@
+name: Submit an Event
+description: Add a tech event to the AI and Coffee events page.
+title: "[Event] "
+labels: ["event-submission"]
+body:
+  - type: input
+    id: event-name
+    attributes:
+      label: Event Name
+      placeholder: e.g. OpenClaw KL Meetup #4
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      placeholder: e.g. 25 May 2026, Mon
+    validations:
+      required: true
+
+  - type: input
+    id: time
+    attributes:
+      label: Time
+      placeholder: e.g. 7:00 PM – 9:00 PM
+    validations:
+      required: true
+
+  - type: input
+    id: venue
+    attributes:
+      label: Venue
+      placeholder: e.g. Co-labs Coworking, KL Sentral
+    validations:
+      required: true
+
+  - type: input
+    id: fee
+    attributes:
+      label: Fee
+      placeholder: e.g. Free / RM15 / RM30 (Combo)
+    validations:
+      required: true
+
+  - type: input
+    id: rsvp
+    attributes:
+      label: RSVP / Registration Link
+      placeholder: e.g. https://luma.com/...
+    validations:
+      required: true
+
+  - type: input
+    id: who
+    attributes:
+      label: Who Is It For?
+      placeholder: e.g. Everyone / Students / Developers
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What's It About?
+      placeholder: Brief description of the event — talks, workshops, what people can expect.
+      rows: 4
+    validations:
+      required: false

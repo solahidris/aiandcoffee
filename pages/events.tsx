@@ -468,7 +468,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
             </div>
 
             <a
-              href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
+              href="https://github.com/solahidris/aiandcoffee/issues/new?template=event-submission.yml"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex items-center justify-center gap-2 w-full border-2 border-zinc-800 px-4 py-3 text-[11px] uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors duration-200"
