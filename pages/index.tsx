@@ -38,9 +38,7 @@ export default function Home() {
         />
         <meta name="twitter:image" content="/logo/logo.png" />
       </Head>
-      <div
-        className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}
-      >
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         {/* Background animated mascot */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           <div className="animate-float opacity-10">
@@ -55,20 +53,32 @@ export default function Home() {
           </div>
         </div>
 
-        <main className="relative min-h-screen overflow-hidden px-6 py-12 z-10">
-          {/* Floating mascot */}
-          <div className="absolute top-8 right-8 sm:top-12 sm:right-16 rotate-12 hover:rotate-0 transition-transform duration-500">
+        {/* Nav */}
+        <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-between border-b border-zinc-400/40">
+          <div className="flex items-center gap-3">
             <Image
               src="/logo/logo_mascot.png"
-              alt="AI and Coffee mascot"
-              width={120}
-              height={120}
-              priority
+              alt="AI and Coffee"
+              width={32}
+              height={32}
             />
+            <span className="text-sm uppercase tracking-widest text-zinc-700">
+              AI and Coffee
+            </span>
           </div>
+          <div className="flex items-center gap-6">
+            <Link href="/events" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">
+              Events
+            </Link>
+            <Link href="/about" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">
+              About
+            </Link>
+          </div>
+        </nav>
 
+        <main className="relative min-h-[calc(100vh-73px)] overflow-hidden px-6 py-12 z-10">
           {/* Main content - left aligned, raw */}
-          <div className="max-w-xl pt-24 sm:pt-32 sm:pl-16">
+          <div className="max-w-xl pt-10 sm:pt-20 sm:pl-16">
             <h1 className="text-6xl sm:text-8xl font-bold text-[#D94830] leading-none tracking-tighter">
               AI
               <br />
@@ -111,15 +121,6 @@ export default function Home() {
               >
                 Our Next Event
               </a>
-            </div>
-
-            <div className="mt-6 flex gap-5">
-              <Link href="/events" className="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">
-                all events ↗
-              </Link>
-              <Link href="/about" className="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">
-                about ↗
-              </Link>
             </div>
 
             {/* Bottom note — inline on mobile, hidden on sm+ (shown as absolute) */}
