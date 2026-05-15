@@ -378,6 +378,18 @@ function EventCard({ event, muted = false }: { event: ParsedEvent; muted?: boole
   );
 }
 
+// ─── Categories ───────────────────────────────────────────────────────────────
+
+const CATEGORIES: { label: string; test: (type: string) => boolean }[] = [
+  { label: "All",           test: () => true },
+  { label: "AI / ML",       test: (t) => /\bai\b|\/ml\b|llm|genai/i.test(t) },
+  { label: "Cybersecurity", test: (t) => /cyber|ctf|hack/i.test(t) },
+  { label: "Web3",          test: (t) => /web3|blockchain/i.test(t) },
+  { label: "Workshop",      test: (t) => /workshop/i.test(t) },
+  { label: "Hackathon",     test: (t) => /hackathon/i.test(t) },
+  { label: "Meetup",        test: (t) => /meetup/i.test(t) },
+];
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 function formatDate(iso: string | null) {
@@ -387,14 +399,22 @@ function formatDate(iso: string | null) {
 
 export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Props) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filtered = useMemo(() => {
-    if (!selectedDate) return events;
-    return events.filter((e) => {
-      if (!e.startDate || !e.endDate) return false;
-      return e.startDate <= selectedDate && selectedDate <= e.endDate;
-    });
-  }, [events, selectedDate]);
+    let result = events;
+    if (selectedDate) {
+      result = result.filter((e) => {
+        if (!e.startDate || !e.endDate) return false;
+        return e.startDate <= selectedDate && selectedDate <= e.endDate;
+      });
+    }
+    if (selectedCategory !== "All") {
+      const cat = CATEGORIES.find((c) => c.label === selectedCategory);
+      if (cat) result = result.filter((e) => cat.test(e.type));
+    }
+    return result;
+  }, [events, selectedDate, selectedCategory]);
 
   const upcoming = filtered.filter((e) => !e.expired);
   const expired = filtered.filter((e) => e.expired);
@@ -479,6 +499,23 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
 
           {/* ── Main: event cards ── */}
           <main className="flex-1 px-6 py-10 lg:px-10">
+            {/* Category filter chips */}
+            <div className="flex gap-2 overflow-x-auto pb-2 mb-8 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              {CATEGORIES.map(({ label }) => (
+                <button
+                  key={label}
+                  onClick={() => setSelectedCategory(label)}
+                  className={`shrink-0 px-3 py-1.5 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
+                    selectedCategory === label
+                      ? "border-[#D94830] bg-[#D94830] text-white"
+                      : "border-zinc-300 text-zinc-500 hover:border-zinc-500 hover:text-zinc-800"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
             {selectedDate && (
               <p className="text-xs uppercase tracking-widest text-[#D94830] mb-6">
                 {new Date(selectedDate + "T00:00:00").toLocaleDateString("en-MY", {
@@ -491,7 +528,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
               <div className="mt-8">
                 <p className="text-4xl font-bold text-zinc-300 leading-none tracking-tighter select-none">*</p>
                 <p className="mt-4 text-zinc-500 text-sm">
-                  {selectedDate ? "No events on this date." : "No events yet."}
+                  {selectedDate ? "No events on this date." : `No ${selectedCategory !== "All" ? selectedCategory.toLowerCase() + " " : ""}events yet.`}
                 </p>
               </div>
             ) : (
