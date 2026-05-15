@@ -60,15 +60,13 @@ export default function Home() {
         <main className="relative min-h-[calc(100vh-73px)] overflow-hidden px-6 py-12 z-10">
           {/* Main content - left aligned, raw */}
           <div className="max-w-xl pt-10 sm:pt-20 sm:pl-16">
-            <h1 className="text-6xl sm:text-8xl font-bold text-[#D94830] leading-none tracking-tighter">
-              AI
-              <br />
-              <span className="text-zinc-800">AND</span>
-              <br />
-              COFFEE
+            <h1 className="text-6xl sm:text-8xl font-bold leading-none tracking-tighter">
+              <span className="block text-[#D94830]" style={{ animation: "hero-in 0.5s ease forwards", opacity: 0 }}>AI</span>
+              <span className="block text-zinc-800" style={{ animation: "hero-in 0.5s ease forwards", animationDelay: "100ms", opacity: 0 }}>AND</span>
+              <span className="block text-[#D94830]" style={{ animation: "hero-in 0.5s ease forwards", animationDelay: "200ms", opacity: 0 }}>COFFEE</span>
             </h1>
 
-            <div className="mt-12 space-y-2 text-zinc-700">
+            <div className="mt-12 space-y-2 text-zinc-700" style={{ animation: "stagger-in 0.4s ease forwards", animationDelay: "400ms", opacity: 0 }}>
               <p className="text-lg">no bs.</p>
               <p className="text-lg">no hierarchy.</p>
               <p className="text-lg">no laws.</p>
@@ -77,7 +75,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-3 text-xs uppercase tracking-widest text-zinc-500">
+            <div className="mt-12 flex flex-wrap gap-3 text-xs uppercase tracking-widest text-zinc-500" style={{ animation: "stagger-in 0.4s ease forwards", animationDelay: "600ms", opacity: 0 }}>
               <span className="border-b border-zinc-400 pb-1">clueless</span>
               <span className="border-b border-zinc-400 pb-1">beginners</span>
               <span className="border-b border-zinc-400 pb-1">seniors</span>
@@ -85,7 +83,7 @@ export default function Home() {
               <span className="border-b border-zinc-400 pb-1">sharks</span>
             </div>
 
-            <div className="mt-16 flex flex-col sm:flex-row gap-4">
+            <div className="mt-16 flex flex-col sm:flex-row gap-4" style={{ animation: "stagger-in 0.4s ease forwards", animationDelay: "750ms", opacity: 0 }}>
               <a
                 className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
                 href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
@@ -105,7 +103,7 @@ export default function Home() {
             </div>
 
             {/* Bottom note — inline on mobile, hidden on sm+ (shown as absolute) */}
-            <div className="mt-8 sm:hidden">
+            <div className="mt-8 sm:hidden" style={{ animation: "stagger-in 0.4s ease forwards", animationDelay: "900ms", opacity: 0 }}>
               <p className="text-xs text-zinc-500 leading-relaxed">
                 no social media<br />
                 just whatsapp<br />
@@ -123,7 +121,7 @@ export default function Home() {
           </div>
 
           {/* Bottom corner note — desktop only */}
-          <div className="hidden sm:block absolute bottom-12 right-16 max-w-[200px] text-right">
+          <div className="hidden sm:block absolute bottom-12 right-16 max-w-[200px] text-right" style={{ animation: "stagger-in 0.4s ease forwards", animationDelay: "900ms", opacity: 0 }}>
             <p className="text-xs text-zinc-500 leading-relaxed">
               no social media<br />
               just whatsapp<br />
@@ -140,7 +138,7 @@ export default function Home() {
           </div>
 
           {/* Random decorative element */}
-          <div className="absolute bottom-32 left-8 sm:left-16 text-[120px] sm:text-[200px] font-bold text-zinc-300/30 select-none pointer-events-none leading-none">
+          <div className="absolute bottom-32 left-8 sm:left-16 text-[120px] sm:text-[200px] font-bold text-zinc-300/30 select-none pointer-events-none leading-none" style={{ animation: "stagger-in 0.6s ease forwards", animationDelay: "500ms", opacity: 0 }}>
             *
           </div>
         </main>
