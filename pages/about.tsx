@@ -31,12 +31,13 @@ export default function About() {
 
         {/* Hero — big manifesto */}
         <section className="relative px-6 sm:px-16 pt-14 pb-16 overflow-hidden">
-          <div className="absolute top-10 right-8 sm:top-12 sm:right-16 rotate-12 hover:rotate-0 transition-transform duration-500">
+          <div className="absolute -top-4 right-0 sm:right-8 rotate-6 hover:rotate-0 transition-transform duration-500 pointer-events-none">
             <Image
               src="/logo/logo_mascot.png"
               alt=""
-              width={110}
-              height={110}
+              width={420}
+              height={420}
+              className="opacity-90"
             />
           </div>
 
