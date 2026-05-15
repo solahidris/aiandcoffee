@@ -277,9 +277,20 @@ export default function SlopCentre() {
 
         <Nav active="slop" />
 
+        <style>{`
+          @keyframes plate-spin {
+            0%   { transform: perspective(400px) rotateY(0deg); }
+            100% { transform: perspective(400px) rotateY(360deg); }
+          }
+        `}</style>
+
         <div className="relative z-10 px-6 sm:px-16 pt-12 pb-6">
           <h1 className="text-5xl sm:text-7xl font-bold text-[#D94830] leading-none tracking-tighter">
-            ONE SLOP CENTRE
+            ONE{" "}
+            <span className="text-[#171717] inline-block" style={{ animation: "plate-spin 2s linear infinite" }}>
+              SLOP
+            </span>{" "}
+            CENTRE
           </h1>
           <p className="mt-3 text-xs text-zinc-500 uppercase tracking-widest animate-stagger-in" style={{ animationDelay: "400ms" }}>
             malaysia&apos;s worst ai-powered slop · leave your ego at the door
