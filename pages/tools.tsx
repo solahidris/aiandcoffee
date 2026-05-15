@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Nav from "../components/Nav";
 import toolsData from "../data/tools.json";
 
@@ -40,7 +40,6 @@ const CATEGORY_LABELS: Record<string, string> = {
 export default function ToolsPage() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [fading, setFading] = useState(false);
 
   const selectedTool = tools.find((t) => t.id === selectedId) ?? null;
 
@@ -50,16 +49,6 @@ export default function ToolsPage() {
       : tools.filter((t) => t.category === activeCategory),
     [activeCategory]
   );
-
-  function handleCategoryChange(value: string) {
-    if (value === activeCategory) return;
-    setFading(true);
-    setTimeout(() => {
-      setActiveCategory(value);
-      setSelectedId(null);
-      setFading(false);
-    }, 150);
-  }
 
   return (
     <>
@@ -92,7 +81,7 @@ export default function ToolsPage() {
             {CATEGORIES.map(({ label, value }) => (
               <button
                 key={value}
-                onClick={() => handleCategoryChange(value)}
+                onClick={() => { setActiveCategory(value); setSelectedId(null); }}
                 className={`shrink-0 px-3 py-1.5 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
                   activeCategory === value
                     ? "border-[#D94830] bg-[#D94830] text-white"
@@ -120,12 +109,13 @@ export default function ToolsPage() {
               <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-6">
                 {filtered.length} tool{filtered.length !== 1 ? "s" : ""}
               </p>
-              <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 transition-opacity duration-150 ${fading ? "opacity-0" : "opacity-100"}`}>
-                {filtered.map((tool) => (
+              <div key={activeCategory} className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {filtered.map((tool, i) => (
                   <button
                     key={tool.id}
                     onClick={() => setSelectedId(tool.id)}
-                    className="group border border-transparent bg-[#F2EFE8] hover:border-zinc-300 transition-all duration-150 flex items-stretch h-14"
+                    className="group border border-transparent bg-[#F2EFE8] hover:border-zinc-300 transition-colors duration-150 flex items-stretch h-14"
+                    style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 40}ms`, opacity: 0 }}
                   >
                     <Image src={tool.logo} alt={tool.name} width={56} height={56} className="w-14 h-full shrink-0 object-contain" />
                     <p className="px-4 flex items-center text-[11px] font-bold uppercase tracking-wide text-zinc-800 group-hover:text-zinc-600 transition-colors text-left">
@@ -201,14 +191,15 @@ export default function ToolsPage() {
             <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-6">
               {filtered.length} tool{filtered.length !== 1 ? "s" : ""}
             </p>
-            <div className={`grid grid-cols-3 gap-3 transition-opacity duration-150 ${fading ? "opacity-0" : "opacity-100"}`}>
-              {filtered.map((tool) => {
+            <div key={activeCategory} className="grid grid-cols-3 gap-3">
+              {filtered.map((tool, i) => {
                 const isSelected = selectedId === tool.id;
                 return (
                   <button
                     key={tool.id}
                     onClick={() => setSelectedId(isSelected ? null : tool.id)}
-                    className={`group border bg-[#F2EFE8] transition-all duration-150 flex items-stretch h-24 ${
+                    style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 40}ms`, opacity: 0 }}
+                    className={`group border bg-[#F2EFE8] transition-colors duration-150 flex items-stretch h-24 ${
                       isSelected
                         ? "border-[#D94830]"
                         : "border-transparent hover:border-zinc-300"
