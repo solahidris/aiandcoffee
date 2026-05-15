@@ -3,6 +3,7 @@ import { Geist_Mono } from "next/font/google";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import Nav from "../components/Nav";
+import { TONES, type Tone } from "../lib/roast-tones";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -25,6 +26,29 @@ const MOODS = [
   "pretending to work",
   "in meetings all day",
 ];
+
+function ToneSelector({ tone, setTone }: { tone: Tone; setTone: (t: Tone) => void }) {
+  return (
+    <div className="mb-5">
+      <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">tone</p>
+      <div className="flex flex-wrap gap-2">
+        {TONES.map(({ value, label }) => (
+          <button
+            key={value}
+            onClick={() => setTone(value)}
+            className={`px-3 py-1.5 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
+              tone === value
+                ? "border-[#D94830] bg-[#D94830] text-white"
+                : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function SloppyResult({
   result,
@@ -100,6 +124,7 @@ function ErrorBox({ message }: { message: string }) {
 export default function SlopCentre() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("roast");
+  const [tone, setTone] = useState<Tone>("english");
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -142,7 +167,7 @@ export default function SlopCentre() {
     if (!trimmed || roastLoading) return;
     setRoastLoading(true); setRoastResult(null); setRoastError(null);
     try {
-      const res = await fetch("/api/roast", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ input: trimmed }) });
+      const res = await fetch("/api/roast", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ input: trimmed, tone }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setRoastResult(data.roast);
@@ -164,7 +189,7 @@ export default function SlopCentre() {
     if (!trimmed || threadsLoading) return;
     setThreadsLoading(true); setThreadsResult(null); setThreadsBio(null); setThreadsError(null);
     try {
-      const res = await fetch("/api/roast-threads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username: trimmed }) });
+      const res = await fetch("/api/roast-threads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username: trimmed, tone }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setThreadsResult(data.roast);
@@ -275,6 +300,7 @@ export default function SlopCentre() {
             {/* ── Roast Anything ── */}
             {mode === "roast" && (
               <>
+                <ToneSelector tone={tone} setTone={setTone} />
                 <div className="border border-zinc-400/60 bg-[#F2EFE8]">
                   <textarea
                     ref={roastRef}
@@ -332,6 +358,7 @@ export default function SlopCentre() {
             {/* ── Roast by Threads ── */}
             {mode === "threads" && (
               <>
+                <ToneSelector tone={tone} setTone={setTone} />
                 <div className="border border-zinc-400/60 bg-[#F2EFE8] flex items-center">
                   <span className="pl-5 text-sm text-zinc-400 select-none">@</span>
                   <input

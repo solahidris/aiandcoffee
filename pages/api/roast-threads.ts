@@ -1,5 +1,7 @@
 export const runtime = 'edge';
 
+import { getRoastPrompt } from '../../lib/roast-tones';
+
 function extractMeta(html: string, property: string): string | null {
   const patterns = [
     new RegExp(`<meta[^>]+property=["']${property}["'][^>]+content=["']([^"']+)["']`, 'i'),
@@ -17,7 +19,7 @@ export default async function handler(req: Request) {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  let body: { username?: string };
+  let body: { username?: string; tone?: string };
   try {
     body = await req.json();
   } catch {
@@ -28,6 +30,7 @@ export default async function handler(req: Request) {
   }
 
   const username = (body.username || '').trim().replace(/^@+/, '');
+  const systemPrompt = getRoastPrompt(body.tone || 'english');
   if (!username) {
     return new Response(JSON.stringify({ error: 'Username required' }), {
       status: 400,
@@ -87,7 +90,7 @@ export default async function handler(req: Request) {
         messages: [
           {
             role: 'system',
-            content: `You are a witty, dry, slightly unhinged roast bot for AI and Coffee — a no-BS tech community in Malaysia. Roast this Threads user based on their profile. Keep it to 2-3 sentences. Be brilliant, not cruel. No slurs or hate speech. Reply only with the roast.`,
+            content: systemPrompt,
           },
           {
             role: 'user',

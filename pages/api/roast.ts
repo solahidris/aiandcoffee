@@ -1,11 +1,13 @@
 export const runtime = 'edge';
 
+import { getRoastPrompt } from '../../lib/roast-tones';
+
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  let body: { input?: string };
+  let body: { input?: string; tone?: string };
   try {
     body = await req.json();
   } catch {
@@ -22,6 +24,8 @@ export default async function handler(req: Request) {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+
+  const systemPrompt = getRoastPrompt(body.tone || 'english');
 
   const accountId = process.env.CF_ACCOUNT_ID;
   const apiToken = process.env.CF_AI_TOKEN;
@@ -45,7 +49,7 @@ export default async function handler(req: Request) {
         messages: [
           {
             role: 'system',
-            content: `You are a witty, dry, slightly unhinged roast bot for AI and Coffee — a no-BS tech community in Malaysia. Roast the user's input with sharp, clever humor. Keep it to 2-3 sentences max. Be brilliant, not cruel. No slurs or hate speech. Just elite-level burns. Reply only with the roast, no intro, no labels.`,
+            content: systemPrompt,
           },
           {
             role: 'user',
