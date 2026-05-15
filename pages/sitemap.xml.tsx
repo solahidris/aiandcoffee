@@ -1,5 +1,7 @@
 import { GetServerSideProps } from "next";
 
+export const runtime = "edge";
+
 const DOMAIN = "https://aiandcoffee.com";
 
 const PAGES = [
