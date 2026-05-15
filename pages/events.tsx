@@ -526,8 +526,12 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
                     <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
                       Upcoming — {upcoming.length}
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                      {upcoming.map((e) => <EventCard key={e.id} event={e} />)}
+                    <div key={`upcoming-${selectedDate}-${selectedCategory}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {upcoming.map((e, i) => (
+                        <div key={e.id} style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 50}ms`, opacity: 0 }}>
+                          <EventCard event={e} />
+                        </div>
+                      ))}
                     </div>
                   </section>
                 )}
@@ -536,8 +540,12 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
                     <p className="text-xs uppercase tracking-widest text-zinc-400 mb-4">
                       Past — {expired.length}
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                      {expired.map((e) => <EventCard key={e.id} event={e} muted />)}
+                    <div key={`expired-${selectedDate}-${selectedCategory}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {expired.map((e, i) => (
+                        <div key={e.id} style={{ animation: "stagger-in 0.25s ease forwards", animationDelay: `${i * 50}ms`, opacity: 0 }}>
+                          <EventCard event={e} muted />
+                        </div>
+                      ))}
                     </div>
                   </section>
                 )}
