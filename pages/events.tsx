@@ -380,7 +380,7 @@ function EventCard({ event, muted = false }: { event: ParsedEvent; muted?: boole
 
 // ─── Submit event URL ─────────────────────────────────────────────────────────
 
-const SUBMIT_EVENT_BODY = `**Event Name:**\n**Date:** e.g. 25 May 2026, Mon\n**Time:** e.g. 7:00 PM – 9:00 PM\n**Venue:**\n**Fee:** Free / RM15\n**RSVP Link:** https://\n**Who Is It For:** Everyone / Students / Developers\n\n**What's It About?**\n- \n- \n- `;
+const SUBMIT_EVENT_BODY = `Event Name:\nDate: e.g. 25 May 2026, Mon\nTime: e.g. 7:00 PM – 9:00 PM\nVenue:\nFee: Free / RM15\nRSVP Link: https://\nWho Is It For: Everyone / Students / Developers\n\nWhat's It About?\n- \n- \n- `;
 
 const SUBMIT_EVENT_URL = `https://github.com/solahidris/aiandcoffee/issues/new?labels=event-submission&title=${encodeURIComponent("[Event] Your Event Name")}&body=${encodeURIComponent(SUBMIT_EVENT_BODY)}`;
 
