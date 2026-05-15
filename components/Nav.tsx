@@ -42,7 +42,7 @@ export default function Nav({ active }: { active: Page }) {
       <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-end sm:justify-between sm:border-b border-zinc-400/40">
         <div className="hidden sm:block">{logo}</div>
 
-        {/* Desktop links */}
+        {/* Desktop links + join */}
         <div className="hidden sm:flex items-center gap-6">
           {LINKS.map(({ label, href, page }) =>
             active === page ? (
@@ -59,18 +59,36 @@ export default function Nav({ active }: { active: Page }) {
               </Link>
             )
           )}
+          <a
+            href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-2 border-[#D94830] bg-[#D94830] px-4 py-2 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
+          >
+            Join
+          </a>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setOpen(true)}
-          className="sm:hidden flex flex-col gap-1.5 p-1"
-          aria-label="Open menu"
-        >
-          <span className="w-5 h-px bg-zinc-700 block" />
-          <span className="w-5 h-px bg-zinc-700 block" />
-          <span className="w-5 h-px bg-zinc-700 block" />
-        </button>
+        {/* Mobile: join + hamburger */}
+        <div className="flex sm:hidden items-center gap-3">
+          <a
+            href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-2 border-[#D94830] bg-[#D94830] px-3 py-1.5 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
+          >
+            Join
+          </a>
+          <button
+            onClick={() => setOpen(true)}
+            className="flex flex-col gap-1.5 p-1"
+            aria-label="Open menu"
+          >
+            <span className="w-5 h-px bg-zinc-700 block" />
+            <span className="w-5 h-px bg-zinc-700 block" />
+            <span className="w-5 h-px bg-zinc-700 block" />
+          </button>
+        </div>
       </nav>
 
       {/* Backdrop */}
