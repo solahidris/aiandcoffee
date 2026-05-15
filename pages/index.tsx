@@ -111,22 +111,50 @@ export default function Home() {
               >
                 Our Next Event
               </a>
-              <Link
-                className="inline-block border-2 border-zinc-400 px-8 py-4 text-sm uppercase tracking-widest text-zinc-500 hover:border-zinc-600 hover:text-zinc-700 transition-colors"
-                href="/events"
-              >
-                All MYS Events
+            </div>
+
+            <div className="mt-6 flex gap-5">
+              <Link href="/events" className="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">
+                all events ↗
               </Link>
+              <Link href="/about" className="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">
+                about ↗
+              </Link>
+            </div>
+
+            {/* Bottom note — inline on mobile, hidden on sm+ (shown as absolute) */}
+            <div className="mt-8 sm:hidden">
+              <p className="text-xs text-zinc-500 leading-relaxed">
+                no social media<br />
+                just whatsapp<br />
+                <span className="text-zinc-400">expanding @ 1024 members</span>
+              </p>
+              <a
+                href="https://github.com/solahidris/aiandcoffee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
+              >
+                github ↗
+              </a>
             </div>
           </div>
 
-          {/* Bottom corner note */}
-          <div className="absolute bottom-8 right-8 sm:bottom-12 sm:right-16 max-w-[200px] text-right">
+          {/* Bottom corner note — desktop only */}
+          <div className="hidden sm:block absolute bottom-12 right-16 max-w-[200px] text-right">
             <p className="text-xs text-zinc-500 leading-relaxed">
               no social media<br />
               just whatsapp<br />
               <span className="text-zinc-400">expanding @ 1024 members</span>
             </p>
+            <a
+              href="https://github.com/solahidris/aiandcoffee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
+            >
+              github ↗
+            </a>
           </div>
 
           {/* Random decorative element */}

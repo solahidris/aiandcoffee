@@ -423,7 +423,12 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
               AI and Coffee
             </span>
           </Link>
-          <span className="text-xs uppercase tracking-widest text-[#D94830]">Events</span>
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">
+              About
+            </Link>
+            <span className="text-xs uppercase tracking-widest text-[#D94830]">Events</span>
+          </div>
         </nav>
 
         <div className="flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
