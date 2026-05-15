@@ -30,6 +30,15 @@ const PERSONAS: { value: string; label: string }[] = [
   { value: "crypto-bro",    label: "Crypto Bro"    },
 ];
 
+const THREADS_LIMIT = 500;
+
+function buildShareText(result: string, attribution: string): string {
+  const full = result + attribution;
+  if (full.length <= THREADS_LIMIT) return full;
+  const truncated = result.slice(0, THREADS_LIMIT - attribution.length - 3) + '...';
+  return truncated + attribution;
+}
+
 const MOODS = [
   "did nothing",
   "burned out",
@@ -384,7 +393,7 @@ export default function SlopCentre() {
                 {roastResult && (
                   <SloppyResult
                     result={roastResult}
-                    shareText={`${roastResult}\n\n— roasted at aiandcoffee.com/slop?roast`}
+                    shareText={buildShareText(roastResult, "\n\n— roasted at aiandcoffee.com/slop?roast")}
                     label="roast incoming"
                     resetLabel="roast again"
                     onCopy={() => copyToClipboard(roastResult, setRoastCopied)}
@@ -437,7 +446,7 @@ export default function SlopCentre() {
                 {threadsResult && (
                   <SloppyResult
                     result={threadsResult}
-                    shareText={`${threadsResult}\n\n— roasted at aiandcoffee.com/slop?roast-by-threads`}
+                    shareText={buildShareText(threadsResult, "\n\n— roasted at aiandcoffee.com/slop?roast-by-threads")}
                     label="roast incoming"
                     resetLabel="roast again"
                     sub={threadsBio}
@@ -491,7 +500,7 @@ export default function SlopCentre() {
                 {pitchResult && (
                   <SloppyResult
                     result={pitchResult}
-                    shareText={`${pitchResult}\n\n— bs'd at aiandcoffee.com/slop?startup-pitch`}
+                    shareText={buildShareText(pitchResult, "\n\n— bs'd at aiandcoffee.com/slop?startup-pitch")}
                     label="pitch generated"
                     resetLabel="pitch again"
                     onCopy={() => copyToClipboard(pitchResult, setPitchCopied)}
@@ -568,7 +577,7 @@ export default function SlopCentre() {
                 {standupResult && (
                   <SloppyResult
                     result={standupResult}
-                    shareText={`${standupResult}\n\n— generated at aiandcoffee.com/slop?standup`}
+                    shareText={buildShareText(standupResult, "\n\n— generated at aiandcoffee.com/slop?standup")}
                     label="your update"
                     resetLabel="generate again"
                     onCopy={() => copyToClipboard(standupResult, setStandupCopied)}
@@ -630,7 +639,7 @@ export default function SlopCentre() {
                 {explainResult && (
                   <SloppyResult
                     result={explainResult}
-                    shareText={`${explainResult}\n\n— explained at aiandcoffee.com/slop?explain`}
+                    shareText={buildShareText(explainResult, "\n\n— explained at aiandcoffee.com/slop?explain")}
                     label={`explained by ${PERSONAS.find(p => p.value === explainPersona)?.label ?? explainPersona}`}
                     resetLabel="explain again"
                     onCopy={() => copyToClipboard(explainResult, setExplainCopied)}
