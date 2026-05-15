@@ -28,6 +28,7 @@ export default function OGGenerator() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [canvasDataUrl, setCanvasDataUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [zoom, setZoom] = useState(55);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -322,19 +323,35 @@ export default function OGGenerator() {
 
           {/* ── Preview ── */}
           <div className="flex-1 px-6 py-10 lg:px-10">
-            <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-6">Preview</p>
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-[10px] uppercase tracking-widest text-zinc-400">Preview</p>
+              {/* Zoom slider — desktop only */}
+              <div className="hidden lg:flex items-center gap-3">
+                <span className="text-[10px] uppercase tracking-widest text-zinc-400 w-8 text-right">{zoom}%</span>
+                <input
+                  type="range"
+                  min={25}
+                  max={100}
+                  step={5}
+                  value={zoom}
+                  onChange={(e) => setZoom(Number(e.target.value))}
+                  className="w-28 accent-[#D94830]"
+                />
+              </div>
+            </div>
 
-            <div className="w-full" style={{ aspectRatio: "1200/630" }}>
+            <div className="overflow-hidden">
               {currentPreview ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   key={currentPreview}
                   src={currentPreview}
                   alt="OG preview"
-                  className="w-full h-full object-contain border border-zinc-300 animate-stagger-in"
+                  className="border border-zinc-300 animate-stagger-in block"
+                  style={{ width: `${zoom}%` }}
                 />
               ) : (
-                <div className="w-full h-full border border-dashed border-zinc-300 flex items-center justify-center">
+                <div className="border border-dashed border-zinc-300 flex items-center justify-center" style={{ width: `${zoom}%`, aspectRatio: "1200/630" }}>
                   <p className="text-xs uppercase tracking-widest text-zinc-300">
                     {mode === "image" ? "Upload an image to preview" : "Loading..."}
                   </p>
