@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -260,28 +261,50 @@ export default function SlopCentre() {
       </Head>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+        {/* Background floating mascot */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+          <div className="animate-float opacity-10">
+            <Image
+              src="/logo/logo_mascot_transparent.png"
+              alt=""
+              width={800}
+              height={800}
+              className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain"
+              priority
+            />
+          </div>
+        </div>
+
         <Nav active="slop" />
 
-        <div className="px-6 sm:px-16 pt-12 pb-6">
-          <h1 className="text-5xl sm:text-7xl font-bold text-[#D94830] leading-none tracking-tighter">
-            ONE <span style={{ display: 'inline-block', animation: 'plate-spin 2s linear infinite' }}>SLOP</span> CENTRE
+        <style>{`
+          @keyframes plate-spin {
+            0%   { transform: perspective(400px) rotateY(0deg); }
+            100% { transform: perspective(400px) rotateY(360deg); }
+          }
+        `}</style>
+
+        <div className="relative z-10 px-6 sm:px-16 pt-12 pb-6">
+          <h1 className="text-5xl sm:text-7xl font-bold leading-none tracking-tighter">
+            <span className="block text-[#D94830] animate-hero-in" style={{ animationDelay: "0ms" }}>ONE</span>
+            <span
+              className="block text-zinc-800"
+              style={{ opacity: 0, animation: "hero-in 0.5s ease forwards 100ms, plate-spin 2s linear infinite 600ms" }}
+            >
+              SLOP
+            </span>
+            <span className="block text-[#D94830] animate-hero-in" style={{ animationDelay: "200ms" }}>CENTRE</span>
           </h1>
-          <style>{`
-            @keyframes plate-spin {
-              0% { transform: perspective(400px) rotateY(0deg); }
-              100% { transform: perspective(400px) rotateY(360deg); }
-            }
-          `}</style>
-          <p className="mt-3 text-xs text-zinc-500 uppercase tracking-widest">
+          <p className="mt-3 text-xs text-zinc-500 uppercase tracking-widest animate-stagger-in" style={{ animationDelay: "400ms" }}>
             malaysia&apos;s worst ai-powered slop · leave your ego at the door
           </p>
         </div>
 
-        <div className="px-6 sm:px-16 pb-24">
+        <div className="relative z-10 px-6 sm:px-16 pb-24">
           <div className="max-w-2xl">
 
             {/* Tab switcher */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 mb-8 animate-stagger-in" style={{ animationDelay: "550ms" }}>
               {TABS.map(({ mode: m, label }) => (
                 <button
                   key={m}
@@ -428,14 +451,14 @@ export default function SlopCentre() {
                 <div className="mt-4">
                   <button onClick={handlePitch} disabled={!pitchInput.trim() || pitchLoading}
                     className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
-                    {pitchLoading ? "disrupting the paradigm..." : "bullshit it →"}
+                    {pitchLoading ? "disrupting the paradigm..." : "bs it →"}
                   </button>
                 </div>
                 {pitchError && <ErrorBox message={pitchError} />}
                 {pitchResult && (
                   <SloppyResult
                     result={pitchResult}
-                    shareText={`${pitchResult}\n\n— bullshitted at aiandcoffee.com/slop?startup-pitch`}
+                    shareText={`${pitchResult}\n\n— bs'd at aiandcoffee.com/slop?startup-pitch`}
                     label="pitch generated"
                     resetLabel="pitch again"
                     onCopy={() => copyToClipboard(pitchResult, setPitchCopied)}

@@ -45,7 +45,7 @@ export default async function handler(req: Request) {
         messages: [
           {
             role: 'system',
-            content: `You are a startup pitch bullshitter. Take a plain English startup idea and rewrite it as an insufferable Silicon Valley VC pitch. Pack it with buzzwords (disrupt, ecosystem, flywheel, moat, AI-native, asymmetric, 10x, paradigm shift), reference a massive TAM, mention "network effects", and sound irrationally confident. Keep it to 4-5 sentences. Do not break character. Reply only with the pitch, no intro or labels.`,
+            content: `You are a startup pitch bs generator. Take a plain English startup idea and rewrite it as an insufferable Silicon Valley VC pitch. Pack it with buzzwords (disrupt, ecosystem, flywheel, moat, AI-native, asymmetric, 10x, paradigm shift), reference a massive TAM, mention "network effects", and sound irrationally confident. Keep it to 4-5 sentences. Do not break character. Reply only with the pitch, no intro or labels.`,
           },
           {
             role: 'user',
@@ -64,7 +64,7 @@ export default async function handler(req: Request) {
   }
 
   const data = await res.json() as { result?: { response?: string } };
-  const pitch = data.result?.response?.trim() || 'The AI could not bullshit this one. Impressive.';
+  const pitch = data.result?.response?.trim() || 'The AI could not bs this one. Impressive.';
 
   return new Response(JSON.stringify({ pitch }), {
     headers: { 'Content-Type': 'application/json' },
