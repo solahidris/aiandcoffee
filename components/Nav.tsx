@@ -39,7 +39,7 @@ export default function Nav({ active }: { active: Page }) {
 
   return (
     <>
-      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-between sm:border-b border-zinc-400/40">
+      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-end sm:justify-between sm:border-b border-zinc-400/40">
         <div className="hidden sm:block">{logo}</div>
 
         {/* Desktop links */}
@@ -89,7 +89,10 @@ export default function Nav({ active }: { active: Page }) {
       >
         {/* Sheet header */}
         <div className="flex items-center justify-between px-6 py-6 border-b border-zinc-400/40">
-          <Image src="/logo/logo_mascot.png" alt="AI and Coffee" width={28} height={28} />
+          <div className="flex items-center gap-2">
+            <Image src="/logo/logo_mascot.png" alt="AI and Coffee" width={28} height={28} />
+            <span className="text-xs uppercase tracking-widest text-zinc-700">AI and Coffee</span>
+          </div>
           <button
             onClick={() => setOpen(false)}
             className="text-zinc-500 hover:text-zinc-900 transition-colors p-1"
