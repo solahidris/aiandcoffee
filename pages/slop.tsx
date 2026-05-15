@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 type Mode = "text" | "threads";
 
 const SHARE_ATTRIBUTION: Record<Mode, string> = {
-  text:    "\n\n— roasted at aiandcoffee.com/slop",
+  text:    "\n\n— roasted at aiandcoffee.com/slop?roast",
   threads: "\n\n— roasted at aiandcoffee.com/slop?roast-by-threads",
 };
 
@@ -78,9 +78,10 @@ export default function SlopCentre() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("text");
 
-  // read ?roast-by-threads query on mount
+  // read query param on mount to set active tab
   useEffect(() => {
     if ("roast-by-threads" in router.query) setMode("threads");
+    else if ("roast" in router.query) setMode("text");
   }, [router.isReady, router.query]);
 
   // text mode state
@@ -163,7 +164,7 @@ export default function SlopCentre() {
     setThreadRoast(null);
     setThreadBio(null);
     setThreadError(null);
-    router.replace(m === "threads" ? "/slop?roast-by-threads" : "/slop", undefined, { shallow: true });
+    router.replace(m === "threads" ? "/slop?roast-by-threads" : "/slop?roast", undefined, { shallow: true });
   }
 
   const charCount = input.length;
@@ -172,7 +173,7 @@ export default function SlopCentre() {
     <>
       <Head>
         <title>Slop Centre — AI and Coffee</title>
-        <meta name="description" content="Malaysia's finest AI-powered roastery. Paste your job title, LinkedIn bio, or startup idea and get roasted." />
+        <meta name="description" content="Malaysia's worst AI-powered slop. Paste your job title, LinkedIn bio, or startup idea and get roasted." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://aiandcoffee.com/slop" />
         <link rel="icon" href="/favicon.ico" />
@@ -197,7 +198,7 @@ export default function SlopCentre() {
             ONE SLOP CENTRE
           </h1>
           <p className="mt-3 text-xs text-zinc-500 uppercase tracking-widest">
-            malaysia&apos;s finest ai-powered roastery · leave your ego at the door
+            malaysia&apos;s worst ai-powered slop · leave your ego at the door
           </p>
         </div>
 
