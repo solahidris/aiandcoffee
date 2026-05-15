@@ -1,6 +1,6 @@
 name: Submit an Event
 description: Add a tech event to the AI and Coffee events page.
-title: "[Event] "
+title: "[Event] Your Event Name Here"
 labels: ["event-submission"]
 body:
   - type: input
@@ -64,6 +64,11 @@ body:
     attributes:
       label: What's It About?
       placeholder: Brief description of the event — talks, workshops, what people can expect.
-      rows: 4
+      value: |
+        What's happening at this event:
+        -
+        -
+        -
+      rows: 6
     validations:
       required: false
