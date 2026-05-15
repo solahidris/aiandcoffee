@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Geist_Mono } from "next/font/google";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import Nav from "../components/Nav";
 
 const geistMono = Geist_Mono({
@@ -10,14 +11,21 @@ const geistMono = Geist_Mono({
 
 type Mode = "text" | "threads";
 
+const SHARE_ATTRIBUTION: Record<Mode, string> = {
+  text:    "\n\n— roasted at aiandcoffee.com/slop",
+  threads: "\n\n— roasted at aiandcoffee.com/slop?roast-by-threads",
+};
+
 function RoastResult({
   roast,
+  shareText,
   bio,
   onCopy,
   copied,
   onReset,
 }: {
   roast: string;
+  shareText: string;
   bio?: string | null;
   onCopy: () => void;
   copied: boolean;
@@ -43,21 +51,37 @@ function RoastResult({
       <div className="px-5 py-6">
         <p className="text-base text-zinc-800 leading-relaxed">{roast}</p>
       </div>
-      <div className="px-5 py-3 border-t border-[#D94830]/30 flex items-center justify-between">
-        <span className="text-[10px] text-zinc-400">powered by (AI and Coffee) slop ai llm</span>
-        <button
-          onClick={onReset}
-          className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
+      <div className="px-5 py-5 border-t border-[#D94830]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <a
+          href={`https://www.threads.net/intent/post?text=${encodeURIComponent(shareText)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block border-2 border-zinc-800 px-8 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
         >
-          roast again
-        </button>
+          share to threads ↗
+        </a>
+        <div className="flex items-center gap-4">
+          <span className="text-[10px] text-zinc-400">powered by (AI and Coffee) slop LLM</span>
+          <button
+            onClick={onReset}
+            className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
+          >
+            roast again
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 export default function SlopCentre() {
+  const router = useRouter();
   const [mode, setMode] = useState<Mode>("text");
+
+  // read ?roast-by-threads query on mount
+  useEffect(() => {
+    if ("roast-by-threads" in router.query) setMode("threads");
+  }, [router.isReady, router.query]);
 
   // text mode state
   const [input, setInput] = useState("");
@@ -139,6 +163,7 @@ export default function SlopCentre() {
     setThreadRoast(null);
     setThreadBio(null);
     setThreadError(null);
+    router.replace(m === "threads" ? "/slop?roast-by-threads" : "/slop", undefined, { shallow: true });
   }
 
   const charCount = input.length;
@@ -237,6 +262,7 @@ export default function SlopCentre() {
                 {textRoast && (
                   <RoastResult
                     roast={textRoast}
+                    shareText={textRoast + SHARE_ATTRIBUTION.text}
                     onCopy={() => copyToClipboard(textRoast, setTextCopied)}
                     copied={textCopied}
                     onReset={() => { setTextRoast(null); setInput(""); textareaRef.current?.focus(); }}
@@ -287,7 +313,7 @@ export default function SlopCentre() {
                     disabled={!username.trim() || threadLoading}
                     className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white"
                   >
-                    {threadLoading ? "fetching their slop..." : "roast them →"}
+                    {threadLoading ? "fetching their slop..." : "roast me →"}
                   </button>
                 </div>
 
@@ -301,6 +327,7 @@ export default function SlopCentre() {
                 {threadRoast && (
                   <RoastResult
                     roast={threadRoast}
+                    shareText={threadRoast + SHARE_ATTRIBUTION.threads}
                     bio={threadBio}
                     onCopy={() => copyToClipboard(threadRoast, setThreadCopied)}
                     copied={threadCopied}
