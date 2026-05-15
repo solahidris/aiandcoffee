@@ -11,13 +11,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-type Mode = "roast" | "threads" | "pitch" | "standup";
+type Mode = "roast" | "threads" | "pitch" | "standup" | "explain";
 
 const TABS: { mode: Mode; label: string; query: string }[] = [
   { mode: "roast",    label: "Roast Anything",   query: "roast"            },
   { mode: "threads",  label: "Roast by Threads",  query: "roast-by-threads" },
   { mode: "pitch",    label: "Startup Pitch",     query: "startup-pitch"    },
   { mode: "standup",  label: "Standup BS",        query: "standup"          },
+  { mode: "explain",  label: "Explain Like I'm",  query: "explain"          },
+];
+
+const PERSONAS: { value: string; label: string }[] = [
+  { value: "mamak-uncle",   label: "Mamak Uncle"   },
+  { value: "makcik-bawang", label: "Makcik Bawang" },
+  { value: "mlm-boss",      label: "MLM Boss"      },
+  { value: "pak-guard",     label: "Pak Guard"     },
+  { value: "grab-driver",   label: "Grab Driver"   },
+  { value: "crypto-bro",    label: "Crypto Bro"    },
 ];
 
 const MOODS = [
@@ -145,6 +155,7 @@ export default function SlopCentre() {
     setThreadsResult(null); setThreadsBio(null); setThreadsError(null);
     setPitchResult(null); setPitchError(null);
     setStandupResult(null); setStandupError(null);
+    setExplainResult(null); setExplainError(null);
   }
 
   async function copyToClipboard(text: string, setCopied: (v: boolean) => void) {
@@ -238,6 +249,28 @@ export default function SlopCentre() {
       setStandupResult(data.update);
     } catch (e) { setStandupError(e instanceof Error ? e.message : "Failed. Try again."); }
     finally { setStandupLoading(false); }
+  }
+
+  // ── Explain state ──
+  const [explainTopic, setExplainTopic] = useState("");
+  const [explainPersona, setExplainPersona] = useState("mamak-uncle");
+  const [explainResult, setExplainResult] = useState<string | null>(null);
+  const [explainLoading, setExplainLoading] = useState(false);
+  const [explainError, setExplainError] = useState<string | null>(null);
+  const [explainCopied, setExplainCopied] = useState(false);
+  const explainRef = useRef<HTMLTextAreaElement>(null);
+
+  async function handleExplain() {
+    const trimmed = explainTopic.trim();
+    if (!trimmed || explainLoading) return;
+    setExplainLoading(true); setExplainResult(null); setExplainError(null);
+    try {
+      const res = await fetch("/api/explain", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ topic: trimmed, persona: explainPersona }) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong");
+      setExplainResult(data.explanation);
+    } catch (e) { setExplainError(e instanceof Error ? e.message : "Failed. Try again."); }
+    finally { setExplainLoading(false); }
   }
 
   return (
@@ -542,6 +575,85 @@ export default function SlopCentre() {
                     copied={standupCopied}
                     onReset={() => { setStandupResult(null); setSelectedMood(null); setStandupContext(""); }}
                   />
+                )}
+              </>
+            )}
+
+            {/* ── Explain Like I'm ── */}
+            {mode === "explain" && (
+              <>
+                <div className="mb-5">
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">explain like i&apos;m a...</p>
+                  <div className="flex flex-wrap gap-2">
+                    {PERSONAS.map(({ value, label }) => (
+                      <button
+                        key={value}
+                        onClick={() => setExplainPersona(value)}
+                        className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
+                          explainPersona === value
+                            ? "border-[#D94830] bg-[#D94830] text-white"
+                            : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border border-zinc-400/60 bg-[#F2EFE8]">
+                  <textarea
+                    ref={explainRef}
+                    value={explainTopic}
+                    onChange={(e) => setExplainTopic(e.target.value.slice(0, 300))}
+                    onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleExplain(); }}
+                    placeholder="what do you want explained? e.g. 'how does AI work', 'what is cloud computing', 'why is my PR not merged'"
+                    rows={4}
+                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
+                  />
+                  <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
+                    <span className={`text-[10px] uppercase tracking-widest ${explainTopic.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>
+                      {explainTopic.length}/300
+                    </span>
+                    <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to explain</span>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <button onClick={handleExplain} disabled={!explainTopic.trim() || explainLoading}
+                    className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
+                    {explainLoading ? "asking around..." : "explain →"}
+                  </button>
+                </div>
+
+                {explainError && <ErrorBox message={explainError} />}
+                {explainResult && (
+                  <SloppyResult
+                    result={explainResult}
+                    shareText={`${explainResult}\n\n— explained at aiandcoffee.com/slop?explain`}
+                    label={`explained by ${PERSONAS.find(p => p.value === explainPersona)?.label ?? explainPersona}`}
+                    resetLabel="explain again"
+                    onCopy={() => copyToClipboard(explainResult, setExplainCopied)}
+                    copied={explainCopied}
+                    onReset={() => { setExplainResult(null); setExplainTopic(""); explainRef.current?.focus(); }}
+                  />
+                )}
+
+                {!explainResult && !explainError && (
+                  <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">things to try</p>
+                    {[
+                      "how does AI work",
+                      "what is cloud computing",
+                      "why is crypto so volatile",
+                      "explain microservices",
+                    ].map((ex) => (
+                      <button key={ex} onClick={() => { setExplainTopic(ex); explainRef.current?.focus(); }}
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
+                        → {ex}
+                      </button>
+                    ))}
+                  </div>
                 )}
               </>
             )}
