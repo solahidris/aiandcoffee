@@ -350,12 +350,14 @@ export default function SlopCentre() {
           <p className="mt-3 text-xs text-zinc-500 uppercase tracking-widest animate-stagger-in" style={{ animationDelay: "400ms" }}>
             malaysia&apos;s worst ai-powered slop · leave your ego at the door
           </p>
-          <p className="mt-4 animate-stagger-in" style={{ animationDelay: "500ms" }}>
-            <span className="text-3xl sm:text-4xl font-bold text-zinc-800 tracking-tighter">
-              {slopCount !== null ? slopCount.toLocaleString() : "—"}
-            </span>
-            <span className="ml-2 text-xs text-zinc-400 uppercase tracking-widest">slops served</span>
+        </div>
+
+        {/* Slop counter — fixed bottom right */}
+        <div className="fixed bottom-6 right-6 z-30 bg-[#171717] px-4 py-3 text-right shadow-lg animate-stagger-in" style={{ animationDelay: "700ms" }}>
+          <p className="text-2xl sm:text-3xl font-bold text-white tracking-tighter leading-none">
+            {slopCount !== null ? slopCount.toLocaleString() : "—"}
           </p>
+          <p className="text-[9px] uppercase tracking-widest text-zinc-400 mt-1">slops served</p>
         </div>
 
         <div className="relative z-10 px-6 sm:px-16 pb-24">
