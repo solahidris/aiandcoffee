@@ -39,8 +39,8 @@ export default function Nav({ active }: { active: Page }) {
 
   return (
     <>
-      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-between border-b border-zinc-400/40">
-        {logo}
+      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-between sm:border-b border-zinc-400/40">
+        <div className="hidden sm:block">{logo}</div>
 
         {/* Desktop links */}
         <div className="hidden sm:flex items-center gap-6">
