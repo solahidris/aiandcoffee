@@ -1,5 +1,15 @@
 [
   {
+    "id": "og-generator",
+    "name": "OG Generator",
+    "description": "Generate branded Open Graph preview images for events, posts, and announcements. Custom title and subtitle. 1200×630px.",
+    "pros": ["Built by AI and Coffee", "Custom title and subtitle", "Works with WhatsApp, Twitter, LinkedIn", "Copy URL or open directly"],
+    "cons": ["SVG format — some platforms may prefer PNG", "No image upload yet"],
+    "url": "/og",
+    "category": "ai-and-coffee",
+    "logo": "/logo/logo_mascot.png"
+  },
+  {
     "id": "claude",
     "name": "Claude",
     "description": "Anthropic's AI assistant. Great for writing, coding, analysis, and deep thinking.",

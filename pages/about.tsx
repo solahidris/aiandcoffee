@@ -22,7 +22,7 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="About — AI and Coffee" />
         <meta property="og:description" content="No BS. No hierarchy. No laws. The only rule is to be nice." />
-        <meta property="og:image" content="/logo/logo.png" />
+        <meta property="og:image" content="/api/og?title=About&subtitle=No BS. No hierarchy. Only rule: be nice." />
       </Head>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>

@@ -27,7 +27,7 @@ export default function Home() {
           property="og:description"
           content="An open source community project. No BS. No hierarchy. Ever-evolving. The only rule is to be nice."
         />
-        <meta property="og:image" content="/logo/logo.png" />
+        <meta property="og:image" content="/api/og" />
         <meta property="og:type" content="website" />
 
         {/* Twitter */}

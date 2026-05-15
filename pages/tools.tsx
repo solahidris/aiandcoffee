@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { Geist_Mono } from "next/font/google";
 import { useState, useMemo } from "react";
 import Nav from "../components/Nav";
@@ -24,17 +25,19 @@ interface Tool {
 const tools = toolsData as Tool[];
 
 const CATEGORIES = [
-  { label: "All",          value: "all"         },
-  { label: "AI",           value: "ai"          },
-  { label: "IDE",          value: "ide"         },
-  { label: "Voice",        value: "voice"       },
-  { label: "Automate",     value: "automate"    },
-  { label: "Productivity", value: "productivity"},
+  { label: "All",            value: "all"            },
+  { label: "AI and Coffee",  value: "ai-and-coffee"  },
+  { label: "AI",             value: "ai"             },
+  { label: "IDE",            value: "ide"            },
+  { label: "Voice",          value: "voice"          },
+  { label: "Automate",       value: "automate"       },
+  { label: "Productivity",   value: "productivity"   },
 ];
 
 const CATEGORY_LABELS: Record<string, string> = {
-  ai: "AI", ide: "IDE", image: "Image", video: "Video",
-  voice: "Voice", automate: "Automate", productivity: "Productivity",
+  "ai-and-coffee": "AI and Coffee",
+  ai: "AI", ide: "IDE", voice: "Voice",
+  automate: "Automate", productivity: "Productivity",
 };
 
 export default function ToolsPage() {
@@ -59,7 +62,7 @@ export default function ToolsPage() {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Tools — AI and Coffee" />
         <meta property="og:description" content="AI tools the community actually uses." />
-        <meta property="og:image" content="/logo/logo.png" />
+        <meta property="og:image" content="/api/og?title=Tools&subtitle=Things we actually use" />
       </Head>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
@@ -164,14 +167,15 @@ export default function ToolsPage() {
                       </ul>
                     </div>
                   </div>
-                  <a
-                    href={selectedTool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
-                  >
-                    Visit ↗
-                  </a>
+                  {selectedTool.url.startsWith('/') ? (
+                    <Link href={selectedTool.url} className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
+                      Open →
+                    </Link>
+                  ) : (
+                    <a href={selectedTool.url} target="_blank" rel="noopener noreferrer" className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
+                      Visit ↗
+                    </a>
+                  )}
                 </>
               )}
             </div>
@@ -270,14 +274,15 @@ export default function ToolsPage() {
                       </ul>
                     </div>
                   </div>
-                  <a
-                    href={selectedTool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
-                  >
-                    Visit ↗
-                  </a>
+                  {selectedTool.url.startsWith('/') ? (
+                    <Link href={selectedTool.url} className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
+                      Open →
+                    </Link>
+                  ) : (
+                    <a href={selectedTool.url} target="_blank" rel="noopener noreferrer" className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
+                      Visit ↗
+                    </a>
+                  )}
                 </>
               )}
             </div>
