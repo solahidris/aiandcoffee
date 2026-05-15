@@ -25,6 +25,19 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see it.
 
+## Environment Variables
+
+Some features (the [One Slop Centre](https://aiandcoffee.com/slop) AI tools) require Cloudflare Workers AI credentials.
+
+Create a `.env.local` file in the project root:
+
+```
+CF_ACCOUNT_ID=your_cloudflare_account_id
+CF_AI_TOKEN=your_cloudflare_ai_token
+```
+
+> **Need the keys?** WhatsApp the maintainer at [wa.me/60127710626](https://wa.me/60127710626) to get them.
+
 ## For AI Agents
 
 Copy and paste this prompt to your AI agent:
