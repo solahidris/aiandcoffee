@@ -9,6 +9,12 @@ const LINKS: { label: string; href: string; page: Page }[] = [
   { label: "About",  href: "/about",  page: "about"  },
 ];
 
+const SHEET_LINKS: { label: string; href: string; page: Page }[] = [
+  { label: "Home",   href: "/",        page: "home"   },
+  { label: "Events", href: "/events",  page: "events" },
+  { label: "About",  href: "/about",   page: "about"  },
+];
+
 export default function Nav({ active }: { active: Page }) {
   const [open, setOpen] = useState(false);
 
@@ -39,8 +45,8 @@ export default function Nav({ active }: { active: Page }) {
 
   return (
     <>
-      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-end sm:justify-between sm:border-b border-zinc-400/40">
-        <div className="hidden sm:block">{logo}</div>
+      <nav className="relative z-10 px-6 py-6 sm:px-16 flex items-center justify-between sm:border-b border-zinc-400/40">
+        <div className={active === "home" ? "hidden sm:block" : "block"}>{logo}</div>
 
         {/* Desktop links + join */}
         <div className="hidden sm:flex items-center gap-6">
@@ -114,7 +120,7 @@ export default function Nav({ active }: { active: Page }) {
 
         {/* Sheet links */}
         <div className="flex flex-col px-6 pt-8 gap-1">
-          {LINKS.map(({ label, href, page }) =>
+          {SHEET_LINKS.map(({ label, href, page }) =>
             active === page ? (
               <span
                 key={page}
