@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import Nav from "../components/Nav";
 import { GetStaticProps } from "next";
 import { Geist_Mono } from "next/font/google";
 import path from "path";
@@ -436,26 +437,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         {/* Nav */}
-        <nav className="px-6 py-6 sm:px-16 flex items-center justify-between border-b border-zinc-400/40">
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/logo/logo_mascot.png"
-              alt="AI and Coffee"
-              width={32}
-              height={32}
-              className="group-hover:rotate-12 transition-transform duration-300"
-            />
-            <span className="text-sm uppercase tracking-widest text-zinc-700 group-hover:text-[#D94830] transition-colors">
-              AI and Coffee
-            </span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/about" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">
-              About
-            </Link>
-            <span className="text-xs uppercase tracking-widest text-[#D94830]">Events</span>
-          </div>
-        </nav>
+        <Nav active="events" />
 
         <div className="flex flex-col lg:flex-row min-h-[calc(100vh-73px)]">
           {/* ── Sidebar: calendar ── */}

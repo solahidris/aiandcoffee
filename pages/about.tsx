@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
+import Nav from "../components/Nav";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -26,21 +27,7 @@ export default function About() {
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         {/* Nav */}
-        <nav className="px-6 py-6 sm:px-16 flex items-center justify-between border-b border-zinc-400/40">
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/logo/logo_mascot.png"
-              alt="AI and Coffee"
-              width={32}
-              height={32}
-              className="group-hover:rotate-12 transition-transform duration-300"
-            />
-            <span className="text-sm uppercase tracking-widest text-zinc-700 group-hover:text-[#D94830] transition-colors">
-              AI and Coffee
-            </span>
-          </Link>
-          <span className="text-xs uppercase tracking-widest text-[#D94830]">About</span>
-        </nav>
+        <Nav active="about" />
 
         {/* Hero — big manifesto */}
         <section className="relative px-6 sm:px-16 pt-14 pb-16 overflow-hidden">
