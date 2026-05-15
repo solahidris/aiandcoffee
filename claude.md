@@ -70,6 +70,11 @@ Located in `/public/logo/`:
 - `logo_word.png` - Text only
 - `logo_mascot.png` - Mascots only
 
+### Branding
+
+- Always use **"AI and Coffee"** — never "AI & Coffee", "AI & COFFEE", or any ampersand variant.
+- This applies everywhere: UI text, alt text, meta tags, JSON, comments, and copy.
+
 ## Contributing
 
 This is a community project. Jump in, build something, propose changes. No gatekeepers.
