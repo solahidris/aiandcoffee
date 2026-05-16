@@ -76,6 +76,15 @@ function IconMenu() {
   );
 }
 
+function IconSidebar() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <rect x="1.5" y="1.5" width="15" height="15" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="6" y1="1.5" x2="6" y2="16.5" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 function IconPlus() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -409,7 +418,7 @@ export default function ChatPage() {
             className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-colors"
             aria-label="Chat history"
           >
-            <IconMenu />
+            <IconSidebar />
           </button>
 
           {/* Centre: chat title */}
@@ -481,7 +490,7 @@ export default function ChatPage() {
                 title={sidebarOpen ? "Collapse" : "Expand"}
                 className="p-1.5 text-zinc-500 hover:text-zinc-800 hover:bg-[#E8E4D9] transition-colors rounded"
               >
-                <IconMenu />
+                <IconSidebar />
               </button>
             </div>
 
