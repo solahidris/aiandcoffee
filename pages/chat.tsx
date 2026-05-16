@@ -442,7 +442,7 @@ export default function ChatPage() {
     <>
       <Head>
         <title>Chat — AI and Coffee</title>
-        <meta name="description" content="Free AI chat powered by ILMU AI. No account, no tracking. Your conversations stay in your browser." />
+        <meta name="description" content="Free AI chat powered by AI and Coffee AI. No account, no tracking. Your conversations stay in your browser." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Chat — AI and Coffee" />
@@ -622,7 +622,7 @@ export default function ChatPage() {
                     <div className="space-y-1">
                       {[
                         "your chats live only in your browser — nothing on our servers",
-                        "messages go directly from your browser to ILMU AI for processing",
+                        "messages go directly from your browser to AI and Coffee AI for processing",
                         "older messages are auto-compressed into a local summary for context",
                         "free · no account · no sign-in · delete chats anytime",
                       ].map(item => <p key={item} className="text-[11px] text-zinc-500">· {item}</p>)}
@@ -688,7 +688,7 @@ export default function ChatPage() {
                       what&apos;s on<br />your mind?
                     </p>
                     <p className="text-[10px] text-zinc-400 uppercase tracking-widest mt-2">
-                      powered by ILMU AI · free · stored locally
+                      powered by AI and Coffee AI · free · stored locally
                     </p>
                     {!infoOpen && (
                       <button onClick={() => setInfoOpen(true)} className="mt-1 text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
