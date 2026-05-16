@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import Nav from "../components/Nav";
 import { TONES, type Tone } from "../lib/roast-tones";
+import ReactMarkdown from "react-markdown";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -107,8 +108,24 @@ function SloppyResult({
           <p className="text-xs text-zinc-500 italic leading-relaxed">&ldquo;{sub}&rdquo;</p>
         </div>
       )}
-      <div className="px-5 py-6">
-        <p className="text-sm text-zinc-800 leading-relaxed whitespace-pre-line">{result}</p>
+      <div className="px-5 py-6 text-sm text-zinc-800 leading-relaxed">
+        <ReactMarkdown
+          components={{
+            p:      ({ children }) => <p className="mb-3 last:mb-0">{children}</p>,
+            strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+            em:     ({ children }) => <em className="italic">{children}</em>,
+            ul:     ({ children }) => <ul className="list-disc pl-5 mb-3 space-y-1">{children}</ul>,
+            ol:     ({ children }) => <ol className="list-decimal pl-5 mb-3 space-y-1">{children}</ol>,
+            li:     ({ children }) => <li className="leading-relaxed">{children}</li>,
+            code:   ({ children, className }) => className
+              ? <code className="block bg-zinc-200/70 px-3 py-2 text-xs font-mono rounded my-2 overflow-x-auto whitespace-pre">{children}</code>
+              : <code className="bg-zinc-200/70 px-1 py-0.5 text-xs font-mono rounded">{children}</code>,
+            pre:    ({ children }) => <pre className="my-2">{children}</pre>,
+            blockquote: ({ children }) => <blockquote className="border-l-2 border-[#D94830]/40 pl-3 text-zinc-600 italic my-2">{children}</blockquote>,
+          }}
+        >
+          {result}
+        </ReactMarkdown>
       </div>
       <div className="px-5 py-5 border-t border-[#D94830]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <a
