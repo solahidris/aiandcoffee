@@ -95,6 +95,7 @@ export default function ChatPage() {
   const [infoOpen, setInfoOpen]         = useState(false);
   const [mounted, setMounted]           = useState(false);
   const [deletingId, setDeletingId]     = useState<string | null>(null);
+  const [copiedId, setCopiedId]         = useState<string | null>(null);
 
   const bottomRef      = useRef<HTMLDivElement>(null);
   const inputRef       = useRef<HTMLTextAreaElement>(null);
@@ -523,7 +524,23 @@ export default function ChatPage() {
                       }`}>
                         {msg.content}
                       </div>
-                      <span className="text-[9px] text-zinc-400 px-1">{fmt(msg.timestamp)}</span>
+                      <div className="flex items-center gap-3 px-1">
+                        <span className="text-[9px] text-zinc-400">{fmt(msg.timestamp)}</span>
+                        {msg.role === "assistant" && (
+                          <button
+                            onClick={async () => {
+                              try {
+                                await navigator.clipboard.writeText(msg.content);
+                                setCopiedId(msg.id);
+                                setTimeout(() => setCopiedId(id => id === msg.id ? null : id), 2000);
+                              } catch { /* clipboard unavailable */ }
+                            }}
+                            className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors"
+                          >
+                            {copiedId === msg.id ? "copied ✓" : "copy"}
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
