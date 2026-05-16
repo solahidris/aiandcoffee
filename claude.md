@@ -68,6 +68,7 @@ All routes use `export const runtime = 'edge'`.
 | `/api/standup` | `pages/api/standup.ts` | Generates standup update from mood/context |
 | `/api/explain` | `pages/api/explain.ts` | Explains topic via Malaysian persona (6 personas) |
 | `/api/slop-count` | `pages/api/slop-count.ts` | Reads total slop count from Cloudflare KV |
+| `/api/thread-chain` | `pages/api/thread-chain.ts` | Generates viral Threads post chain via ILMU API |
 | `/api/sitemap` | `pages/api/sitemap.ts` | Serves sitemap.xml (rewritten from `/sitemap.xml`) |
 
 ## Shared Libraries
@@ -79,7 +80,7 @@ All routes use `export const runtime = 'edge'`.
 
 ## One Slop Centre (`/slop`)
 
-5 tabs, each with its own URL query param:
+6 tabs, each with its own URL query param:
 
 | Tab | Query | What it does |
 |-----|-------|-------------|
@@ -88,6 +89,7 @@ All routes use `export const runtime = 'edge'`.
 | Startup Pitch | `?startup-pitch` | Plain idea → VC buzzword pitch |
 | Standup BS | `?standup` | Pick mood → standup update |
 | Explain Like I'm | `?explain` | Topic → explained by a Malaysian persona |
+| Viral Thread | `?thread-chain` | Topic + post count → Manglish thread chain via ILMU API |
 
 Roast tabs support 4 tones: English, Malay, Rempit, Pondan (defined in `lib/roast-tones.ts`).
 
@@ -103,6 +105,7 @@ Slop counter: fixed bottom-right widget. Reads from KV on mount, increments opti
 |----------|-------------|
 | `CF_ACCOUNT_ID` | Cloudflare account ID |
 | `CF_AI_TOKEN` | Cloudflare API token — must have **Workers AI: Edit** and **Workers KV Storage: Edit** permissions |
+| `ILMU_API_KEY` | ILMU API key (`sk-...`) — OpenAI-compatible endpoint at `https://api.ilmu.ai/v1`, model `nemo-super` |
 
 Set in `.env.local` for local dev, Cloudflare Pages dashboard for production.
 

@@ -11,14 +11,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-type Mode = "roast" | "threads" | "pitch" | "standup" | "explain";
+type Mode = "roast" | "threads" | "pitch" | "standup" | "explain" | "thread-chain";
 
 const TABS: { mode: Mode; label: string; query: string }[] = [
-  { mode: "roast",    label: "Roast Anything",   query: "roast"            },
-  { mode: "threads",  label: "Roast by Threads",  query: "roast-by-threads" },
-  { mode: "pitch",    label: "Startup Pitch",     query: "startup-pitch"    },
-  { mode: "standup",  label: "Standup BS",        query: "standup"          },
-  { mode: "explain",  label: "Explain Like I'm",  query: "explain"          },
+  { mode: "roast",         label: "Roast Anything",   query: "roast"            },
+  { mode: "threads",       label: "Roast by Threads",  query: "roast-by-threads" },
+  { mode: "pitch",         label: "Startup Pitch",     query: "startup-pitch"    },
+  { mode: "standup",       label: "Standup BS",        query: "standup"          },
+  { mode: "explain",       label: "Explain Like I'm",  query: "explain"          },
+  { mode: "thread-chain",  label: "Viral Thread",      query: "thread-chain"     },
 ];
 
 const PERSONAS: { value: string; label: string }[] = [
@@ -173,6 +174,7 @@ export default function SlopCentre() {
     setPitchResult(null); setPitchError(null);
     setStandupResult(null); setStandupError(null);
     setExplainResult(null); setExplainError(null);
+    setThreadChainPosts(null); setThreadChainError(null);
   }
 
   async function copyToClipboard(text: string, setCopied: (v: boolean) => void) {
@@ -293,6 +295,30 @@ export default function SlopCentre() {
       setSlopCount(c => c !== null ? c + 1 : 1);
     } catch (e) { setExplainError(e instanceof Error ? e.message : "Failed. Try again."); }
     finally { setExplainLoading(false); }
+  }
+
+  // ── Thread Chain state ──
+  const [threadChainTopic, setThreadChainTopic] = useState("");
+  const [threadChainCount, setThreadChainCount] = useState(5);
+  const [threadChainPosts, setThreadChainPosts] = useState<string[] | null>(null);
+  const [threadChainLoading, setThreadChainLoading] = useState(false);
+  const [threadChainError, setThreadChainError] = useState<string | null>(null);
+  const [threadChainCopied, setThreadChainCopied] = useState(false);
+  const [threadChainPostCopied, setThreadChainPostCopied] = useState<number | null>(null);
+  const threadChainRef = useRef<HTMLTextAreaElement>(null);
+
+  async function handleThreadChain() {
+    const trimmed = threadChainTopic.trim();
+    if (!trimmed || threadChainLoading) return;
+    setThreadChainLoading(true); setThreadChainPosts(null); setThreadChainError(null);
+    try {
+      const res = await fetch("/api/thread-chain", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ topic: trimmed, count: threadChainCount }) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong");
+      setThreadChainPosts(data.posts);
+      setSlopCount(c => c !== null ? c + 1 : 1);
+    } catch (e) { setThreadChainError(e instanceof Error ? e.message : "Failed. Try again."); }
+    finally { setThreadChainLoading(false); }
   }
 
   return (
@@ -679,6 +705,151 @@ export default function SlopCentre() {
                       "explain microservices",
                     ].map((ex) => (
                       <button key={ex} onClick={() => { setExplainTopic(ex); explainRef.current?.focus(); }}
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
+                        → {ex}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* ── Viral Thread ── */}
+            {mode === "thread-chain" && (
+              <>
+                <div className="mb-5">
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">posts per thread</p>
+                  <div className="flex gap-2">
+                    {[3, 5, 7, 10].map((n) => (
+                      <button
+                        key={n}
+                        onClick={() => setThreadChainCount(n)}
+                        className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
+                          threadChainCount === n
+                            ? "border-[#D94830] bg-[#D94830] text-white"
+                            : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
+                        }`}
+                      >
+                        {n}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border border-zinc-400/60 bg-[#F2EFE8]">
+                  <textarea
+                    ref={threadChainRef}
+                    value={threadChainTopic}
+                    onChange={(e) => setThreadChainTopic(e.target.value.slice(0, 300))}
+                    onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleThreadChain(); }}
+                    placeholder="what's the thread about? e.g. 'why i quit my stable job to become a dev', 'things no one tells you about startups in malaysia'"
+                    rows={4}
+                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
+                  />
+                  <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
+                    <span className={`text-[10px] uppercase tracking-widest ${threadChainTopic.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>
+                      {threadChainTopic.length}/300
+                    </span>
+                    <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to generate</span>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <button onClick={handleThreadChain} disabled={!threadChainTopic.trim() || threadChainLoading}
+                    className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
+                    {threadChainLoading ? "cooking the thread..." : "generate thread →"}
+                  </button>
+                </div>
+
+                {threadChainError && <ErrorBox message={threadChainError} />}
+
+                {threadChainPosts && (
+                  <div className="mt-8 animate-stagger-in">
+                    <div className="flex items-center justify-between mb-5">
+                      <p className="text-[10px] uppercase tracking-widest text-[#D94830]">
+                        thread ready — {threadChainPosts.length} posts
+                      </p>
+                      <button
+                        onClick={() => copyToClipboard(threadChainPosts.join('\n\n'), setThreadChainCopied)}
+                        className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors"
+                      >
+                        {threadChainCopied ? "copied ✓" : "copy all"}
+                      </button>
+                    </div>
+
+                    <div>
+                      {threadChainPosts.map((post, i) => (
+                        <div key={i} className="relative">
+                          <div className="border-2 border-[#D94830] bg-[#F2EFE8]">
+                            <div className="px-5 py-3 border-b border-[#D94830]/30 flex items-center justify-between">
+                              <span className="text-[10px] uppercase tracking-widest text-[#D94830]">
+                                {i + 1}/{threadChainPosts.length}
+                              </span>
+                              <div className="flex items-center gap-4">
+                                <span className="text-[10px] text-zinc-400">{post.length} chars</span>
+                                <button
+                                  onClick={async () => {
+                                    try { await navigator.clipboard.writeText(post); setThreadChainPostCopied(i); setTimeout(() => setThreadChainPostCopied(null), 2000); } catch { /* clipboard not available */ }
+                                  }}
+                                  className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors"
+                                >
+                                  {threadChainPostCopied === i ? "copied ✓" : "copy"}
+                                </button>
+                                <a
+                                  href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.slice(0, 500))}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors"
+                                >
+                                  post ↗
+                                </a>
+                              </div>
+                            </div>
+                            <div className="px-5 py-5">
+                              <p className="text-sm text-zinc-800 leading-relaxed whitespace-pre-line">{post}</p>
+                            </div>
+                          </div>
+                          {i < threadChainPosts.length - 1 && (
+                            <div className="flex justify-start pl-6">
+                              <div className="w-[2px] h-4 bg-[#D94830]/40" />
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-6 pt-5 border-t border-[#D94830]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                      <a
+                        href={`https://www.threads.net/intent/post?text=${encodeURIComponent((threadChainPosts[0] || '').slice(0, 500))}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block border-2 border-zinc-800 px-8 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
+                      >
+                        post first to threads ↗
+                      </a>
+                      <div className="flex items-center gap-4">
+                        <span className="text-[10px] text-zinc-400">powered by (AI and Coffee) slop LLM</span>
+                        <button
+                          onClick={() => { setThreadChainPosts(null); setThreadChainTopic(""); threadChainRef.current?.focus(); }}
+                          className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
+                        >
+                          generate again
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!threadChainPosts && !threadChainError && (
+                  <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">thread ideas</p>
+                    {[
+                      "why i quit my corporate job to become a developer",
+                      "things no one tells you about working at a startup",
+                      "how i accidentally went viral with a terrible post",
+                      "the real cost of free software",
+                    ].map((ex) => (
+                      <button key={ex} onClick={() => { setThreadChainTopic(ex); threadChainRef.current?.focus(); }}
                         className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
                         → {ex}
                       </button>
