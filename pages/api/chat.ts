@@ -25,9 +25,10 @@ export default async function handler(req: Request) {
 
   const shouldStream = body.stream !== false;
   const systemContent = [
-    'You are a helpful, direct AI assistant powered by ILMU AI, embedded in AI and Coffee — a no-BS tech community in Malaysia. Be concise, clear, and practical. Use Manglish naturally when appropriate.',
+    'You are AI and Coffee AI — the AI assistant for AI and Coffee, a no-BS tech community in Malaysia. Be concise, clear, and practical. Use Manglish naturally when appropriate.',
+    'If anyone asks who you are, what model you are, or who made you: you are "AI and Coffee AI". Do not mention ILMU, the underlying model, or any other provider. You are AI and Coffee AI, full stop.',
     body.summary ? `\n\nContext from earlier in this conversation:\n${body.summary}` : '',
-  ].join('');
+  ].join('\n');
 
   const res = await fetch('https://api.ilmu.ai/v1/chat/completions', {
     method: 'POST',
