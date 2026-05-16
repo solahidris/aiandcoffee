@@ -5,7 +5,26 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import Nav from "../components/Nav";
 import { TONES, type Tone } from "../lib/roast-tones";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
+
+const mdComponents: Components = {
+  p:          ({ children }) => <p className="mb-4 last:mb-0 leading-relaxed">{children}</p>,
+  strong:     ({ children }) => <strong className="font-bold">{children}</strong>,
+  em:         ({ children }) => <em className="italic">{children}</em>,
+  ul:         ({ children }) => <ul className="list-disc pl-5 mb-4 space-y-2">{children}</ul>,
+  ol:         ({ children }) => <ol className="list-decimal pl-5 mb-4 space-y-2">{children}</ol>,
+  li:         ({ children }) => <li className="leading-relaxed pl-1">{children}</li>,
+  h1:         ({ children }) => <h1 className="font-bold text-base mt-6 mb-3 first:mt-0">{children}</h1>,
+  h2:         ({ children }) => <h2 className="font-bold text-sm mt-5 mb-2 first:mt-0">{children}</h2>,
+  h3:         ({ children }) => <h3 className="font-semibold text-sm mt-4 mb-2 first:mt-0">{children}</h3>,
+  blockquote: ({ children }) => <blockquote className="border-l-2 border-[#D94830]/40 pl-4 text-zinc-600 italic my-4">{children}</blockquote>,
+  hr:         () => <hr className="border-zinc-300 my-5" />,
+  pre:        ({ children }) => <pre className="my-3">{children}</pre>,
+  code:       ({ children, className }) => className
+    ? <code className="block bg-zinc-200/70 px-3 py-2.5 text-xs font-mono rounded my-3 overflow-x-auto whitespace-pre">{children}</code>
+    : <code className="bg-zinc-200/70 px-1.5 py-0.5 text-xs font-mono rounded">{children}</code>,
+  a:          ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#D94830] transition-colors">{children}</a>,
+};
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -109,23 +128,7 @@ function SloppyResult({
         </div>
       )}
       <div className="px-5 py-6 text-sm text-zinc-800 leading-relaxed">
-        <ReactMarkdown
-          components={{
-            p:      ({ children }) => <p className="mb-3 last:mb-0">{children}</p>,
-            strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-            em:     ({ children }) => <em className="italic">{children}</em>,
-            ul:     ({ children }) => <ul className="list-disc pl-5 mb-3 space-y-1">{children}</ul>,
-            ol:     ({ children }) => <ol className="list-decimal pl-5 mb-3 space-y-1">{children}</ol>,
-            li:     ({ children }) => <li className="leading-relaxed">{children}</li>,
-            code:   ({ children, className }) => className
-              ? <code className="block bg-zinc-200/70 px-3 py-2 text-xs font-mono rounded my-2 overflow-x-auto whitespace-pre">{children}</code>
-              : <code className="bg-zinc-200/70 px-1 py-0.5 text-xs font-mono rounded">{children}</code>,
-            pre:    ({ children }) => <pre className="my-2">{children}</pre>,
-            blockquote: ({ children }) => <blockquote className="border-l-2 border-[#D94830]/40 pl-3 text-zinc-600 italic my-2">{children}</blockquote>,
-          }}
-        >
-          {result}
-        </ReactMarkdown>
+        <ReactMarkdown components={mdComponents}>{result}</ReactMarkdown>
       </div>
       <div className="px-5 py-5 border-t border-[#D94830]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <a
