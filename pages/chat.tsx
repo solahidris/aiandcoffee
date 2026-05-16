@@ -663,28 +663,42 @@ export default function ChatPage() {
             {/* Input bar */}
             <div className="shrink-0 border-t border-zinc-400/40 bg-[#E8E4D9] px-4 sm:px-8 py-4">
               <div className="max-w-2xl mx-auto">
-                <div className="flex gap-3 items-end">
-                  <div className="flex-1 border border-zinc-400/60 bg-[#F2EFE8]">
-                    <textarea
-                      ref={inputRef}
-                      value={input}
-                      onChange={e => setInput(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      onInput={handleInput}
-                      placeholder="type here... (enter to send · shift+enter for new line)"
-                      rows={1}
-                      disabled={isStreaming}
-                      className="w-full bg-transparent px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed disabled:opacity-50"
-                      style={{ minHeight: "44px", maxHeight: "160px" }}
-                    />
+                <div className="border border-zinc-400/60 bg-[#F2EFE8]">
+                  <textarea
+                    ref={inputRef}
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    onInput={handleInput}
+                    placeholder="type here..."
+                    rows={1}
+                    disabled={isStreaming}
+                    className="w-full bg-transparent px-4 pt-3 pb-1 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed disabled:opacity-50"
+                    style={{ minHeight: "44px", maxHeight: "160px" }}
+                  />
+                  <div className="flex items-center justify-between px-3 pb-3">
+                    <span className="text-[9px] uppercase tracking-widest text-zinc-400">
+                      enter to send · shift+enter for new line
+                    </span>
+                    <button
+                      onClick={sendMessage}
+                      disabled={!input.trim() || isStreaming}
+                      className="w-9 h-9 bg-[#D94830] flex items-center justify-center text-white transition-opacity disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-80 rounded-sm shrink-0"
+                      aria-label="Send"
+                    >
+                      {isStreaming ? (
+                        <span className="flex gap-0.5 items-center">
+                          <span className="w-1 h-1 bg-white rounded-full animate-pulse" />
+                          <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "150ms" }} />
+                          <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "300ms" }} />
+                        </span>
+                      ) : (
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M8 13V3M3 8l5-5 5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </button>
                   </div>
-                  <button
-                    onClick={sendMessage}
-                    disabled={!input.trim() || isStreaming}
-                    className="border-2 border-[#D94830] bg-[#D94830] px-5 py-3 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white shrink-0"
-                  >
-                    {isStreaming ? "···" : "send →"}
-                  </button>
                 </div>
 
                 <div className="mt-2 flex items-center justify-between">
