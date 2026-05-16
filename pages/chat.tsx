@@ -23,10 +23,16 @@ type ChatSession = {
   updatedAt: number;
 };
 
-const S_SESSIONS    = "aiandcoffee:chat:sessions";
-const S_ACTIVE      = "aiandcoffee:chat:active";
-const S_SIDEBAR     = "aiandcoffee:chat:sidebar";
-const S_INFO_CLOSED = "aiandcoffee:chat:info-closed";
+const S_SESSIONS     = "aiandcoffee:chat:sessions";
+const S_ACTIVE       = "aiandcoffee:chat:active";
+const S_SIDEBAR      = "aiandcoffee:chat:sidebar";
+const S_INFO_CLOSED  = "aiandcoffee:chat:info-closed";
+const S_PWA_DISMISSED = "aiandcoffee:pwa-dismissed";
+
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+}
 
 const MAX_SESSIONS    = 50;
 const MAX_MESSAGES    = 40;
@@ -115,8 +121,12 @@ export default function ChatPage() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [infoOpen, setInfoOpen]         = useState(false);
   const [mounted, setMounted]           = useState(false);
-  const [deletingId, setDeletingId]     = useState<string | null>(null);
-  const [copiedId, setCopiedId]         = useState<string | null>(null);
+  const [deletingId, setDeletingId]         = useState<string | null>(null);
+  const [copiedId, setCopiedId]             = useState<string | null>(null);
+  const [isOnline, setIsOnline]             = useState(true);
+  const [showInstallBanner, setShowInstallBanner] = useState(false);
+  const [isIOS, setIsIOS]                   = useState(false);
+  const installPromptRef                    = useRef<BeforeInstallPromptEvent | null>(null);
 
   const bottomRef      = useRef<HTMLDivElement>(null);
   const inputRef       = useRef<HTMLTextAreaElement>(null);
@@ -180,6 +190,56 @@ export default function ChatPage() {
       try { localStorage.setItem(S_SIDEBAR, sidebarOpen ? "open" : "closed"); } catch { /* */ }
     }
   }, [sidebarOpen, mounted]);
+
+  // Online / offline detection
+  useEffect(() => {
+    setIsOnline(navigator.onLine);
+    const goOnline  = () => setIsOnline(true);
+    const goOffline = () => setIsOnline(false);
+    window.addEventListener("online",  goOnline);
+    window.addEventListener("offline", goOffline);
+    return () => {
+      window.removeEventListener("online",  goOnline);
+      window.removeEventListener("offline", goOffline);
+    };
+  }, []);
+
+  // PWA install prompt
+  useEffect(() => {
+    const isStandalone = window.matchMedia("(display-mode: standalone)").matches
+      || ("standalone" in window.navigator && (window.navigator as { standalone?: boolean }).standalone === true);
+    if (isStandalone) return;
+    if (localStorage.getItem(S_PWA_DISMISSED)) return;
+
+    const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    setIsIOS(ios);
+
+    if (ios) {
+      setShowInstallBanner(true);
+      return;
+    }
+
+    const handler = (e: Event) => {
+      e.preventDefault();
+      installPromptRef.current = e as BeforeInstallPromptEvent;
+      setShowInstallBanner(true);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  function dismissInstallBanner() {
+    setShowInstallBanner(false);
+    try { localStorage.setItem(S_PWA_DISMISSED, "true"); } catch { /* */ }
+  }
+
+  async function triggerInstall() {
+    if (!installPromptRef.current) return;
+    await installPromptRef.current.prompt();
+    const { outcome } = await installPromptRef.current.userChoice;
+    if (outcome === "accepted") dismissInstallBanner();
+    installPromptRef.current = null;
+  }
 
   // Lock body scroll when mobile nav/sidebar is open
   useEffect(() => {
@@ -575,6 +635,39 @@ export default function ChatPage() {
               </div>
             )}
 
+            {/* PWA install banner */}
+            {showInstallBanner && (
+              <div className="shrink-0 border-b border-zinc-400/40 bg-[#F2EFE8] px-5 py-3">
+                <div className="max-w-2xl flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <Image src="/logo/logo_mascot.png" alt="" width={28} height={28} className="shrink-0" />
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest text-[#D94830]">install as app</p>
+                      <p className="text-[11px] text-zinc-500 mt-0.5 leading-snug">
+                        {isIOS
+                          ? <>tap <strong>share</strong> → <strong>&quot;add to home screen&quot;</strong> · chat history stays on your device, internet still needed to chat</>
+                          : <>add to your home screen for a standalone experience · chat history stays on your device, internet still needed to chat</>
+                        }
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 shrink-0">
+                    {!isIOS && (
+                      <button
+                        onClick={triggerInstall}
+                        className="text-[10px] uppercase tracking-widest border border-[#D94830] text-[#D94830] px-3 py-1.5 hover:bg-[#D94830] hover:text-white transition-colors"
+                      >
+                        install →
+                      </button>
+                    )}
+                    <button onClick={dismissInstallBanner} className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">
+                      not now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Desktop chat title bar (hidden on mobile — title is in the mobile header) */}
             {activeSession && !isEmpty && (
               <div className="hidden sm:flex shrink-0 border-b border-zinc-400/40 px-6 py-3 items-center justify-between">
@@ -669,8 +762,20 @@ export default function ChatPage() {
               </div>
             </div>
 
+            {/* Offline state */}
+            {!isOnline && (
+              <div className="shrink-0 border-t border-zinc-400/40 bg-[#E8E4D9] px-4 sm:px-8 py-5">
+                <div className="max-w-2xl mx-auto flex items-center justify-center gap-2.5">
+                  <span className="w-2 h-2 bg-zinc-400 rounded-full shrink-0" />
+                  <p className="text-[11px] uppercase tracking-widest text-zinc-500">
+                    you&apos;re offline — connect to the internet to chat
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Input bar */}
-            <div className="shrink-0 border-t border-zinc-400/40 bg-[#E8E4D9] px-4 sm:px-8 py-4">
+            {isOnline && <div className="shrink-0 border-t border-zinc-400/40 bg-[#E8E4D9] px-4 sm:px-8 py-4">
               <div className="max-w-2xl mx-auto">
                 <div className="border border-zinc-400/60 bg-[#F2EFE8]">
                   <textarea
@@ -721,7 +826,7 @@ export default function ChatPage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </div>}
 
           </div>
         </div>

@@ -1,0 +1,18 @@
+{
+  "name": "AI and Coffee Chat",
+  "short_name": "AI and Coffee",
+  "description": "Free AI chat powered by ILMU AI. Chat history stays on your device.",
+  "start_url": "/chat",
+  "display": "standalone",
+  "background_color": "#E8E4D9",
+  "theme_color": "#D94830",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo/logo_mascot.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
