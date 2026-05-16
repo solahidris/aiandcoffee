@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import { Geist_Mono } from "next/font/google";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Nav from "../components/Nav";
@@ -30,6 +32,15 @@ const MAX_SESSIONS    = 50;
 const MAX_MESSAGES    = 40;
 const SUMMARIZE_BATCH = 20;
 const CONTEXT_WINDOW  = 20;
+
+const NAV_LINKS = [
+  { label: "Home",    href: "/"        },
+  { label: "Events",  href: "/events"  },
+  { label: "Tools",   href: "/tools"   },
+  { label: "Slop",    href: "/slop"    },
+  { label: "Chat",    href: "/chat"    },
+  { label: "About",   href: "/about"   },
+];
 
 function uid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
@@ -92,6 +103,7 @@ export default function ChatPage() {
   const [isStreaming, setIsStreaming]   = useState(false);
   const [input, setInput]               = useState("");
   const [sidebarOpen, setSidebarOpen]   = useState(true);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [infoOpen, setInfoOpen]         = useState(false);
   const [mounted, setMounted]           = useState(false);
   const [deletingId, setDeletingId]     = useState<string | null>(null);
@@ -117,7 +129,7 @@ export default function ChatPage() {
     });
   }, []);
 
-  // ── Mount: load from localStorage ──
+  // ── Mount ──
 
   useEffect(() => {
     setMounted(true);
@@ -137,12 +149,16 @@ export default function ChatPage() {
       setMessages(active.messages);
       setSummary(active.summary);
 
-      if (localStorage.getItem(S_SIDEBAR) === "closed") setSidebarOpen(false);
+      // On mobile default sidebar closed; on desktop respect saved state
+      if (typeof window !== "undefined" && window.innerWidth < 640) {
+        setSidebarOpen(false);
+      } else if (localStorage.getItem(S_SIDEBAR) === "closed") {
+        setSidebarOpen(false);
+      }
       setInfoOpen(localStorage.getItem(S_INFO_CLOSED) !== "true");
-    } catch { /* localStorage unavailable */ }
+    } catch { /* */ }
   }, []);
 
-  // Persist active id + sidebar state
   useEffect(() => {
     if (!mounted || !activeId) return;
     try { localStorage.setItem(S_ACTIVE, activeId); } catch { /* */ }
@@ -150,8 +166,18 @@ export default function ChatPage() {
 
   useEffect(() => {
     if (!mounted) return;
-    try { localStorage.setItem(S_SIDEBAR, sidebarOpen ? "open" : "closed"); } catch { /* */ }
+    // Only persist sidebar state on desktop
+    if (typeof window !== "undefined" && window.innerWidth >= 640) {
+      try { localStorage.setItem(S_SIDEBAR, sidebarOpen ? "open" : "closed"); } catch { /* */ }
+    }
   }, [sidebarOpen, mounted]);
+
+  // Lock body scroll when mobile nav/sidebar is open
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+    document.body.style.overflow = (mobileNavOpen || (isMobile && sidebarOpen)) ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileNavOpen, sidebarOpen]);
 
   // Auto-scroll
   useEffect(() => {
@@ -173,6 +199,7 @@ export default function ChatPage() {
     setMessages([]);
     setSummary("");
     setInput("");
+    setSidebarOpen(false); // close on mobile after new chat
     setTimeout(() => inputRef.current?.focus(), 50);
   }
 
@@ -183,7 +210,7 @@ export default function ChatPage() {
     setMessages(s.messages);
     setSummary(s.summary);
     setInput("");
-    if (typeof window !== "undefined" && window.innerWidth < 768) setSidebarOpen(false);
+    setSidebarOpen(false); // always close sidebar after switching (mobile + desktop toggle)
   }
 
   function deleteSession(id: string, e: React.MouseEvent) {
@@ -216,8 +243,6 @@ export default function ChatPage() {
     });
   }
 
-  // ── Info banner ──
-
   function closeInfo() {
     setInfoOpen(false);
     try { localStorage.setItem(S_INFO_CLOSED, "true"); } catch { /* */ }
@@ -240,9 +265,7 @@ export default function ChatPage() {
       });
       if (res.ok) {
         const data = await res.json() as { content?: string };
-        if (data.content && activeIdRef.current === sessionId) {
-          setSummary(data.content);
-        }
+        if (data.content && activeIdRef.current === sessionId) setSummary(data.content);
       }
     } catch { /* silent */ } finally { isSummarizing.current = false; }
   }, []);
@@ -260,7 +283,6 @@ export default function ChatPage() {
     setIsStreaming(true);
     setStreaming("");
 
-    // Auto-title on first message
     if (messages.length === 0) {
       const title = text.slice(0, 55);
       setSessions(prev => {
@@ -343,9 +365,9 @@ export default function ChatPage() {
 
   // ── Render ──
 
-  const isEmpty         = messages.length === 0 && !isStreaming;
-  const hasSummary      = summary.length > 0;
-  const activeSession   = sessions.find(s => s.id === activeId);
+  const isEmpty       = messages.length === 0 && !isStreaming;
+  const hasSummary    = summary.length > 0;
+  const activeSession = sessions.find(s => s.id === activeId);
 
   return (
     <>
@@ -361,15 +383,98 @@ export default function ChatPage() {
       </Head>
 
       <div className={`${geistMono.className} h-screen flex flex-col bg-[#E8E4D9] font-mono overflow-hidden`}>
-        <Nav active="chat" />
 
+        {/* ── Backdrops ── */}
+        {/* Sidebar backdrop (mobile) */}
+        <div
+          onClick={() => setSidebarOpen(false)}
+          className={`fixed inset-0 z-40 bg-zinc-900/40 sm:hidden transition-opacity duration-200 ${sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        />
+        {/* Site-nav backdrop (mobile) */}
+        <div
+          onClick={() => setMobileNavOpen(false)}
+          className={`fixed inset-0 z-40 bg-zinc-900/40 sm:hidden transition-opacity duration-200 ${mobileNavOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        />
+
+        {/* ── Desktop nav (hidden on mobile) ── */}
+        <div className="hidden sm:block shrink-0">
+          <Nav active="chat" />
+        </div>
+
+        {/* ── Mobile header (hidden on desktop) ── */}
+        <div className="sm:hidden shrink-0 flex items-center justify-between px-4 py-4 border-b border-zinc-400/40 bg-[#E8E4D9]">
+          {/* Left: open chat sidebar */}
+          <button
+            onClick={() => setSidebarOpen(v => !v)}
+            className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-colors"
+            aria-label="Chat history"
+          >
+            <IconMenu />
+          </button>
+
+          {/* Centre: chat title */}
+          <span className="flex-1 text-[11px] uppercase tracking-widest text-zinc-600 text-center truncate px-4">
+            {activeSession?.title ?? "New Chat"}
+          </span>
+
+          {/* Right: site nav hamburger */}
+          <button
+            onClick={() => setMobileNavOpen(true)}
+            className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-colors"
+            aria-label="Menu"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* ── Mobile site-nav sheet (slides from right) ── */}
+        <div className={`fixed top-0 right-0 z-50 h-full w-72 bg-[#E8E4D9] border-l border-zinc-400/40 flex flex-col sm:hidden transition-transform duration-300 ease-in-out ${mobileNavOpen ? "translate-x-0" : "translate-x-full"}`}>
+          <div className="flex items-center justify-between px-6 py-6 border-b border-zinc-400/40">
+            <div className="flex items-center gap-2">
+              <Image src="/logo/logo_mascot.png" alt="AI and Coffee" width={28} height={28} />
+              <span className="text-xs uppercase tracking-widest text-zinc-700">AI and Coffee</span>
+            </div>
+            <button onClick={() => setMobileNavOpen(false)} className="text-zinc-500 hover:text-zinc-900 transition-colors p-1" aria-label="Close menu">
+              <IconX size={16} />
+            </button>
+          </div>
+          <div className="flex flex-col px-6 pt-8 gap-1">
+            {NAV_LINKS.map(({ label, href }) =>
+              href === "/chat" ? (
+                <span key={href} className="text-2xl font-bold tracking-tighter text-[#D94830] py-2">{label}</span>
+              ) : (
+                <Link key={href} href={href} onClick={() => setMobileNavOpen(false)} className="text-2xl font-bold tracking-tighter text-zinc-800 hover:text-[#D94830] transition-colors py-2">
+                  {label}
+                </Link>
+              )
+            )}
+          </div>
+          <div className="mt-auto px-6 py-8 border-t border-zinc-400/40 space-y-4">
+            <a href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi" target="_blank" rel="noopener noreferrer"
+              className="block w-full border-2 border-[#D94830] bg-[#D94830] px-4 py-3 text-xs uppercase tracking-widest text-white text-center hover:bg-transparent hover:text-[#D94830] transition-colors">
+              Join WhatsApp
+            </a>
+            <p className="text-xs text-zinc-500">only rule: be nice</p>
+          </div>
+        </div>
+
+        {/* ── Main layout ── */}
         <div className="flex-1 flex overflow-hidden">
 
           {/* ── Sidebar ── */}
-          <aside className={`shrink-0 flex flex-col border-r border-zinc-400/40 bg-[#F2EFE8] transition-all duration-200 overflow-hidden ${sidebarOpen ? "w-64" : "w-14"}`}>
+          {/* Mobile: fixed overlay, slides from left. Desktop: inline, collapsible. */}
+          <aside className={`
+            fixed sm:relative inset-y-0 left-0 z-50 sm:z-auto
+            flex flex-col border-r border-zinc-400/40 bg-[#F2EFE8]
+            w-64 shrink-0
+            transition-transform sm:transition-all duration-200
+            ${sidebarOpen ? "translate-x-0 sm:w-64" : "-translate-x-full sm:translate-x-0 sm:w-14"}
+          `}>
 
-            {/* Header row */}
-            <div className={`flex items-center gap-2 px-3 py-3 border-b border-zinc-400/30 ${sidebarOpen ? "justify-between" : "justify-center"}`}>
+            {/* Sidebar header */}
+            <div className={`flex items-center gap-2 px-3 py-3 border-b border-zinc-400/30 ${sidebarOpen ? "justify-between" : "sm:justify-center"}`}>
               {sidebarOpen && <span className="text-[10px] uppercase tracking-widest text-zinc-500 select-none">Chats</span>}
               <button
                 onClick={() => setSidebarOpen(v => !v)}
@@ -381,7 +486,7 @@ export default function ChatPage() {
             </div>
 
             {/* New chat */}
-            <div className={`px-3 py-3 border-b border-zinc-400/30 ${sidebarOpen ? "" : "flex justify-center"}`}>
+            <div className={`px-3 py-3 border-b border-zinc-400/30 ${sidebarOpen ? "" : "sm:flex sm:justify-center"}`}>
               <button
                 onClick={newChat}
                 title="New Chat"
@@ -403,9 +508,7 @@ export default function ChatPage() {
                     key={s.id}
                     onClick={() => switchSession(s)}
                     className={`group relative flex flex-col px-4 py-2.5 cursor-pointer transition-colors border-l-2 ${
-                      s.id === activeId
-                        ? "bg-[#E8E4D9] border-[#D94830]"
-                        : "hover:bg-[#E8E4D9] border-transparent"
+                      s.id === activeId ? "bg-[#E8E4D9] border-[#D94830]" : "hover:bg-[#E8E4D9] border-transparent"
                     }`}
                   >
                     <span className="text-[11px] text-zinc-700 truncate pr-6 leading-tight">{s.title}</span>
@@ -427,9 +530,7 @@ export default function ChatPage() {
             {/* Sidebar footer */}
             {sidebarOpen && (
               <div className="border-t border-zinc-400/30 px-4 py-3 shrink-0">
-                <p className="text-[9px] text-zinc-400 leading-relaxed">
-                  all chats stored locally<br />in your browser only
-                </p>
+                <p className="text-[9px] text-zinc-400 leading-relaxed">all chats stored locally<br />in your browser only</p>
                 <button
                   onClick={() => setInfoOpen(v => !v)}
                   className="mt-1.5 text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors"
@@ -440,24 +541,22 @@ export default function ChatPage() {
             )}
           </aside>
 
-          {/* ── Main area ── */}
-          <div className="flex-1 flex flex-col overflow-hidden">
+          {/* ── Main chat area ── */}
+          <div className="flex-1 flex flex-col overflow-hidden min-w-0">
 
             {/* Info banner */}
             {infoOpen && (
-              <div className="shrink-0 border-b border-zinc-400/40 bg-[#F2EFE8] px-6 py-4">
+              <div className="shrink-0 border-b border-zinc-400/40 bg-[#F2EFE8] px-5 py-4">
                 <div className="max-w-2xl flex items-start justify-between gap-6">
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-[#D94830] mb-2">how this works</p>
                     <div className="space-y-1">
                       {[
-                        "your chats live only in your browser — localStorage, nothing on our servers",
+                        "your chats live only in your browser — nothing on our servers",
                         "messages go directly from your browser to ILMU AI for processing",
                         "older messages are auto-compressed into a local summary for context",
                         "free · no account · no sign-in · delete chats anytime",
-                      ].map(item => (
-                        <p key={item} className="text-[11px] text-zinc-500">· {item}</p>
-                      ))}
+                      ].map(item => <p key={item} className="text-[11px] text-zinc-500">· {item}</p>)}
                     </div>
                   </div>
                   <button onClick={closeInfo} className="shrink-0 text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors mt-1">
@@ -467,14 +566,11 @@ export default function ChatPage() {
               </div>
             )}
 
-            {/* Chat title bar (shown once there are messages) */}
+            {/* Desktop chat title bar (hidden on mobile — title is in the mobile header) */}
             {activeSession && !isEmpty && (
-              <div className="shrink-0 border-b border-zinc-400/40 px-6 py-3 flex items-center justify-between">
+              <div className="hidden sm:flex shrink-0 border-b border-zinc-400/40 px-6 py-3 items-center justify-between">
                 <span className="text-[11px] uppercase tracking-widest text-zinc-500 truncate">{activeSession.title}</span>
-                <button
-                  onClick={newChat}
-                  className="shrink-0 ml-4 text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors"
-                >
+                <button onClick={newChat} className="shrink-0 ml-4 text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
                   + new chat
                 </button>
               </div>
@@ -493,10 +589,7 @@ export default function ChatPage() {
                       powered by ILMU AI · free · stored locally
                     </p>
                     {!infoOpen && (
-                      <button
-                        onClick={() => setInfoOpen(true)}
-                        className="mt-1 text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors"
-                      >
+                      <button onClick={() => setInfoOpen(true)} className="mt-1 text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
                         how does this work? →
                       </button>
                     )}
@@ -513,7 +606,7 @@ export default function ChatPage() {
 
                 {messages.map(msg => (
                   <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                    <div className={`flex flex-col gap-1 max-w-[82%] sm:max-w-[75%] ${msg.role === "user" ? "items-end" : "items-start"}`}>
+                    <div className={`flex flex-col gap-1 max-w-[85%] sm:max-w-[75%] ${msg.role === "user" ? "items-end" : "items-start"}`}>
                       {msg.role === "assistant" && (
                         <span className="text-[9px] uppercase tracking-widest text-zinc-400 px-1">AI and Coffee Chat</span>
                       )}
@@ -548,7 +641,7 @@ export default function ChatPage() {
                 {/* Streaming bubble */}
                 {isStreaming && (
                   <div className="flex justify-start">
-                    <div className="flex flex-col gap-1 max-w-[82%] sm:max-w-[75%] items-start">
+                    <div className="flex flex-col gap-1 max-w-[85%] sm:max-w-[75%] items-start">
                       <span className="text-[9px] uppercase tracking-widest text-zinc-400 px-1">AI and Coffee Chat</span>
                       <div className="px-4 py-3 text-sm leading-relaxed bg-[#F2EFE8] border border-zinc-400/60 text-zinc-800 whitespace-pre-wrap break-words">
                         {streaming || (
@@ -606,8 +699,8 @@ export default function ChatPage() {
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </>
