@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Geist_Mono } from "next/font/google";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Nav from "../components/Nav";
+import ReactMarkdown from "react-markdown";
 
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
@@ -712,12 +713,36 @@ export default function ChatPage() {
                       {msg.role === "assistant" && (
                         <span className="text-[9px] uppercase tracking-widest text-zinc-400 px-1">AI and Coffee Chat</span>
                       )}
-                      <div className={`px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap break-words ${
+                      <div className={`px-4 py-3 text-sm leading-relaxed break-words ${
                         msg.role === "user"
                           ? "bg-[#171717] text-white"
                           : "bg-[#F2EFE8] border border-zinc-400/60 text-zinc-800"
                       }`}>
-                        {msg.content}
+                        {msg.role === "user" ? (
+                          <span className="whitespace-pre-wrap">{msg.content}</span>
+                        ) : (
+                          <ReactMarkdown
+                            components={{
+                              p:      ({ children }) => <p className="mb-3 last:mb-0">{children}</p>,
+                              strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+                              em:     ({ children }) => <em className="italic">{children}</em>,
+                              ul:     ({ children }) => <ul className="list-disc pl-5 mb-3 space-y-1">{children}</ul>,
+                              ol:     ({ children }) => <ol className="list-decimal pl-5 mb-3 space-y-1">{children}</ol>,
+                              li:     ({ children }) => <li className="leading-relaxed">{children}</li>,
+                              code:   ({ children, className }) => className
+                                ? <code className="block bg-zinc-200/70 px-3 py-2 text-xs font-mono rounded my-2 overflow-x-auto whitespace-pre">{children}</code>
+                                : <code className="bg-zinc-200/70 px-1 py-0.5 text-xs font-mono rounded">{children}</code>,
+                              pre:    ({ children }) => <pre className="my-2">{children}</pre>,
+                              blockquote: ({ children }) => <blockquote className="border-l-2 border-zinc-400 pl-3 text-zinc-600 italic my-2">{children}</blockquote>,
+                              a:      ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#D94830] transition-colors">{children}</a>,
+                              h1:     ({ children }) => <h1 className="font-bold text-base mb-2">{children}</h1>,
+                              h2:     ({ children }) => <h2 className="font-bold text-sm mb-2">{children}</h2>,
+                              h3:     ({ children }) => <h3 className="font-semibold text-sm mb-1">{children}</h3>,
+                            }}
+                          >
+                            {msg.content}
+                          </ReactMarkdown>
+                        )}
                       </div>
                       <div className="flex items-center gap-3 px-1">
                         <span className="text-[9px] text-zinc-400">{fmt(msg.timestamp)}</span>
@@ -745,8 +770,25 @@ export default function ChatPage() {
                   <div className="flex justify-start">
                     <div className="flex flex-col gap-1 max-w-[85%] sm:max-w-[75%] items-start">
                       <span className="text-[9px] uppercase tracking-widest text-zinc-400 px-1">AI and Coffee Chat</span>
-                      <div className="px-4 py-3 text-sm leading-relaxed bg-[#F2EFE8] border border-zinc-400/60 text-zinc-800 whitespace-pre-wrap break-words">
-                        {streaming || (
+                      <div className="px-4 py-3 text-sm leading-relaxed bg-[#F2EFE8] border border-zinc-400/60 text-zinc-800 break-words">
+                        {streaming ? (
+                          <ReactMarkdown
+                            components={{
+                              p:      ({ children }) => <p className="mb-3 last:mb-0">{children}</p>,
+                              strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+                              em:     ({ children }) => <em className="italic">{children}</em>,
+                              ul:     ({ children }) => <ul className="list-disc pl-5 mb-3 space-y-1">{children}</ul>,
+                              ol:     ({ children }) => <ol className="list-decimal pl-5 mb-3 space-y-1">{children}</ol>,
+                              li:     ({ children }) => <li className="leading-relaxed">{children}</li>,
+                              code:   ({ children, className }) => className
+                                ? <code className="block bg-zinc-200/70 px-3 py-2 text-xs font-mono rounded my-2 overflow-x-auto whitespace-pre">{children}</code>
+                                : <code className="bg-zinc-200/70 px-1 py-0.5 text-xs font-mono rounded">{children}</code>,
+                              pre:    ({ children }) => <pre className="my-2">{children}</pre>,
+                            }}
+                          >
+                            {streaming}
+                          </ReactMarkdown>
+                        ) : (
                           <span className="inline-flex gap-1 items-center">
                             <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-pulse" />
                             <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-pulse" style={{ animationDelay: "150ms" }} />
