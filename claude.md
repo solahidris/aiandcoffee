@@ -53,6 +53,7 @@ None. Just a WhatsApp group. No plans to expand anytime soon. We'll only think a
 | `/tools` | `pages/tools/index.tsx` | AI tools directory |
 | `/tools/og-image` | `pages/tools/og-image.tsx` | OG image generator tool |
 | `/slop` | `pages/slop.tsx` | One Slop Centre — AI-powered slop tools |
+| `/chat` | `pages/chat.tsx` | Free AI chat powered by ILMU API, context stored in localStorage |
 | `/about` | `pages/about.tsx` | About page |
 
 ## API Routes
@@ -69,6 +70,7 @@ All routes use `export const runtime = 'edge'`.
 | `/api/explain` | `pages/api/explain.ts` | Explains topic via Malaysian persona (6 personas) |
 | `/api/slop-count` | `pages/api/slop-count.ts` | Reads total slop count from Cloudflare KV |
 | `/api/thread-chain` | `pages/api/thread-chain.ts` | Generates viral Threads post chain via ILMU API |
+| `/api/chat` | `pages/api/chat.ts` | Streaming + non-streaming chat proxy via ILMU API (used by `/chat` page) |
 | `/api/sitemap` | `pages/api/sitemap.ts` | Serves sitemap.xml (rewritten from `/sitemap.xml`) |
 
 ## Shared Libraries

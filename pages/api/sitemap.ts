@@ -8,6 +8,7 @@ const PAGES = [
   { url: '/tools',           priority: '0.8', changefreq: 'weekly'  },
   { url: '/tools/og-image',  priority: '0.7', changefreq: 'monthly' },
   { url: '/slop',            priority: '0.8', changefreq: 'weekly'  },
+  { url: '/chat',            priority: '0.8', changefreq: 'weekly'  },
   { url: '/about',           priority: '0.7', changefreq: 'monthly' },
 ];
 

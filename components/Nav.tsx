@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-type Page = "home" | "events" | "tools" | "slop" | "about";
+type Page = "home" | "events" | "tools" | "slop" | "about" | "chat";
 
 const LINKS: { label: string; href: string; page: Page }[] = [
-  { label: "Events",       href: "/events",        page: "events" },
-  { label: "Tools",        href: "/tools",         page: "tools"  },
-  { label: "Slop",   href: "/slop",   page: "slop"  },
-  { label: "About",  href: "/about",  page: "about" },
+  { label: "Events",  href: "/events",  page: "events" },
+  { label: "Tools",   href: "/tools",   page: "tools"  },
+  { label: "Slop",    href: "/slop",    page: "slop"   },
+  { label: "Chat",    href: "/chat",    page: "chat"   },
+  { label: "About",   href: "/about",   page: "about"  },
 ];
 
 const SHEET_LINKS: { label: string; href: string; page: Page }[] = [
@@ -16,7 +17,8 @@ const SHEET_LINKS: { label: string; href: string; page: Page }[] = [
   { label: "Events",  href: "/events",  page: "events" },
   { label: "Tools",   href: "/tools",   page: "tools"  },
   { label: "Slop",    href: "/slop",    page: "slop"   },
-  { label: "About",        href: "/about",         page: "about"  },
+  { label: "Chat",    href: "/chat",    page: "chat"   },
+  { label: "About",   href: "/about",   page: "about"  },
 ];
 
 export default function Nav({ active }: { active: Page }) {
