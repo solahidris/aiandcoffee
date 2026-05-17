@@ -147,7 +147,7 @@ export default function Home() {
           </div>
 
           {/* Bottom corner note — desktop only */}
-          <div className="hidden sm:block absolute bottom-[4.5rem] right-16 max-w-[200px] text-right animate-stagger-in z-10" style={{ animationDelay: "900ms" }}>
+          <div className="hidden sm:block absolute bottom-[72px] right-16 max-w-[200px] text-right animate-stagger-in z-10" style={{ animationDelay: "900ms" }}>
             <p className="text-xs text-zinc-500 leading-relaxed">
               no social media<br />
               just whatsapp<br />
