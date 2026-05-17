@@ -907,75 +907,38 @@ export default function SlopCentre() {
             )}
 
             {mode === "image-gen" && (
-              <>
-                <div className="border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea
-                    ref={imageRef}
-                    value={imagePrompt}
-                    onChange={(e) => setImagePrompt(e.target.value.slice(0, 500))}
-                    onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleImageGen(); }}
-                    placeholder="describe your image... e.g. 'a robot barista making espresso in a neon-lit café, cyberpunk illustration'"
-                    rows={4}
-                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                  />
-                  <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                    <span className={`text-[10px] uppercase tracking-widest ${imagePrompt.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                      {imagePrompt.length}/500
-                    </span>
-                    <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to generate</span>
-                  </div>
-                </div>
+              <div className="flex flex-col lg:flex-row gap-8">
 
-                <div className="mt-4">
-                  <button onClick={handleImageGen} disabled={!imagePrompt.trim() || imageLoading}
-                    className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
-                    {imageLoading ? "generating..." : "generate image →"}
-                  </button>
-                </div>
-
-                {imageError && <ErrorBox message={imageError} />}
-
-                {imageLoading && (
-                  <div className="mt-8 border border-zinc-400/40 bg-[#F2EFE8] aspect-square max-w-lg flex items-center justify-center">
-                    <div className="text-center space-y-3">
-                      <div className="flex items-end justify-center gap-1 h-8">
-                        {[0, 0.15, 0.3, 0.15, 0].map((delay, i) => (
-                          <div key={i} className="w-1 bg-[#D94830] rounded-full"
-                            style={{ height: 32, transformOrigin: "bottom", animation: `minibar 0.7s ease-in-out ${delay}s infinite` }} />
-                        ))}
-                      </div>
-                      <p className="text-[10px] uppercase tracking-widest text-zinc-400">cooking your image</p>
+                {/* Left: prompt + controls */}
+                <div className="lg:w-80 shrink-0">
+                  <div className="border border-zinc-400/60 bg-[#F2EFE8]">
+                    <textarea
+                      ref={imageRef}
+                      value={imagePrompt}
+                      onChange={(e) => setImagePrompt(e.target.value.slice(0, 500))}
+                      onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleImageGen(); }}
+                      placeholder="describe your image... e.g. 'a robot barista making espresso in a neon-lit café, cyberpunk illustration'"
+                      rows={5}
+                      className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
+                    />
+                    <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
+                      <span className={`text-[10px] uppercase tracking-widest ${imagePrompt.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>
+                        {imagePrompt.length}/500
+                      </span>
+                      <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter</span>
                     </div>
                   </div>
-                )}
 
-                {imageUrl && (
-                  <div className="mt-8 animate-stagger-in">
-                    <div className="border border-zinc-400/40 bg-[#F2EFE8] p-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={imageUrl} alt={imagePrompt} className="w-full max-w-lg block" />
-                    </div>
-                    <div className="mt-4 flex items-center gap-4">
-                      <a
-                        href={imageUrl}
-                        download="ai-and-coffee.png"
-                        className="border-2 border-zinc-800 px-6 py-3 text-xs uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
-                      >
-                        download ↓
-                      </a>
-                      <button
-                        onClick={() => { setImageUrl(null); setImagePrompt(""); imageRef.current?.focus(); }}
-                        className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
-                      >
-                        generate again
-                      </button>
-                    </div>
-                    <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by ai-1-coffee · ai and coffee image slop ai</p>
+                  <div className="mt-4">
+                    <button onClick={handleImageGen} disabled={!imagePrompt.trim() || imageLoading}
+                      className="w-full border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
+                      {imageLoading ? "generating..." : "generate image →"}
+                    </button>
                   </div>
-                )}
 
-                {!imageUrl && !imageError && !imageLoading && (
-                  <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
+                  {imageError && <ErrorBox message={imageError} />}
+
+                  <div className="mt-8 pt-6 border-t border-zinc-400/40 space-y-2">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">prompt ideas</p>
                     {[
                       "a robot barista making espresso in a neon-lit café, cyberpunk illustration",
@@ -989,8 +952,57 @@ export default function SlopCentre() {
                       </button>
                     ))}
                   </div>
-                )}
-              </>
+                </div>
+
+                {/* Right: image output */}
+                <div className="flex-1 min-w-0">
+                  {imageLoading && (
+                    <div className="border border-zinc-400/40 bg-[#F2EFE8] aspect-square w-full flex items-center justify-center">
+                      <div className="text-center space-y-3">
+                        <div className="flex items-end justify-center gap-1 h-8">
+                          {[0, 0.15, 0.3, 0.15, 0].map((delay, i) => (
+                            <div key={i} className="w-1 bg-[#D94830] rounded-full"
+                              style={{ height: 32, transformOrigin: "bottom", animation: `minibar 0.7s ease-in-out ${delay}s infinite` }} />
+                          ))}
+                        </div>
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-400">cooking your image</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {imageUrl && (
+                    <div className="animate-stagger-in">
+                      <div className="border border-zinc-400/40 bg-[#F2EFE8] p-2">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={imageUrl} alt={imagePrompt} className="w-full block" />
+                      </div>
+                      <div className="mt-4 flex items-center gap-4">
+                        <a
+                          href={imageUrl}
+                          download="ai-and-coffee.png"
+                          className="border-2 border-zinc-800 px-6 py-3 text-xs uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
+                        >
+                          download ↓
+                        </a>
+                        <button
+                          onClick={() => { setImageUrl(null); setImagePrompt(""); imageRef.current?.focus(); }}
+                          className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
+                        >
+                          generate again
+                        </button>
+                      </div>
+                      <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by ai-1-coffee · ai and coffee image slop ai</p>
+                    </div>
+                  )}
+
+                  {!imageUrl && !imageLoading && (
+                    <div className="border border-zinc-400/20 aspect-square w-full flex items-center justify-center">
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-300">your image will appear here</p>
+                    </div>
+                  )}
+                </div>
+
+              </div>
             )}
 
             </div>{/* end key={mode} animated wrapper */}
