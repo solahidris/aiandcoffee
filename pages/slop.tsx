@@ -467,10 +467,10 @@ export default function SlopCentre() {
           <div className="max-w-2xl">
 
             {/* Tabs */}
-            <div className="flex flex-wrap gap-2 mb-8 animate-stagger-in" style={{ animationDelay: "550ms" }}>
+            <div className="flex gap-2 mb-8 animate-stagger-in overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" style={{ animationDelay: "550ms" }}>
               {TABS.map(({ mode: m, label }) => (
                 <button key={m} onClick={() => switchMode(m)}
-                  className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
+                  className={`shrink-0 px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
                     mode === m ? "border-[#D94830] bg-[#D94830] text-white" : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
                   }`}>
                   {label}
