@@ -464,10 +464,9 @@ export default function SlopCentre() {
 
 
         <div className="relative z-10 px-6 sm:px-16 pb-6">
-          <div className="max-w-2xl">
 
-            {/* Tabs */}
-            <div className="flex flex-wrap gap-2 mb-8 animate-stagger-in" style={{ animationDelay: "550ms" }}>
+          {/* Tabs — full width */}
+          <div className="flex flex-wrap gap-2 mb-8 animate-stagger-in" style={{ animationDelay: "550ms" }}>
               {TABS.map(({ mode: m, label }) => (
                 <button key={m} onClick={() => switchMode(m)}
                   className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
@@ -476,8 +475,9 @@ export default function SlopCentre() {
                   {label}
                 </button>
               ))}
-            </div>
+          </div>
 
+          <div className="max-w-2xl">
             {/* Output area — pb-44 to clear fixed input bar */}
             <div key={mode} className="animate-stagger-in pb-44">
 
