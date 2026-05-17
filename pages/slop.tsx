@@ -970,7 +970,7 @@ export default function SlopCentre() {
                         generate again
                       </button>
                     </div>
-                    <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by flux-1-schnell · cloudflare workers ai</p>
+                    <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by ai-1-coffee · ai and coffee image slop ai</p>
                   </div>
                 )}
 
