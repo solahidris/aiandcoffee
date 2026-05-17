@@ -40,7 +40,7 @@ const TABS: { mode: Mode; label: string; query: string }[] = [
   { mode: "standup",       label: "Standup BS",        query: "standup"          },
   { mode: "explain",       label: "Explain Like I'm",  query: "explain"          },
   { mode: "thread-chain",  label: "Viral Thread",      query: "thread-chain"     },
-  { mode: "image-gen",     label: "Image Gen",         query: "image-gen"        },
+  { mode: "image-gen",     label: "Jpeg Slop",         query: "image-gen"        },
 ];
 
 const PERSONAS: { value: string; label: string }[] = [
