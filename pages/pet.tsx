@@ -260,13 +260,13 @@ function drawSprite(canvas: HTMLCanvasElement, grid: Grid) {
 // ── Page ──────────────────────────────────────────────────────
 export default function Pet() {
   const [mode,      setMode]      = useState<Mode>("draw");
-  const [grid,      setGrid]      = useState<Grid>(empty);
+  const [grid,      setGrid]      = useState<Grid>(() => tplBird());
   const [selColor,  setSelColor]  = useState<string|null>("#111111");
   const [erasing,   setErasing]   = useState(false);
   const [drawing,   setDrawing]   = useState(false);
   const [hover,     setHover]     = useState<[number,number]|null>(null);
-  const [catName,   setCatName]   = useState("Unnamed");
-  const [nameInput, setNameInput] = useState("Unnamed");
+  const [catName,   setCatName]   = useState("petslop");
+  const [nameInput, setNameInput] = useState("petslop");
   const [editing,   setEditing]   = useState(false);
   const [petCount,  setPetCount]  = useState(0);
   const [heart,     setHeart]     = useState(false);
@@ -383,7 +383,7 @@ export default function Pet() {
   }
 
   function saveName() {
-    const n = nameInput.trim() || "Unnamed";
+    const n = nameInput.trim() || "petslop";
     setCatName(n); setNameInput(n);
     localStorage.setItem("pet_name", n);
     setEditing(false);
@@ -561,7 +561,7 @@ export default function Pet() {
             </div>
 
             {/* Floor */}
-            <div ref={floorRef} className="relative h-40 border-t border-zinc-400/30 bg-[#DEDAD0] overflow-hidden shrink-0">
+            <div ref={floorRef} className="relative h-40 overflow-hidden shrink-0">
               <div
                 className="absolute cursor-pointer select-none"
                 style={{ left: catX, bottom: hopY }}
