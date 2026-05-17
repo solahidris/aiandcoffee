@@ -722,12 +722,12 @@ export default function SlopCentre() {
               </div>
             )}
 
-            {/* Text inputs + generate button */}
-            <div className="flex gap-3 items-end">
+            {/* Input box with button inside — matches chat page pattern */}
+            <div className="border border-zinc-400/60 bg-[#F2EFE8]">
 
-              {/* Roast by Threads — text input */}
+              {/* Roast by Threads — @ username */}
               {mode === "threads" && (
-                <div className="flex-1 border border-zinc-400/60 bg-[#F2EFE8] flex items-center">
+                <div className="flex items-center">
                   <span className="pl-4 text-sm text-zinc-400 select-none">@</span>
                   <input ref={threadsRef} type="text" value={threadsUsername}
                     onChange={(e) => setThreadsUsername(e.target.value.replace(/\s/g, ""))}
@@ -737,88 +737,87 @@ export default function SlopCentre() {
                 </div>
               )}
 
-              {/* Standup — optional context textarea */}
+              {/* Standup — optional context */}
               {mode === "standup" && (
-                <div className="flex-1 border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea value={standupContext}
-                    onChange={(e) => setStandupContext(e.target.value.slice(0, 300))}
-                    onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleStandup(); }}
-                    placeholder="optional: anything specific to spin?"
-                    rows={2} className="w-full bg-transparent px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
-                </div>
+                <textarea value={standupContext}
+                  onChange={(e) => setStandupContext(e.target.value.slice(0, 300))}
+                  onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleStandup(); }}
+                  placeholder="optional: anything specific to spin?"
+                  rows={2} className="w-full bg-transparent px-4 pt-3 pb-1 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
               )}
 
-              {/* All other modes — textarea */}
+              {/* All other modes */}
               {mode !== "threads" && mode !== "standup" && (
-                <div className="flex-1 border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea
-                    ref={mode === "roast" ? roastRef : mode === "pitch" ? pitchRef : mode === "explain" ? explainRef : mode === "thread-chain" ? threadChainRef : imageRef}
-                    value={mode === "roast" ? roastInput : mode === "pitch" ? pitchInput : mode === "explain" ? explainTopic : mode === "thread-chain" ? threadChainTopic : imagePrompt}
-                    onChange={(e) => {
-                      const v = e.target.value;
-                      if (mode === "roast") setRoastInput(v.slice(0, 500));
-                      else if (mode === "pitch") setPitchInput(v.slice(0, 500));
-                      else if (mode === "explain") setExplainTopic(v.slice(0, 300));
-                      else if (mode === "thread-chain") setThreadChainTopic(v.slice(0, 300));
-                      else if (mode === "image-gen") setImagePrompt(v.slice(0, 500));
-                    }}
-                    onKeyDown={(e) => {
-                      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-                        if (mode === "roast") handleRoast();
-                        else if (mode === "pitch") handlePitch();
-                        else if (mode === "explain") handleExplain();
-                        else if (mode === "thread-chain") handleThreadChain();
-                        else if (mode === "image-gen") handleImageGen();
-                      }
-                    }}
-                    placeholder={
-                      mode === "roast" ? "paste your job title, bio, startup idea..." :
-                      mode === "pitch" ? "describe your startup idea in plain english..." :
-                      mode === "explain" ? "what do you want explained?" :
-                      mode === "thread-chain" ? "what's the thread about?" :
-                      "describe your image..."
+                <textarea
+                  ref={mode === "roast" ? roastRef : mode === "pitch" ? pitchRef : mode === "explain" ? explainRef : mode === "thread-chain" ? threadChainRef : imageRef}
+                  value={mode === "roast" ? roastInput : mode === "pitch" ? pitchInput : mode === "explain" ? explainTopic : mode === "thread-chain" ? threadChainTopic : imagePrompt}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    if (mode === "roast") setRoastInput(v.slice(0, 500));
+                    else if (mode === "pitch") setPitchInput(v.slice(0, 500));
+                    else if (mode === "explain") setExplainTopic(v.slice(0, 300));
+                    else if (mode === "thread-chain") setThreadChainTopic(v.slice(0, 300));
+                    else if (mode === "image-gen") setImagePrompt(v.slice(0, 500));
+                  }}
+                  onKeyDown={(e) => {
+                    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+                      if (mode === "roast") handleRoast();
+                      else if (mode === "pitch") handlePitch();
+                      else if (mode === "explain") handleExplain();
+                      else if (mode === "thread-chain") handleThreadChain();
+                      else if (mode === "image-gen") handleImageGen();
                     }
-                    rows={2}
-                    className="w-full bg-transparent px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                  />
-                </div>
+                  }}
+                  placeholder={
+                    mode === "roast" ? "paste your job title, bio, startup idea..." :
+                    mode === "pitch" ? "describe your startup idea in plain english..." :
+                    mode === "explain" ? "what do you want explained?" :
+                    mode === "thread-chain" ? "what's the thread about?" :
+                    "describe your image..."
+                  }
+                  rows={2}
+                  className="w-full bg-transparent px-4 pt-3 pb-1 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
+                />
               )}
 
-              {/* Generate button */}
-              <button
-                disabled={
-                  mode === "roast" ? (!roastInput.trim() || roastLoading) :
-                  mode === "threads" ? (!threadsUsername.trim() || threadsLoading) :
-                  mode === "pitch" ? (!pitchInput.trim() || pitchLoading) :
-                  mode === "standup" ? (!selectedMood || standupLoading) :
-                  mode === "explain" ? (!explainTopic.trim() || explainLoading) :
-                  mode === "thread-chain" ? (!threadChainTopic.trim() || threadChainLoading) :
-                  (!imagePrompt.trim() || imageLoading)
-                }
-                onClick={() => {
-                  if (mode === "roast") handleRoast();
-                  else if (mode === "threads") handleThreadsRoast();
-                  else if (mode === "pitch") handlePitch();
-                  else if (mode === "standup") handleStandup();
-                  else if (mode === "explain") handleExplain();
-                  else if (mode === "thread-chain") handleThreadChain();
-                  else if (mode === "image-gen") handleImageGen();
-                }}
-                className="w-9 h-9 shrink-0 bg-[#D94830] flex items-center justify-center text-white hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed rounded-sm"
-                aria-label="Generate"
-              >
-                {(mode === "roast" && roastLoading) || (mode === "threads" && threadsLoading) || (mode === "pitch" && pitchLoading) || (mode === "standup" && standupLoading) || (mode === "explain" && explainLoading) || (mode === "thread-chain" && threadChainLoading) || (mode === "image-gen" && imageLoading) ? (
-                  <span className="flex gap-0.5 items-center">
-                    <span className="w-1 h-1 bg-white rounded-full animate-pulse" />
-                    <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "150ms" }} />
-                    <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "300ms" }} />
-                  </span>
-                ) : (
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M8 13V3M3 8l5-5 5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )}
-              </button>
+              {/* Bottom row — hint + button inside the box */}
+              <div className="flex items-center justify-between px-3 pb-3">
+                <span className="text-[9px] uppercase tracking-widest text-zinc-400">⌘ + enter to generate</span>
+                <button
+                  disabled={
+                    mode === "roast" ? (!roastInput.trim() || roastLoading) :
+                    mode === "threads" ? (!threadsUsername.trim() || threadsLoading) :
+                    mode === "pitch" ? (!pitchInput.trim() || pitchLoading) :
+                    mode === "standup" ? (!selectedMood || standupLoading) :
+                    mode === "explain" ? (!explainTopic.trim() || explainLoading) :
+                    mode === "thread-chain" ? (!threadChainTopic.trim() || threadChainLoading) :
+                    (!imagePrompt.trim() || imageLoading)
+                  }
+                  onClick={() => {
+                    if (mode === "roast") handleRoast();
+                    else if (mode === "threads") handleThreadsRoast();
+                    else if (mode === "pitch") handlePitch();
+                    else if (mode === "standup") handleStandup();
+                    else if (mode === "explain") handleExplain();
+                    else if (mode === "thread-chain") handleThreadChain();
+                    else if (mode === "image-gen") handleImageGen();
+                  }}
+                  className="w-9 h-9 shrink-0 bg-[#D94830] flex items-center justify-center text-white hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed rounded-sm"
+                  aria-label="Generate"
+                >
+                  {(mode === "roast" && roastLoading) || (mode === "threads" && threadsLoading) || (mode === "pitch" && pitchLoading) || (mode === "standup" && standupLoading) || (mode === "explain" && explainLoading) || (mode === "thread-chain" && threadChainLoading) || (mode === "image-gen" && imageLoading) ? (
+                    <span className="flex gap-0.5 items-center">
+                      <span className="w-1 h-1 bg-white rounded-full animate-pulse" />
+                      <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "150ms" }} />
+                      <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "300ms" }} />
+                    </span>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 13V3M3 8l5-5 5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
+                </button>
+              </div>
 
             </div>
           </div>
