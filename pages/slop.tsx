@@ -426,7 +426,7 @@ export default function SlopCentre() {
         </div>
 
         {/* Slop counter — fixed bottom right, lifts above input bar for wide modes */}
-        <div className={`fixed ${mode === "image-gen" || mode === "thread-chain" ? "bottom-24" : "bottom-6"} right-6 z-30 bg-[#171717] px-4 py-3 text-right shadow-lg animate-stagger-in transition-all duration-300`} style={{ animationDelay: "700ms" }}>
+        <div className={`fixed ${mode === "image-gen" || mode === "thread-chain" ? "bottom-44" : "bottom-6"} right-6 z-50 bg-[#171717] px-4 py-3 text-right shadow-lg animate-stagger-in transition-all duration-300`} style={{ animationDelay: "700ms" }}>
           <p className="text-2xl sm:text-3xl font-bold text-white tracking-tighter leading-none">
             {slopCount !== null ? slopCount.toLocaleString() : "—"}
           </p>
@@ -789,8 +789,8 @@ export default function SlopCentre() {
 
         {/* ── Fixed bottom input bar (viral thread + image gen) ── */}
         {(mode === "thread-chain" || mode === "image-gen") && (
-          <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm">
-            <div className="px-6 sm:px-16 py-4 max-w-3xl mx-auto">
+          <div className="fixed bottom-0 left-0 right-0 z-40 pb-6 px-6 sm:px-16 flex justify-center pointer-events-none">
+            <div className="w-full max-w-2xl border border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm shadow-lg p-4 pointer-events-auto">
 
               {mode === "thread-chain" && (
                 <>
