@@ -156,10 +156,19 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const ownRaw: RawEvent[] = JSON.parse(fs.readFileSync(ownPath, "utf-8"));
 
     // Own events first so they appear at the top
-    events = [
+    const allParsed = [
       ...ownRaw.map((e) => parseEvent(e, todayYMD)),
       ...communityRaw.map((e) => parseEvent(e, todayYMD)),
     ];
+
+    // Deduplicate by RSVP link — same link = same event, keep first occurrence
+    const seenLinks = new Set<string>();
+    events = allParsed.filter((e) => {
+      if (!e.link) return true;
+      if (seenLinks.has(e.link)) return false;
+      seenLinks.add(e.link);
+      return true;
+    });
 
     for (const ev of events) {
       if (!ev.startDate || !ev.endDate) continue;

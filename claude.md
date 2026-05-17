@@ -33,7 +33,7 @@ None. Just a WhatsApp group. No plans to expand anytime soon. We'll only think a
 ## Links
 
 - **WhatsApp Group**: https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi
-- **Next Event**: https://luma.com/9f63qyq1
+- **Next Event**: https://luma.com/6axuvn1j
 
 ## Tech Stack
 
