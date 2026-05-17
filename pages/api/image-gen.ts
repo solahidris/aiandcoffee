@@ -43,10 +43,21 @@ export default async function handler(req: Request) {
     return new Response(JSON.stringify({ error: 'Image generation failed', detail }), { status: 502 });
   }
 
-  const imageBuffer = await res.arrayBuffer();
+  // CF REST API returns JSON: { result: { image: "<base64>" }, success: true }
+  const data = await res.json() as { result?: { image?: string }; success?: boolean };
+  const b64 = data.result?.image;
+  if (!b64) {
+    return new Response(JSON.stringify({ error: 'No image in response' }), { status: 502 });
+  }
+
+  // Decode base64 → binary in Edge Runtime
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
   await incrementSlopCount();
 
-  return new Response(imageBuffer, {
+  return new Response(bytes.buffer, {
     headers: {
       'Content-Type': 'image/png',
       'Cache-Control': 'no-store',
