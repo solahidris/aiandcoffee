@@ -65,6 +65,170 @@ function randomSprite(): Grid {
   return grid;
 }
 
+// ── Animal templates ──────────────────────────────────────────
+// All face LEFT (head at col 0), side-view, 16×16
+
+function tplCat(): Grid {
+  const B="#111111",Y="#FFD700",P="#FF99BB",n=null;
+  return [
+    [n,B,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,B,B,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [B,B,B,B,n,n,n,n,n,n,n,n,n,n,B,n],
+    [B,B,Y,B,n,n,n,n,n,n,n,n,n,B,B,n],
+    [B,P,B,B,n,n,n,n,n,n,n,n,B,B,n,n],
+    [n,B,B,B,n,n,n,n,n,n,n,B,B,n,n,n],
+    [n,n,B,B,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,n,B,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,n,B,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,n,n,B,B,B,B,B,B,B,n,n,n,n,n],
+    [n,n,n,n,B,B,B,B,B,B,B,n,n,n,n,n],
+    [n,n,n,n,B,n,B,n,B,n,B,n,n,n,n,n],
+    [n,n,n,n,B,n,B,n,B,n,B,n,n,n,n,n],
+    [n,n,n,n,B,n,B,n,B,n,B,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+  ];
+}
+
+function tplDog(): Grid {
+  const T="#C9A063",D="#8B5E3C",E="#111111",P="#FF99BB",n=null;
+  return [
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,D,D,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,D,D,T,T,n,n,n,n,n,n,n,n,n,n,n],
+    [D,D,T,E,T,T,n,n,n,n,n,n,n,n,n,n],
+    [D,D,T,T,T,T,n,n,n,n,n,n,n,n,n,n],
+    [n,T,T,T,T,T,T,n,n,n,n,n,n,n,T,n],
+    [P,T,T,T,T,T,n,n,n,n,n,n,n,T,T,n],
+    [n,n,T,T,T,T,T,T,T,T,T,T,T,n,n,n],
+    [n,n,n,T,T,T,T,T,T,T,T,T,n,n,n,n],
+    [n,n,n,T,T,T,T,T,T,T,T,T,n,n,n,n],
+    [n,n,n,n,T,T,T,T,T,T,T,n,n,n,n,n],
+    [n,n,n,n,T,n,T,n,T,n,T,n,n,n,n,n],
+    [n,n,n,n,T,n,T,n,T,n,T,n,n,n,n,n],
+    [n,n,n,n,T,n,T,n,T,n,T,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+  ];
+}
+
+function tplRabbit(): Grid {
+  const W="#CCCCCC",P="#FFB3C6",E="#111111",n=null;
+  return [
+    [n,W,P,n,W,P,n,n,n,n,n,n,n,n,n,n],
+    [n,W,P,n,W,P,n,n,n,n,n,n,n,n,n,n],
+    [n,W,P,n,W,P,n,n,n,n,n,n,n,n,n,n],
+    [n,W,P,n,W,P,n,n,n,n,n,n,n,n,n,n],
+    [W,W,W,W,W,W,W,n,n,n,n,n,n,n,n,n],
+    [W,W,W,E,W,W,W,W,n,n,n,n,n,n,n,n],
+    [W,W,W,W,W,n,n,n,n,n,n,n,n,n,W,n],
+    [n,n,W,W,W,W,W,W,W,W,W,W,n,n,W,n],
+    [n,n,n,W,W,W,W,W,W,W,W,W,n,n,n,n],
+    [n,n,n,W,W,W,W,W,W,W,W,W,n,n,n,n],
+    [n,n,n,n,W,W,W,W,W,W,W,n,n,n,n,n],
+    [n,n,n,n,W,n,W,n,W,n,W,n,n,n,n,n],
+    [n,n,n,n,W,n,W,n,W,n,W,n,n,n,n,n],
+    [n,n,n,n,W,n,W,n,W,n,W,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+  ];
+}
+
+function tplBird(): Grid {
+  const B="#4A90D9",Y="#FFD700",E="#111111",n=null;
+  return [
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,B,B,B,n,n,n,n,n,n,n,n,n,n],
+    [n,Y,n,B,E,B,B,n,n,n,n,n,n,n,n,n],
+    [Y,Y,B,B,B,B,B,B,B,B,B,n,n,n,n,n],
+    [n,n,B,B,B,B,B,B,B,B,B,B,B,n,n,n],
+    [n,n,n,B,B,B,B,B,B,B,B,B,B,B,n,n],
+    [n,n,n,n,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,n,n,n,B,B,B,B,B,n,n,n,n,n,n],
+    [n,n,n,n,n,n,Y,n,n,Y,n,n,n,n,n,n],
+    [n,n,n,n,n,n,Y,n,n,Y,n,n,n,n,n,n],
+    [n,n,n,n,n,Y,Y,n,Y,Y,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+  ];
+}
+
+function tplFish(): Grid {
+  const O="#F4A460",R="#D94830",E="#111111",n=null;
+  return [
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,R,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,R,R,n],
+    [n,n,O,O,O,O,O,O,O,O,O,O,O,R,R,n],
+    [O,O,O,E,O,O,O,O,O,O,O,O,O,R,R,n],
+    [O,O,O,O,O,O,O,O,O,O,O,O,O,R,R,n],
+    [n,n,O,O,O,O,R,O,O,O,O,O,O,R,R,n],
+    [n,n,n,n,O,O,O,O,O,O,O,O,O,R,R,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,R,R,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,R,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+  ];
+}
+
+function tplBear(): Grid {
+  const B="#8B5E3C",L="#C9A063",E="#111111",n=null;
+  return [
+    [n,n,B,B,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,B,B,B,B,n,n,n,n,n,n,n,n,n,n,n],
+    [B,B,B,B,B,B,n,n,n,n,n,n,n,n,n,n],
+    [B,B,E,B,B,B,n,n,n,n,n,n,n,n,n,n],
+    [B,B,B,B,B,B,n,n,n,n,n,n,n,n,n,n],
+    [n,B,L,L,B,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,B,B,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,B,B,B,B,B,B,B,B,B,B,B,n,n,n],
+    [n,n,B,B,B,B,B,B,B,B,B,B,B,n,n,n],
+    [n,n,n,B,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,n,B,B,B,B,B,B,B,B,B,n,n,n,n],
+    [n,n,n,n,B,n,B,n,B,n,B,n,n,n,n,n],
+    [n,n,n,n,B,n,B,n,B,n,B,n,n,n,n,n],
+    [n,n,n,n,B,B,B,B,B,B,B,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+    [n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n],
+  ];
+}
+
+const TEMPLATES = [
+  { name:"Cat",    grid: tplCat()    },
+  { name:"Dog",    grid: tplDog()    },
+  { name:"Rabbit", grid: tplRabbit() },
+  { name:"Bird",   grid: tplBird()   },
+  { name:"Fish",   grid: tplFish()   },
+  { name:"Bear",   grid: tplBear()   },
+];
+
+// ── Template thumbnail ────────────────────────────────────────
+function TemplateThumb({ grid }: { grid: Grid }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const PX = 3;
+  useEffect(() => {
+    const c = ref.current; if (!c) return;
+    const ctx = c.getContext("2d"); if (!ctx) return;
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, G*PX, G*PX);
+    for (let r = 0; r < G; r++) for (let col = 0; col < G; col++) {
+      const color = grid[r][col];
+      if (color) { ctx.fillStyle = color; ctx.fillRect(col*PX, r*PX, PX, PX); }
+    }
+  }, [grid]);
+  return (
+    <canvas ref={ref} width={G*PX} height={G*PX}
+      className="px block" style={{ width: G*PX, height: G*PX }} />
+  );
+}
+
 function drawEditor(canvas: HTMLCanvasElement, grid: Grid, hover: [number,number]|null, color: string|null) {
   const ctx = canvas.getContext("2d"); if (!ctx) return;
   ctx.clearRect(0, 0, G*CE, G*CE);
@@ -271,6 +435,21 @@ export default function Pet() {
 
               {/* Controls */}
               <div className="flex flex-col gap-6 min-w-[200px]">
+
+                {/* Templates */}
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">templates</p>
+                  <div className="flex flex-wrap gap-2">
+                    {TEMPLATES.map(({ name, grid: tg }) => (
+                      <button key={name} onClick={() => setGrid(tg.map(r => [...r]))}
+                        className="flex flex-col items-center gap-1 p-1.5 border border-zinc-400/40 hover:border-[#D94830] bg-[#F2EFE8] transition-colors"
+                        title={`Load ${name}`}>
+                        <TemplateThumb grid={tg} />
+                        <span className="text-[8px] uppercase tracking-widest text-zinc-500">{name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Tool */}
                 <div>
