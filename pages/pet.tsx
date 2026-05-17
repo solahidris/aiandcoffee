@@ -14,55 +14,62 @@ const _ = null;      // transparent
 
 type Px = string | null;
 
-// ── Sprite: 16×16, cat faces LEFT (nose at col 0, tail at col 15)
-// When walking LEFT → show as-is  (head on left, correct)
-// When walking RIGHT → scaleX(-1) wraps around canvas centre → head now on right
+// ── Sprite: 16×16, cat faces LEFT.
+// Walk LEFT → show as-is. Walk RIGHT → canvas scaleX(-1) around its centre.
+//
+// Head (rows 0-5, cols 0-3): compact + round
+//   row 0: ear tip (single pixel)
+//   rows 1-2: ear widening
+//   rows 2-5: head oval, eye at (3,1), nose at (4,0)
+// Neck (row 5-6): narrows to 2px before body
+// Body (rows 6-10, cols 3-11): wider oval
+// Tail (rows 2-5, cols 12-14): curves up from body-back
+// Legs (rows 10-13, cols 4,6,8,10): 4 legs, alternating in frame B
 
-// Walk frame A — front leg back, rear leg forward
 const WALK_A: Px[][] = [
-  [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-  [_,_,B,B,_,_,_,_,_,_,_,_,_,_,_,_],  // ← ear tip
-  [_,B,B,B,B,_,_,_,_,_,_,_,_,_,_,_],  // ← ear
-  [B,B,B,B,B,B,_,_,_,_,_,_,_,_,_,_],  // ← head top
-  [B,B,Y,d,B,B,_,_,_,_,_,_,_,_,_,B],  // ← eye + tail tip
-  [B,B,B,B,B,B,_,_,_,_,_,_,_,_,B,B],  // ← lower head + tail
-  [B,P,_,B,B,_,_,_,_,_,_,_,_,B,B,_],  // ← nose+chin + tail arc
-  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],  // ← neck→body + tail base
-  [_,_,_,B,B,B,B,B,B,B,B,B,B,_,_,_],  // ← body
-  [_,_,_,_,B,B,B,B,B,B,B,B,_,_,_,_],  // ← lower body
-  [_,_,_,_,B,B,B,B,B,B,B,B,_,_,_,_],  // ← belly
-  [_,_,_,_,_,B,_,_,_,B,_,_,_,_,_,_],  // ← upper legs
-  [_,_,_,_,_,B,_,_,_,B,_,_,_,_,_,_],  // ← legs
-  [_,_,_,_,_,B,B,_,_,B,B,_,_,_,_,_],  // ← paws
+  [_,B,_,_,_,_,_,_,_,_,_,_,_,_,_,_],  // 0  ear tip
+  [_,B,B,_,_,_,_,_,_,_,_,_,_,_,_,_],  // 1  ear
+  [B,B,B,B,_,_,_,_,_,_,_,_,_,_,B,_],  // 2  head top + tail tip
+  [B,B,Y,B,_,_,_,_,_,_,_,_,_,B,B,_],  // 3  eye + tail
+  [B,P,B,B,_,_,_,_,_,_,_,_,B,B,_,_],  // 4  nose + tail arc
+  [_,B,B,B,_,_,_,_,_,_,_,B,B,_,_,_],  // 5  chin (3px) + tail base
+  [_,_,B,B,B,B,B,B,B,B,B,B,_,_,_,_],  // 6  neck(2)+body — narrow start
+  [_,_,_,B,B,B,B,B,B,B,B,B,_,_,_,_],  // 7  body
+  [_,_,_,B,B,B,B,B,B,B,B,B,_,_,_,_],  // 8  body
+  [_,_,_,_,B,B,B,B,B,B,B,_,_,_,_,_],  // 9  lower body
+  [_,_,_,_,B,B,B,B,B,B,B,_,_,_,_,_],  // 10 belly
+  [_,_,_,_,B,_,B,_,B,_,B,_,_,_,_,_],  // 11 4 legs cols 4,6,8,10
+  [_,_,_,_,B,_,B,_,B,_,B,_,_,_,_,_],  // 12 legs
+  [_,_,_,_,B,_,B,_,B,_,B,_,_,_,_,_],  // 13 paws
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
 ];
 
-// Walk frame B — legs alternate
+// Walk B: legs shift +1 col → stride animation
 const WALK_B: Px[][] = WALK_A.map((row, r) => {
-  if (r === 11) return [_,_,_,_,_,_,_,B,_,_,_,B,_,_,_,_];
-  if (r === 12) return [_,_,_,_,_,_,_,B,_,_,_,B,_,_,_,_];
-  if (r === 13) return [_,_,_,_,_,_,_,B,B,_,_,B,B,_,_,_];
+  if (r === 11) return [_,_,_,_,_,B,_,B,_,B,_,B,_,_,_,_]; // cols 5,7,9,11
+  if (r === 12) return [_,_,_,_,_,B,_,B,_,B,_,B,_,_,_,_];
+  if (r === 13) return [_,_,_,_,_,B,_,B,_,B,_,B,_,_,_,_];
   return [...row];
 });
 
 // Sit — front-facing, shown when petted
 const SIT: Px[][] = [
-  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
-  [_,_,B,B,B,B,_,_,_,_,B,B,B,B,_,_],
-  [_,B,B,B,B,B,B,_,_,B,B,B,B,B,B,_],
-  [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
-  [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
-  [_,B,B,Y,d,B,B,B,B,B,Y,d,B,B,B,_],
-  [_,B,B,Y,B,B,P,_,_,B,Y,B,B,B,B,_],
-  [_,B,B,B,B,B,_,_,_,B,B,B,B,B,B,_],
-  [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
-  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
-  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
-  [_,_,_,B,B,B,B,B,B,B,B,B,B,_,_,_],
-  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
-  [_,_,_,B,_,_,_,_,_,_,_,_,B,_,_,_],
-  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
+  [_,_,B,_,_,_,_,_,_,_,_,_,B,_,_,_],  // two ear tips
+  [_,B,B,B,_,_,_,_,_,_,_,B,B,B,_,_],  // ears
+  [_,B,B,B,B,_,_,_,_,_,B,B,B,B,_,_],  // ear base
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,_,_,_],  // head
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,_,_,_],  // head
+  [_,_,B,Y,d,B,B,B,B,B,Y,d,B,_,_,_],  // eyes
+  [_,_,B,B,B,B,_,P,_,B,B,B,B,_,_,_],  // nose
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,_,_,_],  // lower face
+  [_,_,_,B,B,B,B,B,B,B,B,B,_,_,_,_],  // neck
+  [_,_,_,B,B,B,B,B,B,B,B,B,_,_,_,_],  // body
+  [_,_,_,B,B,B,B,B,B,B,B,B,_,_,_,_],  // body
+  [_,_,_,_,B,B,B,B,B,B,B,_,_,_,_,_],  // lower body
+  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],  // front legs
+  [_,_,_,B,_,_,_,_,_,_,_,_,B,_,_,_],  // legs
+  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],  // paws
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
 ];
 
