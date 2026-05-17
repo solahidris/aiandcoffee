@@ -7,55 +7,54 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 // ── Pixel palette ──────────────────────────────────────────────
 const B = "#111111"; // black body
-const b = "#2A2A2A"; // dark grey (depth)
-const Y = "#FFD700"; // yellow eye
+const d = "#2C2C2C"; // dark grey (depth on eye)
+const Y = "#FFD700"; // amber eye
 const P = "#FF99BB"; // pink nose
-const _ = null;
+const _ = null;      // transparent
 
 type Px = string | null;
 
-// 16×16 side-view cat, facing RIGHT.
-// Head = left side, tail = right side.
-// When moving left, canvas is flipped with scaleX(-1).
+// ── Sprite: 16×16, cat faces LEFT (nose at col 0, tail at col 15)
+// When walking LEFT → show as-is  (head on left, correct)
+// When walking RIGHT → scaleX(-1) wraps around canvas centre → head now on right
 
-// Walk frame A — legs spread (one fore/one hind forward)
+// Walk frame A — front leg back, rear leg forward
 const WALK_A: Px[][] = [
-  [_,_,B,B,_,_,_,_,_,_,_,_,_,_,_,_],
-  [_,B,B,B,B,_,_,_,_,_,_,_,_,_,_,_],
-  [B,B,B,B,B,B,_,_,_,_,_,_,_,_,_,_],
-  [B,B,Y,B,B,B,B,_,_,_,_,_,_,_,_,_],
-  [B,P,b,B,B,B,B,B,_,_,_,_,_,_,_,_],
-  [_,B,B,B,B,B,B,B,B,B,B,B,_,_,_,B],
-  [_,B,B,B,B,B,B,B,B,B,B,B,B,_,_,B],
-  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
-  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
-  [_,_,_,B,_,_,B,_,_,_,B,_,_,_,_,_],
-  [_,_,_,B,_,_,B,_,_,_,B,_,_,_,_,_],
-  [_,_,_,B,_,_,_,_,_,_,B,_,_,_,_,_],
-  [_,_,_,B,B,_,_,_,_,_,_,B,_,_,_,_],
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+  [_,_,B,B,_,_,_,_,_,_,_,_,_,_,_,_],  // ← ear tip
+  [_,B,B,B,B,_,_,_,_,_,_,_,_,_,_,_],  // ← ear
+  [B,B,B,B,B,B,_,_,_,_,_,_,_,_,_,_],  // ← head top
+  [B,B,Y,d,B,B,_,_,_,_,_,_,_,_,_,B],  // ← eye + tail tip
+  [B,B,B,B,B,B,_,_,_,_,_,_,_,_,B,B],  // ← lower head + tail
+  [B,P,_,B,B,_,_,_,_,_,_,_,_,B,B,_],  // ← nose+chin + tail arc
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],  // ← neck→body + tail base
+  [_,_,_,B,B,B,B,B,B,B,B,B,B,_,_,_],  // ← body
+  [_,_,_,_,B,B,B,B,B,B,B,B,_,_,_,_],  // ← lower body
+  [_,_,_,_,B,B,B,B,B,B,B,B,_,_,_,_],  // ← belly
+  [_,_,_,_,_,B,_,_,_,B,_,_,_,_,_,_],  // ← upper legs
+  [_,_,_,_,_,B,_,_,_,B,_,_,_,_,_,_],  // ← legs
+  [_,_,_,_,_,B,B,_,_,B,B,_,_,_,_,_],  // ← paws
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
 ];
 
-// Walk frame B — legs tucked (alternate)
+// Walk frame B — legs alternate
 const WALK_B: Px[][] = WALK_A.map((row, r) => {
-  if (r === 9)  return [_,_,_,_,B,_,_,B,_,_,_,B,_,_,_,_];
-  if (r === 10) return [_,_,_,_,B,_,_,B,_,_,_,B,_,_,_,_];
-  if (r === 11) return [_,_,_,_,B,_,_,_,_,_,_,B,_,_,_,_];
-  if (r === 12) return [_,_,_,_,B,B,_,_,_,_,_,B,B,_,_,_];
+  if (r === 11) return [_,_,_,_,_,_,_,B,_,_,_,B,_,_,_,_];
+  if (r === 12) return [_,_,_,_,_,_,_,B,_,_,_,B,_,_,_,_];
+  if (r === 13) return [_,_,_,_,_,_,_,B,B,_,_,B,B,_,_,_];
   return [...row];
 });
 
-// Sitting (front-facing, black) — shown when petted
+// Sit — front-facing, shown when petted
 const SIT: Px[][] = [
   [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
   [_,_,B,B,B,B,_,_,_,_,B,B,B,B,_,_],
   [_,B,B,B,B,B,B,_,_,B,B,B,B,B,B,_],
   [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
   [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
-  [_,B,B,Y,Y,B,B,B,B,B,Y,Y,B,B,B,_],
-  [_,B,B,Y,b,B,P,_,_,B,Y,b,B,B,B,_],
+  [_,B,B,Y,d,B,B,B,B,B,Y,d,B,B,B,_],
+  [_,B,B,Y,B,B,P,_,_,B,Y,B,B,B,B,_],
   [_,B,B,B,B,B,_,_,_,B,B,B,B,B,B,_],
   [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
   [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
@@ -67,13 +66,13 @@ const SIT: Px[][] = [
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
 ];
 
-const PIXEL = 5;          // px per sprite pixel
+const PIXEL = 5;
 const COLS  = 16;
 const ROWS  = 16;
 const CAT_W = COLS * PIXEL; // 80px
 const CAT_H = ROWS * PIXEL; // 80px
-const SPEED = 65;           // px per second
-const STEP  = 18;           // pixels walked before frame switch
+const SPEED = 65;            // px/s
+const STEP  = 20;            // px per walk-frame switch
 
 function drawFrame(canvas: HTMLCanvasElement, frame: Px[][]) {
   const ctx = canvas.getContext("2d");
@@ -82,29 +81,29 @@ function drawFrame(canvas: HTMLCanvasElement, frame: Px[][]) {
   ctx.clearRect(0, 0, CAT_W, CAT_H);
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
-      const color = frame[r][c];
-      if (!color) continue;
-      ctx.fillStyle = color;
+      const col = frame[r][c];
+      if (!col) continue;
+      ctx.fillStyle = col;
       ctx.fillRect(c * PIXEL, r * PIXEL, PIXEL, PIXEL);
     }
   }
 }
 
 export default function Pet() {
-  const canvasRef  = useRef<HTMLCanvasElement>(null);
-  const floorRef   = useRef<HTMLDivElement>(null);
-  const animRef    = useRef<number>(0);
-  // Mutable refs so the rAF loop always sees latest values
-  const walkState  = useRef({ x: 40, dir: 1, accum: 0, mode: "walk", happyLeft: 0 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const floorRef  = useRef<HTMLDivElement>(null);
+  const animRef   = useRef<number>(0);
+  // mutable state for rAF — no re-render needed each tick
+  const ws = useRef({ x: 40, dir: -1, accum: 0, mode: "walk", happyLeft: 0 });
 
-  const [catX,     setCatX]     = useState(40);
-  const [flipX,    setFlipX]    = useState(false);   // true = facing left
-  const [frame,    setFrame]    = useState<"walkA" | "walkB" | "sit">("walkA");
-  const [heart,    setHeart]    = useState(false);
-  const [petCount, setPetCount] = useState(0);
-  const [catName,  setCatName]  = useState("Byte");
-  const [editing,  setEditing]  = useState(false);
-  const [nameInput,setNameInput]= useState("Byte");
+  const [catX,      setCatX]      = useState(40);
+  const [flipX,     setFlipX]     = useState(false); // false=left, true=right
+  const [frame,     setFrame]     = useState<"walkA"|"walkB"|"sit">("walkA");
+  const [heart,     setHeart]     = useState(false);
+  const [petCount,  setPetCount]  = useState(0);
+  const [catName,   setCatName]   = useState("Byte");
+  const [editing,   setEditing]   = useState(false);
+  const [nameInput, setNameInput] = useState("Byte");
 
   // Load localStorage
   useEffect(() => {
@@ -114,27 +113,24 @@ export default function Pet() {
     if (c) setPetCount(parseInt(c, 10));
   }, []);
 
-  // Draw whenever frame changes
+  // Redraw sprite when frame changes
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const map = { walkA: WALK_A, walkB: WALK_B, sit: SIT };
-    drawFrame(canvas, map[frame]);
+    drawFrame(canvas, { walkA: WALK_A, walkB: WALK_B, sit: SIT }[frame]);
   }, [frame]);
 
-  // rAF animation loop
+  // rAF walk loop
   useEffect(() => {
     let last = 0;
-
     function tick(now: number) {
-      const dt = Math.min((now - last) / 1000, 0.05);
+      const dt  = Math.min((now - last) / 1000, 0.05);
       last = now;
-
-      const s   = walkState.current;
-      const maxX = (floorRef.current?.clientWidth ?? window.innerWidth) - CAT_W - 16;
+      const s   = ws.current;
+      const maxX = (floorRef.current?.clientWidth ?? window.innerWidth) - CAT_W - 8;
 
       if (s.mode === "walk") {
-        s.x += s.dir * SPEED * dt;
+        s.x     += s.dir * SPEED * dt;
         s.accum += SPEED * dt;
 
         if (s.accum >= STEP) {
@@ -142,8 +138,9 @@ export default function Pet() {
           setFrame(f => f === "walkA" ? "walkB" : "walkA");
         }
 
-        if (s.x >= maxX) { s.x = maxX; s.dir = -1; setFlipX(true);  }
-        if (s.x <= 0)    { s.x = 0;    s.dir =  1; setFlipX(false); }
+        // Sprite faces LEFT by default. Flip when going right.
+        if (s.x >= maxX) { s.x = maxX; s.dir = -1; setFlipX(false); }
+        if (s.x <= 0)    { s.x = 0;    s.dir =  1; setFlipX(true);  }
 
         setCatX(s.x);
       } else {
@@ -157,16 +154,15 @@ export default function Pet() {
 
       animRef.current = requestAnimationFrame(tick);
     }
-
     animRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(animRef.current);
   }, []);
 
   function petCat() {
-    const s = walkState.current;
+    const s = ws.current;
     if (s.mode === "happy") return;
     s.mode      = "happy";
-    s.happyLeft = 1.4;
+    s.happyLeft = 1.5;
     setFrame("sit");
     setHeart(true);
     const n = petCount + 1;
@@ -196,29 +192,25 @@ export default function Pet() {
 
       <style>{`
         @keyframes float-heart {
-          0%   { opacity: 1; transform: translateY(0) scale(1); }
-          100% { opacity: 0; transform: translateY(-44px) scale(1.4); }
+          0%   { opacity:1; transform:translateY(0) scale(1); }
+          100% { opacity:0; transform:translateY(-48px) scale(1.5); }
         }
-        .pixel-canvas {
-          image-rendering: pixelated;
-          image-rendering: crisp-edges;
-        }
+        canvas { image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
       `}</style>
 
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono flex flex-col`}>
         <Nav active="pet" />
 
-        {/* Info */}
+        {/* Stats */}
         <div className="flex-1 flex flex-col items-center justify-center gap-5 px-6">
           <p className="text-[10px] uppercase tracking-widest text-zinc-400">— your cat</p>
 
           {editing ? (
-            <form onSubmit={(e) => { e.preventDefault(); saveName(); }}>
+            <form onSubmit={e => { e.preventDefault(); saveName(); }}>
               <input autoFocus value={nameInput}
                 onChange={e => setNameInput(e.target.value.slice(0, 12))}
                 onBlur={saveName}
-                className="bg-transparent border-b border-zinc-400 text-center text-xl font-bold text-zinc-800 outline-none pb-0.5 w-36 tracking-tight"
-              />
+                className="bg-transparent border-b border-zinc-400 text-center text-xl font-bold text-zinc-800 outline-none pb-0.5 w-36 tracking-tight" />
             </form>
           ) : (
             <button onClick={() => setEditing(true)}
@@ -238,42 +230,26 @@ export default function Pet() {
           </p>
         </div>
 
-        {/* Floor — cat walks here */}
-        <div ref={floorRef} className="relative h-36 border-t border-zinc-400/40 bg-[#DEDAD0] overflow-hidden">
-
-          {/* Pixel floor dots for texture */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-zinc-400/30" />
-
-          {/* Cat */}
+        {/* Floor */}
+        <div ref={floorRef} className="relative h-36 border-t border-zinc-400/30 bg-[#DEDAD0] overflow-hidden">
+          {/* walking cat container — positioned without transform so flip stays in-place */}
           <div
             className="absolute bottom-0 cursor-pointer select-none"
-            style={{
-              left: catX,
-              transform: flipX ? "scaleX(-1)" : "scaleX(1)",
-              transformOrigin: "left bottom",
-            }}
+            style={{ left: catX }}
             onClick={petCat}
           >
-            {/* Floating heart */}
             {heart && (
-              <div
-                className="absolute text-xl text-[#D94830] pointer-events-none"
-                style={{
-                  top: -8,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  animation: "float-heart 0.9s ease forwards",
-                }}
-              >
+              <div className="absolute text-xl text-[#D94830] pointer-events-none"
+                style={{ top: -4, left: "50%", transform: "translateX(-50%)", animation: "float-heart 0.9s ease forwards" }}>
                 ♥
               </div>
             )}
-
+            {/* canvas flips around its own centre — container position unaffected */}
             <canvas
               ref={canvasRef}
               width={CAT_W}
               height={CAT_H}
-              className="pixel-canvas block"
+              style={{ transform: flipX ? "scaleX(-1)" : "none" }}
             />
           </div>
         </div>
