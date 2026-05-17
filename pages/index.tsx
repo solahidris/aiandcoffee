@@ -83,7 +83,7 @@ export default function Home() {
         {/* Nav */}
         <Nav active="home" />
 
-        <main className="relative min-h-[calc(100vh-73px)] overflow-hidden px-6 py-6 sm:py-4 z-10">
+        <main className="relative min-h-screen overflow-hidden px-6 py-6 sm:py-4 z-10">
           {/* Main content - left aligned, raw */}
           <div className="max-w-xl pt-6 sm:pt-4 sm:pl-16">
             <h1 className="text-6xl sm:text-7xl font-bold leading-none tracking-tighter">
