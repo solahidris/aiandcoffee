@@ -1,71 +1,87 @@
 import Head from "next/head";
 import { Geist_Mono } from "next/font/google";
 import Nav from "../components/Nav";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-// ── Pixel palette ─────────────────────────────────────────────
-const K = "#2A2A2E"; // outline
-const C = "#F5C897"; // coat orange
-const D = "#D9965A"; // stripe / shadow
-const W = "#FFFFFF"; // eye white
-const G = "#4ECDC4"; // eye pupil
-const P = "#FF9DC7"; // nose pink
-const I = "#FFD9E8"; // inner ear
-const _ = null;      // transparent
+// ── Pixel palette ──────────────────────────────────────────────
+const B = "#111111"; // black body
+const b = "#2A2A2A"; // dark grey (depth)
+const Y = "#FFD700"; // yellow eye
+const P = "#FF99BB"; // pink nose
+const _ = null;
 
 type Px = string | null;
 
-// Idle — eyes open
-const IDLE: Px[][] = [
-  [_,_,K,K,_,_,_,_,_,_,_,_,K,K,_,_],
-  [_,K,C,C,K,_,_,_,_,_,_,K,C,C,K,_],
-  [K,C,I,C,C,K,_,_,_,_,K,C,C,I,C,K],
-  [K,C,C,C,C,C,K,_,_,K,C,C,C,C,C,K],
-  [_,K,C,C,C,C,C,K,K,C,C,C,C,C,K,_],
-  [_,K,C,W,W,C,C,C,C,C,W,W,C,C,K,_],
-  [_,K,C,W,G,C,P,_,_,C,W,G,C,C,K,_],
-  [_,K,C,C,C,C,_,_,_,C,C,C,C,C,K,_],
-  [_,K,C,C,C,C,C,C,C,C,C,C,C,C,K,_],
-  [_,K,C,D,D,C,C,C,C,C,D,D,C,C,K,_],
-  [_,K,C,C,C,C,C,C,C,C,C,C,C,C,K,_],
-  [_,_,K,C,C,C,C,C,C,C,C,C,C,K,_,_],
-  [_,_,K,C,C,K,_,_,_,_,K,C,C,K,_,_],
-  [_,_,_,K,C,K,_,_,_,_,K,C,K,_,_,_],
-  [_,_,_,K,K,_,_,_,_,_,_,K,K,_,_,_],
+// 16×16 side-view cat, facing RIGHT.
+// Head = left side, tail = right side.
+// When moving left, canvas is flipped with scaleX(-1).
+
+// Walk frame A — legs spread (one fore/one hind forward)
+const WALK_A: Px[][] = [
+  [_,_,B,B,_,_,_,_,_,_,_,_,_,_,_,_],
+  [_,B,B,B,B,_,_,_,_,_,_,_,_,_,_,_],
+  [B,B,B,B,B,B,_,_,_,_,_,_,_,_,_,_],
+  [B,B,Y,B,B,B,B,_,_,_,_,_,_,_,_,_],
+  [B,P,b,B,B,B,B,B,_,_,_,_,_,_,_,_],
+  [_,B,B,B,B,B,B,B,B,B,B,B,_,_,_,B],
+  [_,B,B,B,B,B,B,B,B,B,B,B,B,_,_,B],
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
+  [_,_,_,B,_,_,B,_,_,_,B,_,_,_,_,_],
+  [_,_,_,B,_,_,B,_,_,_,B,_,_,_,_,_],
+  [_,_,_,B,_,_,_,_,_,_,B,_,_,_,_,_],
+  [_,_,_,B,B,_,_,_,_,_,_,B,_,_,_,_],
+  [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+  [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
   [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
 ];
 
-// Blink — eyes closed
-const BLINK: Px[][] = IDLE.map((row, r) => {
-  if (r === 5) return [_,K,C,K,K,C,C,C,C,C,K,K,C,C,K,_];
-  if (r === 6) return [_,K,C,C,C,C,P,_,_,C,C,C,C,C,K,_];
+// Walk frame B — legs tucked (alternate)
+const WALK_B: Px[][] = WALK_A.map((row, r) => {
+  if (r === 9)  return [_,_,_,_,B,_,_,B,_,_,_,B,_,_,_,_];
+  if (r === 10) return [_,_,_,_,B,_,_,B,_,_,_,B,_,_,_,_];
+  if (r === 11) return [_,_,_,_,B,_,_,_,_,_,_,B,_,_,_,_];
+  if (r === 12) return [_,_,_,_,B,B,_,_,_,_,_,B,B,_,_,_];
   return [...row];
 });
 
-// Happy — squint ^.^
-const HAPPY: Px[][] = IDLE.map((row, r) => {
-  if (r === 5) return [_,K,C,K,C,C,C,C,C,C,C,K,C,C,K,_];
-  if (r === 6) return [_,K,K,C,K,C,P,_,_,C,K,C,K,C,K,_];
-  return [...row];
-});
+// Sitting (front-facing, black) — shown when petted
+const SIT: Px[][] = [
+  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
+  [_,_,B,B,B,B,_,_,_,_,B,B,B,B,_,_],
+  [_,B,B,B,B,B,B,_,_,B,B,B,B,B,B,_],
+  [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
+  [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
+  [_,B,B,Y,Y,B,B,B,B,B,Y,Y,B,B,B,_],
+  [_,B,B,Y,b,B,P,_,_,B,Y,b,B,B,B,_],
+  [_,B,B,B,B,B,_,_,_,B,B,B,B,B,B,_],
+  [_,B,B,B,B,B,B,B,B,B,B,B,B,B,B,_],
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
+  [_,_,B,B,B,B,B,B,B,B,B,B,B,B,_,_],
+  [_,_,_,B,B,B,B,B,B,B,B,B,B,_,_,_],
+  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
+  [_,_,_,B,_,_,_,_,_,_,_,_,B,_,_,_],
+  [_,_,_,B,B,_,_,_,_,_,_,B,B,_,_,_],
+  [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+];
 
-// Sleeping — flat lines eyes + zzz
-const SLEEP: Px[][] = IDLE.map((row, r) => {
-  if (r === 5) return [_,K,C,C,C,C,C,C,C,C,C,C,C,C,K,_];
-  if (r === 6) return [_,K,C,K,K,C,P,_,_,C,K,K,C,C,K,_];
-  return [...row];
-});
+const PIXEL = 5;          // px per sprite pixel
+const COLS  = 16;
+const ROWS  = 16;
+const CAT_W = COLS * PIXEL; // 80px
+const CAT_H = ROWS * PIXEL; // 80px
+const SPEED = 65;           // px per second
+const STEP  = 18;           // pixels walked before frame switch
 
-const FRAMES: Record<string, Px[][]> = { idle: IDLE, blink: BLINK, happy: HAPPY, sleep: SLEEP };
-const PIXEL = 10; // px per pixel → 160×160 canvas
-const SIZE = 16;
-
-function drawSprite(ctx: CanvasRenderingContext2D, frame: Px[][]) {
-  ctx.clearRect(0, 0, SIZE * PIXEL, SIZE * PIXEL);
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
+function drawFrame(canvas: HTMLCanvasElement, frame: Px[][]) {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  ctx.imageSmoothingEnabled = false;
+  ctx.clearRect(0, 0, CAT_W, CAT_H);
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
       const color = frame[r][c];
       if (!color) continue;
       ctx.fillStyle = color;
@@ -74,86 +90,99 @@ function drawSprite(ctx: CanvasRenderingContext2D, frame: Px[][]) {
   }
 }
 
-const NAMES = ["Byte", "Pixel", "Chip", "Sudo", "Null"];
-const DEFAULT_NAME = NAMES[0];
-
 export default function Pet() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [frame, setFrame]       = useState<string>("idle");
-  const [bounce, setBounce]     = useState(false);
-  const [heart, setHeart]       = useState(false);
-  const [petCount, setPetCount] = useState(0);
-  const [catName, setCatName]   = useState(DEFAULT_NAME);
-  const [editing, setEditing]   = useState(false);
-  const [nameInput, setNameInput] = useState(DEFAULT_NAME);
-  const blinkTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const frameRef = useRef(frame);
-  frameRef.current = frame;
+  const canvasRef  = useRef<HTMLCanvasElement>(null);
+  const floorRef   = useRef<HTMLDivElement>(null);
+  const animRef    = useRef<number>(0);
+  // Mutable refs so the rAF loop always sees latest values
+  const walkState  = useRef({ x: 40, dir: 1, accum: 0, mode: "walk", happyLeft: 0 });
 
-  // Load from localStorage
+  const [catX,     setCatX]     = useState(40);
+  const [flipX,    setFlipX]    = useState(false);   // true = facing left
+  const [frame,    setFrame]    = useState<"walkA" | "walkB" | "sit">("walkA");
+  const [heart,    setHeart]    = useState(false);
+  const [petCount, setPetCount] = useState(0);
+  const [catName,  setCatName]  = useState("Byte");
+  const [editing,  setEditing]  = useState(false);
+  const [nameInput,setNameInput]= useState("Byte");
+
+  // Load localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("pet_name");
-    const count = localStorage.getItem("pet_count");
-    if (saved) { setCatName(saved); setNameInput(saved); }
-    if (count) setPetCount(parseInt(count, 10));
+    const n = localStorage.getItem("pet_name");
+    const c = localStorage.getItem("pet_count");
+    if (n) { setCatName(n); setNameInput(n); }
+    if (c) setPetCount(parseInt(c, 10));
   }, []);
 
-  // Draw sprite whenever frame changes
+  // Draw whenever frame changes
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    ctx.imageSmoothingEnabled = false;
-    drawSprite(ctx, FRAMES[frame] ?? IDLE);
+    const map = { walkA: WALK_A, walkB: WALK_B, sit: SIT };
+    drawFrame(canvas, map[frame]);
   }, [frame]);
 
-  // Blink cycle
-  const scheduleBlink = useCallback(() => {
-    const delay = 3000 + Math.random() * 4000;
-    blinkTimer.current = setTimeout(() => {
-      if (frameRef.current !== "happy" && frameRef.current !== "sleep") {
-        setFrame("blink");
-        setTimeout(() => {
-          setFrame("idle");
-          scheduleBlink();
-        }, 180);
+  // rAF animation loop
+  useEffect(() => {
+    let last = 0;
+
+    function tick(now: number) {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+
+      const s   = walkState.current;
+      const maxX = (floorRef.current?.clientWidth ?? window.innerWidth) - CAT_W - 16;
+
+      if (s.mode === "walk") {
+        s.x += s.dir * SPEED * dt;
+        s.accum += SPEED * dt;
+
+        if (s.accum >= STEP) {
+          s.accum = 0;
+          setFrame(f => f === "walkA" ? "walkB" : "walkA");
+        }
+
+        if (s.x >= maxX) { s.x = maxX; s.dir = -1; setFlipX(true);  }
+        if (s.x <= 0)    { s.x = 0;    s.dir =  1; setFlipX(false); }
+
+        setCatX(s.x);
       } else {
-        scheduleBlink();
+        s.happyLeft -= dt;
+        if (s.happyLeft <= 0) {
+          s.mode  = "walk";
+          s.accum = 0;
+          setFrame("walkA");
+        }
       }
-    }, delay);
+
+      animRef.current = requestAnimationFrame(tick);
+    }
+
+    animRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animRef.current);
   }, []);
 
-  useEffect(() => {
-    scheduleBlink();
-    return () => { if (blinkTimer.current) clearTimeout(blinkTimer.current); };
-  }, [scheduleBlink]);
-
-  function pet() {
-    if (frame === "happy") return;
-    setFrame("happy");
-    setBounce(true);
+  function petCat() {
+    const s = walkState.current;
+    if (s.mode === "happy") return;
+    s.mode      = "happy";
+    s.happyLeft = 1.4;
+    setFrame("sit");
     setHeart(true);
-    const newCount = petCount + 1;
-    setPetCount(newCount);
-    localStorage.setItem("pet_count", String(newCount));
+    const n = petCount + 1;
+    setPetCount(n);
+    localStorage.setItem("pet_count", String(n));
     setTimeout(() => setHeart(false), 900);
-    setTimeout(() => {
-      setBounce(false);
-      setFrame("idle");
-      scheduleBlink();
-    }, 1200);
   }
 
   function saveName() {
-    const n = nameInput.trim() || DEFAULT_NAME;
-    setCatName(n);
-    setNameInput(n);
+    const n = nameInput.trim() || "Byte";
+    setCatName(n); setNameInput(n);
     localStorage.setItem("pet_name", n);
     setEditing(false);
   }
 
-  const hearts = Math.min(5, Math.floor(petCount / 3) + 1);
+  const hearts = Math.min(5, Math.floor(petCount / 2) + 1);
 
   return (
     <>
@@ -166,14 +195,9 @@ export default function Pet() {
       </Head>
 
       <style>{`
-        @keyframes bounce-pet {
-          0%, 100% { transform: translateY(0); }
-          30%       { transform: translateY(-18px); }
-          60%       { transform: translateY(-8px); }
-        }
         @keyframes float-heart {
           0%   { opacity: 1; transform: translateY(0) scale(1); }
-          100% { opacity: 0; transform: translateY(-48px) scale(1.4); }
+          100% { opacity: 0; transform: translateY(-44px) scale(1.4); }
         }
         .pixel-canvas {
           image-rendering: pixelated;
@@ -181,33 +205,59 @@ export default function Pet() {
         }
       `}</style>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono flex flex-col`}>
         <Nav active="pet" />
 
-        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-65px)] px-6 py-12">
+        {/* Info */}
+        <div className="flex-1 flex flex-col items-center justify-center gap-5 px-6">
+          <p className="text-[10px] uppercase tracking-widest text-zinc-400">— your cat</p>
 
-          <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-10">— your pixel cat</p>
-
-          {/* Sprite */}
-          <div className="relative flex items-center justify-center mb-8">
-            <div
-              className="cursor-pointer select-none"
-              style={{ animation: bounce ? "bounce-pet 0.5s ease" : "none" }}
-              onClick={pet}
-            >
-              <canvas
-                ref={canvasRef}
-                width={SIZE * PIXEL}
-                height={SIZE * PIXEL}
-                className="pixel-canvas"
-                style={{ width: SIZE * PIXEL * 2, height: SIZE * PIXEL * 2 }}
+          {editing ? (
+            <form onSubmit={(e) => { e.preventDefault(); saveName(); }}>
+              <input autoFocus value={nameInput}
+                onChange={e => setNameInput(e.target.value.slice(0, 12))}
+                onBlur={saveName}
+                className="bg-transparent border-b border-zinc-400 text-center text-xl font-bold text-zinc-800 outline-none pb-0.5 w-36 tracking-tight"
               />
-            </div>
+            </form>
+          ) : (
+            <button onClick={() => setEditing(true)}
+              className="text-xl font-bold tracking-tight text-zinc-800 hover:text-[#D94830] transition-colors">
+              {catName}
+            </button>
+          )}
 
+          <div className="flex gap-1.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i} className={`text-xl ${i < hearts ? "text-[#D94830]" : "text-zinc-300"}`}>♥</span>
+            ))}
+          </div>
+
+          <p className="text-[10px] uppercase tracking-widest text-zinc-400">
+            {petCount === 0 ? "click the cat to say hi" : `petted ${petCount}×`}
+          </p>
+        </div>
+
+        {/* Floor — cat walks here */}
+        <div ref={floorRef} className="relative h-36 border-t border-zinc-400/40 bg-[#DEDAD0] overflow-hidden">
+
+          {/* Pixel floor dots for texture */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-zinc-400/30" />
+
+          {/* Cat */}
+          <div
+            className="absolute bottom-0 cursor-pointer select-none"
+            style={{
+              left: catX,
+              transform: flipX ? "scaleX(-1)" : "scaleX(1)",
+              transformOrigin: "left bottom",
+            }}
+            onClick={petCat}
+          >
             {/* Floating heart */}
             {heart && (
               <div
-                className="absolute text-2xl pointer-events-none"
+                className="absolute text-xl text-[#D94830] pointer-events-none"
                 style={{
                   top: -8,
                   left: "50%",
@@ -218,50 +268,14 @@ export default function Pet() {
                 ♥
               </div>
             )}
+
+            <canvas
+              ref={canvasRef}
+              width={CAT_W}
+              height={CAT_H}
+              className="pixel-canvas block"
+            />
           </div>
-
-          {/* Name */}
-          <div className="mb-4 text-center">
-            {editing ? (
-              <form onSubmit={(e) => { e.preventDefault(); saveName(); }} className="flex items-center gap-2">
-                <input
-                  autoFocus
-                  value={nameInput}
-                  onChange={(e) => setNameInput(e.target.value.slice(0, 12))}
-                  onBlur={saveName}
-                  className="bg-transparent border-b border-zinc-400 text-center text-sm text-zinc-800 outline-none pb-0.5 w-32"
-                />
-              </form>
-            ) : (
-              <button
-                onClick={() => setEditing(true)}
-                className="text-sm font-bold tracking-tight text-zinc-800 hover:text-[#D94830] transition-colors"
-              >
-                {catName}
-              </button>
-            )}
-          </div>
-
-          {/* Hearts */}
-          <div className="flex gap-1 mb-8">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i} className={`text-lg ${i < hearts ? "text-[#D94830]" : "text-zinc-300"}`}>
-                ♥
-              </span>
-            ))}
-          </div>
-
-          {/* Stats */}
-          <div className="text-center space-y-1 mb-8">
-            <p className="text-[10px] uppercase tracking-widest text-zinc-400">
-              {petCount === 0 ? "click the cat to say hi" : `petted ${petCount} time${petCount !== 1 ? "s" : ""}`}
-            </p>
-          </div>
-
-          <p className="text-[9px] uppercase tracking-widest text-zinc-300">
-            click to pet · name to rename
-          </p>
-
         </div>
       </div>
     </>
