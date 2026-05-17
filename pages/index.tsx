@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 const MINI_TRACK = {
   title: "Coffee and Code",
   artist: "AI and Coffee",
-  src: `/music/vocal/${encodeURIComponent("Coffee and Code.mp3")}`,
+  src: "/music/vocal/coffee-and-code.mp3",
 };
 
 export default function Home() {
