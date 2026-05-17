@@ -2,7 +2,7 @@ name: Scrape Events
 
 on:
   schedule:
-    - cron: '0 0,8,16 * * *' # 3x daily — 8am, 4pm, midnight MYT (UTC+8)
+    - cron: '0 0 */2 * *' # once every 2 days at midnight UTC
   workflow_dispatch: # manual trigger from GitHub Actions tab
 
 permissions:
