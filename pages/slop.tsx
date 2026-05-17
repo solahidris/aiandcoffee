@@ -434,7 +434,7 @@ export default function SlopCentre() {
         </div>
 
         <div className="relative z-10 px-6 sm:px-16 pb-24">
-          <div className="max-w-2xl">
+          <div className={mode === "image-gen" ? "" : "max-w-2xl"}>
 
             {/* Tab switcher */}
             <div className="flex flex-wrap gap-2 mb-8 animate-stagger-in" style={{ animationDelay: "550ms" }}>
@@ -909,8 +909,8 @@ export default function SlopCentre() {
             {mode === "image-gen" && (
               <div className="flex flex-col lg:flex-row gap-8">
 
-                {/* Left: prompt + controls */}
-                <div className="lg:w-80 shrink-0">
+                {/* Left: prompt + controls — below image on mobile, left on desktop */}
+                <div className="lg:w-80 shrink-0 order-2 lg:order-1">
                   <div className="border border-zinc-400/60 bg-[#F2EFE8]">
                     <textarea
                       ref={imageRef}
@@ -954,8 +954,8 @@ export default function SlopCentre() {
                   </div>
                 </div>
 
-                {/* Right: image output */}
-                <div className="flex-1 min-w-0">
+                {/* Right: image output — above prompt on mobile, right on desktop */}
+                <div className="flex-1 min-w-0 order-1 lg:order-2">
                   {imageLoading && (
                     <div className="border border-zinc-400/40 bg-[#F2EFE8] aspect-square w-full flex items-center justify-center">
                       <div className="text-center space-y-3">
