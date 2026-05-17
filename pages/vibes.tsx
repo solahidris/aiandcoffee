@@ -482,7 +482,7 @@ export default function Vibes() {
                     className={`text-left p-4 border transition-all duration-150 ${
                       active
                         ? "bg-[#D94830] border-[#D94830]"
-                        : "border-zinc-400/40 hover:border-zinc-500 hover:bg-white/40"
+                        : "border-transparent bg-white/60 hover:bg-white/90"
                     }`}
                   >
                     {/* Top row: number + badge */}

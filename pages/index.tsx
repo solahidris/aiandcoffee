@@ -3,13 +3,39 @@ import Link from "next/link";
 import Head from "next/head";
 import { Geist_Mono } from "next/font/google";
 import Nav from "../components/Nav";
+import { useState, useRef, useEffect } from "react";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+const MINI_TRACK = {
+  title: "Coffee and Code",
+  artist: "AI and Coffee",
+  src: `/music/vocal/${encodeURIComponent("Coffee and Code.mp3")}`,
+};
+
 export default function Home() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const t = setTimeout(() => {
+      audio.play().then(() => setIsPlaying(true)).catch(() => {/* autoplay blocked */});
+    }, 600);
+    return () => clearTimeout(t);
+  }, []);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) { audio.pause(); setIsPlaying(false); }
+    else { audio.play().then(() => setIsPlaying(true)).catch(() => {}); }
+  };
+
   return (
     <>
       <Head>
@@ -30,7 +56,16 @@ export default function Home() {
         <meta name="twitter:description" content="No BS. No hierarchy. No laws. The only rule is to be nice." />
         <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <audio ref={audioRef} src={MINI_TRACK.src} loop />
+
+      <style>{`
+        @keyframes minibar {
+          0%, 100% { transform: scaleY(0.2); }
+          50%       { transform: scaleY(1);   }
+        }
+      `}</style>
+
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-16`}>
         {/* Background animated mascot */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           <div className="animate-float opacity-10">
@@ -48,25 +83,25 @@ export default function Home() {
         {/* Nav */}
         <Nav active="home" />
 
-        <main className="relative min-h-[calc(100vh-73px)] overflow-hidden px-6 py-12 z-10">
+        <main className="relative min-h-[calc(100vh-73px)] overflow-hidden px-6 py-6 sm:py-4 z-10">
           {/* Main content - left aligned, raw */}
-          <div className="max-w-xl pt-10 sm:pt-20 sm:pl-16">
-            <h1 className="text-6xl sm:text-8xl font-bold leading-none tracking-tighter">
+          <div className="max-w-xl pt-6 sm:pt-4 sm:pl-16">
+            <h1 className="text-6xl sm:text-7xl font-bold leading-none tracking-tighter">
               <span className="block text-[#D94830] animate-hero-in">AI</span>
               <span className="block text-zinc-800 animate-hero-in" style={{ animationDelay: "100ms" }}>AND</span>
               <span className="block text-[#D94830] animate-hero-in" style={{ animationDelay: "200ms" }}>COFFEE</span>
             </h1>
 
-            <div className="mt-12 space-y-2 text-zinc-700 animate-stagger-in" style={{ animationDelay: "400ms" }}>
+            <div className="mt-8 space-y-2 text-zinc-700 animate-stagger-in" style={{ animationDelay: "400ms" }}>
               <p className="text-lg">no bs.</p>
               <p className="text-lg">no hierarchy.</p>
               <p className="text-lg">no laws.</p>
-              <p className="mt-6 text-2xl font-bold text-zinc-900">
+              <p className="mt-4 text-2xl font-bold text-zinc-900">
                 only rule: be nice
               </p>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-3 text-xs uppercase tracking-widest text-zinc-500 animate-stagger-in" style={{ animationDelay: "600ms" }}>
+            <div className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-widest text-zinc-500 animate-stagger-in" style={{ animationDelay: "600ms" }}>
               <span className="border-b border-zinc-400 pb-1">clueless</span>
               <span className="border-b border-zinc-400 pb-1">beginners</span>
               <span className="border-b border-zinc-400 pb-1">seniors</span>
@@ -74,7 +109,7 @@ export default function Home() {
               <span className="border-b border-zinc-400 pb-1">sharks</span>
             </div>
 
-            <div className="mt-16 flex flex-col sm:flex-row gap-4 animate-stagger-in" style={{ animationDelay: "750ms" }}>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-stagger-in" style={{ animationDelay: "750ms" }}>
               <a
                 className="inline-block border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
                 href="https://chat.whatsapp.com/EKzcQdbJIgSBRQ4JXos8Zi"
@@ -85,7 +120,7 @@ export default function Home() {
               </a>
               <a
                 className="inline-block border-2 border-zinc-800 px-8 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
-                href="https://luma.com/9f63qyq1"
+                href="https://luma.com/6axuvn1j"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -112,7 +147,7 @@ export default function Home() {
           </div>
 
           {/* Bottom corner note — desktop only */}
-          <div className="hidden sm:block absolute bottom-12 right-16 max-w-[200px] text-right animate-stagger-in" style={{ animationDelay: "900ms" }}>
+          <div className="hidden sm:block absolute bottom-4 right-16 max-w-[200px] text-right animate-stagger-in" style={{ animationDelay: "900ms" }}>
             <p className="text-xs text-zinc-500 leading-relaxed">
               no social media<br />
               just whatsapp<br />
@@ -133,6 +168,63 @@ export default function Home() {
             *
           </div>
         </main>
+
+        {/* Mini player */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm">
+          <div className="px-6 sm:px-16 py-3 flex items-center gap-4">
+
+            {/* Animated bars */}
+            <div className="flex items-end gap-[3px] h-4 shrink-0">
+              {[0, 0.18, 0.09, 0.25].map((delay, i) => (
+                <div
+                  key={i}
+                  className="w-[3px] rounded-full bg-[#D94830]"
+                  style={{
+                    height: 16,
+                    transformOrigin: "bottom",
+                    transform: isPlaying ? undefined : "scaleY(0.2)",
+                    opacity: isPlaying ? 1 : 0.35,
+                    transition: "opacity 0.3s",
+                    animation: isPlaying
+                      ? `minibar ${0.55 + i * 0.08}s ease-in-out ${delay}s infinite`
+                      : "none",
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Track info */}
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold tracking-tight text-zinc-800 truncate">{MINI_TRACK.title}</p>
+              <p className="text-[10px] uppercase tracking-widest text-zinc-400">{MINI_TRACK.artist}</p>
+            </div>
+
+            {/* Play / Pause */}
+            <button
+              onClick={togglePlay}
+              className="w-8 h-8 bg-[#D94830] hover:bg-[#C13D27] text-white flex items-center justify-center transition-colors shrink-0"
+              aria-label={isPlaying ? "Pause" : "Play"}
+            >
+              {isPlaying ? (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
+
+            {/* Link to full player */}
+            <Link
+              href="/vibes"
+              className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors shrink-0 whitespace-nowrap"
+            >
+              full player ↗
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
