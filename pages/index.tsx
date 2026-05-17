@@ -170,98 +170,83 @@ export default function Home() {
           </div>
         </main>
 
-        {/* Mini player — full bar */}
-        {!minimized && (
-          <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm">
-            <div className="px-6 sm:px-16 py-3 flex items-center gap-4">
+        {/* Mini player — full bar (slides down when minimizing) */}
+        <div className={`fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm transition-transform duration-300 ease-in-out ${
+          minimized ? "translate-y-full" : "translate-y-0"
+        }`}>
+          <div className="px-6 sm:px-16 py-3 flex items-center gap-4">
 
-              {/* Animated bars */}
-              <div className="flex items-end gap-[3px] h-4 shrink-0">
-                {[0, 0.18, 0.09, 0.25].map((delay, i) => (
-                  <div key={i} className="w-[3px] rounded-full bg-[#D94830]"
-                    style={{
-                      height: 16, transformOrigin: "bottom",
-                      transform: isPlaying ? undefined : "scaleY(0.2)",
-                      opacity: isPlaying ? 1 : 0.35,
-                      transition: "opacity 0.3s",
-                      animation: isPlaying ? `minibar ${0.55 + i * 0.08}s ease-in-out ${delay}s infinite` : "none",
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Track info */}
-              <div className="flex-1 min-w-0">
-                <p className="text-xs font-bold tracking-tight text-zinc-800 truncate">{MINI_TRACK.title}</p>
-                <p className="text-[10px] uppercase tracking-widest text-zinc-400">{MINI_TRACK.artist}</p>
-              </div>
-
-              {/* Play / Pause */}
-              <button onClick={togglePlay}
-                className="w-8 h-8 bg-[#D94830] hover:bg-[#C13D27] text-white flex items-center justify-center transition-colors shrink-0"
-                aria-label={isPlaying ? "Pause" : "Play"}>
-                {isPlaying ? (
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
-                  </svg>
-                ) : (
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                )}
-              </button>
-
-              {/* Full player link */}
-              <Link href="/vibes"
-                className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors shrink-0 whitespace-nowrap">
-                full player ↗
-              </Link>
-
-              {/* Minimize */}
-              <button onClick={() => setMinimized(true)}
-                className="text-zinc-400 hover:text-zinc-700 transition-colors shrink-0"
-                aria-label="Minimize player">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Mini player — minimized square */}
-        {minimized && (
-          <button
-            onClick={() => setMinimized(false)}
-            className="fixed bottom-4 right-6 z-50 w-12 h-12 border border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm flex flex-col items-center justify-center gap-1 hover:border-zinc-500 transition-colors"
-            aria-label="Expand player"
-          >
-            {/* Tiny bars */}
-            <div className="flex items-end gap-[2px]">
+            {/* Animated bars */}
+            <div className="flex items-end gap-[3px] h-4 shrink-0">
               {[0, 0.18, 0.09, 0.25].map((delay, i) => (
-                <div key={i} className="w-[2px] rounded-full bg-[#D94830]"
+                <div key={i} className="w-[3px] rounded-full bg-[#D94830]"
                   style={{
-                    height: 8, transformOrigin: "bottom",
-                    transform: isPlaying ? undefined : "scaleY(0.3)",
+                    height: 16, transformOrigin: "bottom",
+                    transform: isPlaying ? undefined : "scaleY(0.2)",
+                    opacity: isPlaying ? 1 : 0.35,
+                    transition: "opacity 0.3s",
                     animation: isPlaying ? `minibar ${0.55 + i * 0.08}s ease-in-out ${delay}s infinite` : "none",
                   }}
                 />
               ))}
             </div>
-            {/* Play/pause icon */}
-            <div className="text-[#D94830]">
+
+            {/* Track info */}
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold tracking-tight text-zinc-800 truncate">{MINI_TRACK.title}</p>
+              <p className="text-[10px] uppercase tracking-widest text-zinc-400">{MINI_TRACK.artist}</p>
+            </div>
+
+            {/* Play / Pause */}
+            <button onClick={togglePlay}
+              className="w-8 h-8 bg-[#D94830] hover:bg-[#C13D27] text-white flex items-center justify-center transition-colors shrink-0"
+              aria-label={isPlaying ? "Pause" : "Play"}>
               {isPlaying ? (
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
                 </svg>
               ) : (
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               )}
-            </div>
-          </button>
-        )}
+            </button>
+
+            {/* Full player link */}
+            <Link href="/vibes"
+              className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors shrink-0 whitespace-nowrap">
+              full player ↗
+            </Link>
+
+            {/* Minimize — text button */}
+            <button onClick={() => setMinimized(true)}
+              className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors shrink-0"
+              aria-label="Minimize player">
+              minimize
+            </button>
+          </div>
+        </div>
+
+        {/* Mini player — minimized square (bottom-left, slides up) */}
+        <button
+          onClick={() => setMinimized(false)}
+          aria-label="Expand player"
+          className={`fixed bottom-4 left-6 z-50 w-12 h-12 border border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm flex items-center justify-center hover:border-zinc-500 transition-all duration-300 ease-in-out ${
+            minimized ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-90 pointer-events-none"
+          }`}
+        >
+          <div className="text-[#D94830]">
+            {isPlaying ? (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />
+              </svg>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
+          </div>
+        </button>
       </div>
     </>
   );
