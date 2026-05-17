@@ -31,7 +31,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-type Mode = "roast" | "threads" | "pitch" | "standup" | "explain" | "thread-chain";
+type Mode = "roast" | "threads" | "pitch" | "standup" | "explain" | "thread-chain" | "image-gen";
 
 const TABS: { mode: Mode; label: string; query: string }[] = [
   { mode: "roast",         label: "Roast Anything",   query: "roast"            },
@@ -40,6 +40,7 @@ const TABS: { mode: Mode; label: string; query: string }[] = [
   { mode: "standup",       label: "Standup BS",        query: "standup"          },
   { mode: "explain",       label: "Explain Like I'm",  query: "explain"          },
   { mode: "thread-chain",  label: "Viral Thread",      query: "thread-chain"     },
+  { mode: "image-gen",     label: "Image Gen",         query: "image-gen"        },
 ];
 
 const PERSONAS: { value: string; label: string }[] = [
@@ -195,6 +196,7 @@ export default function SlopCentre() {
     setStandupResult(null); setStandupError(null);
     setExplainResult(null); setExplainError(null);
     setThreadChainPosts(null); setThreadChainError(null);
+    setImageUrl(null); setImageError(null);
   }
 
   async function copyToClipboard(text: string, setCopied: (v: boolean) => void) {
@@ -341,6 +343,27 @@ export default function SlopCentre() {
     finally { setThreadChainLoading(false); }
   }
 
+  // ── Image Gen state ──
+  const [imagePrompt, setImagePrompt]   = useState("");
+  const [imageUrl, setImageUrl]         = useState<string | null>(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  const [imageError, setImageError]     = useState<string | null>(null);
+  const imageRef = useRef<HTMLTextAreaElement>(null);
+
+  async function handleImageGen() {
+    const trimmed = imagePrompt.trim();
+    if (!trimmed || imageLoading) return;
+    setImageLoading(true); setImageUrl(null); setImageError(null);
+    try {
+      const res = await fetch("/api/image-gen", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt: trimmed }) });
+      if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error((d as {error?: string}).error || "Generation failed"); }
+      const blob = await res.blob();
+      setImageUrl(URL.createObjectURL(blob));
+      setSlopCount(c => c !== null ? c + 1 : 1);
+    } catch (e) { setImageError(e instanceof Error ? e.message : "Failed. Try again."); }
+    finally { setImageLoading(false); }
+  }
+
   return (
     <>
       <Head>
@@ -382,6 +405,10 @@ export default function SlopCentre() {
           @keyframes plate-spin {
             0%   { transform: perspective(400px) rotateY(0deg); }
             100% { transform: perspective(400px) rotateY(360deg); }
+          }
+          @keyframes minibar {
+            0%, 100% { transform: scaleY(0.2); }
+            50%       { transform: scaleY(1);   }
           }
         `}</style>
 
@@ -870,6 +897,93 @@ export default function SlopCentre() {
                       "the real cost of free software",
                     ].map((ex) => (
                       <button key={ex} onClick={() => { setThreadChainTopic(ex); threadChainRef.current?.focus(); }}
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
+                        → {ex}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
+            {mode === "image-gen" && (
+              <>
+                <div className="border border-zinc-400/60 bg-[#F2EFE8]">
+                  <textarea
+                    ref={imageRef}
+                    value={imagePrompt}
+                    onChange={(e) => setImagePrompt(e.target.value.slice(0, 500))}
+                    onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleImageGen(); }}
+                    placeholder="describe your image... e.g. 'a robot barista making espresso in a neon-lit café, cyberpunk illustration'"
+                    rows={4}
+                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
+                  />
+                  <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
+                    <span className={`text-[10px] uppercase tracking-widest ${imagePrompt.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>
+                      {imagePrompt.length}/500
+                    </span>
+                    <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to generate</span>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <button onClick={handleImageGen} disabled={!imagePrompt.trim() || imageLoading}
+                    className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
+                    {imageLoading ? "generating..." : "generate image →"}
+                  </button>
+                </div>
+
+                {imageError && <ErrorBox message={imageError} />}
+
+                {imageLoading && (
+                  <div className="mt-8 border border-zinc-400/40 bg-[#F2EFE8] aspect-square max-w-lg flex items-center justify-center">
+                    <div className="text-center space-y-3">
+                      <div className="flex items-end justify-center gap-1 h-8">
+                        {[0, 0.15, 0.3, 0.15, 0].map((delay, i) => (
+                          <div key={i} className="w-1 bg-[#D94830] rounded-full"
+                            style={{ height: 32, transformOrigin: "bottom", animation: `minibar 0.7s ease-in-out ${delay}s infinite` }} />
+                        ))}
+                      </div>
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-400">cooking your image</p>
+                    </div>
+                  </div>
+                )}
+
+                {imageUrl && (
+                  <div className="mt-8 animate-stagger-in">
+                    <div className="border border-zinc-400/40 bg-[#F2EFE8] p-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={imageUrl} alt={imagePrompt} className="w-full max-w-lg block" />
+                    </div>
+                    <div className="mt-4 flex items-center gap-4">
+                      <a
+                        href={imageUrl}
+                        download="ai-and-coffee.png"
+                        className="border-2 border-zinc-800 px-6 py-3 text-xs uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
+                      >
+                        download ↓
+                      </a>
+                      <button
+                        onClick={() => { setImageUrl(null); setImagePrompt(""); imageRef.current?.focus(); }}
+                        className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
+                      >
+                        generate again
+                      </button>
+                    </div>
+                    <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by flux-1-schnell · cloudflare workers ai</p>
+                  </div>
+                )}
+
+                {!imageUrl && !imageError && !imageLoading && (
+                  <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">prompt ideas</p>
+                    {[
+                      "a robot barista making espresso in a neon-lit café, cyberpunk illustration",
+                      "two friends coding together at a coffee shop, warm lighting, cozy vibe",
+                      "an AI brain made of coffee beans, digital art",
+                      "a cup of coffee with circuit board patterns, minimal flat design",
+                    ].map((ex) => (
+                      <button key={ex} onClick={() => { setImagePrompt(ex); imageRef.current?.focus(); }}
                         className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
                         → {ex}
                       </button>
