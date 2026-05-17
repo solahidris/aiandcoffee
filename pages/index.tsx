@@ -65,7 +65,7 @@ export default function Home() {
         }
       `}</style>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-16`}>
+      <div className={`${geistMono.className} min-h-screen sm:h-screen sm:overflow-hidden bg-[#E8E4D9] font-mono`}>
         {/* Background animated mascot */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           <div className="animate-float opacity-10">
@@ -83,7 +83,7 @@ export default function Home() {
         {/* Nav */}
         <Nav active="home" />
 
-        <main className="relative min-h-screen overflow-hidden px-6 py-6 sm:py-4 z-10">
+        <main className="relative overflow-hidden px-6 py-6 sm:py-4 z-10">
           {/* Main content - left aligned, raw */}
           <div className="max-w-xl pt-6 sm:pt-4 sm:pl-16">
             <h1 className="text-6xl sm:text-7xl font-bold leading-none tracking-tighter">
@@ -147,7 +147,7 @@ export default function Home() {
           </div>
 
           {/* Bottom corner note — desktop only */}
-          <div className="hidden sm:block fixed bottom-20 right-16 max-w-[200px] text-right animate-stagger-in z-10" style={{ animationDelay: "900ms" }}>
+          <div className="hidden sm:block absolute bottom-20 right-16 max-w-[200px] text-right animate-stagger-in z-10" style={{ animationDelay: "900ms" }}>
             <p className="text-xs text-zinc-500 leading-relaxed">
               no social media<br />
               just whatsapp<br />
