@@ -804,10 +804,20 @@ export default function SlopCentre() {
                   else if (mode === "thread-chain") handleThreadChain();
                   else if (mode === "image-gen") handleImageGen();
                 }}
-                className="shrink-0 border-2 border-[#D94830] bg-[#D94830] px-6 py-3 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white"
+                className="w-9 h-9 shrink-0 bg-[#D94830] flex items-center justify-center text-white hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed rounded-sm"
+                aria-label="Generate"
               >
-                {(mode === "roast" && roastLoading) || (mode === "threads" && threadsLoading) || (mode === "pitch" && pitchLoading) || (mode === "standup" && standupLoading) || (mode === "explain" && explainLoading) || (mode === "thread-chain" && threadChainLoading) || (mode === "image-gen" && imageLoading)
-                  ? "..." : "generate →"}
+                {(mode === "roast" && roastLoading) || (mode === "threads" && threadsLoading) || (mode === "pitch" && pitchLoading) || (mode === "standup" && standupLoading) || (mode === "explain" && explainLoading) || (mode === "thread-chain" && threadChainLoading) || (mode === "image-gen" && imageLoading) ? (
+                  <span className="flex gap-0.5 items-center">
+                    <span className="w-1 h-1 bg-white rounded-full animate-pulse" />
+                    <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "150ms" }} />
+                    <span className="w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "300ms" }} />
+                  </span>
+                ) : (
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 13V3M3 8l5-5 5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
               </button>
 
             </div>
