@@ -763,10 +763,10 @@ export default function SlopCentre() {
 
             {/* ── Viral Thread ── */}
             {mode === "thread-chain" && (
-              <div className="flex flex-col lg:flex-row gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
                 {/* Left: input */}
-                <div className="lg:w-[480px] shrink-0">
+                <div>
                   <div className="mb-5">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">posts per thread</p>
                     <div className="flex gap-2">
@@ -827,7 +827,7 @@ export default function SlopCentre() {
                 </div>
 
                 {/* Right: output */}
-                <div className="flex-1 min-w-0">
+                <div>
                   {threadChainPosts && (
                     <div className="animate-stagger-in">
                       <div className="flex items-center justify-between mb-5">
@@ -914,10 +914,10 @@ export default function SlopCentre() {
             )}
 
             {mode === "image-gen" && (
-              <div className="flex flex-col lg:flex-row gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
                 {/* Left: prompt + controls */}
-                <div className="lg:w-80 shrink-0">
+                <div>
                   <div className="border border-zinc-400/60 bg-[#F2EFE8]">
                     <textarea
                       ref={imageRef}
@@ -962,7 +962,7 @@ export default function SlopCentre() {
                 </div>
 
                 {/* Right: image output */}
-                <div className="flex-1 min-w-0">
+                <div>
                   {imageLoading && (
                     <div className="border border-zinc-400/40 bg-[#F2EFE8] aspect-square w-full flex items-center justify-center">
                       <div className="text-center space-y-3">
