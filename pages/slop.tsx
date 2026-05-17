@@ -425,35 +425,31 @@ export default function SlopCentre() {
           </p>
         </div>
 
-        {/* Slop counter — fixed bottom right */}
-        <div className="fixed bottom-6 right-6 z-30 bg-[#171717] px-4 py-3 text-right shadow-lg animate-stagger-in" style={{ animationDelay: "700ms" }}>
+        {/* Slop counter — fixed bottom right, lifts above input bar for wide modes */}
+        <div className={`fixed ${mode === "image-gen" || mode === "thread-chain" ? "bottom-24" : "bottom-6"} right-6 z-30 bg-[#171717] px-4 py-3 text-right shadow-lg animate-stagger-in transition-all duration-300`} style={{ animationDelay: "700ms" }}>
           <p className="text-2xl sm:text-3xl font-bold text-white tracking-tighter leading-none">
             {slopCount !== null ? slopCount.toLocaleString() : "—"}
           </p>
           <p className="text-[9px] uppercase tracking-widest text-zinc-400 mt-1">slops served</p>
         </div>
 
-        <div className="relative z-10 px-6 sm:px-16 pb-24">
-          <div className={mode === "image-gen" || mode === "thread-chain" ? "" : "max-w-2xl"}>
 
-            {/* Tab switcher */}
+        <div className="relative z-10 px-6 sm:px-16 pb-6">
+          <div className="max-w-2xl">
+
+            {/* Tabs */}
             <div className="flex flex-wrap gap-2 mb-8 animate-stagger-in" style={{ animationDelay: "550ms" }}>
               {TABS.map(({ mode: m, label }) => (
-                <button
-                  key={m}
-                  onClick={() => switchMode(m)}
+                <button key={m} onClick={() => switchMode(m)}
                   className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
-                    mode === m
-                      ? "border-[#D94830] bg-[#D94830] text-white"
-                      : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
-                  }`}
-                >
+                    mode === m ? "border-[#D94830] bg-[#D94830] text-white" : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
+                  }`}>
                   {label}
                 </button>
               ))}
             </div>
 
-            {/* Tab content */}
+            {/* All mode content */}
             <div key={mode} className="animate-stagger-in">
 
             {/* ── Roast Anything ── */}
@@ -461,19 +457,13 @@ export default function SlopCentre() {
               <>
                 <ToneSelector tone={tone} setTone={setTone} />
                 <div className="border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea
-                    ref={roastRef}
-                    value={roastInput}
+                  <textarea ref={roastRef} value={roastInput}
                     onChange={(e) => setRoastInput(e.target.value.slice(0, 500))}
                     onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleRoast(); }}
                     placeholder="paste your job title, LinkedIn bio, startup idea, tech take, or life decision..."
-                    rows={5}
-                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                  />
+                    rows={5} className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
                   <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                    <span className={`text-[10px] uppercase tracking-widest ${roastInput.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                      {roastInput.length}/500
-                    </span>
+                    <span className={`text-[10px] uppercase tracking-widest ${roastInput.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>{roastInput.length}/500</span>
                     <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to roast</span>
                   </div>
                 </div>
@@ -485,29 +475,18 @@ export default function SlopCentre() {
                 </div>
                 {roastError && <ErrorBox message={roastError} />}
                 {roastResult && (
-                  <SloppyResult
-                    result={roastResult}
+                  <SloppyResult result={roastResult}
                     shareText={buildShareText(roastResult, "\n\n— roasted at aiandcoffee.com/slop?roast")}
-                    label="roast incoming"
-                    resetLabel="roast again"
-                    onCopy={() => copyToClipboard(roastResult, setRoastCopied)}
-                    copied={roastCopied}
-                    onReset={() => { setRoastResult(null); setRoastInput(""); roastRef.current?.focus(); }}
-                  />
+                    label="roast incoming" resetLabel="roast again"
+                    onCopy={() => copyToClipboard(roastResult, setRoastCopied)} copied={roastCopied}
+                    onReset={() => { setRoastResult(null); setRoastInput(""); roastRef.current?.focus(); }} />
                 )}
                 {!roastResult && !roastError && (
                   <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">things to try</p>
-                    {[
-                      '"Senior Blockchain Evangelist at Web3 Startup"',
-                      '"I\'m pivoting my SaaS to AI + IoT + blockchain"',
-                      '"We\'re disrupting the disruption space"',
-                      "your actual LinkedIn headline",
-                    ].map((ex) => (
+                    {['"Senior Blockchain Evangelist at Web3 Startup"', '"I\'m pivoting my SaaS to AI + IoT + blockchain"', '"We\'re disrupting the disruption space"', "your actual LinkedIn headline"].map((ex) => (
                       <button key={ex} onClick={() => { setRoastInput(ex.replace(/^"|"$/g, "")); roastRef.current?.focus(); }}
-                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
-                        → {ex}
-                      </button>
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">→ {ex}</button>
                     ))}
                   </div>
                 )}
@@ -520,15 +499,11 @@ export default function SlopCentre() {
                 <ToneSelector tone={tone} setTone={setTone} />
                 <div className="border border-zinc-400/60 bg-[#F2EFE8] flex items-center">
                   <span className="pl-5 text-sm text-zinc-400 select-none">@</span>
-                  <input
-                    ref={threadsRef}
-                    type="text"
-                    value={threadsUsername}
+                  <input ref={threadsRef} type="text" value={threadsUsername}
                     onChange={(e) => setThreadsUsername(e.target.value.replace(/\s/g, ""))}
                     onKeyDown={(e) => { if (e.key === "Enter") handleThreadsRoast(); }}
                     placeholder="threadsusername"
-                    className="flex-1 bg-transparent px-3 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 outline-none"
-                  />
+                    className="flex-1 bg-transparent px-3 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 outline-none" />
                 </div>
                 <div className="mt-4">
                   <button onClick={handleThreadsRoast} disabled={!threadsUsername.trim() || threadsLoading}
@@ -538,27 +513,17 @@ export default function SlopCentre() {
                 </div>
                 {threadsError && <ErrorBox message={threadsError} />}
                 {threadsResult && (
-                  <SloppyResult
-                    result={threadsResult}
+                  <SloppyResult result={threadsResult}
                     shareText={buildShareText(threadsResult, "\n\n— roasted at aiandcoffee.com/slop?roast-by-threads")}
-                    label="roast incoming"
-                    resetLabel="roast again"
-                    sub={threadsBio}
-                    onCopy={() => copyToClipboard(threadsResult, setThreadsCopied)}
-                    copied={threadsCopied}
-                    onReset={() => { setThreadsResult(null); setThreadsBio(null); setThreadsUsername(""); threadsRef.current?.focus(); }}
-                  />
+                    label="roast incoming" resetLabel="roast again" sub={threadsBio}
+                    onCopy={() => copyToClipboard(threadsResult, setThreadsCopied)} copied={threadsCopied}
+                    onReset={() => { setThreadsResult(null); setThreadsBio(null); setThreadsUsername(""); threadsRef.current?.focus(); }} />
                 )}
                 {!threadsResult && !threadsError && (
                   <div className="mt-12 pt-8 border-t border-zinc-400/40">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">how it works</p>
-                    <p className="text-xs text-zinc-500 leading-relaxed">
-                      we fetch their public Threads profile, read their bio,<br />
-                      and let the slop LLM do its thing.
-                    </p>
-                    <p className="mt-3 text-[10px] text-zinc-400">
-                      private profiles won&apos;t work · no bio = still gets roasted
-                    </p>
+                    <p className="text-xs text-zinc-500 leading-relaxed">we fetch their public Threads profile, read their bio,<br />and let the slop LLM do its thing.</p>
+                    <p className="mt-3 text-[10px] text-zinc-400">private profiles won&apos;t work · no bio = still gets roasted</p>
                   </div>
                 )}
               </>
@@ -568,19 +533,13 @@ export default function SlopCentre() {
             {mode === "pitch" && (
               <>
                 <div className="border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea
-                    ref={pitchRef}
-                    value={pitchInput}
+                  <textarea ref={pitchRef} value={pitchInput}
                     onChange={(e) => setPitchInput(e.target.value.slice(0, 500))}
                     onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handlePitch(); }}
                     placeholder="describe your startup idea in plain english... e.g. 'an app that reminds you to drink water'"
-                    rows={5}
-                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                  />
+                    rows={5} className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
                   <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                    <span className={`text-[10px] uppercase tracking-widest ${pitchInput.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                      {pitchInput.length}/500
-                    </span>
+                    <span className={`text-[10px] uppercase tracking-widest ${pitchInput.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>{pitchInput.length}/500</span>
                     <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to pitch</span>
                   </div>
                 </div>
@@ -592,29 +551,18 @@ export default function SlopCentre() {
                 </div>
                 {pitchError && <ErrorBox message={pitchError} />}
                 {pitchResult && (
-                  <SloppyResult
-                    result={pitchResult}
+                  <SloppyResult result={pitchResult}
                     shareText={buildShareText(pitchResult, "\n\n— bs'd at aiandcoffee.com/slop?startup-pitch")}
-                    label="pitch generated"
-                    resetLabel="pitch again"
-                    onCopy={() => copyToClipboard(pitchResult, setPitchCopied)}
-                    copied={pitchCopied}
-                    onReset={() => { setPitchResult(null); setPitchInput(""); pitchRef.current?.focus(); }}
-                  />
+                    label="pitch generated" resetLabel="pitch again"
+                    onCopy={() => copyToClipboard(pitchResult, setPitchCopied)} copied={pitchCopied}
+                    onReset={() => { setPitchResult(null); setPitchInput(""); pitchRef.current?.focus(); }} />
                 )}
                 {!pitchResult && !pitchError && (
                   <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">things to try</p>
-                    {[
-                      '"an app that reminds you to drink water"',
-                      '"uber but for laundry"',
-                      '"a to-do list app with AI"',
-                      '"food delivery but with drones"',
-                    ].map((ex) => (
+                    {['"an app that reminds you to drink water"', '"uber but for laundry"', '"a to-do list app with AI"', '"food delivery but with drones"'].map((ex) => (
                       <button key={ex} onClick={() => { setPitchInput(ex.replace(/^"|"$/g, "")); pitchRef.current?.focus(); }}
-                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
-                        → {ex}
-                      </button>
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">→ {ex}</button>
                     ))}
                   </div>
                 )}
@@ -628,56 +576,36 @@ export default function SlopCentre() {
                   <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-3">what&apos;s your actual situation</p>
                   <div className="flex flex-wrap gap-2">
                     {MOODS.map((mood) => (
-                      <button
-                        key={mood}
-                        onClick={() => setSelectedMood(mood === selectedMood ? null : mood)}
+                      <button key={mood} onClick={() => setSelectedMood(mood === selectedMood ? null : mood)}
                         className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
-                          selectedMood === mood
-                            ? "border-[#D94830] bg-[#D94830] text-white"
-                            : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
-                        }`}
-                      >
-                        {mood}
-                      </button>
+                          selectedMood === mood ? "border-[#D94830] bg-[#D94830] text-white" : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
+                        }`}>{mood}</button>
                     ))}
                   </div>
                 </div>
-
                 <div className="mt-6 border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea
-                    value={standupContext}
-                    onChange={(e) => setStandupContext(e.target.value.slice(0, 300))}
+                  <textarea value={standupContext} onChange={(e) => setStandupContext(e.target.value.slice(0, 300))}
                     onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleStandup(); }}
                     placeholder="optional: anything specific to spin? e.g. 'i was playing valorant all day'"
-                    rows={3}
-                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                  />
+                    rows={3} className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
                   <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                    <span className={`text-[10px] uppercase tracking-widest ${standupContext.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                      {standupContext.length}/300
-                    </span>
+                    <span className={`text-[10px] uppercase tracking-widest ${standupContext.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>{standupContext.length}/300</span>
                     <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to generate</span>
                   </div>
                 </div>
-
                 <div className="mt-4">
                   <button onClick={handleStandup} disabled={!selectedMood || standupLoading}
                     className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
                     {standupLoading ? "synergising the deliverables..." : "generate update →"}
                   </button>
                 </div>
-
                 {standupError && <ErrorBox message={standupError} />}
                 {standupResult && (
-                  <SloppyResult
-                    result={standupResult}
+                  <SloppyResult result={standupResult}
                     shareText={buildShareText(standupResult, "\n\n— generated at aiandcoffee.com/slop?standup")}
-                    label="your update"
-                    resetLabel="generate again"
-                    onCopy={() => copyToClipboard(standupResult, setStandupCopied)}
-                    copied={standupCopied}
-                    onReset={() => { setStandupResult(null); setSelectedMood(null); setStandupContext(""); }}
-                  />
+                    label="your update" resetLabel="generate again"
+                    onCopy={() => copyToClipboard(standupResult, setStandupCopied)} copied={standupCopied}
+                    onReset={() => { setStandupResult(null); setSelectedMood(null); setStandupContext(""); }} />
                 )}
               </>
             )}
@@ -689,332 +617,228 @@ export default function SlopCentre() {
                   <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">explain like i&apos;m a...</p>
                   <div className="flex flex-wrap gap-2">
                     {PERSONAS.map(({ value, label }) => (
-                      <button
-                        key={value}
-                        onClick={() => setExplainPersona(value)}
+                      <button key={value} onClick={() => setExplainPersona(value)}
                         className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
-                          explainPersona === value
-                            ? "border-[#D94830] bg-[#D94830] text-white"
-                            : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
-                        }`}
-                      >
-                        {label}
-                      </button>
+                          explainPersona === value ? "border-[#D94830] bg-[#D94830] text-white" : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
+                        }`}>{label}</button>
                     ))}
                   </div>
                 </div>
-
                 <div className="border border-zinc-400/60 bg-[#F2EFE8]">
-                  <textarea
-                    ref={explainRef}
-                    value={explainTopic}
+                  <textarea ref={explainRef} value={explainTopic}
                     onChange={(e) => setExplainTopic(e.target.value.slice(0, 300))}
                     onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleExplain(); }}
                     placeholder="what do you want explained? e.g. 'how does AI work', 'what is cloud computing', 'why is my PR not merged'"
-                    rows={4}
-                    className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                  />
+                    rows={4} className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
                   <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                    <span className={`text-[10px] uppercase tracking-widest ${explainTopic.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                      {explainTopic.length}/300
-                    </span>
+                    <span className={`text-[10px] uppercase tracking-widest ${explainTopic.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>{explainTopic.length}/300</span>
                     <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to explain</span>
                   </div>
                 </div>
-
                 <div className="mt-4">
                   <button onClick={handleExplain} disabled={!explainTopic.trim() || explainLoading}
                     className="border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
                     {explainLoading ? "asking around..." : "explain →"}
                   </button>
                 </div>
-
                 {explainError && <ErrorBox message={explainError} />}
                 {explainResult && (
-                  <SloppyResult
-                    result={explainResult}
+                  <SloppyResult result={explainResult}
                     shareText={buildShareText(explainResult, "\n\n— explained at aiandcoffee.com/slop?explain")}
                     label={`explained by ${PERSONAS.find(p => p.value === explainPersona)?.label ?? explainPersona}`}
                     resetLabel="explain again"
-                    onCopy={() => copyToClipboard(explainResult, setExplainCopied)}
-                    copied={explainCopied}
-                    onReset={() => { setExplainResult(null); setExplainTopic(""); explainRef.current?.focus(); }}
-                  />
+                    onCopy={() => copyToClipboard(explainResult, setExplainCopied)} copied={explainCopied}
+                    onReset={() => { setExplainResult(null); setExplainTopic(""); explainRef.current?.focus(); }} />
                 )}
-
                 {!explainResult && !explainError && (
                   <div className="mt-12 pt-8 border-t border-zinc-400/40 space-y-2">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">things to try</p>
-                    {[
-                      "how does AI work",
-                      "what is cloud computing",
-                      "why is crypto so volatile",
-                      "explain microservices",
-                    ].map((ex) => (
+                    {["how does AI work", "what is cloud computing", "why is crypto so volatile", "explain microservices"].map((ex) => (
                       <button key={ex} onClick={() => { setExplainTopic(ex); explainRef.current?.focus(); }}
-                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
-                        → {ex}
-                      </button>
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">→ {ex}</button>
                     ))}
                   </div>
                 )}
               </>
             )}
 
-            {/* ── Viral Thread ── */}
+            {/* ── Viral Thread — output only, input in fixed bar ── */}
             {mode === "thread-chain" && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                {/* Left: input */}
-                <div>
-                  <div className="mb-5">
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">posts per thread</p>
-                    <div className="flex gap-2">
-                      {[3, 5, 7, 10].map((n) => (
-                        <button key={n} onClick={() => setThreadChainCount(n)}
-                          className={`px-4 py-2 text-[11px] uppercase tracking-widest border transition-colors duration-150 ${
-                            threadChainCount === n
-                              ? "border-[#D94830] bg-[#D94830] text-white"
-                              : "border-zinc-400 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
-                          }`}>
-                          {n}
-                        </button>
+              <div className="pb-44">
+                {threadChainError && <ErrorBox message={threadChainError} />}
+                {threadChainLoading && (
+                  <div className="flex items-center gap-3 py-8">
+                    <div className="flex items-end gap-1 h-5">
+                      {[0, 0.12, 0.24, 0.12, 0].map((delay, i) => (
+                        <div key={i} className="w-1 bg-[#D94830] rounded-full"
+                          style={{ height: 20, transformOrigin: "bottom", animation: `minibar 0.6s ease-in-out ${delay}s infinite` }} />
                       ))}
                     </div>
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400">cooking the thread...</p>
                   </div>
-
-                  <div className="border border-zinc-400/60 bg-[#F2EFE8]">
-                    <textarea
-                      ref={threadChainRef}
-                      value={threadChainTopic}
-                      onChange={(e) => setThreadChainTopic(e.target.value.slice(0, 300))}
-                      onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleThreadChain(); }}
-                      placeholder="what's the thread about? e.g. 'why i quit my stable job to become a dev', 'things no one tells you about startups in malaysia'"
-                      rows={5}
-                      className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                    />
-                    <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                      <span className={`text-[10px] uppercase tracking-widest ${threadChainTopic.length >= 300 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                        {threadChainTopic.length}/300
-                      </span>
-                      <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter to generate</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-4">
-                    <button onClick={handleThreadChain} disabled={!threadChainTopic.trim() || threadChainLoading}
-                      className="w-full border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
-                      {threadChainLoading ? "cooking the thread..." : "generate thread →"}
-                    </button>
-                  </div>
-
-                  {threadChainError && <ErrorBox message={threadChainError} />}
-
-                  <div className="mt-8 pt-6 border-t border-zinc-400/40 space-y-2">
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">thread ideas</p>
-                    {[
-                      "why i quit my corporate job to become a developer",
-                      "things no one tells you about working at a startup",
-                      "how i accidentally went viral with a terrible post",
-                      "the real cost of free software",
-                    ].map((ex) => (
-                      <button key={ex} onClick={() => { setThreadChainTopic(ex); threadChainRef.current?.focus(); }}
-                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
-                        → {ex}
+                )}
+                {threadChainPosts && (
+                  <>
+                    <div className="flex items-center justify-between mb-5">
+                      <p className="text-[10px] uppercase tracking-widest text-[#D94830]">thread ready — {threadChainPosts.length} posts</p>
+                      <button onClick={() => copyToClipboard(threadChainPosts.join('\n\n'), setThreadChainCopied)}
+                        className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">
+                        {threadChainCopied ? "copied ✓" : "copy all"}
                       </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right: output */}
-                <div>
-                  {threadChainPosts && (
-                    <div className="animate-stagger-in">
-                      <div className="flex items-center justify-between mb-5">
-                        <p className="text-[10px] uppercase tracking-widest text-[#D94830]">
-                          thread ready — {threadChainPosts.length} posts
-                        </p>
-                        <button
-                          onClick={() => copyToClipboard(threadChainPosts.join('\n\n'), setThreadChainCopied)}
-                          className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors"
-                        >
-                          {threadChainCopied ? "copied ✓" : "copy all"}
-                        </button>
-                      </div>
-
-                      <div>
-                        {threadChainPosts.map((post, i) => (
-                          <div key={i} className="relative">
-                            <div className="border-2 border-[#D94830] bg-[#F2EFE8]">
-                              <div className="px-5 py-3 border-b border-[#D94830]/30 flex items-center justify-between">
-                                <span className="text-[10px] uppercase tracking-widest text-[#D94830]">
-                                  {i + 1}/{threadChainPosts.length}
-                                </span>
-                                <div className="flex items-center gap-4">
-                                  <span className="text-[10px] text-zinc-400">{post.length} chars</span>
-                                  <button
-                                    onClick={async () => {
-                                      try { await navigator.clipboard.writeText(post); setThreadChainPostCopied(i); setTimeout(() => setThreadChainPostCopied(null), 2000); } catch { /* clipboard not available */ }
-                                    }}
-                                    className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors"
-                                  >
-                                    {threadChainPostCopied === i ? "copied ✓" : "copy"}
-                                  </button>
-                                  <a
-                                    href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.slice(0, 500))}`}
-                                    target="_blank" rel="noopener noreferrer"
-                                    className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors"
-                                  >
-                                    post ↗
-                                  </a>
-                                </div>
-                              </div>
-                              <div className="px-5 py-5">
-                                <p className="text-sm text-zinc-800 leading-relaxed whitespace-pre-line">{post}</p>
+                    </div>
+                    <div>
+                      {threadChainPosts.map((post, i) => (
+                        <div key={i} className="relative">
+                          <div className="border-2 border-[#D94830] bg-[#F2EFE8]">
+                            <div className="px-5 py-3 border-b border-[#D94830]/30 flex items-center justify-between">
+                              <span className="text-[10px] uppercase tracking-widest text-[#D94830]">{i + 1}/{threadChainPosts.length}</span>
+                              <div className="flex items-center gap-4">
+                                <span className="text-[10px] text-zinc-400">{post.length} chars</span>
+                                <button onClick={async () => { try { await navigator.clipboard.writeText(post); setThreadChainPostCopied(i); setTimeout(() => setThreadChainPostCopied(null), 2000); } catch { /* clipboard not available */ } }}
+                                  className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">
+                                  {threadChainPostCopied === i ? "copied ✓" : "copy"}
+                                </button>
+                                <a href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.slice(0, 500))}`}
+                                  target="_blank" rel="noopener noreferrer"
+                                  className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-zinc-800 transition-colors">post ↗</a>
                               </div>
                             </div>
-                            {i < threadChainPosts.length - 1 && (
-                              <div className="flex justify-start pl-6">
-                                <div className="w-[2px] h-4 bg-[#D94830]/40" />
-                              </div>
-                            )}
+                            <div className="px-5 py-5">
+                              <p className="text-sm text-zinc-800 leading-relaxed whitespace-pre-line">{post}</p>
+                            </div>
                           </div>
-                        ))}
-                      </div>
-
-                      <div className="mt-6 pt-5 border-t border-[#D94830]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <a
-                          href={`https://www.threads.net/intent/post?text=${encodeURIComponent((threadChainPosts[0] || '').slice(0, 500))}`}
-                          target="_blank" rel="noopener noreferrer"
-                          className="inline-block border-2 border-zinc-800 px-8 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
-                        >
-                          post first to threads ↗
-                        </a>
-                        <div className="flex items-center gap-4">
-                          <span className="text-[10px] text-zinc-400">powered by (AI and Coffee) slop LLM</span>
-                          <button
-                            onClick={() => { setThreadChainPosts(null); setThreadChainTopic(""); threadChainRef.current?.focus(); }}
-                            className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
-                          >
-                            generate again
-                          </button>
+                          {i < threadChainPosts.length - 1 && (
+                            <div className="flex justify-start pl-6"><div className="w-[2px] h-4 bg-[#D94830]/40" /></div>
+                          )}
                         </div>
+                      ))}
+                    </div>
+                    <div className="mt-6 pt-5 border-t border-[#D94830]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                      <a href={`https://www.threads.net/intent/post?text=${encodeURIComponent((threadChainPosts[0] || '').slice(0, 500))}`}
+                        target="_blank" rel="noopener noreferrer"
+                        className="inline-block border-2 border-zinc-800 px-8 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors">
+                        post first to threads ↗
+                      </a>
+                      <div className="flex items-center gap-4">
+                        <span className="text-[10px] text-zinc-400">powered by (AI and Coffee) slop LLM</span>
+                        <button onClick={() => { setThreadChainPosts(null); setThreadChainTopic(""); threadChainRef.current?.focus(); }}
+                          className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors">generate again</button>
                       </div>
                     </div>
-                  )}
-
-                  {!threadChainPosts && !threadChainError && (
-                    <div className="border border-zinc-400/20 h-48 lg:h-full min-h-[200px] flex items-center justify-center">
-                      <p className="text-[10px] uppercase tracking-widest text-zinc-300">your thread will appear here</p>
-                    </div>
-                  )}
-                </div>
-
-              </div>
-            )}
-
-            {mode === "image-gen" && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                {/* Left: prompt + controls */}
-                <div>
-                  <div className="border border-zinc-400/60 bg-[#F2EFE8]">
-                    <textarea
-                      ref={imageRef}
-                      value={imagePrompt}
-                      onChange={(e) => setImagePrompt(e.target.value.slice(0, 500))}
-                      onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleImageGen(); }}
-                      placeholder="describe your image... e.g. 'a robot barista making espresso in a neon-lit café, cyberpunk illustration'"
-                      rows={5}
-                      className="w-full bg-transparent px-5 py-4 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed"
-                    />
-                    <div className="flex items-center justify-between px-5 py-3 border-t border-zinc-400/40">
-                      <span className={`text-[10px] uppercase tracking-widest ${imagePrompt.length >= 500 ? "text-[#D94830]" : "text-zinc-400"}`}>
-                        {imagePrompt.length}/500
-                      </span>
-                      <span className="text-[10px] text-zinc-400 hidden sm:block">⌘ + enter</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-4">
-                    <button onClick={handleImageGen} disabled={!imagePrompt.trim() || imageLoading}
-                      className="w-full border-2 border-[#D94830] bg-[#D94830] px-8 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
-                      {imageLoading ? "generating..." : "generate image →"}
-                    </button>
-                  </div>
-
-                  {imageError && <ErrorBox message={imageError} />}
-
-                  <div className="mt-8 pt-6 border-t border-zinc-400/40 space-y-2">
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">prompt ideas</p>
-                    {[
-                      "a robot barista making espresso in a neon-lit café, cyberpunk illustration",
-                      "two friends coding together at a coffee shop, warm lighting, cozy vibe",
-                      "an AI brain made of coffee beans, digital art",
-                      "a cup of coffee with circuit board patterns, minimal flat design",
-                    ].map((ex) => (
-                      <button key={ex} onClick={() => { setImagePrompt(ex); imageRef.current?.focus(); }}
-                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">
-                        → {ex}
-                      </button>
+                  </>
+                )}
+                {!threadChainPosts && !threadChainError && !threadChainLoading && (
+                  <div className="space-y-2 mt-4">
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">thread ideas</p>
+                    {["why i quit my corporate job to become a developer", "things no one tells you about working at a startup", "how i accidentally went viral with a terrible post", "the real cost of free software"].map((ex) => (
+                      <button key={ex} onClick={() => { setThreadChainTopic(ex); threadChainRef.current?.focus(); }}
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">→ {ex}</button>
                     ))}
                   </div>
-                </div>
-
-                {/* Right: image output */}
-                <div>
-                  {imageLoading && (
-                    <div className="border border-zinc-400/40 bg-[#F2EFE8] aspect-square w-full flex items-center justify-center">
-                      <div className="text-center space-y-3">
-                        <div className="flex items-end justify-center gap-1 h-8">
-                          {[0, 0.15, 0.3, 0.15, 0].map((delay, i) => (
-                            <div key={i} className="w-1 bg-[#D94830] rounded-full"
-                              style={{ height: 32, transformOrigin: "bottom", animation: `minibar 0.7s ease-in-out ${delay}s infinite` }} />
-                          ))}
-                        </div>
-                        <p className="text-[10px] uppercase tracking-widest text-zinc-400">cooking your image</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {imageUrl && (
-                    <div className="animate-stagger-in">
-                      <div className="border border-zinc-400/40 bg-[#F2EFE8] p-2">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={imageUrl} alt={imagePrompt} className="w-full block" />
-                      </div>
-                      <div className="mt-4 flex items-center gap-4">
-                        <a
-                          href={imageUrl}
-                          download="ai-and-coffee.png"
-                          className="border-2 border-zinc-800 px-6 py-3 text-xs uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors"
-                        >
-                          download ↓
-                        </a>
-                        <button
-                          onClick={() => { setImageUrl(null); setImagePrompt(""); imageRef.current?.focus(); }}
-                          className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors"
-                        >
-                          generate again
-                        </button>
-                      </div>
-                      <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by ai-1-coffee · ai and coffee image slop ai</p>
-                    </div>
-                  )}
-
-                  {!imageUrl && !imageLoading && (
-                    <div className="border border-zinc-400/20 aspect-square w-full flex items-center justify-center">
-                      <p className="text-[10px] uppercase tracking-widest text-zinc-300">your image will appear here</p>
-                    </div>
-                  )}
-                </div>
-
+                )}
               </div>
             )}
 
-            </div>{/* end key={mode} animated wrapper */}
+            {/* ── Image Gen — output only, input in fixed bar ── */}
+            {mode === "image-gen" && (
+              <div className="pb-44">
+                {imageError && <ErrorBox message={imageError} />}
+                {imageLoading && (
+                  <div className="flex items-center gap-3 py-8">
+                    <div className="flex items-end gap-1 h-5">
+                      {[0, 0.15, 0.3, 0.15, 0].map((delay, i) => (
+                        <div key={i} className="w-1 bg-[#D94830] rounded-full"
+                          style={{ height: 20, transformOrigin: "bottom", animation: `minibar 0.7s ease-in-out ${delay}s infinite` }} />
+                      ))}
+                    </div>
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400">cooking your image...</p>
+                  </div>
+                )}
+                {imageUrl && (
+                  <div className="animate-stagger-in">
+                    <div className="border border-zinc-400/40 bg-[#F2EFE8] p-2 inline-block">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={imageUrl} alt={imagePrompt} className="block max-h-[60vh] w-auto" />
+                    </div>
+                    <div className="mt-4 flex items-center gap-4">
+                      <a href={imageUrl} download="ai-and-coffee.png"
+                        className="border-2 border-zinc-800 px-6 py-3 text-xs uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors">
+                        download ↓
+                      </a>
+                      <button onClick={() => { setImageUrl(null); setImagePrompt(""); imageRef.current?.focus(); }}
+                        className="text-[10px] uppercase tracking-widest text-zinc-500 hover:text-[#D94830] transition-colors">generate again</button>
+                    </div>
+                    <p className="mt-3 text-[10px] text-zinc-400 uppercase tracking-widest">powered by ai-1-coffee · ai and coffee image slop ai</p>
+                  </div>
+                )}
+                {!imageUrl && !imageError && !imageLoading && (
+                  <div className="space-y-2 mt-4">
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">prompt ideas</p>
+                    {["a robot barista making espresso in a neon-lit café, cyberpunk illustration", "two friends coding together at a coffee shop, warm lighting, cozy vibe", "an AI brain made of coffee beans, digital art", "a cup of coffee with circuit board patterns, minimal flat design"].map((ex) => (
+                      <button key={ex} onClick={() => { setImagePrompt(ex); imageRef.current?.focus(); }}
+                        className="block text-xs text-zinc-500 hover:text-zinc-800 transition-colors text-left leading-relaxed">→ {ex}</button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            </div>{/* end key={mode} */}
+          </div>{/* end max-w-2xl */}
+        </div>{/* end content wrapper */}
+
+        {/* ── Fixed bottom input bar (viral thread + image gen) ── */}
+        {(mode === "thread-chain" || mode === "image-gen") && (
+          <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm">
+            <div className="px-6 sm:px-16 py-4 max-w-3xl mx-auto">
+
+              {mode === "thread-chain" && (
+                <>
+                  <div className="flex items-center gap-2 mb-3">
+                    {[3, 5, 7, 10].map((n) => (
+                      <button key={n} onClick={() => setThreadChainCount(n)}
+                        className={`px-3 py-1 text-[11px] uppercase tracking-widest border transition-colors ${
+                          threadChainCount === n ? "border-[#D94830] bg-[#D94830] text-white" : "border-zinc-400 text-zinc-500 hover:border-zinc-600"
+                        }`}>{n}</button>
+                    ))}
+                    <span className="text-[10px] text-zinc-400 ml-1">posts</span>
+                  </div>
+                  <div className="flex gap-3 items-end">
+                    <div className="flex-1 border border-zinc-400/60 bg-[#F2EFE8]">
+                      <textarea ref={threadChainRef} value={threadChainTopic}
+                        onChange={(e) => setThreadChainTopic(e.target.value.slice(0, 300))}
+                        onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleThreadChain(); }}
+                        placeholder="what's the thread about?"
+                        rows={2} className="w-full bg-transparent px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
+                    </div>
+                    <button onClick={handleThreadChain} disabled={!threadChainTopic.trim() || threadChainLoading}
+                      className="shrink-0 border-2 border-[#D94830] bg-[#D94830] px-6 py-3 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
+                      {threadChainLoading ? "cooking..." : "generate →"}
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {mode === "image-gen" && (
+                <div className="flex gap-3 items-end">
+                  <div className="flex-1 border border-zinc-400/60 bg-[#F2EFE8]">
+                    <textarea ref={imageRef} value={imagePrompt}
+                      onChange={(e) => setImagePrompt(e.target.value.slice(0, 500))}
+                      onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleImageGen(); }}
+                      placeholder="describe your image..."
+                      rows={2} className="w-full bg-transparent px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 resize-none outline-none leading-relaxed" />
+                  </div>
+                  <button onClick={handleImageGen} disabled={!imagePrompt.trim() || imageLoading}
+                    className="shrink-0 border-2 border-[#D94830] bg-[#D94830] px-6 py-3 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#D94830] disabled:hover:text-white">
+                    {imageLoading ? "generating..." : "generate →"}
+                  </button>
+                </div>
+              )}
+
+            </div>
           </div>
-        </div>
+        )}
+
       </div>
     </>
   );
