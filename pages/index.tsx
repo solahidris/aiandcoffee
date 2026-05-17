@@ -18,10 +18,11 @@ const AUTOPLAY_IDX = TRACKS.findIndex(t => t.title === "Instrumental 1");
 export default function Home() {
   const { selectTrack, isPlaying } = usePlayer();
 
-  // Auto-play Instrumental 1 on first visit if nothing is already playing
+  // Auto-play Instrumental 1 only on truly first visit (no saved track in localStorage)
   useEffect(() => {
-    if (!isPlaying) {
-      const t = setTimeout(() => selectTrack(AUTOPLAY_IDX >= 0 ? AUTOPLAY_IDX : 4), 600);
+    const hasSaved = localStorage.getItem("player_index") !== null;
+    if (!isPlaying && !hasSaved) {
+      const t = setTimeout(() => selectTrack(AUTOPLAY_IDX >= 0 ? AUTOPLAY_IDX : 0), 600);
       return () => clearTimeout(t);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

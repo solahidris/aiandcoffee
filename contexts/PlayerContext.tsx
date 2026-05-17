@@ -26,9 +26,20 @@ interface PlayerState {
 
 const PlayerContext = createContext<PlayerState | null>(null);
 
+function loadInt(key: string, fallback: number) {
+  if (typeof window === "undefined") return fallback;
+  const v = localStorage.getItem(key);
+  return v !== null ? parseInt(v, 10) : fallback;
+}
+function loadBool(key: string, fallback: boolean) {
+  if (typeof window === "undefined") return fallback;
+  const v = localStorage.getItem(key);
+  return v !== null ? v === "true" : fallback;
+}
+
 export function PlayerProvider({ children }: { children: ReactNode }) {
-  const [currentIndex,  setCurrentIndex]  = useState(0);
-  const [isPlaying,     setIsPlayingState]= useState(false);
+  const [currentIndex,  setCurrentIndex]  = useState(() => loadInt("player_index", 0));
+  const [isPlaying,     setIsPlayingState]= useState(false); // never auto-restore to true (browser blocks)
   const [currentTime,   setCurrentTime]   = useState(0);
   const [duration,      setDuration]      = useState(0);
   const [repeatMode,    setRepeatMode]    = useState<RepeatMode>("none");
@@ -44,8 +55,8 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const isShuffleRef    = useRef(false);
   const shuffledRef     = useRef<number[]>([]);
 
-  useEffect(() => { isPlayingRef.current    = isPlaying;     }, [isPlaying]);
-  useEffect(() => { currentIdxRef.current   = currentIndex;  }, [currentIndex]);
+  useEffect(() => { isPlayingRef.current = isPlaying; localStorage.setItem("player_playing", String(isPlaying)); }, [isPlaying]);
+  useEffect(() => { currentIdxRef.current = currentIndex; localStorage.setItem("player_index", String(currentIndex)); }, [currentIndex]);
   useEffect(() => { repeatModeRef.current   = repeatMode;    }, [repeatMode]);
   useEffect(() => { isShuffleRef.current    = isShuffle;     }, [isShuffle]);
   useEffect(() => { shuffledRef.current     = shuffledOrder; }, [shuffledOrder]);
@@ -54,7 +65,8 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const audio = new Audio();
-    audio.src = TRACKS[0].src;
+    const savedIdx = loadInt("player_index", 0);
+    audio.src = TRACKS[Math.min(savedIdx, TRACKS.length - 1)].src;
 
     // Stable ended handler via ref trick
     const onEnded = () => {
