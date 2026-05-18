@@ -412,7 +412,7 @@ export default function Contribute() {
         </div>
 
         {/* CTAs */}
-        <div className="px-6 sm:px-16 py-12 flex flex-col sm:flex-row gap-4">
+        <div className="px-6 sm:px-16 py-12 pb-24 flex flex-col sm:flex-row gap-4">
           <a
             href="https://github.com/solahidris/aiandcoffee/fork"
             target="_blank"

@@ -12,13 +12,23 @@ const geistMono = Geist_Mono({
 
 const FIRST_COMMIT_DATE = new Date("2026-05-14");
 
+type Contributor = { login: string; avatar_url: string; html_url: string };
+
 export default function About() {
   const [daysSinceStart, setDaysSinceStart] = useState(0);
+  const [contributors, setContributors] = useState<Contributor[]>([]);
 
   useEffect(() => {
     const now = new Date();
     const diff = Math.floor((now.getTime() - FIRST_COMMIT_DATE.getTime()) / (1000 * 60 * 60 * 24));
     setDaysSinceStart(diff);
+  }, []);
+
+  useEffect(() => {
+    fetch("https://api.github.com/repos/solahidris/aiandcoffee/contributors")
+      .then((r) => r.json())
+      .then((data) => { if (Array.isArray(data)) setContributors(data); })
+      .catch(() => {});
   }, []);
 
   return (
@@ -123,10 +133,41 @@ export default function About() {
 
             <div className="px-6 py-10">
               <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">open source</p>
-              <p className="text-xs text-zinc-600 leading-relaxed mb-5">
+              <p className="text-xs text-zinc-600 leading-relaxed mb-4">
                 Built in public, by the community. See a bug? Fix it.
                 See something missing? Add it. No permission needed.
               </p>
+              {contributors.length > 0 && (
+                <div className="mb-4">
+                  <div className="flex items-center mb-2">
+                    {contributors.slice(0, 8).map((c, i) => (
+                      <a
+                        key={c.login}
+                        href={c.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={c.login}
+                        className="block rounded-full border-2 border-[#E8E4D9] overflow-hidden hover:scale-110 transition-transform"
+                        style={{ marginLeft: i === 0 ? 0 : "-8px", zIndex: contributors.length - i }}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={c.avatar_url} alt={c.login} width={28} height={28} className="block" />
+                      </a>
+                    ))}
+                    {contributors.length > 8 && (
+                      <span
+                        className="flex items-center justify-center w-7 h-7 rounded-full border-2 border-[#E8E4D9] bg-zinc-300 text-[9px] font-bold text-zinc-600"
+                        style={{ marginLeft: "-8px" }}
+                      >
+                        +{contributors.length - 8}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-zinc-500">
+                    <span className="font-bold text-zinc-800">{contributors.length}</span> contributor{contributors.length !== 1 ? "s" : ""} and counting
+                  </p>
+                </div>
+              )}
               <a
                 href="https://github.com/solahidris/aiandcoffee"
                 target="_blank"

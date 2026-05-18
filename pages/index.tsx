@@ -123,14 +123,12 @@ export default function Home() {
                 >
                   memories →
                 </Link>
-                <a
-                  href="https://github.com/solahidris/aiandcoffee"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/contribute"
                   className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
                 >
                   github ↗
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -149,14 +147,12 @@ export default function Home() {
               >
                 memories →
               </Link>
-              <a
-                href="https://github.com/solahidris/aiandcoffee"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contribute"
                 className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
               >
                 github ↗
-              </a>
+              </Link>
             </div>
           </div>
 
