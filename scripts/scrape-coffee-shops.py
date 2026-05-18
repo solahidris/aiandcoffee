@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Scrapes petakopi.my for coffee shops in Kuala Lumpur and Selangor.
-Uses the Inertia.js XHR protocol to get paginated JSON data.
-Run from repo root: python3 scripts/scrape-petakopi.py
+Scrapes coffee shop data for Kuala Lumpur and Selangor.
+Run from repo root: python3 scripts/scrape-coffee-shops.py
 """
 
 import urllib.request
@@ -113,7 +112,6 @@ def map_shop(shop):
         "id": shop["slug"],
         "name": shop["name"],
         "area": area,
-        "petakopi_url": f"https://petakopi.my/{shop['slug']}",
         "google_maps": google_link,
         "waze": waze_link,
         "machine": None,
@@ -126,7 +124,6 @@ def map_shop(shop):
         "surau": None,
         "wifi": None,
         "vibe": derive_vibe(tags),
-        "petakopi_tags": [t["slug"] for t in tags],
         "rating": shop.get("rating"),
     }
 

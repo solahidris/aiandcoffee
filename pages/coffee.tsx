@@ -10,7 +10,7 @@ type Shop = {
   id: string;
   name: string;
   area: string;
-  petakopi_url?: string;
+
   google_maps: string | null;
   waze: string | null;
   machine: string | null;
@@ -23,7 +23,7 @@ type Shop = {
   surau: boolean | null;
   wifi: "open" | "password" | "none" | null;
   vibe: string | null;
-  petakopi_tags?: string[];
+
   rating?: number | null;
 };
 
@@ -130,16 +130,7 @@ function ShopCard({ shop }: { shop: Shop }) {
             Waze ↗
           </a>
         )}
-        {shop.petakopi_url && (
-          <a
-            href={shop.petakopi_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors border-b border-zinc-300 pb-0.5"
-          >
-            petakopi ↗
-          </a>
-        )}
+
       </div>
     </div>
   );
