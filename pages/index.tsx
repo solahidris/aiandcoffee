@@ -18,10 +18,9 @@ const AUTOPLAY_IDX = TRACKS.findIndex(t => t.title === "Instrumental 1");
 export default function Home() {
   const { selectTrack, isPlaying } = usePlayer();
 
-  // Auto-play Instrumental 1 only on truly first visit (no saved track in localStorage)
+  // Auto-play if music is not already playing
   useEffect(() => {
-    const hasSaved = localStorage.getItem("player_index") !== null;
-    if (!isPlaying && !hasSaved) {
+    if (!isPlaying) {
       const t = setTimeout(() => selectTrack(AUTOPLAY_IDX >= 0 ? AUTOPLAY_IDX : 0), 600);
       return () => clearTimeout(t);
     }
@@ -117,14 +116,22 @@ export default function Home() {
                 just whatsapp<br />
                 <span className="text-zinc-400">expanding @ 1024 members</span>
               </p>
-              <a
-                href="https://github.com/solahidris/aiandcoffee"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-block text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
-              >
-                github ↗
-              </a>
+              <div className="mt-2 flex gap-4">
+                <Link
+                  href="/memories"
+                  className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
+                >
+                  memories →
+                </Link>
+                <a
+                  href="https://github.com/solahidris/aiandcoffee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
+                >
+                  github ↗
+                </a>
+              </div>
             </div>
           </div>
 
@@ -135,14 +142,22 @@ export default function Home() {
               just whatsapp<br />
               <span className="text-zinc-400">expanding @ 1024 members</span>
             </p>
-            <a
-              href="https://github.com/solahidris/aiandcoffee"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
-            >
-              github ↗
-            </a>
+            <div className="mt-2 flex justify-end gap-4">
+              <Link
+                href="/memories"
+                className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
+              >
+                memories →
+              </Link>
+              <a
+                href="https://github.com/solahidris/aiandcoffee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
+              >
+                github ↗
+              </a>
+            </div>
           </div>
 
           {/* Random decorative element */}

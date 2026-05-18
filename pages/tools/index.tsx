@@ -73,7 +73,7 @@ export default function ToolsPage() {
         <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-24`}>
         <Nav active="tools" />
 
         {/* Header */}

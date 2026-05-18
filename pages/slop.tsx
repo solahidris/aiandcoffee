@@ -413,7 +413,7 @@ export default function SlopCentre() {
         <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-24`}>
         {/* Background floating mascot */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           <div className="animate-float opacity-10">
@@ -670,7 +670,7 @@ export default function SlopCentre() {
         </div>{/* end content wrapper */}
 
         {/* ── Fixed bottom input bar — all modes ── */}
-        <div className="fixed bottom-0 left-0 right-0 z-40 pb-6 px-6 sm:px-16 flex justify-center pointer-events-none">
+        <div className="fixed bottom-12 left-0 right-0 z-40 pb-6 px-6 sm:px-16 flex justify-center pointer-events-none">
           <div className="w-full max-w-2xl border border-zinc-400/40 bg-[#E8E4D9]/95 backdrop-blur-sm shadow-lg p-4 pointer-events-auto">
 
             {/* Tone selector — roast + threads */}

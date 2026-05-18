@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
+import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 
 const geistMono = Geist_Mono({
@@ -9,7 +10,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const FIRST_COMMIT_DATE = new Date("2026-05-14");
+
 export default function About() {
+  const [daysSinceStart, setDaysSinceStart] = useState(0);
+
+  useEffect(() => {
+    const now = new Date();
+    const diff = Math.floor((now.getTime() - FIRST_COMMIT_DATE.getTime()) / (1000 * 60 * 60 * 24));
+    setDaysSinceStart(diff);
+  }, []);
+
   return (
     <>
       <Head>
@@ -30,7 +41,7 @@ export default function About() {
         <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-24`}>
         {/* Nav */}
         <Nav active="about" />
 
@@ -71,17 +82,31 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-zinc-400/40">
 
           {/* Who's welcome — spans 2 cols */}
-          <div className="sm:col-span-2 border-b sm:border-b-0 sm:border-r border-zinc-400/40 px-6 sm:px-16 py-12 animate-stagger-in" style={{ animationDelay: "550ms" }}>
-            <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-8">who&apos;s welcome</p>
-            <div className="flex flex-wrap gap-4 font-bold uppercase tracking-widest text-zinc-700 text-sm mb-8">
-              {["clueless", "beginners", "seniors", "whales", "sharks"].map((label) => (
-                <span key={label} className="border-b-2 border-zinc-400 pb-1">{label}</span>
-              ))}
+          <div className="sm:col-span-2 border-b sm:border-b-0 sm:border-r border-zinc-400/40 px-6 sm:px-16 py-12 animate-stagger-in relative overflow-hidden" style={{ animationDelay: "550ms" }}>
+            {/* Collage backdrop */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-0 left-0 w-1/3 h-full">
+                <Image src="/memories/mem-001/1.png" alt="" fill className="object-cover" />
+              </div>
+              <div className="absolute top-0 left-1/3 w-1/3 h-full">
+                <Image src="/memories/mem-001/2.png" alt="" fill className="object-cover" />
+              </div>
+              <div className="absolute top-0 left-2/3 w-1/3 h-full">
+                <Image src="/memories/mem-001/3.png" alt="" fill className="object-cover" />
+              </div>
             </div>
-            <p className="text-xs text-zinc-500 leading-relaxed max-w-sm">
-              Whether you&apos;ve never touched AI or you&apos;re shipping models to production —
-              you belong here. Leave the ego at the door.
-            </p>
+            <div className="relative z-10">
+              <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-8">who&apos;s welcome</p>
+              <div className="flex flex-wrap gap-4 font-bold uppercase tracking-widest text-zinc-700 text-sm mb-8">
+                {["clueless", "beginners", "seniors", "whales", "sharks"].map((label) => (
+                  <span key={label} className="border-b-2 border-zinc-400 pb-1">{label}</span>
+                ))}
+              </div>
+              <p className="text-xs text-zinc-500 leading-relaxed max-w-sm">
+                Whether you&apos;ve never touched AI or you&apos;re shipping models to production —
+                you belong here. Leave the ego at the door.
+              </p>
+            </div>
           </div>
 
           {/* Right column — stacked */}
@@ -110,6 +135,19 @@ export default function About() {
               >
                 github ↗
               </a>
+            </div>
+
+            <div className="px-6 py-10">
+              <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">day one</p>
+              <p className="text-2xl font-bold text-[#D94830] tracking-tighter mb-1">
+                {daysSinceStart} days
+              </p>
+              <p className="text-xs text-zinc-500 mb-3">since first commit</p>
+              <p className="text-xs text-zinc-600 leading-relaxed">
+                Started on <span className="font-bold text-zinc-800">14 May 2026</span>.
+                <br />
+                Building in public ever since.
+              </p>
             </div>
           </div>
 
@@ -140,6 +178,21 @@ export default function About() {
               only then will we accept the gesture.
             </p>
           </div>
+        </div>
+
+        {/* Past Events */}
+        <div className="border-b border-zinc-400/40 px-6 sm:px-16 py-12 animate-stagger-in" style={{ animationDelay: "850ms" }}>
+          <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">our past events</p>
+          <p className="text-sm text-zinc-600 leading-relaxed max-w-md mb-6">
+            We've been hanging out, sharing ideas, and building together.
+            Check out the memories from our past meetups.
+          </p>
+          <Link
+            href="/memories"
+            className="inline-block text-xs uppercase tracking-widest text-[#D94830] hover:text-zinc-900 transition-colors border-b border-[#D94830] pb-0.5"
+          >
+            View memories →
+          </Link>
         </div>
 
         {/* CTAs */}

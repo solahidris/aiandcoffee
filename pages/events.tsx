@@ -472,7 +472,7 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
         <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-24`}>
         {/* Nav */}
         <Nav active="events" />
 
@@ -520,6 +520,16 @@ export default function EventsPage({ events, dotMap, todayStr, lastUpdated }: Pr
             >
               + Submit an event
             </a>
+
+            <div className="mt-8 pt-6 border-t border-zinc-300">
+              <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-3">our past events</p>
+              <Link
+                href="/memories"
+                className="text-xs text-zinc-600 hover:text-[#D94830] transition-colors"
+              >
+                View memories →
+              </Link>
+            </div>
           </aside>
 
           {/* ── Main: event cards ── */}

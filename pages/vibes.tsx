@@ -134,7 +134,7 @@ export default function Vibes() {
         <meta name="twitter:image" content="https://aiandcoffee.com/og-image.png" />
       </Head>
 
-      <div className={`${geistMono.className} min-h-screen lg:h-screen bg-[#E8E4D9] font-mono flex flex-col`}>
+      <div className={`${geistMono.className} min-h-screen lg:h-screen bg-[#E8E4D9] font-mono flex flex-col pb-24`}>
         <Nav active="vibes" />
 
         <div className="flex flex-col lg:flex-row flex-1 min-h-0">

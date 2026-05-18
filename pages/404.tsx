@@ -18,7 +18,7 @@ export default function NotFound() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono px-6 py-12 sm:px-16`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono px-6 py-12 sm:px-16 pb-24`}>
         <div className="absolute top-8 right-8 sm:top-12 sm:right-16 rotate-12">
           <Image
             src="/logo/logo_mascot.png"

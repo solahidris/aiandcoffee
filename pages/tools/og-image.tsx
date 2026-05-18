@@ -184,7 +184,7 @@ export default function OGGenerator() {
       {/* Hidden canvas for image mode compositing */}
       <canvas ref={canvasRef} width={1200} height={630} className="hidden" />
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-24`}>
         <Nav active="tools" />
 
         <div className="px-6 sm:px-16 pt-12 pb-6 border-b border-zinc-400/40">

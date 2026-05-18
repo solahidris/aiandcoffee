@@ -243,7 +243,7 @@ export default function Pet() {
         .px { image-rendering:pixelated; image-rendering:crisp-edges; }
       `}</style>
 
-      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
+      <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono pb-24`}>
         <Nav active="pet" />
 
         <div className="px-6 sm:px-12 py-10">

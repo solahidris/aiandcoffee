@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mem-002",
+    "title": "AI and Coffee — 2nd Slop",
+    "date": "23 May 2026",
+    "venue": "Kuala Lumpur",
+    "attendees": 0,
+    "photos": [],
+    "coverPhoto": "/logo/logo.png",
+    "recap": "Small talk. But mostly vibes and AI slop. Open to all — clueless, newbie, senior, whales, sharks. Anyone interested in AI or coffee or anything in between."
+  },
+  {
+    "id": "mem-001",
+    "title": "AI and Coffee — 1st Meetup",
+    "date": "16 May 2026",
+    "venue": "Neibour Coffee House, Cyberjaya",
+    "attendees": 25,
+    "photos": [
+      "/memories/mem-001/1.png",
+      "/memories/mem-001/2.png",
+      "/memories/mem-001/3.png"
+    ],
+    "coverPhoto": "/memories/mem-001/cover.png",
+    "recap": "Our very first meetup. A casual post-TechTamu gathering — zero agenda, just coffee and vibes. All levels welcome: seniors, newbies, whales. We came together at Neibour Coffee House in Cyberjaya and that's where it all started."
+  }
+]
