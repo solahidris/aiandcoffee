@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-type Page = "home" | "events" | "tools" | "slop" | "about" | "chat" | "vibes" | "pet" | "broke" | "memories" | "contribute";
+type Page = "home" | "events" | "tools" | "slop" | "about" | "chat" | "vibes" | "pet" | "broke" | "memories" | "contribute" | "coffee";
 
 const LINKS: { label: string; href: string; page: Page }[] = [
   { label: "Events",      href: "/events",      page: "events"     },
+  { label: "Coffee",      href: "/coffee",      page: "coffee"     },
   { label: "Broke",       href: "/broke",       page: "broke"      },
   { label: "Tools",       href: "/tools",       page: "tools"      },
   { label: "Slop",        href: "/slop",        page: "slop"       },
@@ -19,6 +20,7 @@ const LINKS: { label: string; href: string; page: Page }[] = [
 const SHEET_LINKS: { label: string; href: string; page: Page }[] = [
   { label: "Home",        href: "/",            page: "home"       },
   { label: "Events",      href: "/events",      page: "events"     },
+  { label: "Coffee",      href: "/coffee",      page: "coffee"     },
   { label: "Broke",       href: "/broke",       page: "broke"      },
   { label: "Tools",       href: "/tools",       page: "tools"      },
   { label: "Slop",        href: "/slop",        page: "slop"       },
