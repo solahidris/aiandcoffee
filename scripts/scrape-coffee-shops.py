@@ -51,8 +51,7 @@ def format_hours(periods):
     groups = []
     for p in periods:
         key = (p["open"]["time"], p["close"]["time"])
-        if groups and groups[-1]["key"] == key and groups[-1]["days"][-1] == p["open"]["day"]:
-            # extend current group only if consecutive
+        if groups and groups[-1]["key"] == key:
             last_idx = ALL_DAYS.index(groups[-1]["days"][-1])
             curr_idx = ALL_DAYS.index(p["open"]["day"])
             if curr_idx == (last_idx + 1) % 7:
