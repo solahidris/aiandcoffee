@@ -140,7 +140,7 @@ const GRANTS: Grant[] = [
       "Annual renewal required",
       "Can register from anywhere",
     ],
-    url: "https://www.ssm.com.my/Pages/e-Services.aspx",
+    url: "https://www.ssm.com.my/Pages/Services/Registration-of-Business-(ROB)/EzBiz-Online.aspx",
     urlLabel: "SSM e-Services",
   },
 ];
