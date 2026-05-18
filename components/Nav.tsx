@@ -2,29 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-type Page = "home" | "events" | "tools" | "slop" | "about" | "chat" | "vibes" | "pet" | "broke" | "memories";
+type Page = "home" | "events" | "tools" | "slop" | "about" | "chat" | "vibes" | "pet" | "broke" | "memories" | "contribute";
 
 const LINKS: { label: string; href: string; page: Page }[] = [
-  { label: "Events",  href: "/events",  page: "events" },
-  { label: "Broke",   href: "/broke",   page: "broke"  },
-  { label: "Tools",   href: "/tools",   page: "tools"  },
-  { label: "Slop",    href: "/slop",    page: "slop"   },
-  { label: "Chat",    href: "/chat",    page: "chat"   },
-  { label: "Vibes",   href: "/vibes",   page: "vibes"  },
-  { label: "Pet",     href: "/pet",     page: "pet"    },
-  { label: "About",   href: "/about",   page: "about"  },
+  { label: "Events",      href: "/events",      page: "events"     },
+  { label: "Broke",       href: "/broke",       page: "broke"      },
+  { label: "Tools",       href: "/tools",       page: "tools"      },
+  { label: "Slop",        href: "/slop",        page: "slop"       },
+  { label: "Chat",        href: "/chat",        page: "chat"       },
+  { label: "Vibes",       href: "/vibes",       page: "vibes"      },
+  { label: "Pet",         href: "/pet",         page: "pet"        },
+  { label: "About",       href: "/about",       page: "about"      },
+  { label: "Contribute",  href: "/contribute",  page: "contribute" },
 ];
 
 const SHEET_LINKS: { label: string; href: string; page: Page }[] = [
-  { label: "Home",    href: "/",        page: "home"   },
-  { label: "Events",  href: "/events",  page: "events" },
-  { label: "Broke",   href: "/broke",   page: "broke"  },
-  { label: "Tools",   href: "/tools",   page: "tools"  },
-  { label: "Slop",    href: "/slop",    page: "slop"   },
-  { label: "Chat",    href: "/chat",    page: "chat"   },
-  { label: "Vibes",   href: "/vibes",   page: "vibes"  },
-  { label: "Pet",     href: "/pet",     page: "pet"    },
-  { label: "About",   href: "/about",   page: "about"  },
+  { label: "Home",        href: "/",            page: "home"       },
+  { label: "Events",      href: "/events",      page: "events"     },
+  { label: "Broke",       href: "/broke",       page: "broke"      },
+  { label: "Tools",       href: "/tools",       page: "tools"      },
+  { label: "Slop",        href: "/slop",        page: "slop"       },
+  { label: "Chat",        href: "/chat",        page: "chat"       },
+  { label: "Vibes",       href: "/vibes",       page: "vibes"      },
+  { label: "Pet",         href: "/pet",         page: "pet"        },
+  { label: "About",       href: "/about",       page: "about"      },
+  { label: "Contribute",  href: "/contribute",  page: "contribute" },
 ];
 
 export default function Nav({ active }: { active: Page }) {
