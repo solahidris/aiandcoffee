@@ -28,7 +28,7 @@ type Shop = {
 };
 
 const shops = rawShops as Shop[];
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 10;
 
 const WIFI_LABEL: Record<string, string> = { open: "wifi: open", password: "wifi: pw", none: "no wifi" };
 
