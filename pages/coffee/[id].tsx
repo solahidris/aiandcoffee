@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Nav from "../../components/Nav";
@@ -44,7 +45,16 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const shop = shops.find((s) => s.id === params?.id) ?? null;
   if (!shop) return { notFound: true };
-  return { props: { shop } };
+
+  let images: string[] = [];
+  try {
+    const manifest = (await import("../../data/shop-images.json")).default as Record<string, string[]>;
+    images = manifest[shop.id] ?? [];
+  } catch {
+    // manifest doesn't exist yet — images will be empty until crawl-images runs
+  }
+
+  return { props: { shop, images } };
 };
 
 function InfoBlock({ label, value }: { label: string; value: string }) {
@@ -56,7 +66,7 @@ function InfoBlock({ label, value }: { label: string; value: string }) {
   );
 }
 
-export default function ShopPage({ shop }: { shop: Shop }) {
+export default function ShopPage({ shop, images = [] }: { shop: Shop; images: string[] }) {
   const [openStatus, setOpenStatus] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -130,6 +140,26 @@ export default function ShopPage({ shop }: { shop: Shop }) {
             <p className="text-sm text-zinc-500">{shop.area}</p>
           </div>
         </section>
+
+        {/* Images */}
+        {images.length > 0 && (
+          <section className="border-b border-zinc-400/40 overflow-hidden">
+            <div className="flex overflow-x-auto gap-0.5 scroll-smooth">
+              {images.map((src, i) => (
+                <div key={i} className="relative shrink-0 h-56 sm:h-72" style={{ width: i === 0 ? "60%" : "30%" }}>
+                  <Image
+                    src={src}
+                    alt={`${name} photo ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 60vw, 30vw"
+                    priority={i === 0}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Hours */}
         {hoursLines.length > 0 && (

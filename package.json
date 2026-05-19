@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "scrape": "node scripts/scrape-threads.mjs"
+    "scrape": "node scripts/scrape-threads.mjs",
+    "crawl-images": "node scripts/crawl-images.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -23,6 +24,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "playwright": "^1.60.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
