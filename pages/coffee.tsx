@@ -30,7 +30,6 @@ const shops = rawShops as Shop[];
 const PAGE_SIZE = 48;
 
 const WIFI_LABEL: Record<string, string> = { open: "wifi: open", password: "wifi: pw", none: "no wifi" };
-const FOOD_LABEL: Record<string, string> = { none: "no food", snacks: "snacks", "full menu": "full menu" };
 
 // --- Hours parsing for "open now" ---
 
@@ -151,7 +150,6 @@ function Tag({ label, red }: { label: string; red?: boolean }) {
 
 function ShopCard({ shop }: { shop: Shop }) {
   const tags = [
-    shop.food && shop.food !== "none" ? FOOD_LABEL[shop.food] : null,
     shop.wifi && shop.wifi !== "none" ? WIFI_LABEL[shop.wifi] : null,
     shop.toilet === true ? "toilet" : null,
   ].filter(Boolean) as string[];
@@ -279,7 +277,6 @@ export default function Coffee() {
   const [activeState, setActiveState]       = useState<string | null>(null);
   const [activeVibe, setActiveVibe]         = useState<string | null>(null);
   const [activeNeighborhood, setActiveNeighborhood] = useState<string | null>(null);
-  const [activeFood, setActiveFood]         = useState<string | null>(null);
   const [activeWifi, setActiveWifi]         = useState<string | null>(null);
   const [activeToilet, setActiveToilet]     = useState(false);
   const [openNow, setOpenNow]               = useState(false);
@@ -296,7 +293,6 @@ export default function Coffee() {
     if (q.state)        setActiveState(q.state);
     if (q.vibe)         setActiveVibe(q.vibe);
     if (q.neighborhood) setActiveNeighborhood(q.neighborhood);
-    if (q.food)         setActiveFood(q.food);
     if (q.wifi)         setActiveWifi(q.wifi);
     if (q.toilet === "1") setActiveToilet(true);
     if (q.open   === "1") setOpenNow(true);
@@ -311,14 +307,13 @@ export default function Coffee() {
     if (activeState)       params.state = activeState;
     if (activeVibe)        params.vibe = activeVibe;
     if (activeNeighborhood) params.neighborhood = activeNeighborhood;
-    if (activeFood)        params.food = activeFood;
     if (activeWifi)        params.wifi = activeWifi;
     if (activeToilet)      params.toilet = "1";
     if (openNow)           params.open = "1";
     if (sortBy)            params.sort = sortBy;
     // eslint-disable-next-line react-hooks/exhaustive-deps
     router.replace({ pathname: "/coffee", query: params }, undefined, { shallow: true });
-  }, [query, activeState, activeVibe, activeNeighborhood, activeFood, activeWifi, activeToilet, openNow, sortBy]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [query, activeState, activeVibe, activeNeighborhood, activeWifi, activeToilet, openNow, sortBy]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const vibes = useMemo(
     () => Array.from(new Set(shops.map((s) => s.vibe).filter(Boolean))).sort() as string[],
@@ -347,7 +342,6 @@ export default function Coffee() {
       if (activeState       && !s.area.includes(activeState)) return false;
       if (activeNeighborhood && getNeighborhood(s.area) !== activeNeighborhood) return false;
       if (activeVibe        && s.vibe !== activeVibe) return false;
-      if (activeFood        && s.food !== activeFood) return false;
       if (activeWifi        && s.wifi !== activeWifi) return false;
       if (activeToilet      && s.toilet !== true) return false;
       if (openNow           && !isOpenNow(s.hours)) return false;
@@ -359,7 +353,7 @@ export default function Coffee() {
     if (sortBy === "rating") result = [...result].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
 
     return result;
-  }, [query, activeState, activeNeighborhood, activeVibe, activeFood, activeWifi, activeToilet, openNow, sortBy]);
+  }, [query, activeState, activeNeighborhood, activeVibe, activeWifi, activeToilet, openNow, sortBy]);
 
   const visible = useMemo(() => filtered.slice(0, shown), [filtered, shown]);
 
@@ -368,14 +362,13 @@ export default function Coffee() {
     setShown(PAGE_SIZE);
   }, []);
 
-  const hasActiveFilters = !!(query || activeState || activeVibe || activeNeighborhood || activeFood || activeWifi || activeToilet || openNow || sortBy);
+  const hasActiveFilters = !!(query || activeState || activeVibe || activeNeighborhood || activeWifi || activeToilet || openNow || sortBy);
 
   const handleClearAll = useCallback(() => {
     setQuery("");
     setActiveState(null);
     setActiveVibe(null);
     setActiveNeighborhood(null);
-    setActiveFood(null);
     setActiveWifi(null);
     setActiveToilet(false);
     setOpenNow(false);
@@ -499,11 +492,6 @@ export default function Coffee() {
 
           <FilterBtn label="wifi: open" active={activeWifi === "open"}     onClick={() => handleFilter(() => setActiveWifi(activeWifi === "open"     ? null : "open"))} />
           <FilterBtn label="wifi: pw"   active={activeWifi === "password"} onClick={() => handleFilter(() => setActiveWifi(activeWifi === "password" ? null : "password"))} />
-
-          <Divider />
-
-          <FilterBtn label="snacks"    active={activeFood === "snacks"}    onClick={() => handleFilter(() => setActiveFood(activeFood === "snacks"    ? null : "snacks"))} />
-          <FilterBtn label="full menu" active={activeFood === "full menu"} onClick={() => handleFilter(() => setActiveFood(activeFood === "full menu" ? null : "full menu"))} />
 
           <Divider />
 
