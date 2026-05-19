@@ -50,26 +50,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function ShopPage({ shop, images = [] }: { shop: Shop; images: string[] }) {
+  const [activeImg, setActiveImg] = useState(0);
   const [openStatus, setOpenStatus] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (shop.hours) setOpenStatus(isOpenNow(shop.hours));
   }, [shop.hours]);
 
+  // Reset selected image when navigating to a different shop
+  useEffect(() => { setActiveImg(0); }, [shop.id]);
+
   const name = shop.name.trim();
   const hoursLines = formatHours(shop.hours);
-
-  const stats = [
-    hoursLines.length > 0 && {
-      label: "Hours",
-      value: hoursLines,
-      multi: true,
-    },
-    shop.machine && { label: "Machine", value: shop.machine },
-    shop.grinder && { label: "Grinder", value: shop.grinder },
-    shop.capacity_pax != null && { label: "Capacity", value: `~${shop.capacity_pax} pax` },
-    shop.size_sqft != null && { label: "Size", value: `~${shop.size_sqft.toLocaleString()} sqft` },
-  ].filter(Boolean) as { label: string; value: string | string[]; multi?: boolean }[];
+  const hasGear = shop.machine || shop.grinder;
+  const hasSize = shop.capacity_pax != null || shop.size_sqft != null;
 
   const metaDesc = [
     shop.area,
@@ -101,101 +95,156 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         <Nav active="coffee" />
 
-        {/* Hero — full bleed image */}
-        {images.length > 0 && (
-          <div className="relative w-full h-[56vw] max-h-[580px] min-h-[260px] overflow-hidden">
-            <Image src={images[0]} alt={name} fill className="object-cover" priority sizes="100vw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20" />
-            <div className="absolute top-6 left-6 sm:left-16">
-              <Link href="/coffee" className="text-xs uppercase tracking-widest text-white/60 hover:text-white transition-colors">
-                ← coffee
-              </Link>
+        <div className="max-w-6xl mx-auto px-6 sm:px-16 py-8 pb-24">
+
+          {/* Back */}
+          <Link href="/coffee"
+            className="inline-block text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors mb-8">
+            ← coffee
+          </Link>
+
+          {/* Two-column on desktop: gallery left, info right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+            {/* LEFT — Gallery */}
+            <div>
+              {images.length > 0 ? (
+                <>
+                  {/* Main image */}
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-200">
+                    <Image
+                      key={activeImg}
+                      src={images[activeImg]}
+                      alt={`${name} — photo ${activeImg + 1}`}
+                      fill
+                      className="object-cover"
+                      priority={activeImg === 0}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+
+                  {/* Thumbnails */}
+                  {images.length > 1 && (
+                    <div className="flex gap-2 mt-2 overflow-x-auto pb-1">
+                      {images.map((src, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setActiveImg(i)}
+                          className={`relative shrink-0 w-16 h-16 overflow-hidden transition-all duration-150 ${
+                            i === activeImg
+                              ? "ring-2 ring-[#D94830] opacity-100"
+                              : "opacity-50 hover:opacity-100"
+                          }`}
+                        >
+                          <Image src={src} alt="" fill className="object-cover" sizes="64px" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="w-full aspect-[4/3] bg-zinc-200 flex items-center justify-center">
+                  <p className="text-xs uppercase tracking-widest text-zinc-400">no photos</p>
+                </div>
+              )}
             </div>
-          </div>
-        )}
 
-        {/* Identity */}
-        <div className="bg-[#E8E4D9] px-6 sm:px-16 pt-8 pb-0 border-b border-zinc-400/30">
-          {images.length === 0 && (
-            <Link href="/coffee" className="block text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors mb-8">
-              ← coffee
-            </Link>
-          )}
+            {/* RIGHT — Info */}
+            <div className="flex flex-col gap-8">
 
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            {shop.vibe && (
-              <span className="text-[10px] uppercase tracking-widest text-[#D94830]">{shop.vibe}</span>
-            )}
-            {shop.rating != null && (
-              <span className="text-sm text-zinc-400 tabular-nums">★ {shop.rating}</span>
-            )}
-            {openStatus !== null && (
-              <span className={`text-xs uppercase tracking-widest ${openStatus ? "text-green-600" : "text-zinc-400"}`}>
-                {openStatus ? "● open" : "○ closed"}
-              </span>
-            )}
-          </div>
+              {/* Name + meta */}
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  {shop.vibe && (
+                    <span className="text-[10px] uppercase tracking-widest text-[#D94830]">{shop.vibe}</span>
+                  )}
+                  {shop.rating != null && (
+                    <span className="text-sm text-zinc-400 tabular-nums">★ {shop.rating}</span>
+                  )}
+                  {openStatus !== null && (
+                    <span className={`text-xs uppercase tracking-widest ${openStatus ? "text-green-600" : "text-zinc-400"}`}>
+                      {openStatus ? "● open now" : "○ closed"}
+                    </span>
+                  )}
+                </div>
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter text-zinc-900 leading-none mb-3">
+                  {name}
+                </h1>
+                <p className="text-base text-zinc-500">{shop.area}</p>
+              </div>
 
-          <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter text-zinc-900 leading-none mb-4">
-            {name}
-          </h1>
-          <p className="text-base text-zinc-500 pb-8">{shop.area}</p>
-        </div>
+              {/* Gear */}
+              {hasGear && (
+                <div className="border-t border-zinc-400/30 pt-8">
+                  <div className="grid grid-cols-2 gap-6">
+                    {shop.machine && (
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">Machine</p>
+                        <p className="text-2xl font-bold text-zinc-900 tracking-tight leading-tight">{shop.machine}</p>
+                      </div>
+                    )}
+                    {shop.grinder && (
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">Grinder</p>
+                        <p className="text-2xl font-bold text-zinc-900 tracking-tight leading-tight">{shop.grinder}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
-        {/* Stats grid — horizontal bordered cells */}
-        {stats.length > 0 && (
-          <div className="grid border-b border-zinc-400/30"
-            style={{ gridTemplateColumns: `repeat(${Math.min(stats.length, 4)}, minmax(0, 1fr))` }}>
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`px-6 sm:px-10 py-8 ${i < stats.length - 1 ? "border-r border-zinc-400/30" : ""}`}
-              >
-                <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-3">{stat.label}</p>
-                {stat.multi ? (
-                  <div className="space-y-1">
-                    {(stat.value as string[]).map((line, j) => (
-                      <p key={j} className="text-base text-zinc-800 leading-snug">{line}</p>
+              {/* Hours */}
+              {hoursLines.length > 0 && (
+                <div className="border-t border-zinc-400/30 pt-8">
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-3">Hours</p>
+                  <div className="space-y-1.5">
+                    {hoursLines.map((line, i) => (
+                      <p key={i} className="text-base text-zinc-700 leading-relaxed">{line}</p>
                     ))}
                   </div>
-                ) : (
-                  <p className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight leading-none">
-                    {stat.value as string}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+                </div>
+              )}
 
-        {/* Photo grid — square tiles */}
-        {images.length > 1 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 border-b border-zinc-400/30">
-            {images.slice(1, 7).map((src, i) => (
-              <div key={i} className={`relative aspect-square overflow-hidden ${i % 3 !== 2 ? "border-r border-zinc-400/30" : ""} ${i < 3 ? "border-b border-zinc-400/30" : ""}`}>
-                <Image src={src} alt="" fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="33vw" />
-              </div>
-            ))}
-          </div>
-        )}
+              {/* Capacity */}
+              {hasSize && (
+                <div className="border-t border-zinc-400/30 pt-8">
+                  <div className="flex gap-10">
+                    {shop.capacity_pax != null && (
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">Capacity</p>
+                        <p className="text-2xl font-bold text-zinc-900">~{shop.capacity_pax} pax</p>
+                      </div>
+                    )}
+                    {shop.size_sqft != null && (
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2">Size</p>
+                        <p className="text-2xl font-bold text-zinc-900">~{shop.size_sqft.toLocaleString()} sqft</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
-        {/* Directions */}
-        {(shop.google_maps || shop.waze) && (
-          <div className="px-6 sm:px-16 py-10 pb-24 flex flex-col sm:flex-row gap-3">
-            {shop.google_maps && (
-              <a href={shop.google_maps} target="_blank" rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center border-2 border-[#D94830] bg-[#D94830] px-10 py-4 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
-                Google Maps ↗
-              </a>
-            )}
-            {shop.waze && (
-              <a href={shop.waze} target="_blank" rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center border-2 border-zinc-800 px-10 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors">
-                Waze ↗
-              </a>
-            )}
+              {/* Directions */}
+              {(shop.google_maps || shop.waze) && (
+                <div className="border-t border-zinc-400/30 pt-8 mt-auto flex flex-col sm:flex-row gap-3">
+                  {shop.google_maps && (
+                    <a href={shop.google_maps} target="_blank" rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center border-2 border-[#D94830] bg-[#D94830] px-6 py-3.5 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
+                      Google Maps ↗
+                    </a>
+                  )}
+                  {shop.waze && (
+                    <a href={shop.waze} target="_blank" rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center border-2 border-zinc-800 px-6 py-3.5 text-sm uppercase tracking-widest text-zinc-800 hover:bg-zinc-800 hover:text-[#E8E4D9] transition-colors">
+                      Waze ↗
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </>
   );
