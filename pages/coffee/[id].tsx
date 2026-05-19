@@ -110,7 +110,8 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
 
           {/* Back */}
           <Link href="/coffee"
-            className="inline-block text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors mb-8">
+            className="animate-stagger-in inline-block text-xs uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors mb-8"
+            style={{ animationDelay: "0ms" }}>
             ← coffee
           </Link>
 
@@ -122,7 +123,10 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
               {images.length > 0 ? (
                 <>
                   {/* Main image */}
-                  <div className="relative w-full aspect-square overflow-hidden bg-zinc-200">
+                  <div
+                    className="animate-stagger-in relative w-full aspect-square overflow-hidden bg-zinc-200"
+                    style={{ animationDelay: "60ms" }}
+                  >
                     <Image
                       src={images[displayedImg]}
                       alt={`${name} — photo ${displayedImg + 1}`}
@@ -133,18 +137,19 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
                     />
                   </div>
 
-                  {/* Thumbnails */}
+                  {/* Thumbnails — each staggers in */}
                   {images.length > 1 && (
                     <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
                       {images.map((src, i) => (
                         <button
                           key={i}
                           onClick={() => handleSelectImg(i)}
-                          className={`relative shrink-0 w-24 h-24 overflow-hidden transition-all duration-150 ${
+                          className={`animate-stagger-in relative shrink-0 w-24 h-24 overflow-hidden transition-all duration-150 ${
                             i === activeImg
                               ? "ring-2 ring-offset-1 ring-[#D94830] opacity-100"
                               : "opacity-40 hover:opacity-80"
                           }`}
+                          style={{ animationDelay: `${140 + i * 50}ms` }}
                         >
                           <Image src={src} alt="" fill className="object-cover" sizes="96px" />
                         </button>
@@ -153,7 +158,8 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
                   )}
                 </>
               ) : (
-                <div className="w-full aspect-square bg-zinc-200 flex items-center justify-center">
+                <div className="animate-stagger-in w-full aspect-square bg-zinc-200 flex items-center justify-center"
+                  style={{ animationDelay: "60ms" }}>
                   <p className="text-xs uppercase tracking-widest text-zinc-400">no photos</p>
                 </div>
               )}
@@ -163,7 +169,7 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
             <div className="flex flex-col gap-8">
 
               {/* Name + meta */}
-              <div>
+              <div className="animate-stagger-in" style={{ animationDelay: "80ms" }}>
                 <div className="flex flex-wrap items-center gap-3 mb-3">
                   {shop.vibe && (
                     <span className="text-[10px] uppercase tracking-widest text-[#D94830]">{shop.vibe}</span>
@@ -185,7 +191,7 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
 
               {/* Gear */}
               {hasGear && (
-                <div className="border-t border-zinc-400/30 pt-8">
+                <div className="animate-stagger-in border-t border-zinc-400/30 pt-8" style={{ animationDelay: "160ms" }}>
                   <div className="grid grid-cols-2 gap-6">
                     {shop.machine && (
                       <div>
@@ -205,7 +211,7 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
 
               {/* Hours */}
               {hoursLines.length > 0 && (
-                <div className="border-t border-zinc-400/30 pt-8">
+                <div className="animate-stagger-in border-t border-zinc-400/30 pt-8" style={{ animationDelay: "220ms" }}>
                   <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-3">Hours</p>
                   <div className="space-y-1.5">
                     {hoursLines.map((line, i) => (
@@ -217,7 +223,7 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
 
               {/* Capacity */}
               {hasSize && (
-                <div className="border-t border-zinc-400/30 pt-8">
+                <div className="animate-stagger-in border-t border-zinc-400/30 pt-8" style={{ animationDelay: "280ms" }}>
                   <div className="flex gap-10">
                     {shop.capacity_pax != null && (
                       <div>
@@ -237,7 +243,7 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
 
               {/* Directions */}
               {(shop.google_maps || shop.waze) && (
-                <div className="border-t border-zinc-400/30 pt-8 mt-auto flex flex-col sm:flex-row gap-3">
+                <div className="animate-stagger-in border-t border-zinc-400/30 pt-8 mt-auto flex flex-col sm:flex-row gap-3" style={{ animationDelay: "340ms" }}>
                   {shop.google_maps && (
                     <a href={shop.google_maps} target="_blank" rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center border-2 border-[#D94830] bg-[#D94830] px-6 py-3.5 text-sm uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
