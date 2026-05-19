@@ -368,6 +368,21 @@ export default function Coffee() {
     setShown(PAGE_SIZE);
   }, []);
 
+  const hasActiveFilters = !!(query || activeState || activeVibe || activeNeighborhood || activeFood || activeWifi || activeToilet || openNow || sortBy);
+
+  const handleClearAll = useCallback(() => {
+    setQuery("");
+    setActiveState(null);
+    setActiveVibe(null);
+    setActiveNeighborhood(null);
+    setActiveFood(null);
+    setActiveWifi(null);
+    setActiveToilet(false);
+    setOpenNow(false);
+    setSortBy(null);
+    setShown(PAGE_SIZE);
+  }, []);
+
   const handleSurprise = useCallback(() => {
     if (filtered.length === 0) return;
     setSurpriseShop(filtered[Math.floor(Math.random() * filtered.length)]);
@@ -514,6 +529,18 @@ export default function Coffee() {
           >
             surprise me
           </button>
+
+          {hasActiveFilters && (
+            <>
+              <Divider />
+              <button
+                onClick={handleClearAll}
+                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors"
+              >
+                clear all
+              </button>
+            </>
+          )}
         </div>
 
         {/* Grid */}
