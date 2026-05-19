@@ -96,24 +96,24 @@ function ShopCard({ shop }: { shop: Shop }) {
             {shop.name.trim()}
           </h2>
           {shop.rating != null && (
-            <span className="text-[9px] text-zinc-400 tabular-nums shrink-0 mt-0.5">★ {shop.rating}</span>
+            <span className="text-xs text-zinc-400 tabular-nums shrink-0 mt-0.5">★ {shop.rating}</span>
           )}
         </div>
-        <p className="text-[10px] text-zinc-500 mb-3">{shop.area}</p>
+        <p className="text-xs text-zinc-500 mb-3">{shop.area}</p>
 
         {/* Gear */}
         {(shop.machine || shop.grinder) && (
-          <div className="flex flex-wrap gap-x-4 gap-y-2 mb-3">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 mb-3">
             {shop.machine && (
               <div>
-                <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">machine</p>
-                <p className="text-[11px] text-zinc-700">{shop.machine}</p>
+                <p className="text-[9px] uppercase tracking-wider text-zinc-400 mb-0.5">Machine</p>
+                <p className="text-xs font-medium text-zinc-700">{shop.machine}</p>
               </div>
             )}
             {shop.grinder && (
               <div>
-                <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">grinder</p>
-                <p className="text-[11px] text-zinc-700">{shop.grinder}</p>
+                <p className="text-[9px] uppercase tracking-wider text-zinc-400 mb-0.5">Grinder</p>
+                <p className="text-xs font-medium text-zinc-700">{shop.grinder}</p>
               </div>
             )}
           </div>
@@ -121,28 +121,28 @@ function ShopCard({ shop }: { shop: Shop }) {
 
         {/* Hours — first line only */}
         {hoursLines.length > 0 && (
-          <p className="text-[10px] text-zinc-500 mb-3 leading-relaxed">{hoursLines[0]}</p>
+          <p className="text-xs text-zinc-500 mb-3 leading-relaxed">{hoursLines[0]}</p>
         )}
 
         {/* Bottom row */}
         <div className="mt-auto pt-3 border-t border-zinc-300/60 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {shop.capacity_pax != null && (
-              <span className="text-[9px] text-zinc-400">~{shop.capacity_pax} pax</span>
+              <span className="text-xs text-zinc-400">~{shop.capacity_pax} pax</span>
             )}
           </div>
           <div className="flex items-center gap-3">
             {shop.google_maps && (
               <a href={shop.google_maps} target="_blank" rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
+                className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
                 Maps ↗
               </a>
             )}
             {shop.waze && (
               <a href={shop.waze} target="_blank" rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
+                className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
                 Waze ↗
               </a>
             )}
