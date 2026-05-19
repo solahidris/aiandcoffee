@@ -107,6 +107,70 @@ function isOpenNow(hours: string | null): boolean {
   return false;
 }
 
+// --- Hours display formatter ---
+
+const DAY_ABBRS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function daysToStr(days: number[]): string {
+  if (days.length === 7) return "Daily";
+  const sorted = [...new Set(days)].sort((a, b) => a - b);
+  const runs: number[][] = [];
+  let run = [sorted[0]];
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i] === sorted[i - 1] + 1) run.push(sorted[i]);
+    else { runs.push(run); run = [sorted[i]]; }
+  }
+  runs.push(run);
+  return runs
+    .map((r) => r.length === 1 ? DAY_ABBRS[r[0]] : `${DAY_ABBRS[r[0]]}–${DAY_ABBRS[r[r.length - 1]]}`)
+    .join(", ");
+}
+
+function formatHours(raw: string | null): string[] {
+  if (!raw) return [];
+  const segments = raw.split(",").map((s) => s.trim()).filter(Boolean);
+  const parsed: { days: number[]; timeRange: string }[] = [];
+
+  for (const seg of segments) {
+    const m = seg.match(/^([\w\s–\-]+?)\s+(\d+(?::\d+)?\s*[ap]m\s*[–\-]\s*\d+(?::\d+)?\s*[ap]m)$/i);
+    if (!m) return [raw];
+    const days = parseDays(m[1]);
+    if (days.length === 0) return [raw];
+    parsed.push({ days, timeRange: m[2].trim() });
+  }
+
+  if (parsed.length === 0) return [raw];
+
+  // Build day → ordered time ranges map
+  const dayTimes = new Map<number, string[]>();
+  for (const { days, timeRange } of parsed) {
+    for (const d of days) {
+      if (!dayTimes.has(d)) dayTimes.set(d, []);
+      const times = dayTimes.get(d)!;
+      if (!times.includes(timeRange)) times.push(timeRange);
+    }
+  }
+
+  // Group days that share the exact same time list
+  const groups = new Map<string, number[]>();
+  dayTimes.forEach((times, day) => {
+    const key = times.join("|");
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(day);
+  });
+
+  // Sort groups by first day, format each as "DayStr: time1 · time2"
+  return [...groups.entries()]
+    .sort(([, a], [, b]) => Math.min(...a) - Math.min(...b))
+    .map(([key, days]) => {
+      const times = key.split("|");
+      const dayStr = daysToStr(days);
+      return times.length === 1 && dayStr === "Daily"
+        ? `Daily ${times[0]}`
+        : `${dayStr}: ${times.join(" · ")}`;
+    });
+}
+
 // --- Area helpers ---
 
 function getNeighborhood(area: string): string {
@@ -173,8 +237,10 @@ function ShopCard({ shop }: { shop: Shop }) {
       </div>
 
       {shop.hours && (
-        <div className="border-t border-zinc-400/40 px-4 py-2.5">
-          <p className="text-[10px] text-zinc-600 leading-relaxed">{shop.hours}</p>
+        <div className="border-t border-zinc-400/40 px-4 py-2.5 space-y-0.5">
+          {formatHours(shop.hours).map((line, i) => (
+            <p key={i} className="text-[10px] text-zinc-600 leading-snug">{line}</p>
+          ))}
         </div>
       )}
 
