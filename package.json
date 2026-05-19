@@ -9,9 +9,12 @@
     "lint": "eslint",
     "scrape": "node scripts/scrape-threads.mjs",
     "crawl-images": "node scripts/crawl-images.mjs",
-    "upload-r2": "node scripts/upload-to-r2.mjs"
+    "upload-r2": "node scripts/upload-to-r2.mjs",
+    "analyze-gear": "node scripts/analyze-gear.mjs",
+    "merge-gear": "node scripts/merge-gear.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.97.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
