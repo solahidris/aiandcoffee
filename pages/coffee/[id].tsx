@@ -50,15 +50,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function ShopPage({ shop, images = [] }: { shop: Shop; images: string[] }) {
-  const [activeImg, setActiveImg] = useState(0);
-  const [openStatus, setOpenStatus] = useState<boolean | null>(null);
+  const [activeImg, setActiveImg]     = useState(0); // thumbnail ring
+  const [displayedImg, setDisplayedImg] = useState(0); // main image src
+  const [fading, setFading]           = useState(false);
+  const [openStatus, setOpenStatus]   = useState<boolean | null>(null);
 
   useEffect(() => {
     if (shop.hours) setOpenStatus(isOpenNow(shop.hours));
   }, [shop.hours]);
 
-  // Reset selected image when navigating to a different shop
-  useEffect(() => { setActiveImg(0); }, [shop.id]);
+  useEffect(() => { setActiveImg(0); setDisplayedImg(0); }, [shop.id]);
+
+  const handleSelectImg = (i: number) => {
+    if (i === activeImg) return;
+    setActiveImg(i);       // highlight thumbnail immediately
+    setFading(true);
+    setTimeout(() => {
+      setDisplayedImg(i);  // swap image after fade-out
+      setFading(false);
+    }, 220);
+  };
 
   const name = shop.name.trim();
   const hoursLines = formatHours(shop.hours);
@@ -111,39 +122,38 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
               {images.length > 0 ? (
                 <>
                   {/* Main image */}
-                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-200">
+                  <div className="relative w-full aspect-square overflow-hidden bg-zinc-200">
                     <Image
-                      key={activeImg}
-                      src={images[activeImg]}
-                      alt={`${name} — photo ${activeImg + 1}`}
+                      src={images[displayedImg]}
+                      alt={`${name} — photo ${displayedImg + 1}`}
                       fill
-                      className="object-cover"
-                      priority={activeImg === 0}
+                      className={`object-cover transition-opacity duration-200 ${fading ? "opacity-0" : "opacity-100"}`}
+                      priority={displayedImg === 0}
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
 
                   {/* Thumbnails */}
                   {images.length > 1 && (
-                    <div className="flex gap-2 mt-2 overflow-x-auto pb-1">
+                    <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
                       {images.map((src, i) => (
                         <button
                           key={i}
-                          onClick={() => setActiveImg(i)}
-                          className={`relative shrink-0 w-16 h-16 overflow-hidden transition-all duration-150 ${
+                          onClick={() => handleSelectImg(i)}
+                          className={`relative shrink-0 w-24 h-24 overflow-hidden transition-all duration-150 ${
                             i === activeImg
-                              ? "ring-2 ring-[#D94830] opacity-100"
-                              : "opacity-50 hover:opacity-100"
+                              ? "ring-2 ring-offset-1 ring-[#D94830] opacity-100"
+                              : "opacity-40 hover:opacity-80"
                           }`}
                         >
-                          <Image src={src} alt="" fill className="object-cover" sizes="64px" />
+                          <Image src={src} alt="" fill className="object-cover" sizes="96px" />
                         </button>
                       ))}
                     </div>
                   )}
                 </>
               ) : (
-                <div className="w-full aspect-[4/3] bg-zinc-200 flex items-center justify-center">
+                <div className="w-full aspect-square bg-zinc-200 flex items-center justify-center">
                   <p className="text-xs uppercase tracking-widest text-zinc-400">no photos</p>
                 </div>
               )}
