@@ -1,7 +1,9 @@
 import Head from "next/head";
+import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
 import Nav from "../../components/Nav";
 import rawShops from "../../data/coffee-shops.json";
+import rawImages from "../../data/shop-images.json";
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { isOpenNow, formatHours } from "../../lib/coffee-hours";
@@ -27,7 +29,8 @@ type Shop = {
   rating?: number | null;
 };
 
-const shops = rawShops as Shop[];
+const shops    = rawShops as Shop[];
+const shopImages = rawImages as Record<string, string[]>;
 const PAGE_SIZE = 10;
 
 const WIFI_LABEL: Record<string, string> = { open: "wifi: open", password: "wifi: pw", none: "no wifi" };
@@ -36,21 +39,13 @@ function getNeighborhood(area: string): string {
   return area.split(",")[0].trim();
 }
 
-// --- Components ---
-
-function FilterBtn({
-  label, active, onClick, red,
-}: {
-  label: string; active: boolean; onClick: () => void; red?: boolean;
-}) {
+function FilterBtn({ label, active, onClick, red }: { label: string; active: boolean; onClick: () => void; red?: boolean }) {
   return (
     <button
       onClick={onClick}
       className={`text-[9px] uppercase tracking-widest px-2.5 py-1 border transition-colors ${
         active
-          ? red
-            ? "border-[#D94830] bg-[#D94830] text-white"
-            : "border-zinc-800 bg-zinc-800 text-[#E8E4D9]"
+          ? red ? "border-[#D94830] bg-[#D94830] text-white" : "border-zinc-800 bg-zinc-800 text-[#E8E4D9]"
           : "border-zinc-400/60 text-zinc-500 hover:border-zinc-600 hover:text-zinc-800"
       }`}
     >
@@ -63,115 +58,100 @@ function Divider() {
   return <span className="text-zinc-300 text-xs mx-1 select-none">|</span>;
 }
 
-function Tag({ label }: { label: string }) {
-  return (
-    <span className="text-[9px] uppercase tracking-widest px-1.5 py-0.5 border border-zinc-300 text-zinc-500">
-      {label}
-    </span>
-  );
-}
-
 function ShopCard({ shop }: { shop: Shop }) {
   const router = useRouter();
-
-  const tags = [
-    shop.wifi && shop.wifi !== "none" ? WIFI_LABEL[shop.wifi] : null,
-    shop.toilet === true ? "toilet" : null,
-  ].filter(Boolean) as string[];
-
-  const hasGear = shop.machine || shop.grinder;
-  const hasSize = shop.capacity_pax != null || shop.size_sqft != null;
+  const imageSrc = shopImages[shop.id]?.[0] ?? null;
+  const hoursLines = formatHours(shop.hours);
 
   return (
     <div
-      className="group border border-zinc-400/50 hover:border-zinc-600 transition-colors duration-150 flex flex-col cursor-pointer"
+      className="group cursor-pointer flex flex-col overflow-hidden border border-zinc-300 hover:border-zinc-500 transition-colors duration-150"
       onClick={() => router.push(`/coffee/${shop.id}`)}
     >
-      <div className="px-4 pt-4 pb-3">
-        <div className="flex justify-between items-start gap-2 mb-2">
-          {shop.vibe ? (
-            <span className="text-[9px] uppercase tracking-widest text-[#D94830]">{shop.vibe}</span>
-          ) : <span />}
-          {shop.rating != null && (
-            <span className="text-[9px] text-zinc-400 shrink-0 tabular-nums">★ {shop.rating}</span>
-          )}
-        </div>
-        <p className="text-sm font-bold text-zinc-800 tracking-tight leading-snug group-hover:text-[#D94830] transition-colors">{shop.name.trim()}</p>
-        <p className="text-[10px] text-zinc-500 mt-0.5">{shop.area}</p>
+      {/* Photo */}
+      <div className="relative w-full aspect-video overflow-hidden bg-zinc-200">
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={shop.name.trim()}
+            fill
+            className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-zinc-400 text-[8px] uppercase tracking-widest">no photo</span>
+          </div>
+        )}
+        {shop.vibe && (
+          <span className="absolute top-3 left-3 bg-[#D94830] text-white text-[8px] uppercase tracking-widest px-2 py-0.5">
+            {shop.vibe}
+          </span>
+        )}
       </div>
 
-      {shop.hours && (
-        <div className="border-t border-zinc-400/40 px-4 py-2.5 space-y-0.5">
-          {formatHours(shop.hours).map((line, i) => (
-            <p key={i} className="text-[10px] text-zinc-600 leading-snug">{line}</p>
-          ))}
-        </div>
-      )}
-
-      {hasGear && (
-        <div className="border-t border-zinc-400/40 px-4 py-2.5 grid grid-cols-2 gap-2">
-          {shop.machine && (
-            <div>
-              <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">machine</p>
-              <p className="text-[10px] text-zinc-700">{shop.machine}</p>
-            </div>
-          )}
-          {shop.grinder && (
-            <div>
-              <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">grinder</p>
-              <p className="text-[10px] text-zinc-700">{shop.grinder}</p>
-            </div>
+      {/* Info */}
+      <div className="p-4 flex flex-col flex-1 bg-[#F5F2EB]">
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <h2 className="text-base font-bold text-zinc-800 tracking-tight leading-tight group-hover:text-[#D94830] transition-colors">
+            {shop.name.trim()}
+          </h2>
+          {shop.rating != null && (
+            <span className="text-[9px] text-zinc-400 tabular-nums shrink-0 mt-0.5">★ {shop.rating}</span>
           )}
         </div>
-      )}
+        <p className="text-[10px] text-zinc-500 mb-3">{shop.area}</p>
 
-      {hasSize && (
-        <div className="border-t border-zinc-400/40 px-4 py-2.5 flex gap-4">
-          {shop.capacity_pax != null && (
-            <div>
-              <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">capacity</p>
-              <p className="text-[10px] text-zinc-700">~{shop.capacity_pax} pax</p>
-            </div>
-          )}
-          {shop.size_sqft != null && (
-            <div>
-              <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">size</p>
-              <p className="text-[10px] text-zinc-700">~{shop.size_sqft.toLocaleString()} sqft</p>
-            </div>
-          )}
-        </div>
-      )}
-
-      {tags.length > 0 && (
-        <div className="border-t border-zinc-400/40 px-4 py-2.5 flex flex-wrap gap-1.5">
-          {tags.map((t) => <Tag key={t} label={t} />)}
-        </div>
-      )}
-
-      <div className="border-t border-zinc-400/40 px-4 py-2.5 mt-auto flex gap-3">
-        {shop.google_maps && (
-          <a
-            href={shop.google_maps}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors"
-          >
-            Maps ↗
-          </a>
+        {/* Gear */}
+        {(shop.machine || shop.grinder) && (
+          <div className="flex flex-wrap gap-x-4 gap-y-2 mb-3">
+            {shop.machine && (
+              <div>
+                <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">machine</p>
+                <p className="text-[11px] text-zinc-700">{shop.machine}</p>
+              </div>
+            )}
+            {shop.grinder && (
+              <div>
+                <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-0.5">grinder</p>
+                <p className="text-[11px] text-zinc-700">{shop.grinder}</p>
+              </div>
+            )}
+          </div>
         )}
-        {shop.waze && (
-          <a
-            href={shop.waze}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors"
-          >
-            Waze ↗
-          </a>
+
+        {/* Hours — first line only */}
+        {hoursLines.length > 0 && (
+          <p className="text-[10px] text-zinc-500 mb-3 leading-relaxed">{hoursLines[0]}</p>
         )}
-        <span className="ml-auto text-[9px] text-zinc-300 group-hover:text-zinc-400 transition-colors">→</span>
+
+        {/* Bottom row */}
+        <div className="mt-auto pt-3 border-t border-zinc-300/60 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {shop.capacity_pax != null && (
+              <span className="text-[9px] text-zinc-400">~{shop.capacity_pax} pax</span>
+            )}
+            {shop.wifi && shop.wifi !== "none" && (
+              <span className="text-[9px] text-zinc-400">{WIFI_LABEL[shop.wifi]}</span>
+            )}
+          </div>
+          <div className="flex items-center gap-3">
+            {shop.google_maps && (
+              <a href={shop.google_maps} target="_blank" rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
+                Maps ↗
+              </a>
+            )}
+            {shop.waze && (
+              <a href={shop.waze} target="_blank" rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
+                Waze ↗
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -185,30 +165,17 @@ function SurpriseModal({ shop, onClose }: { shop: Shop; onClose: () => void }) {
   }, [onClose]);
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40"
-      onClick={onClose}
-    >
-      <div
-        className="bg-[#E8E4D9] border border-zinc-400 max-w-sm w-full"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={onClose}>
+      <div className="bg-[#E8E4D9] max-w-sm w-full overflow-hidden" onClick={(e) => e.stopPropagation()}>
         <div className="px-5 py-3 border-b border-zinc-400/40 flex items-center justify-between">
           <p className="text-[9px] uppercase tracking-widest text-zinc-400">today&apos;s pick</p>
-          <button
-            onClick={onClose}
-            className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors"
-          >
-            close
-          </button>
+          <button onClick={onClose} className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">close</button>
         </div>
         <ShopCard shop={shop} />
       </div>
     </div>
   );
 }
-
-// --- Page ---
 
 export default function Coffee() {
   const router = useRouter();
@@ -268,10 +235,7 @@ export default function Coffee() {
         counts[n] = (counts[n] || 0) + 1;
       }
     });
-    return Object.entries(counts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 15)
-      .map(([name]) => name);
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([name]) => name);
   }, [activeState]);
 
   const filtered = useMemo(() => {
@@ -287,13 +251,11 @@ export default function Coffee() {
       return true;
     });
 
-    if (sortBy === "name")   result = [...result].sort((a, b) => a.name.trim().localeCompare(b.name.trim()));
+    if (sortBy === "name")        result = [...result].sort((a, b) => a.name.trim().localeCompare(b.name.trim()));
     else if (sortBy === "rating") result = [...result].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
     else result = [...result].sort((a, b) => {
       const score = (s: Shop) =>
-        (s.machine && s.grinder) ? 3 :
-        (s.machine || s.grinder) ? 2 :
-        s.capacity_pax != null   ? 1 : 0;
+        (s.machine && s.grinder) ? 3 : (s.machine || s.grinder) ? 2 : s.capacity_pax != null ? 1 : 0;
       return score(b) - score(a);
     });
 
@@ -302,23 +264,13 @@ export default function Coffee() {
 
   const visible = useMemo(() => filtered.slice(0, shown), [filtered, shown]);
 
-  const handleFilter = useCallback((fn: () => void) => {
-    fn();
-    setShown(PAGE_SIZE);
-  }, []);
+  const handleFilter = useCallback((fn: () => void) => { fn(); setShown(PAGE_SIZE); }, []);
 
   const hasActiveFilters = !!(query || activeState || activeVibe || activeNeighborhood || activeWifi || activeToilet || openNow || sortBy);
 
   const handleClearAll = useCallback(() => {
-    setQuery("");
-    setActiveState(null);
-    setActiveVibe(null);
-    setActiveNeighborhood(null);
-    setActiveWifi(null);
-    setActiveToilet(false);
-    setOpenNow(false);
-    setSortBy(null);
-    setShown(PAGE_SIZE);
+    setQuery(""); setActiveState(null); setActiveVibe(null); setActiveNeighborhood(null);
+    setActiveWifi(null); setActiveToilet(false); setOpenNow(false); setSortBy(null); setShown(PAGE_SIZE);
   }, []);
 
   const handleSurprise = useCallback(() => {
@@ -349,12 +301,11 @@ export default function Coffee() {
       <div className={`${geistMono.className} min-h-screen bg-[#E8E4D9] font-mono`}>
         <Nav active="coffee" />
 
+        {/* Hero */}
         <section className="px-6 sm:px-16 pt-10 pb-10 border-b border-zinc-400/40 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <div>
             <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-6">— coffee shops</p>
-            <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter text-zinc-800 leading-none mb-3">
-              Coffee.
-            </h1>
+            <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter text-zinc-800 leading-none mb-3">Coffee.</h1>
             <p className="text-xs text-zinc-500">KL &amp; Selangor · community verified</p>
           </div>
           <p className="text-6xl sm:text-8xl font-bold tracking-tighter text-zinc-200 leading-none select-none">
@@ -362,6 +313,7 @@ export default function Coffee() {
           </p>
         </section>
 
+        {/* Search */}
         <div className="border-b border-zinc-400/40 px-6 sm:px-16 py-4 flex items-center gap-3">
           <span className="text-[10px] uppercase tracking-widest text-zinc-400 shrink-0">search</span>
           <input
@@ -372,122 +324,84 @@ export default function Coffee() {
             className="flex-1 bg-transparent text-xs text-zinc-800 placeholder:text-zinc-400 outline-none font-mono uppercase tracking-widest"
           />
           {query && (
-            <button
-              onClick={() => handleFilter(() => setQuery(""))}
-              className="text-[10px] text-zinc-400 hover:text-zinc-700 transition-colors uppercase tracking-widest"
-            >
+            <button onClick={() => handleFilter(() => setQuery(""))}
+              className="text-[10px] text-zinc-400 hover:text-zinc-700 transition-colors uppercase tracking-widest">
               clear
             </button>
           )}
         </div>
 
+        {/* State + Vibe */}
         <div className="border-b border-zinc-400/40 px-6 sm:px-16 py-3 flex items-center gap-2 flex-wrap">
           {(["Kuala Lumpur", "Selangor"] as const).map((state) => (
-            <FilterBtn
-              key={state}
-              label={state === "Kuala Lumpur" ? "KL" : state}
-              active={activeState === state}
-              onClick={() => handleFilter(() => {
-                setActiveState(activeState === state ? null : state);
-                setActiveNeighborhood(null);
-              })}
-            />
+            <FilterBtn key={state} label={state === "Kuala Lumpur" ? "KL" : state} active={activeState === state}
+              onClick={() => handleFilter(() => { setActiveState(activeState === state ? null : state); setActiveNeighborhood(null); })} />
           ))}
-
           <Divider />
-
           {vibes.map((v) => (
-            <FilterBtn
-              key={v}
-              label={v}
-              active={activeVibe === v}
-              onClick={() => handleFilter(() => setActiveVibe(activeVibe === v ? null : v))}
-              red
-            />
+            <FilterBtn key={v} label={v} active={activeVibe === v} red
+              onClick={() => handleFilter(() => setActiveVibe(activeVibe === v ? null : v))} />
           ))}
-
           <span className="ml-auto text-[9px] uppercase tracking-widest text-zinc-400">
             {filtered.length.toLocaleString()} spots
           </span>
         </div>
 
+        {/* Neighborhood */}
         {activeState && neighborhoods.length > 0 && (
           <div className="border-b border-zinc-400/40 px-6 sm:px-16 py-3 flex items-center gap-2 flex-wrap">
             <span className="text-[9px] uppercase tracking-widest text-zinc-400 shrink-0">area</span>
             {neighborhoods.map((n) => (
-              <FilterBtn
-                key={n}
-                label={n}
-                active={activeNeighborhood === n}
-                onClick={() => handleFilter(() => setActiveNeighborhood(activeNeighborhood === n ? null : n))}
-              />
+              <FilterBtn key={n} label={n} active={activeNeighborhood === n}
+                onClick={() => handleFilter(() => setActiveNeighborhood(activeNeighborhood === n ? null : n))} />
             ))}
           </div>
         )}
 
+        {/* Amenities + Sort + Surprise */}
         <div className="border-b border-zinc-400/40 px-6 sm:px-16 py-3 flex items-center gap-2 flex-wrap">
           <FilterBtn label="open now" active={openNow} onClick={() => handleFilter(() => setOpenNow(!openNow))} />
-
           <Divider />
-
-          <FilterBtn label="wifi: open" active={activeWifi === "open"}     onClick={() => handleFilter(() => setActiveWifi(activeWifi === "open"     ? null : "open"))} />
-          <FilterBtn label="wifi: pw"   active={activeWifi === "password"} onClick={() => handleFilter(() => setActiveWifi(activeWifi === "password" ? null : "password"))} />
-
+          <FilterBtn label="wifi: open" active={activeWifi === "open"} onClick={() => handleFilter(() => setActiveWifi(activeWifi === "open" ? null : "open"))} />
+          <FilterBtn label="wifi: pw" active={activeWifi === "password"} onClick={() => handleFilter(() => setActiveWifi(activeWifi === "password" ? null : "password"))} />
           <Divider />
-
           <FilterBtn label="toilet" active={activeToilet} onClick={() => handleFilter(() => setActiveToilet(!activeToilet))} />
-
           <Divider />
-
           <span className="text-[9px] uppercase tracking-widest text-zinc-400 shrink-0">sort</span>
           {(["name", "rating"] as const).map((s) => (
-            <FilterBtn
-              key={s}
-              label={s}
-              active={sortBy === s}
-              onClick={() => handleFilter(() => setSortBy(sortBy === s ? null : s))}
-            />
+            <FilterBtn key={s} label={s} active={sortBy === s}
+              onClick={() => handleFilter(() => setSortBy(sortBy === s ? null : s))} />
           ))}
-
           <Divider />
-
-          <button
-            onClick={handleSurprise}
-            className="text-[9px] uppercase tracking-widest px-2.5 py-1 border border-[#D94830]/60 text-[#D94830] hover:bg-[#D94830] hover:text-white transition-colors"
-          >
+          <button onClick={handleSurprise}
+            className="text-[9px] uppercase tracking-widest px-2.5 py-1 border border-[#D94830]/60 text-[#D94830] hover:bg-[#D94830] hover:text-white transition-colors">
             surprise me
           </button>
-
           {hasActiveFilters && (
             <>
               <Divider />
-              <button
-                onClick={handleClearAll}
-                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors"
-              >
+              <button onClick={handleClearAll}
+                className="text-[9px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">
                 clear all
               </button>
             </>
           )}
         </div>
 
+        {/* Grid */}
         <section className="px-6 sm:px-16 py-8">
           {filtered.length === 0 ? (
             <p className="text-xs text-zinc-400 py-12">no shops found.</p>
           ) : (
             <>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-                {visible.map((shop) => (
-                  <ShopCard key={shop.id} shop={shop} />
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {visible.map((shop) => <ShopCard key={shop.id} shop={shop} />)}
               </div>
 
               {shown < filtered.length && (
                 <div className="mt-10 flex items-center justify-center gap-4">
-                  <button
-                    onClick={() => setShown((s) => s + PAGE_SIZE)}
-                    className="border border-zinc-400 px-6 py-2.5 text-[10px] uppercase tracking-widest text-zinc-600 hover:border-zinc-800 hover:text-zinc-800 transition-colors"
-                  >
+                  <button onClick={() => setShown((s) => s + PAGE_SIZE)}
+                    className="border border-zinc-400 px-8 py-3 text-[10px] uppercase tracking-widest text-zinc-600 hover:border-zinc-800 hover:text-zinc-800 transition-colors">
                     load more
                   </button>
                   <span className="text-[9px] text-zinc-400 uppercase tracking-widest">
@@ -499,26 +413,22 @@ export default function Coffee() {
           )}
         </section>
 
+        {/* Submit CTA */}
         <div className="border-t border-zinc-400/40 px-6 sm:px-16 py-12 pb-24">
           <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-4">know a spot?</p>
           <p className="text-xs text-zinc-600 leading-relaxed max-w-sm mb-6">
             Add a shop via GitHub issue — name, area, machine, grinder, hours, wifi, food, facilities.
             Community verifies and merges.
           </p>
-          <a
-            href="https://github.com/solahidris/aiandcoffee/issues/new?title=Coffee+shop+submission:+SHOP+NAME&body=**Name:**%0A**Area:**%0A**Machine:**%0A**Grinder:**%0A**Hours:**%0A**Capacity (pax):**%0A**Size (sqft):**%0A**Food:** none / snacks / full menu%0A**Wifi:** open / password / none%0A**Toilet:** yes / no%0A**Surau:** yes / no%0A**Vibe:**%0A**Google Maps link:**%0A**Waze link:**"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block border-2 border-[#D94830] bg-[#D94830] px-6 py-3 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors"
-          >
+          <a href="https://github.com/solahidris/aiandcoffee/issues/new?title=Coffee+shop+submission:+SHOP+NAME&body=**Name:**%0A**Area:**%0A**Machine:**%0A**Grinder:**%0A**Hours:**%0A**Capacity (pax):**%0A**Size (sqft):**%0A**Food:** none / snacks / full menu%0A**Wifi:** open / password / none%0A**Toilet:** yes / no%0A**Surau:** yes / no%0A**Vibe:**%0A**Google Maps link:**%0A**Waze link:**"
+            target="_blank" rel="noopener noreferrer"
+            className="inline-block border-2 border-[#D94830] bg-[#D94830] px-6 py-3 text-xs uppercase tracking-widest text-white hover:bg-transparent hover:text-[#D94830] transition-colors">
             Submit a shop ↗
           </a>
         </div>
       </div>
 
-      {surpriseShop && (
-        <SurpriseModal shop={surpriseShop} onClose={() => setSurpriseShop(null)} />
-      )}
+      {surpriseShop && <SurpriseModal shop={surpriseShop} onClose={() => setSurpriseShop(null)} />}
     </>
   );
 }
