@@ -57,7 +57,7 @@ function Divider() {
   return <span className="text-zinc-300 text-xs mx-1 select-none">|</span>;
 }
 
-function ShopCard({ shop }: { shop: Shop }) {
+function ShopCard({ shop, index }: { shop: Shop; index: number }) {
   const router = useRouter();
   const imageSrc = shopImages[shop.id]?.[0] ?? null;
   const gear = [shop.machine, shop.grinder].filter(Boolean).join(" · ");
@@ -66,7 +66,8 @@ function ShopCard({ shop }: { shop: Shop }) {
 
   return (
     <div
-      className="group cursor-pointer bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+      className="animate-stagger-in group cursor-pointer bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+      style={{ animationDelay: `${index * 60}ms` }}
       onClick={() => router.push(`/coffee/${shop.id}`)}
     >
       {/* Photo — 4:3 shows interiors better than 16:9 */}
@@ -124,7 +125,7 @@ function SurpriseModal({ shop, onClose }: { shop: Shop; onClose: () => void }) {
           <p className="text-[9px] uppercase tracking-widest text-zinc-400">today&apos;s pick</p>
           <button onClick={onClose} className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-700 transition-colors">close</button>
         </div>
-        <ShopCard shop={shop} />
+        <ShopCard shop={shop} index={0} />
       </div>
     </div>
   );
@@ -335,7 +336,7 @@ export default function Coffee() {
           ) : (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {visible.map((shop) => <ShopCard key={shop.id} shop={shop} />)}
+                {visible.map((shop, i) => <ShopCard key={shop.id} shop={shop} index={i} />)}
               </div>
 
               {shown < filtered.length && (
