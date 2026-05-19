@@ -141,9 +141,9 @@ export default function Vibes() {
 
           {/* ── LEFT: Player ── */}
           <aside className="lg:w-[400px] lg:shrink-0 lg:overflow-y-auto border-b lg:border-b-0 lg:border-r border-zinc-400/40 px-6 sm:px-10 pt-10 pb-8">
-            <p className="text-[10px] uppercase tracking-widest text-zinc-400 mb-8">— vibes</p>
+            <p className="animate-stagger-in text-[10px] uppercase tracking-widest text-zinc-400 mb-8" style={{ animationDelay: "0ms" }}>— vibes</p>
 
-            <div className="mb-5">
+            <div className="animate-stagger-in mb-5" style={{ animationDelay: "60ms" }}>
               <span className={`text-[9px] uppercase tracking-[0.2em] px-2 py-1 border inline-block mb-3 ${
                 track.type === "instrumental" ? "border-zinc-400 text-zinc-400" : "border-[#D94830] text-[#D94830]"
               }`}>{track.type}</span>
@@ -151,11 +151,11 @@ export default function Vibes() {
               <p className="text-[10px] text-zinc-400 mt-1.5 uppercase tracking-widest">{track.artist}</p>
             </div>
 
-            <div className="mb-5 bg-[#DEDAD0] border border-zinc-400/25 p-2">
+            <div className="animate-stagger-in mb-5 bg-[#DEDAD0] border border-zinc-400/25 p-2" style={{ animationDelay: "120ms" }}>
               <canvas ref={canvasRef} className="w-full block" style={{ height: 80 }} />
             </div>
 
-            <div className="mb-6">
+            <div className="animate-stagger-in mb-6" style={{ animationDelay: "160ms" }}>
               <div className="relative h-px bg-zinc-300 cursor-pointer group mb-1.5" onClick={handleSeek}>
                 <div className="absolute top-0 left-0 h-full bg-[#D94830]" style={{ width: `${progress}%` }} />
                 <div className="absolute top-1/2 w-2.5 h-2.5 bg-[#D94830] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
@@ -167,7 +167,7 @@ export default function Vibes() {
               </div>
             </div>
 
-            <div className="flex items-center gap-5 mb-3">
+            <div className="animate-stagger-in flex items-center gap-5 mb-3" style={{ animationDelay: "200ms" }}>
               <button onClick={toggleShuffle} title="Shuffle"
                 className={`transition-colors ${isShuffle ? "text-[#D94830]" : "text-zinc-400 hover:text-zinc-600"}`}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -233,7 +233,7 @@ export default function Vibes() {
 
           {/* ── RIGHT: Track grid ── */}
           <main className="flex-1 lg:overflow-y-auto px-6 sm:px-10 pt-10 pb-10">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="animate-stagger-in flex items-center gap-2 mb-6" style={{ animationDelay: "0ms" }}>
               {FILTERS.map(({ label, value }) => (
                 <button key={value} onClick={() => setFilter(value)}
                   className={`text-[10px] uppercase tracking-widest px-3 py-1.5 border transition-colors ${
@@ -248,14 +248,15 @@ export default function Vibes() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {filteredTracks.map((t) => {
+              {filteredTracks.map((t, i) => {
                 const idx = TRACKS.indexOf(t);
                 const active = idx === currentIndex;
                 return (
                   <button key={t.id} onClick={() => selectTrack(idx)}
-                    className={`text-left p-4 border transition-all duration-150 ${
+                    className={`animate-stagger-in text-left p-4 border transition-all duration-150 ${
                       active ? "bg-[#D94830] border-[#D94830]" : "border-transparent bg-white/60 hover:bg-white/90"
-                    }`}>
+                    }`}
+                    style={{ animationDelay: `${i * 50}ms` }}>
                     <div className="flex items-start justify-between gap-1 mb-4">
                       <span className={`text-[10px] tracking-widest tabular-nums ${active ? "text-white/50" : "text-zinc-400"}`}>
                         {active && isPlaying ? <span className={active ? "text-white" : "text-[#D94830]"}>▶</span> : String(idx + 1).padStart(2, "0")}
