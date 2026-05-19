@@ -28,7 +28,7 @@ type Shop = {
 };
 
 const shops = rawShops as Shop[];
-const PAGE_SIZE = 48;
+const PAGE_SIZE = 12;
 
 const WIFI_LABEL: Record<string, string> = { open: "wifi: open", password: "wifi: pw", none: "no wifi" };
 
@@ -288,7 +288,14 @@ export default function Coffee() {
     });
 
     if (sortBy === "name")   result = [...result].sort((a, b) => a.name.trim().localeCompare(b.name.trim()));
-    if (sortBy === "rating") result = [...result].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+    else if (sortBy === "rating") result = [...result].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+    else result = [...result].sort((a, b) => {
+      const score = (s: Shop) =>
+        (s.machine && s.grinder) ? 3 :
+        (s.machine || s.grinder) ? 2 :
+        s.capacity_pax != null   ? 1 : 0;
+      return score(b) - score(a);
+    });
 
     return result;
   }, [query, activeState, activeNeighborhood, activeVibe, activeWifi, activeToilet, openNow, sortBy]);
