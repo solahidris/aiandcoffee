@@ -1,0 +1,4987 @@
+{
+  "baker-next-door-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-bread-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "arabica-trx": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "arabica": {
+    "machine": "La Marzocca",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "103-coffee-sri-petaling": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "103-coffee-chow-kit": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "118-grinder": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "175degrees-kafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "28-fireplace": {
+    "machine": "Nuova Era",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "417-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "6yi-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "8-churros-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "8055-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "a-paris-bakehouse": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "a-rest-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "absorb-sunlight": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "afloat-coffee-roaster": {
+    "machine": "Victoria Arduino Black Eagle",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "after-five": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "after-five-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "after-one": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "afterhours-coffee-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "ah-gong-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "aico-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "air-day-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "aki-s-kohi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "akisokopi-ttdi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "aksara-gayo": {
+    "machine": "Victoria Arduino",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "all-time-roasting-company": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "aperture": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "aprel-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "aqueduct-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ari-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "artisan-roast-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "asap-soul-zeoy7": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "asof-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "asylum-coffeehouse": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "Atlaz Coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "atma-kirana-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "aufa-treats": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "ayaqkupi-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "bad-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "bagel0": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "baked-by-nini-x-rumah-kopi-38-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bambamkopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "bape-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bardy-s-diner": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bask": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bayang-coffee-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "beam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "bean-brothers-bukit-bintang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bean-brothers-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "beanery-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "bestow-restaurant": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "betterdays-slow-coffee-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "black-ink": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "blackbixon-cafe-restaurant": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "blank-coffee": {
+    "machine": null,
+    "grinder": "Fiorenzato Atom",
+    "capacity_pax": 25
+  },
+  "blitz-and-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "blossom-a-glassmansion": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "bluelake-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "bluff": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "blvck-coffee-ampang-park": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "blvck-coffee-jalan-setia-murni": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "blvck-coffee-bukit-tunku": {
+    "machine": "La Pavoni",
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "blvck-blvck-plus": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "bluum-roadside-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bon-bon-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "box-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bramble-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "bray-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "breakfast-spot": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "breakfuzzcaffe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "brew-bread-bukit-bintang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "brew-bread-wisma-mca": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "brew-sahaja": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "coffeeboy-club-trx": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "d-luboq-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "daily-coffee-break": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "dear-patrick": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "diastole-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "didi-s-cafe-and-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ditto": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "dodoo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "dolce-coa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "dotty-s-pastries-coffee-klcc": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "dou-yuan-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "doublelines-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "dough-days": {
+    "machine": "Nuova Era",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "dtimer-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "duakepala-backstreet-coffeeshop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "duwa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "ebony-ivory-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "eden-coffee-rooftop-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "eight-ounce-coffee-co-klcc": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "eight-ounce-coffee-co-trx": {
+    "machine": "La Marzocco Linea",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "eight-ounce-coffee-co-the-gardens": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "erni-tina": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "estate-coffeehouse": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "fahrenheit-600": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "feeka-coffee-roasters-bukit-bintang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "feeka-coffee-roasters-klcc": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "fishee-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "fixo-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "flaon": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "flour-water": {
+    "machine": "Slayer",
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "flow-coffee-trx": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "flow-smoke-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "flying-solo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "fotokopi-slow-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "fox-paradox": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "gah-by-kopi-balut": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "gather-dessert": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "general-store": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "ghostbird-coffee-company": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "grey-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "grind-floor-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "grumpy-bagels": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "gusto-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "hani-coffee-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "hattori-the-book-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "hayden-matcha-coffee-atelier": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "he-she-coffee-um-central-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "hellopresso-coffee": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "hentian-kopi-": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "honey-g": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "jamboo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "james-gordon-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "james-gordon-coffee-setapak": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "jaslyn-cakes-mont-kiara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "jaslyn-cakes-bangsar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "jd-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "jiak-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "jokopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "jwc-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "k3-coffee-lab": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kafe-bunga-raya": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kafe-kleptokrat": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kafein-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kaffe-16": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kedai-kopi-kafeina-kuala-lumpur": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kenny-hills-coffee-ampang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "kenny-hills-coffee-bukit-tunku": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "kenny-hills-coffee-ttdi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kenny-hills-coffee-bangsar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kenny-hills-coffee-desa-parkcity": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "keopi-sul": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "khairis-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "khatulistiwah": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kis-coffee-community": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kissa-x-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 28
+  },
+  "kita-coffee-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "klatch-coffee-house": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "klcg-confectionery-bakery-medan-pasar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "klcg-confectionery-bakery-jalan-ampang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "klesis-cafe-grocer": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "klik-by-wanclick": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kofilosofi-x-mk-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "komo-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kona-mokapot-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kongsi-hub-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "kopenhagen-coffee-kapas": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopenhagen-coffee-mont-kiara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "kopi-studio": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopi-abi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-dan-balut": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-dan-benang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopi-kawan": {
+    "machine": "Casadio",
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "kopi-numtang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kopi-pondok": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-rumah": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "koppiku": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kosa-coffee-plaza-arkadia": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "la-terrazu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "lacher-to-go": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "laman-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "lazy-couch-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "le-guilty-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "letscoopi-house-3qpyy": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "levain-boulangerie-patisserie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "lim-kee-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "lisette-s-cafe-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "liten-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "little-bun": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "lokl-coffee-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "loop-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "lucky-coffee-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "lujayns-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "lunavera-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "makan-buzz": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "marmalade": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "medium-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "meraki-jelatek": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "middle-lane-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "mingle-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "minutes-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "miss-coco-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "mizuniwa-aquascape-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "mk-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "monkey-coffee-cup": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "monster-a-garden-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "monet": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mori-kohi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "mountbatten-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mukha-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nadi-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "naj-belle-bangsar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "neighbour-s-coffee-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "new-chapter-by-the-owls-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "niko-neko-matcha-chinatown": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "no-coffee-no-brain": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "noconnection-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "noctroast-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "nomad-s": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "nonna-kafei": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "nutmeg": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nyaman-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ocean-ground-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "oni-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "optimist-coffee-ampang-park": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "optimist-coffee-bukit-bintang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "oui-bakehouse-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "outreach-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "overtime-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "pandan-dream-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "pasadena-burger-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "patina-antique-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "peep-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "penganan-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "penguin-specialty-coffee": {
+    "machine": "CREM",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "piccadilly": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "piu-piu-piu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "plan-b-kuala-lumpur-trx": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "plan-b-kuala-lumpur-publika": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "plump": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "podgy-kurau": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "pokok-lalaport": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "poppy-kat": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pouf-bake": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pucks-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "pulp": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "q-cup-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "qof-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "qpi": {
+    "machine": "Quickmill",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ralph-s-coffee": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "randevu-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "Rawr": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "reborn-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "restaurant-kajin": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rgb-coffee-at-the-bean-hive": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "room-203-glo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "room-203-publika": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "ruma-puteh": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "sspresso-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "scrappy-dough": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "seafarer-coffee-roasters": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "seasons-by-spatula": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "secret-coffee-studio": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "sehidang-kopi-buku": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "sejak-95-grill-pasta": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sejana-coffee-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sembilan-inci-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "seoul-espresso-mont-kiara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "setia-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "shan-mu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "silent-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sip-n-slice": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "sista-coffee-camper": {
+    "machine": "Milesto",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "slow-wood-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "smith-breads-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "somewhere-slow-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "soul-sacrifice-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "soulyard-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "spillstone-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "stellar-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "stg-deli-cafe-vida": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "suca-urban-sip": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "sunbather-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "sunday-coffee-cakes": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "sundaydo-hq": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sunsan-bake": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "superluna-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "swee-lee-social-club": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "swol": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "tab-coffee-setapak": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "tab-coffee-melawati": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "tagg-cafe-2-0": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "take-a-bow": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "tanamera-coffee-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "tapestry": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "testing-ground": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "the-bread-shop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-coach-coffee-shop-apw": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "the-coffee-conclave": {
+    "machine": "CREM",
+    "grinder": "Atom",
+    "capacity_pax": 20
+  },
+  "the-coffee-lounge": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "the-cranky-beans": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-dough-factory": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-hub-coffee-roaster-dc-mall": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-hub-coffee-roaster-trx": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-hub-coffee-roaster-oug": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-hub-coffee-roaster-plaza-zurich": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-hub-coffee-roaster-setapak": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-lemon-tree-publika": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "the-lemon-tree-parkroyal": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "The-Mad-Alchemy": {
+    "machine": "Rocket Espresso",
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "the-messengers-by-jwc": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-vocation": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "third-mile-rivercity": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "three-guys-bangsar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "three-guys-mahsa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "three-little-birds-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "thursdyvs": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "tiga-ritma-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "today-s-by-dalton-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "tommy-le-baker": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "transparent-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "triple-eleven": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "twelve-o-two-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "two-souls-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "twt-coffee-wangsa-maju": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "urban-daybreak-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "uyghur-saray": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "vcr-galloway": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "vcr-ritchie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "vcr-bakehouse": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "vcr-stacks-mont-kiara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "vcr-stacks-trx": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "wanna-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "watermark-restaurant": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "whatever-works-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "whisk-coffee-mont-kiara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "whisk-coffee-dc-mall": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "whisk-coffee-mytown": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 70
+  },
+  "white-black-titiwangsa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "white-land": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "white-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "whitebrew-the-cabin": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "whoops-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "wolf-turtle-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "wood-art-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "wtj-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "yellow-brick-road": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "yew-yew-coffee-lalaport": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "yiludou-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "yue-coffee-bar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "yukk-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "cafe-bandit": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "nh-coffee-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "that-last-slice-cakes-pastries": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 24
+  },
+  "10-gram-cyberjaya": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "108-hideout": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "1408-kebone-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "16-degrees-coffee-and-groceries": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "17-gram-beans-fcz": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "17-gram-beans-usj21": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "17-gram-beans-usj7": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "20oz": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "270-sqft": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "2plusone-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "2t1n-kopi-fzhw2": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "36gram": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "385f-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "404-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "43-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "7fifty-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "87-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "9-yards-cafe-bistro": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "95-degres-art-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "9stone-7ed6t": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "a-n-d-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "abahrista-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "ai-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "airplane-mode-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ais-dan-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "akak-bukan-barista": {
+    "machine": null,
+    "grinder": "Fiorenzato",
+    "capacity_pax": 20
+  },
+  "aku-dia-dan-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "aku-kamu-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "albatross-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "alcea-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "alfie-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "amp-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "analog": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "anaqah-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "anything-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "art-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "asa-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ask-coffee-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "atap-by-pagi-coffee-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "atas-rumah-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "auntie-foo-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "awal-cerita-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "az-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "b-e-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "bad-artist-coffee-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "badkoff": {
+    "machine": "La Marzocco Linea Mini",
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "bae-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bak-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bakerina-pizzacafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "bakerina-steakcafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "baketouch-microbakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bal-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "banglo-hitam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "baristcoff-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bbg-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "bean-brothers-pj": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "bean-here-bandar-utama": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "beanbrick": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "bearista-coffee": {
+    "machine": "Mairali",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "beats-and-the-beans": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "belinjo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bengbeng-to-go-the-campus-ampang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "benson-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "bertiga-coffee-patisserie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "beyond-coffee-glomac-centro": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "beyond-coffee-bandar-sunway": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "bharu-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "bichii-coffee": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bijico-roadside-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bijou": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "bings-cafe-banting": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bitter-house-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "black-potion-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "blackstone-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "blacky": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "blank-note-coffee": {
+    "machine": "Gemilai",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "blend-coffee-roasters-bangi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "blend-coffee-roasters-seksyen-9": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "blue-dahlia": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bona-vista": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bonda-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "bonks-coffee-puncak-alam": {
+    "machine": "Rocket Espresso",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bosco-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "bound-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "brag-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "brb-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "breakfast-room": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "breathtaking-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "brehut-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "brew-9-shah-alam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "brew-n-bread": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "brew-segar-by-varmtkaffe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "brewdatcoffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "brewing-soon-coffee-lab": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "brewrestrepeat": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "brue-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "broom-artisan-bakery-kitchen": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "btw-coffee-bites": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bubur-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "budak-flat-cafe-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "bukku-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "buzz-out-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "c-u-latte": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "c-p-coffee-company": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "c-p-coffee-company-jade-hills": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "cafe-1986": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "cafe-6233": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "cake-jalan-tiung-seksyen-4": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "calibrate-small-space": {
+    "machine": "La Marzocco Linea",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "campresso-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "capo-e-dolce": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "cartel-coffee-shop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "celsius-coffee-shah-alam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "cendera-kaphi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "champignons-patisserie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "chao-guo-tiao-cafe-bundle": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "chase": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "cikqa-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "citarasa-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "cloud-catcher-specialty-coffee-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "cloverly-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "clubdepiston": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "cmw-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "code-black-coffee-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "code-black-espresso": {
+    "machine": "Sanremo Spirit",
+    "grinder": "Nuova Simonelli",
+    "capacity_pax": 20
+  },
+  "cofeeruum": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "coffea-coffee-ardence-crest": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "coffee-bunga": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "coffee-jeans-co-petaling-jaya": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "coffee-jiwa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "coffee-kaya": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "coffee-origins": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "coffee-rumah-nenek": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "coffee-traps": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "coffeeboy-club": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "coffee-dut": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "coldbruh": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "commoners-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "contour": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "coofie-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "copei-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "crimson-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "croffle-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "croutons-by-gourmet-seductions": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "curate-coffee-roasters": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "cxbs-coffee-matcha": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "d-avanti-coffee": {
+    "machine": null,
+    "grinder": "Cofit AllGround",
+    "capacity_pax": 20
+  },
+  "d-nest-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "dak-han-specialty-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "dapahit-coffee": {
+    "machine": "Gemilai",
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "dapo-dough": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "dapur-manis": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "dars-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "das-migo-s": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "dejiistu-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "delicieux": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "denali-pinnacles-the-wanderer-s-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "denzkoff-kg-jawa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "der-backmeister": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "diagram-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 22
+  },
+  "dirty-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "do8-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "doi-chaang-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "dou-dou-bake": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "douhao": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "doyan-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "dreamz-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "drift-coffee": {
+    "machine": "La Marzocco Linea",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "dulce-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "duskie-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "early-sip": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "ediya-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "eighty-5-alt": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "elevn": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "elrumi-coffee-and-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "emery-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "emilyn-s-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "enam-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "enam-minit-lagi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "es-qoffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "fabled-coffee": {
+    "machine": "Lelit",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "fade-by-sb": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "famecafe-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "farisi-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "fcr-coffee-roaster-pinggiran-subang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "fcr-coffee-studio-14-shah-alam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "feeka-coffee-roasters-pj": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "fi-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "fifty-seven-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 150
+  },
+  "fiftyfourc-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "figura": {
+    "machine": "WPM",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "fine-coffee-flowers": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "fino-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "firzara-flava": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "flakes-the-hub-ss2": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "flat-18": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "flint-coffee-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "floffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "flour-fire-stone": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "flourlush": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "flux-koffee-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "folk-kofii": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "foodsbury": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "forest-cloud-flagship-store": {
+    "machine": null,
+    "grinder": "Eureka",
+    "capacity_pax": 40
+  },
+  "forty-zero-nine-coffee": {
+    "machine": "Milesto Espresso G",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "fossa-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "fotoffee-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "four-cups-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "fox-paradox-setia-alam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "garage-51": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "garisan-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "getaran-jiwa-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "ghedde-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "giez-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "glaze-eatery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "go-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "go-espresso": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "good-blue-men": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "good-friends-restaurant-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "grafa-cafe-restaurant": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "granule": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "grey-sky-morning": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "grind-and-gems": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "groov": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "ground-flaw-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "grounded-zone": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "guan-s": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "gunung-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "hab-s-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "halaman-pizza": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "hamka-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "harta-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "haus-7-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "hay": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "hayaso-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "he-she-coffee-kppim-uitm-shah-alam": {
+    "machine": "Conti",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "hedley-books-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "heetam-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "hejau-gasket-ally": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "henna-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "herbs-butter": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "hetam-plus": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "hideaway-cafe": {
+    "machine": "Dalla Corte Spirit",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "hirup-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "hisbrew-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "home-baker-at-clover": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "home-coffee": {
+    "machine": "Nuova Simonelli",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "house-brew-coffee-stall": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "house-brew-coffee-putra-heights": {
+    "machine": "Decent Espresso DE1",
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "house-of-kendal": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "house-of-malik": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "hujung-lot-coffee-shop-0bf4p": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "hulu-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "huri-cofee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "he-ni-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "ichi-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "icon-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "ikofe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "im-coffee-pro": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "j-jafaar-cuisine": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "j-s-coffee": {
+    "machine": "Gemilai",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "jakpa": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "jellycafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "jib-s-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "jiju-s-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "jilid-enam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "jual-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "jum-s-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kafe-kopi-bayan-nuri": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kafe-kopi-manees": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kafe-monchichi": {
+    "machine": "La Cimbali",
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "kafe-serve": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kafe-tiga-belas": {
+    "machine": "Conti",
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kafe-tujuh-belas": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kaffe-kop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kaffein-rush": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kairos-specialty-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 18
+  },
+  "karya-bulan-ampang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "karya-bukan-zenopy": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kebun-puisi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kechil-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "kedai-che-aminah": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kedai-kopi-kafeina-kuala-selangor": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kedai-kopi-otai-klang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "keep-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kek-dan-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kembwang-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kempresso-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "khacoff-my": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "khird-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kitchen-kraft": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "knead": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "knot-just-a-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kofe-speda": {
+    "machine": "Rocket Espresso",
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "koffee-simpang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "koffeepop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "koffie-lane": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kohi-expt": {
+    "machine": "Gemilai",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "koken-coffee": {
+    "machine": "La Marzocco Linea Mini",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "komina-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kona-bakehouse": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kooky-bowl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kooky-cream": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopi-pantun": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "kopi-aliff": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-angkesan": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kopi-bapak": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-beetle": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-blok": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-buaya-berenang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-bulat": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kopi-by-dining-bike": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-by-laman-cik-kuntum": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-cahaya": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopi-cemara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kopi-cetak": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-hujung-minggu": {
+    "machine": "La Marzocco Linea Mini",
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "kopi-kaki-lima": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-ke-bulan": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopi-korner": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-kropok": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-ladu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kopi-lot-1979": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopi-mm": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-monchoi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-nise": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopi-pinggir": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-raso": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-sampai-hati": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-senget": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopi-surau": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kopi-tingkap": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kopi-totoq": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kupi-tulus": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kopi-urung-taka": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "kopie-express": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "kopikupi-kampung": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopilu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kopimeo-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kopipayung-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "kopipedas": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "kopipeng-jeram": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopist-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kopito-de-rimba": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "koppiku-subang": {
+    "machine": "CAEM",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "koup-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kueh-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "kupi-ging-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kuro-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "kuro-espresso-my": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "kuro-kofe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "kyn-coffee-craft": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "laa-co-coffee": {
+    "machine": "Nuova Simonelli",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "laiyan-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "lakeside": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 70
+  },
+  "laman-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "langek-milk-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "langit-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "latibule-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "lattetude-rekascape": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "lava-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "le-moon-s-eatery-bakery-zakka": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "lets-koppie-gua": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "limoka": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "little-salty-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "locca-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "loffee-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "lokal-bagelry-5dzoq": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "lokal-bagelry": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "lolla-paluza": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "loro": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "lovefoodies-jrjmq": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "luho-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "mad-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "madinah-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "magnificient-park-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mahogani-roastery-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "mai-kohi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "mamu-coffee-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "maneh": {
+    "machine": "CREM",
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "manggis-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "manis": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "manual-artisanal-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "maple-coffee-and-bagel": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "masbrew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "matte-culture-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "matte-culture-cafe-ss4d": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "mauu-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "maysan-coffee-laundry": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "medium-curated-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "mekanisme": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "mendung-kafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "mika-coffee-roaster": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "milligram": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "minion9-coppe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "mitty-beans": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mixof-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "mofika-roastery-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "moka-artisan-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "moka-pot-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "monjo-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "monochrome-specialty-coffee": {
+    "machine": "La Marzocco",
+    "grinder": "Atom",
+    "capacity_pax": 15
+  },
+  "monros-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "monsterbytes-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "monti-keopi-tm-r-d-cyberjaya": {
+    "machine": "Gemilai",
+    "grinder": "Eureka",
+    "capacity_pax": 20
+  },
+  "monti-keopi-bandar-puteri-bangi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mo-raz-x-nomad-kopi-knxqu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "morigin-artisan-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "movers-cafe-co-bandar-baru-bangi": {
+    "machine": "Rancilio",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mukarami-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "murai-coffee": {
+    "machine": "Nuova Simonelli",
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "myespresso-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "mykro-collective-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "mysnackville-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "naj-belle-ss15": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "nakofi-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "neibour-coffee-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "nety-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "neu-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "new-yard-coffee-and-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ngopi-dan-toast": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ngopi-eu-kajang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ngopi-pandan-mewah": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nightgrind-coffee-stars": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "nijucoffeehub": {
+    "machine": "Kaffa",
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "ninth-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nirmala-coffee-eatery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "nisy-coffee-roasters": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nkhp-zone": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "noff-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nonagon-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "noreh-ngopi-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "nota-anarki-zpeeq": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "noto-cafe-bakery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "nuff-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "null-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "nz-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "oh-apong": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "old-hands-cafeteria": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "one-half-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "one-serambi-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "orange-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "orca-coffee-co": {
+    "machine": null,
+    "grinder": "Gemilai",
+    "capacity_pax": 10
+  },
+  "oregano-cafe-ss4": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "orked-city": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "orkid-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "padoo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "pagi-place": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "pahit-manees": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "pahit-pahit-manis": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "park-28": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "pastribella": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "pat-s-brew-coffee-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "pavlova-cheesecake": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pejam-mata-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pelita-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "peonique": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "people-s-park-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "petiteserie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pinch-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pinggir-kota-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "pitstop-bagan-tengkorak": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "play-klang-c3-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "pmtd-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "poche-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "pociato-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "poffee-hoffee-bread-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pohutukawa-coffee": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "pola-dola-cafe-kitchen": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "project-1-0": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "psng-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "psyclist-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "puncak-gayo-arabica-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "purnama-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "putters-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "qanys-street-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "qarya-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "qarya-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "qidot": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "quattro-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "raptroom": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "ra-ra-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "rasa2-by-pakcik": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "ratio-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rays-bland": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "realeaf-by-husna": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "redose-coffee": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "redup-kopi-salai": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "regina-natasha-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rekindle": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "rekoffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "riel-z-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "rizdelle-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ronaclass-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "room-a": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "route-five-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "rover-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rs-garden-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "ruaang-selfie-studio-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ruang-memoir-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "ruang-ngopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ruits-jampj": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "ruma-pokok": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rumah-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rumah-kopi-kerja-sekinchan": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "rumah-makan-my-tiara": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "rumaroti": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "rusa-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "safroj-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "salt-bake": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sam-s-caffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "sand-wish": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sangkopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "saramoto": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sebentar-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sejenak-espresso-garden": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "seken-coffeebar": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "sekopi-dua": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sembang-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "semesta-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "senja-cafes": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "seoul-espresso-damansara-utama": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sesuatu-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "seteshen118-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "setia-coffee-ampang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "setwojuh-co": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "shaded-stone-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "shikomi-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "shock-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sibuk-ngopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sikopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "silly-bee-bagel": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "single-dose-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sip-cyberjaya": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sip-sip-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sip-kul-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sirbean-coffee-shop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sisu-pantry": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sixty-eight-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sleepy-at-3": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 8
+  },
+  "snazzy-coffee-7lpd4": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "soso-hub": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "spacegrey-at-floralreef": {
+    "machine": "La Marzocco Linea",
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "sprezzatura-phileo": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "springspring-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "stesen-83": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 70
+  },
+  "sua-store-616": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sugar-honey-bites-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sulaiman-s-by-bake-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "summer-palace": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "sunbrew-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "sundaze-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "supernormal-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "surya-cafe-klang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "take-five-coffee-brewers": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "talker-coffee-chocolate": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "taman-hati": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "tangerain-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "tempur": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "tengah-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "terminal-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "teruntuk-kopi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "tf-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "that-one-salmon-house": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "the-28": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-baking-xperiment": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-botanist": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-brew-ally": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-brew-lab-coffee-roastery": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-brim": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-bunge-florist-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-cafe-by-country-bread": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-caravan-cade": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "the-coffee-dock": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "the-crackpots-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-depot-by-jwc": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-duchess-koffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "the-foxhole-bakery-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-great-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-grid-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "the-hideout-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-hillpark-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "the-ink-library-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-java-club": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "the-komunal-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "the-kontainer-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-kopi-manual-bandar-baru-bangi": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-lemon-tree": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "the-maruu": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "the-mios-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-nellis-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-nomad-kl": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-ordinary-baker-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-red-beanbag": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "the-roast-things": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-shack-derimba": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "the-third-letter": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 50
+  },
+  "the-weekenders-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "the-wknd-sip": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "thinker-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "third-project-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "third-thirteen-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "thirdwheel": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "thirteen-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "time-teapot-terrace": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "tme-street-brew": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "tiny-dusun": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 12
+  },
+  "to-tego": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "toast-maker-sunway": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "tomy-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "toothless-coffee-roaster": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "touche-pastries": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "traffic-bean-subang": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "treeyard": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "triple-a-coffee": {
+    "machine": "Nuova Simonelli",
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "tsr-social-space": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "tsuki-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "tulipa-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "tumbuh-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "twenty-fourty-six-2046": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "twosecond-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "underscore-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "unfold-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "unknown-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "upstairs-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "vanilla-mille-crepe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "vits-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "waronk-malam": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 40
+  },
+  "warung-kopi-chempaka": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "warunk-koffie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "watak-kopi-eco-ardence": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "what-the-puck": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "whisk-coffee-one-utama": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  },
+  "whisk-coffee-empire": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "white-cart-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 10
+  },
+  "wholly-ground-coffee-brewers": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "wild-sheep-home": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 16
+  },
+  "wolf-turtle-coffee-ampang": {
+    "machine": "La Marzocco",
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "wonders-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 60
+  },
+  "wooca-cafe": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "wownana": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 35
+  },
+  "xoxo-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": null
+  },
+  "y-coffee": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "yabedabedu-coffee-kidel": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 25
+  },
+  "ye-boulangerie": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 20
+  },
+  "yew-yew-coffee-klia": {
+    "machine": "Sanremo Cafe Racer",
+    "grinder": null,
+    "capacity_pax": 6
+  },
+  "yodmilk-shop": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 15
+  },
+  "ono": {
+    "machine": null,
+    "grinder": null,
+    "capacity_pax": 30
+  }
+}
