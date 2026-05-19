@@ -60,94 +60,51 @@ function Divider() {
 function ShopCard({ shop }: { shop: Shop }) {
   const router = useRouter();
   const imageSrc = shopImages[shop.id]?.[0] ?? null;
-  const hoursLines = formatHours(shop.hours);
+  const gear = [shop.machine, shop.grinder].filter(Boolean).join(" · ");
+  const hoursLine = formatHours(shop.hours)[0] ?? null;
+  const detail = gear || hoursLine;
 
   return (
     <div
-      className="group cursor-pointer flex flex-col overflow-hidden border border-zinc-300 hover:border-zinc-500 transition-colors duration-150"
+      className="group cursor-pointer bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
       onClick={() => router.push(`/coffee/${shop.id}`)}
     >
-      {/* Photo */}
-      <div className="relative w-full aspect-video overflow-hidden bg-zinc-200">
+      {/* Photo — 4:3 shows interiors better than 16:9 */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-100">
         {imageSrc ? (
-          <Image
-            src={imageSrc}
-            alt={shop.name.trim()}
-            fill
-            className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          <>
+            <Image
+              src={imageSrc}
+              alt={shop.name.trim()}
+              fill
+              className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            {shop.vibe && (
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end px-4 pb-3">
+                <span className="text-[10px] uppercase tracking-widest text-white/90">{shop.vibe}</span>
+              </div>
+            )}
+          </>
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-zinc-400 text-[8px] uppercase tracking-widest">no photo</span>
-          </div>
-        )}
-        {shop.vibe && (
-          <span className="absolute top-3 left-3 bg-[#D94830] text-white text-[8px] uppercase tracking-widest px-2 py-0.5">
-            {shop.vibe}
-          </span>
+          <div className="w-full h-full bg-zinc-100" />
         )}
       </div>
 
-      {/* Info */}
-      <div className="p-4 flex flex-col flex-1 bg-[#F5F2EB]">
+      {/* Info — name, area, one key fact */}
+      <div className="px-4 pt-4 pb-5">
         <div className="flex items-start justify-between gap-2 mb-1">
-          <h2 className="text-base font-bold text-zinc-800 tracking-tight leading-tight group-hover:text-[#D94830] transition-colors">
+          <h2 className="text-[15px] font-bold text-zinc-900 leading-snug tracking-tight group-hover:text-[#D94830] transition-colors">
             {shop.name.trim()}
           </h2>
           {shop.rating != null && (
-            <span className="text-xs text-zinc-400 tabular-nums shrink-0 mt-0.5">★ {shop.rating}</span>
+            <span className="text-xs text-zinc-400 shrink-0 tabular-nums mt-0.5">★ {shop.rating}</span>
           )}
         </div>
-        <p className="text-xs text-zinc-500 mb-3">{shop.area}</p>
-
-        {/* Gear */}
-        {(shop.machine || shop.grinder) && (
-          <div className="flex flex-wrap gap-x-5 gap-y-2 mb-3">
-            {shop.machine && (
-              <div>
-                <p className="text-[9px] uppercase tracking-wider text-zinc-400 mb-0.5">Machine</p>
-                <p className="text-xs font-medium text-zinc-700">{shop.machine}</p>
-              </div>
-            )}
-            {shop.grinder && (
-              <div>
-                <p className="text-[9px] uppercase tracking-wider text-zinc-400 mb-0.5">Grinder</p>
-                <p className="text-xs font-medium text-zinc-700">{shop.grinder}</p>
-              </div>
-            )}
-          </div>
+        <p className="text-xs text-zinc-400 mb-3">{shop.area}</p>
+        {detail && (
+          <p className="text-sm text-zinc-600 leading-relaxed">{detail}</p>
         )}
-
-        {/* Hours — first line only */}
-        {hoursLines.length > 0 && (
-          <p className="text-xs text-zinc-500 mb-3 leading-relaxed">{hoursLines[0]}</p>
-        )}
-
-        {/* Bottom row */}
-        <div className="mt-auto pt-3 border-t border-zinc-300/60 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {shop.capacity_pax != null && (
-              <span className="text-xs text-zinc-400">~{shop.capacity_pax} pax</span>
-            )}
-          </div>
-          <div className="flex items-center gap-3">
-            {shop.google_maps && (
-              <a href={shop.google_maps} target="_blank" rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
-                Maps ↗
-              </a>
-            )}
-            {shop.waze && (
-              <a href={shop.waze} target="_blank" rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-[#D94830] transition-colors">
-                Waze ↗
-              </a>
-            )}
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -377,7 +334,7 @@ export default function Coffee() {
             <p className="text-xs text-zinc-400 py-12">no shops found.</p>
           ) : (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {visible.map((shop) => <ShopCard key={shop.id} shop={shop} />)}
               </div>
 
