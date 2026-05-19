@@ -334,7 +334,7 @@ export default function Coffee() {
             <p className="text-xs text-zinc-400 py-12">no shops found.</p>
           ) : (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {visible.map((shop) => <ShopCard key={shop.id} shop={shop} />)}
               </div>
 
