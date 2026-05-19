@@ -180,24 +180,6 @@
     "rating": 4.9
   },
   {
-    "id": "5ft-coffee",
-    "name": "5ft Coffee",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/?q=3.1748909,101.6593711",
-    "waze": "https://waze.com/ul?ll=3.1748909,101.6593711&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
     "id": "6yi-cafe",
     "name": "6Yi Cafe",
     "area": "Kuala Lumpur, Kuala Lumpur",
@@ -339,7 +321,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "after-five-coffee",
@@ -357,7 +339,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "after-one",
@@ -393,7 +375,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ah-gong-house",
@@ -429,7 +411,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "air-day-coffee",
@@ -573,7 +555,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ari-roastery",
@@ -699,7 +681,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "aufa-treats",
@@ -789,7 +771,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "bambamkopi",
@@ -843,7 +825,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "bask",
@@ -987,7 +969,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "black-ink",
@@ -1041,7 +1023,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "blitz-and-co",
@@ -1113,7 +1095,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "blvck-coffee-ampang-park",
@@ -1221,7 +1203,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "box-kl",
@@ -1365,7 +1347,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "coffeeboy-club-trx",
@@ -1419,7 +1401,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "dear-patrick",
@@ -1563,7 +1545,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "doublelines-coffee",
@@ -1689,7 +1671,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "eight-ounce-coffee-co-klcc",
@@ -1834,24 +1816,6 @@
     "wifi": null,
     "vibe": null,
     "rating": 4.1
-  },
-  {
-    "id": "fifty-fifty-ryhdt",
-    "name": "Fifty Fifty",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/?q=3.2102107,101.7514079",
-    "waze": "https://waze.com/ul?ll=3.2102107,101.7514079&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
   },
   {
     "id": "fishee-coffee",
@@ -2031,7 +1995,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "gather-dessert",
@@ -2067,7 +2031,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "ghostbird-coffee-company",
@@ -2157,7 +2121,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "hani-coffee-roastery",
@@ -2193,7 +2157,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "hayden-matcha-coffee-atelier",
@@ -2247,7 +2211,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "hentian-kopi-",
@@ -2283,25 +2247,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
-  },
-  {
-    "id": "idzla-delight",
-    "name": "Idzla Delight ",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/?q=3.1002676,101.7072332",
-    "waze": "https://waze.com/ul?ll=3.1002676,101.7072332&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "jamboo",
@@ -2337,7 +2283,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "james-gordon-coffee-setapak",
@@ -2463,7 +2409,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "k3-coffee-lab",
@@ -2499,7 +2445,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kafe-kleptokrat",
@@ -2517,7 +2463,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "kafein-roastery",
@@ -2535,7 +2481,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kaffe-16",
@@ -2571,7 +2517,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kenny-hills-coffee-ampang",
@@ -2661,7 +2607,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "keopi-sul",
@@ -2751,7 +2697,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "kita-coffee-kl",
@@ -2877,7 +2823,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "komo-cafe",
@@ -3021,7 +2967,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-dan-benang",
@@ -3057,7 +3003,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-numtang",
@@ -3112,24 +3058,6 @@
     "wifi": null,
     "vibe": null,
     "rating": 4.9
-  },
-  {
-    "id": "kopibro",
-    "name": "KOPIBRO",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/search/?api=1&query=3.1950979,101.6286549&query_place_id=ChIJDeDJagBHzDERouAXYTjuOuw",
-    "waze": "https://waze.com/ul?ll=3.1950979,101.6286549&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": "Sun 8:50am–4:30pm, Mon–Sat 8:50am–6pm",
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": 4.5
   },
   {
     "id": "koppiku",
@@ -3273,7 +3201,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "levain-boulangerie-patisserie",
@@ -3507,7 +3435,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "meraki-jelatek",
@@ -3633,7 +3561,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "monkey-coffee-cup",
@@ -3759,7 +3687,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "naj-belle-bangsar",
@@ -3885,7 +3813,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "nomad-s",
@@ -3976,24 +3904,6 @@
     "wifi": null,
     "vibe": null,
     "rating": 4.3
-  },
-  {
-    "id": "oi-kopi-roti",
-    "name": "Oi! Kopi & Roti",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/?q=3.1386079000000002,101.6283117",
-    "waze": "https://waze.com/ul?ll=3.1386079000000002,101.6283117&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "study-friendly",
-    "rating": null
   },
   {
     "id": "oni-coffee",
@@ -4212,24 +4122,6 @@
     "rating": 4.6
   },
   {
-    "id": "petakopi-coffee-shop",
-    "name": "Petakopi Coffee Shop",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/?q=3.140906178625475,101.68504237058166",
-    "waze": "https://waze.com/ul?ll=3.140906178625475,101.68504237058166&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "study-friendly",
-    "rating": null
-  },
-  {
     "id": "piccadilly",
     "name": "Piccadilly",
     "area": "Kuala Lumpur, Kuala Lumpur",
@@ -4245,7 +4137,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "piu-piu-piu",
@@ -4281,7 +4173,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "plan-b-kuala-lumpur-publika",
@@ -4515,7 +4407,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "Rawr",
@@ -4590,24 +4482,6 @@
     "rating": 4.2
   },
   {
-    "id": "roam-and-brew",
-    "name": "Roam And Brew",
-    "area": "Kuala Lumpur, Kuala Lumpur",
-    "google_maps": "https://www.google.com/maps/?q=3.100597045311573,101.71452934876869",
-    "waze": "https://waze.com/ul?ll=3.100597045311573,101.71452934876869&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
     "id": "room-203-glo",
     "name": "Room 203",
     "area": "Kuala Lumpur, Kuala Lumpur",
@@ -4677,7 +4551,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "scrappy-dough",
@@ -4749,7 +4623,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sehidang-kopi-buku",
@@ -4803,7 +4677,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sembilan-inci-cafe",
@@ -4857,7 +4731,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "shan-mu",
@@ -4893,7 +4767,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sip-n-slice",
@@ -4965,7 +4839,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "somewhere-slow-coffee",
@@ -4983,7 +4857,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "soul-sacrifice-cafe",
@@ -5091,7 +4965,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sunbather-coffee",
@@ -5235,7 +5109,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "tab-coffee-melawati",
@@ -5271,7 +5145,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "take-a-bow",
@@ -5397,7 +5271,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-coffee-lounge",
@@ -5829,7 +5703,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "two-souls-coffee",
@@ -6153,7 +6027,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "whitebrew-the-cabin",
@@ -6171,7 +6045,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "whoops-coffee",
@@ -6225,7 +6099,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "wtj-coffee",
@@ -6243,7 +6117,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "yellow-brick-road",
@@ -6441,7 +6315,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "16-degrees-coffee-and-groceries",
@@ -6477,7 +6351,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "17-gram-beans-usj21",
@@ -6585,7 +6459,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "36gram",
@@ -6603,7 +6477,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "385f-cafe",
@@ -6639,7 +6513,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "43-coffee",
@@ -6765,25 +6639,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
-  },
-  {
-    "id": "aa-coffee",
-    "name": "AA COFFEE",
-    "area": "Ampang, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.1248754110692363,101.7754876613617",
-    "waze": "https://waze.com/ul?ll=3.1248754110692363,101.7754876613617&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
+    "rating": 5
   },
   {
     "id": "abahrista-coffee",
@@ -6801,7 +6657,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ai-kopi",
@@ -6858,24 +6714,6 @@
     "rating": 4.8
   },
   {
-    "id": "aji-ngopi",
-    "name": "Aji Ngopi",
-    "area": "Cheras, Selangor",
-    "google_maps": "https://www.google.com/maps/search/?api=1&query=3.0639469,101.7559955&query_place_id=ChIJt3NCKgA1zDEREBoLYyY4OgQ",
-    "waze": "https://waze.com/ul?ll=3.0639469,101.7559955&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": 5.0
-  },
-  {
     "id": "akak-bukan-barista",
     "name": "Akak Bukan Barista",
     "area": "Banting, Selangor",
@@ -6891,7 +6729,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "aku-dia-dan-kopi",
@@ -6927,7 +6765,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "albatross-coffee",
@@ -6981,7 +6819,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "amp-cafe",
@@ -6999,7 +6837,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "analog",
@@ -7071,7 +6909,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "asa-cafe",
@@ -7161,7 +6999,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "awal-cerita-roastery",
@@ -7359,7 +7197,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "banglo-hitam",
@@ -7377,7 +7215,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "baristcoff-house",
@@ -7413,25 +7251,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
-  },
-  {
-    "id": "bean-brew",
-    "name": "Bean & Brew",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.1257821218677964,101.46874952660428",
-    "waze": "https://waze.com/ul?ll=3.1257821218677964,101.46874952660428&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "bean-brothers-pj",
@@ -7485,7 +7305,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "bearista-coffee",
@@ -7521,7 +7341,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "belinjo",
@@ -7755,7 +7575,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "blackstone-cafe",
@@ -7809,7 +7629,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "blend-coffee-roasters-bangi",
@@ -7899,7 +7719,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "bonks-coffee-puncak-alam",
@@ -7917,7 +7737,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "bosco-coffee",
@@ -7971,7 +7791,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "brb-coffee",
@@ -8043,7 +7863,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "brew-9-shah-alam",
@@ -8118,24 +7938,6 @@
     "rating": 4.9
   },
   {
-    "id": "brewhood",
-    "name": "Brewhood",
-    "area": "Bandar Rinc, Selangor",
-    "google_maps": "https://www.google.com/maps/search/?api=1&query=2.9278008,101.8573423&query_place_id=ChIJa4C4XQDPzTER3bf-n5Tb4vA",
-    "waze": "https://waze.com/ul?ll=2.9278008,101.8573423&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": "Sun 8pm–1am, Tue–Sat 8pm–1am",
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "study-friendly",
-    "rating": null
-  },
-  {
     "id": "brewing-soon-coffee-lab",
     "name": "Brewing Soon Coffee Lab",
     "area": "Puchong, Selangor",
@@ -8187,25 +7989,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
-  },
-  {
-    "id": "brwn-kopi",
-    "name": "Brwn Kopi",
-    "area": "Balakong, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.0473403,101.7512615",
-    "waze": "https://waze.com/ul?ll=3.0473403,101.7512615&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
+    "rating": 5
   },
   {
     "id": "broom-artisan-bakery-kitchen",
@@ -8313,25 +8097,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
-  },
-  {
-    "id": "bvsc-coffee",
-    "name": "BVSC Coffee",
-    "area": "Petaling Jaya, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.0817925492660803,101.64497290450494",
-    "waze": "https://waze.com/ul?ll=3.0817925492660803,101.64497290450494&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "c-u-latte",
@@ -8514,24 +8280,6 @@
     "rating": 4.4
   },
   {
-    "id": "celah-kafe",
-    "name": "Celah Kafe",
-    "area": "Kuala Lumpur, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.2157567912285763,101.6298242637128",
-    "waze": "https://waze.com/ul?ll=3.2157567912285763,101.6298242637128&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
-  },
-  {
     "id": "celsius-coffee-shah-alam",
     "name": "Celsius Coffee",
     "area": "Shah Alam, Selangor",
@@ -8565,7 +8313,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "champignons-patisserie",
@@ -8601,7 +8349,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "chase",
@@ -8655,25 +8403,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
-  },
-  {
-    "id": "citra-loka-cafe",
-    "name": "Citra Loka Cafe",
-    "area": "Sungai Buloh, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.2251381827288603,101.56919456561207",
-    "waze": "https://waze.com/ul?ll=3.2251381827288603,101.56919456561207&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "cloud-catcher-specialty-coffee-roastery",
@@ -8745,7 +8475,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "code-black-coffee-house",
@@ -8799,25 +8529,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
-  },
-  {
-    "id": "coffe-camping",
-    "name": "Coffe Camping",
-    "area": "Petaling Jaya, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.1031466,101.6389773",
-    "waze": "https://waze.com/ul?ll=3.1031466,101.6389773&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "coffea-coffee-ardence-crest",
@@ -8853,7 +8565,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "coffee-jeans-co-petaling-jaya",
@@ -8889,7 +8601,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "coffee-kaya",
@@ -8997,7 +8709,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "coldbruh",
@@ -9015,7 +8727,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "commoners-space",
@@ -9069,7 +8781,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "copei-coffee",
@@ -9267,7 +8979,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "dapur-manis",
@@ -9321,7 +9033,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "dejiistu-coffee",
@@ -9393,7 +9105,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "der-backmeister",
@@ -9411,7 +9123,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "diagram-cafe",
@@ -9429,7 +9141,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "dirty-coffee",
@@ -9537,7 +9249,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "dreamz-bakery",
@@ -9591,7 +9303,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "duskie-coffee",
@@ -9627,7 +9339,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ediya-coffee",
@@ -9753,7 +9465,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "enam-minit-lagi",
@@ -9771,7 +9483,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "es-qoffee",
@@ -9825,7 +9537,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "famecafe-co",
@@ -9843,7 +9555,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "farisi-coffee",
@@ -9856,24 +9568,6 @@
     "capacity_pax": null,
     "size_sqft": null,
     "hours": "Mon–Fri 6pm–10:30pm",
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
-    "id": "fcr-coffee-uitm-puncak-alam",
-    "name": "FCR Coffee",
-    "area": "Puncak Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/search/?api=1&query=3.1988471,101.4471396&query_place_id=ChIJVWImcABbzDERgIzv3vvclFg",
-    "waze": "https://waze.com/ul?ll=3.1988471,101.4471396&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": "Mon–Thu 9am–10pm, Fri 9am–5pm",
     "food": null,
     "toilet": null,
     "surau": null,
@@ -9951,7 +9645,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "fifty-seven-coffee",
@@ -9987,7 +9681,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "figura",
@@ -10059,7 +9753,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "flakes-the-hub-ss2",
@@ -10077,7 +9771,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "flat-18",
@@ -10131,7 +9825,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "flour-fire-stone",
@@ -10185,7 +9879,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "folk-kofii",
@@ -10239,7 +9933,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "forty-zero-nine-coffee",
@@ -10257,7 +9951,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "fossa-kopi",
@@ -10275,7 +9969,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "fotoffee-coffee",
@@ -10293,7 +9987,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "four-cups-coffee",
@@ -10383,7 +10077,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ghedde-coffee",
@@ -10581,7 +10275,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "groov",
@@ -10762,24 +10456,6 @@
     "wifi": null,
     "vibe": null,
     "rating": 4.4
-  },
-  {
-    "id": "haus-kofi",
-    "name": "Haus Kofi",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.1588371,101.526966",
-    "waze": "https://waze.com/ul?ll=3.1588371,101.526966&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
   },
   {
     "id": "hay",
@@ -11031,7 +10707,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "house-brew-coffee-stall",
@@ -11049,7 +10725,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "house-brew-coffee-putra-heights",
@@ -11067,7 +10743,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "house-of-kendal",
@@ -11283,7 +10959,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "jakpa",
@@ -11427,7 +11103,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kafe-kopi-manees",
@@ -11625,7 +11301,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "kechil-kopi",
@@ -11643,7 +11319,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kedai-che-aminah",
@@ -11715,7 +11391,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kek-dan-kopi",
@@ -11826,24 +11502,6 @@
     "rating": 4.4
   },
   {
-    "id": "kkopi-senja",
-    "name": "Kkopi Senja",
-    "area": "Bandar Baru Bangi, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.9401289980171583,101.78129066132584",
-    "waze": "https://waze.com/ul?ll=2.9401289980171583,101.78129066132584&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
     "id": "knead",
     "name": "Knead",
     "area": "Seri Kembangan, Selangor",
@@ -11877,7 +11535,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kofe-speda",
@@ -11952,24 +11610,6 @@
     "rating": 4.2
   },
   {
-    "id": "kofi-by-haki",
-    "name": "Kofi by haki",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.0637865239224387,101.53501572872399",
-    "waze": "https://waze.com/ul?ll=3.0637865239224387,101.53501572872399&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
     "id": "kohi-expt",
     "name": "Kohi Expt",
     "area": "Klang, Selangor",
@@ -11985,7 +11625,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "koken-coffee",
@@ -12003,7 +11643,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "komina-space",
@@ -12021,25 +11661,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
-  },
-  {
-    "id": "kom-fi",
-    "name": "Kom•Fi",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.143942920238984,101.4813058006666",
-    "waze": "https://waze.com/ul?ll=3.143942920238984,101.4813058006666&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": "Sun 9am–7pm, Tue–Thu 9am–7pm, Fri 9am–1pm, Fri 2:30pm–7pm, Sat 9am–7pm",
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "study-friendly",
-    "rating": 4.8
+    "rating": 5
   },
   {
     "id": "kona-bakehouse",
@@ -12183,7 +11805,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-blok",
@@ -12255,7 +11877,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-by-laman-cik-kuntum",
@@ -12309,7 +11931,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-cemara",
@@ -12327,7 +11949,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-cetak",
@@ -12345,7 +11967,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-hujung-minggu",
@@ -12399,7 +12021,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-korner",
@@ -12417,7 +12039,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-kropok",
@@ -12438,24 +12060,6 @@
     "rating": 4.8
   },
   {
-    "id": "kopi-kuaters",
-    "name": "Kopi Kuaters",
-    "area": "Sungai Buloh, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.2298724,101.4938785",
-    "waze": "https://waze.com/ul?ll=3.2298724,101.4938785&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
-  },
-  {
     "id": "kopi-ladu",
     "name": "Kopi Ladu",
     "area": "Klang, Selangor",
@@ -12471,25 +12075,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
-  },
-  {
-    "id": "kopi-lain",
-    "name": "Kopi Lain",
-    "area": "Kajang, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.903596080844426,101.79595417196668",
-    "waze": "https://waze.com/ul?ll=2.903596080844426,101.79595417196668&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "kopi-lot-1979",
@@ -12525,7 +12111,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-monchoi",
@@ -12579,7 +12165,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-raso",
@@ -12651,7 +12237,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-tingkap",
@@ -12705,7 +12291,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopi-urung-taka",
@@ -12724,42 +12310,6 @@
     "wifi": null,
     "vibe": "late-night",
     "rating": 4.5
-  },
-  {
-    "id": "kopi-yu",
-    "name": "Kopi Yu",
-    "area": "Jeram, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.2617511,101.302267",
-    "waze": "https://waze.com/ul?ll=3.2617511,101.302267&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
-    "id": "kopidai",
-    "name": "Kopidai",
-    "area": "Dengkil, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.905611899999999,101.7650418",
-    "waze": "https://waze.com/ul?ll=2.905611899999999,101.7650418&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
   },
   {
     "id": "kopie-express",
@@ -12849,7 +12399,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kopipedas",
@@ -12921,7 +12471,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "koppiku-subang",
@@ -13029,7 +12579,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kuro-kofe",
@@ -13047,7 +12597,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "kyn-coffee-craft",
@@ -13083,7 +12633,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "laiyan-kl",
@@ -13173,7 +12723,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "latibule-coffee",
@@ -13302,24 +12852,6 @@
     "rating": 4.2
   },
   {
-    "id": "local-kapel-coffee",
-    "name": "Local Kapel Coffee",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.0781568,101.4911671",
-    "waze": "https://waze.com/ul?ll=3.0781568,101.4911671&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
-  },
-  {
     "id": "locca-cafe",
     "name": "Locca Cafe",
     "area": "Cyberjaya, Selangor",
@@ -13425,7 +12957,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "lovefoodies-jrjmq",
@@ -13677,7 +13209,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "matte-culture-cafe",
@@ -13713,7 +13245,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "mauu-coffee",
@@ -13785,7 +13317,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "mendung-kafe",
@@ -13965,7 +13497,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "monjo-coffee",
@@ -14001,7 +13533,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "monros-coffee",
@@ -14091,25 +13623,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
-  },
-  {
-    "id": "morejoe-coffee",
-    "name": "MoreJoe Coffee",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.081366,101.491221",
-    "waze": "https://waze.com/ul?ll=3.081366,101.491221&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
+    "rating": 5
   },
   {
     "id": "morigin-artisan-coffee",
@@ -14181,7 +13695,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "myespresso-cafe",
@@ -14217,7 +13731,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "mysnackville-coffee",
@@ -14292,42 +13806,6 @@
     "rating": 4.9
   },
   {
-    "id": "nekofee-cafe",
-    "name": "Nekofee Cafe",
-    "area": "Kuala Lumpur, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.0639529,101.7530959",
-    "waze": "https://waze.com/ul?ll=3.0639529,101.7530959&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
-    "id": "nester-coffee",
-    "name": "Nester Coffee",
-    "area": "Seri Kembangan, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.9956381511457044,101.65190843254089",
-    "waze": "https://waze.com/ul?ll=2.9956381511457044,101.65190843254089&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
-  },
-  {
     "id": "nety-coffee",
     "name": "Nety Coffee",
     "area": "Puncak Alam, Selangor",
@@ -14361,7 +13839,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "new-yard-coffee-and-bakery",
@@ -14451,7 +13929,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "nijucoffeehub",
@@ -14613,7 +14091,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "noto-cafe-bakery",
@@ -14793,7 +14271,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "oregano-cafe-ss4",
@@ -14850,24 +14328,6 @@
     "rating": 4.3
   },
   {
-    "id": "oshin-coffee",
-    "name": "Oshin Coffee",
-    "area": "Sepang, Selangor",
-    "google_maps": "https://www.google.com/maps/search/?api=1&query=2.8001897,101.6844746&query_place_id=ChIJRzAhQZ-_zTERwdTyca6Revc",
-    "waze": "https://waze.com/ul?ll=2.8001897,101.6844746&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": "Sun 9am–11pm, Tue–Sat 9am–11pm",
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": 4.8
-  },
-  {
     "id": "padoo",
     "name": "Padoo",
     "area": "Shah Alam, Selangor",
@@ -14883,7 +14343,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "pagi-place",
@@ -14919,7 +14379,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "pahit-pahit-manis",
@@ -14937,7 +14397,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "specialty",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "park-28",
@@ -14973,7 +14433,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "pat-s-brew-coffee-house",
@@ -15045,7 +14505,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "peonique",
@@ -15135,7 +14595,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "pitstop-bagan-tengkorak",
@@ -15189,7 +14649,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "poche-coffee",
@@ -15369,7 +14829,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "putters-cafe",
@@ -15423,7 +14883,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "qarya-coffee",
@@ -15441,7 +14901,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "qidot",
@@ -15495,7 +14955,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ra-ra-coffee",
@@ -15549,7 +15009,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "rays-bland",
@@ -15603,7 +15063,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "redup-kopi-salai",
@@ -15675,7 +15135,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "riel-z-cafe",
@@ -15714,24 +15174,6 @@
     "rating": 4.7
   },
   {
-    "id": "rokuno-coffee",
-    "name": "Rokuno Coffee",
-    "area": "Bandar Baru Bangi, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.963523708697765,101.77602228489266",
-    "waze": "https://waze.com/ul?ll=2.963523708697765,101.77602228489266&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
-  },
-  {
     "id": "ronaclass-coffee",
     "name": "Ronaclass Coffee",
     "area": "Rawang, Selangor",
@@ -15765,7 +15207,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "route-five-cafe",
@@ -15819,7 +15261,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ruaang-selfie-studio-cafe",
@@ -15838,24 +15280,6 @@
     "wifi": null,
     "vibe": null,
     "rating": 4.7
-  },
-  {
-    "id": "ruang-brew",
-    "name": "Ruang brew",
-    "area": "Telok Panglima Garang, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.9476847,101.526099",
-    "waze": "https://waze.com/ul?ll=2.9476847,101.526099&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
   },
   {
     "id": "ruang-memoir-cafe",
@@ -15909,7 +15333,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "ruma-pokok",
@@ -16236,24 +15660,6 @@
     "rating": 4.7
   },
   {
-    "id": "senja-bulan",
-    "name": "Senja & Bulan ",
-    "area": "Kajang, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.9202875,101.7575156",
-    "waze": "https://waze.com/ul?ll=2.9202875,101.7575156&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
-  },
-  {
     "id": "senja-cafes",
     "name": "Senja Cafe's",
     "area": "Kapar, Selangor",
@@ -16359,7 +15765,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "shaded-stone-cafe",
@@ -16449,7 +15855,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "silly-bee-bagel",
@@ -16557,7 +15963,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sisu-pantry",
@@ -16593,7 +15999,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sleepy-at-3",
@@ -16611,7 +16017,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "snazzy-coffee-7lpd4",
@@ -16791,7 +16197,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "sunbrew-coffee",
@@ -16935,7 +16341,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "tempur",
@@ -17025,7 +16431,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "that-one-salmon-house",
@@ -17043,7 +16449,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-28",
@@ -17115,7 +16521,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-brew-lab-coffee-roastery",
@@ -17169,7 +16575,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-cafe-by-country-bread",
@@ -17349,7 +16755,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "the-hillpark-cafe",
@@ -17385,7 +16791,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "the-java-club",
@@ -17439,7 +16845,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-kopi-manual-bandar-baru-bangi",
@@ -17493,7 +16899,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-mios-coffee",
@@ -17547,7 +16953,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "the-ordinary-baker-cafe",
@@ -17673,7 +17079,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "thinker-cafe",
@@ -17727,7 +17133,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "thirdwheel",
@@ -17817,25 +17223,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
-  },
-  {
-    "id": "tme-coffee-and-tea",
-    "name": "TME Coffee & Tea",
-    "area": "Shah Alam, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.075650495748071,101.54996310980522",
-    "waze": "https://waze.com/ul?ll=3.075650495748071,101.54996310980522&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": "late-night",
-    "rating": null
+    "rating": 5
   },
   {
     "id": "to-tego",
@@ -17853,7 +17241,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "toast-maker-sunway",
@@ -17979,7 +17367,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "late-night",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "tsr-social-space",
@@ -18070,24 +17458,6 @@
     "wifi": null,
     "vibe": null,
     "rating": 4.1
-  },
-  {
-    "id": "two-brothers-coffee",
-    "name": "Two Brothers Coffee",
-    "area": "Bandar Baru Bangi, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=2.957089042073558,101.78240487414722",
-    "waze": "https://waze.com/ul?ll=2.957089042073558,101.78240487414722&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
   },
   {
     "id": "twosecond-cafe",
@@ -18195,7 +17565,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "vits-coffee",
@@ -18303,7 +17673,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "whisk-coffee-one-utama",
@@ -18375,7 +17745,7 @@
     "surau": null,
     "wifi": null,
     "vibe": "study-friendly",
-    "rating": 5.0
+    "rating": 5
   },
   {
     "id": "wild-sheep-home",
@@ -18519,25 +17889,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 5.0
-  },
-  {
-    "id": "yang-ni",
-    "name": "Yang Ni",
-    "area": "Rawang, Selangor",
-    "google_maps": "https://www.google.com/maps/?q=3.3227954,101.5887283",
-    "waze": "https://waze.com/ul?ll=3.3227954,101.5887283&navigate=yes",
-    "machine": null,
-    "grinder": null,
-    "capacity_pax": null,
-    "size_sqft": null,
-    "hours": null,
-    "food": null,
-    "toilet": null,
-    "surau": null,
-    "wifi": null,
-    "vibe": null,
-    "rating": null
+    "rating": 5
   },
   {
     "id": "ye-boulangerie",
@@ -18573,7 +17925,7 @@
     "surau": null,
     "wifi": null,
     "vibe": null,
-    "rating": 4.0
+    "rating": 4
   },
   {
     "id": "yodmilk-shop",

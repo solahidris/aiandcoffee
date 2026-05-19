@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "scrape": "node scripts/scrape-threads.mjs",
-    "crawl-images": "node scripts/crawl-images.mjs"
+    "crawl-images": "node scripts/crawl-images.mjs",
+    "upload-r2": "node scripts/upload-to-r2.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -18,6 +19,7 @@
     "threads-api": "^1.6.3"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1049.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

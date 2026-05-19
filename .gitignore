@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# shop images — stored in Cloudflare R2, not git
+/public/shops/
