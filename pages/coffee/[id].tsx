@@ -62,7 +62,6 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
   const hoursLines = formatHours(shop.hours);
   const hasGear = shop.machine || shop.grinder;
   const hasSize = shop.capacity_pax != null || shop.size_sqft != null;
-  const hasAmenities = (shop.wifi && shop.wifi !== "none") || shop.toilet === true;
 
   const metaDesc = [
     shop.area,
@@ -209,8 +208,8 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
             </div>
           )}
 
-          {/* Space + Amenities — single row */}
-          {(hasSize || hasAmenities) && (
+          {/* Space */}
+          {hasSize && (
             <div className="flex flex-wrap gap-8">
               {shop.capacity_pax != null && (
                 <div>
@@ -222,18 +221,6 @@ export default function ShopPage({ shop, images = [] }: { shop: Shop; images: st
                 <div>
                   <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-1">size</p>
                   <p className="text-sm text-zinc-700">~{shop.size_sqft.toLocaleString()} sqft</p>
-                </div>
-              )}
-              {shop.wifi && shop.wifi !== "none" && (
-                <div>
-                  <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-1">wifi</p>
-                  <p className="text-sm text-zinc-700">{shop.wifi === "open" ? "Open" : "Password"}</p>
-                </div>
-              )}
-              {shop.toilet === true && (
-                <div>
-                  <p className="text-[8px] uppercase tracking-widest text-zinc-400 mb-1">toilet</p>
-                  <p className="text-sm text-zinc-700">Yes</p>
                 </div>
               )}
             </div>

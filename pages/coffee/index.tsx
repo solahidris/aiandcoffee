@@ -33,7 +33,6 @@ const shops    = rawShops as Shop[];
 const shopImages = rawImages as Record<string, string[]>;
 const PAGE_SIZE = 10;
 
-const WIFI_LABEL: Record<string, string> = { open: "wifi: open", password: "wifi: pw", none: "no wifi" };
 
 function getNeighborhood(area: string): string {
   return area.split(",")[0].trim();
@@ -131,9 +130,6 @@ function ShopCard({ shop }: { shop: Shop }) {
             {shop.capacity_pax != null && (
               <span className="text-[9px] text-zinc-400">~{shop.capacity_pax} pax</span>
             )}
-            {shop.wifi && shop.wifi !== "none" && (
-              <span className="text-[9px] text-zinc-400">{WIFI_LABEL[shop.wifi]}</span>
-            )}
           </div>
           <div className="flex items-center gap-3">
             {shop.google_maps && (
@@ -185,8 +181,6 @@ export default function Coffee() {
   const [activeState, setActiveState]       = useState<string | null>(null);
   const [activeVibe, setActiveVibe]         = useState<string | null>(null);
   const [activeNeighborhood, setActiveNeighborhood] = useState<string | null>(null);
-  const [activeWifi, setActiveWifi]         = useState<string | null>(null);
-  const [activeToilet, setActiveToilet]     = useState(false);
   const [openNow, setOpenNow]               = useState(false);
   const [sortBy, setSortBy]                 = useState<"name" | "rating" | null>(null);
   const [shown, setShown]                   = useState(PAGE_SIZE);
@@ -200,8 +194,6 @@ export default function Coffee() {
     if (q.state)        setActiveState(q.state);
     if (q.vibe)         setActiveVibe(q.vibe);
     if (q.neighborhood) setActiveNeighborhood(q.neighborhood);
-    if (q.wifi)         setActiveWifi(q.wifi);
-    if (q.toilet === "1") setActiveToilet(true);
     if (q.open   === "1") setOpenNow(true);
     if (q.sort)         setSortBy(q.sort as "name" | "rating");
   }, [router.isReady, router.query]);
@@ -213,13 +205,11 @@ export default function Coffee() {
     if (activeState)        params.state = activeState;
     if (activeVibe)         params.vibe = activeVibe;
     if (activeNeighborhood) params.neighborhood = activeNeighborhood;
-    if (activeWifi)         params.wifi = activeWifi;
-    if (activeToilet)       params.toilet = "1";
     if (openNow)            params.open = "1";
     if (sortBy)             params.sort = sortBy;
     // eslint-disable-next-line react-hooks/exhaustive-deps
     router.replace({ pathname: "/coffee", query: params }, undefined, { shallow: true });
-  }, [query, activeState, activeVibe, activeNeighborhood, activeWifi, activeToilet, openNow, sortBy]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [query, activeState, activeVibe, activeNeighborhood, openNow, sortBy]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const vibes = useMemo(
     () => Array.from(new Set(shops.map((s) => s.vibe).filter(Boolean))).sort() as string[],
@@ -244,8 +234,6 @@ export default function Coffee() {
       if (activeState        && !s.area.includes(activeState)) return false;
       if (activeNeighborhood && getNeighborhood(s.area) !== activeNeighborhood) return false;
       if (activeVibe         && s.vibe !== activeVibe) return false;
-      if (activeWifi         && s.wifi !== activeWifi) return false;
-      if (activeToilet       && s.toilet !== true) return false;
       if (openNow            && !isOpenNow(s.hours)) return false;
       if (q && !s.name.toLowerCase().includes(q) && !s.area.toLowerCase().includes(q)) return false;
       return true;
@@ -260,17 +248,17 @@ export default function Coffee() {
     });
 
     return result;
-  }, [query, activeState, activeNeighborhood, activeVibe, activeWifi, activeToilet, openNow, sortBy]);
+  }, [query, activeState, activeNeighborhood, activeVibe, openNow, sortBy]);
 
   const visible = useMemo(() => filtered.slice(0, shown), [filtered, shown]);
 
   const handleFilter = useCallback((fn: () => void) => { fn(); setShown(PAGE_SIZE); }, []);
 
-  const hasActiveFilters = !!(query || activeState || activeVibe || activeNeighborhood || activeWifi || activeToilet || openNow || sortBy);
+  const hasActiveFilters = !!(query || activeState || activeVibe || activeNeighborhood || openNow || sortBy);
 
   const handleClearAll = useCallback(() => {
     setQuery(""); setActiveState(null); setActiveVibe(null); setActiveNeighborhood(null);
-    setActiveWifi(null); setActiveToilet(false); setOpenNow(false); setSortBy(null); setShown(PAGE_SIZE);
+    setOpenNow(false); setSortBy(null); setShown(PAGE_SIZE);
   }, []);
 
   const handleSurprise = useCallback(() => {
@@ -361,11 +349,6 @@ export default function Coffee() {
         {/* Amenities + Sort + Surprise */}
         <div className="border-b border-zinc-400/40 px-6 sm:px-16 py-3 flex items-center gap-2 flex-wrap">
           <FilterBtn label="open now" active={openNow} onClick={() => handleFilter(() => setOpenNow(!openNow))} />
-          <Divider />
-          <FilterBtn label="wifi: open" active={activeWifi === "open"} onClick={() => handleFilter(() => setActiveWifi(activeWifi === "open" ? null : "open"))} />
-          <FilterBtn label="wifi: pw" active={activeWifi === "password"} onClick={() => handleFilter(() => setActiveWifi(activeWifi === "password" ? null : "password"))} />
-          <Divider />
-          <FilterBtn label="toilet" active={activeToilet} onClick={() => handleFilter(() => setActiveToilet(!activeToilet))} />
           <Divider />
           <span className="text-[9px] uppercase tracking-widest text-zinc-400 shrink-0">sort</span>
           {(["name", "rating"] as const).map((s) => (
